@@ -18,13 +18,13 @@ final class BoulderDashBDDConnector {
     private static BoulderDashBDDConnector instance;
 
     /** The login. */
-    private static String user     = "root";
+    private static String user     = "projetjava";
 
     /** The password. */
-    private static String password = "";
+    private static String password = "iRBJPxKE9Nj0lt9J";
 
     /** The url. */
-    private static String url = "jdbc:mysql://10.176.130.151:80/boulderdash?useSSL=false&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://itega.ovh/projetjava?useSSL=false&serverTimezone=UTC";
 
     /** The connection. */
     private Connection connection;
