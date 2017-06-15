@@ -13,8 +13,16 @@ public class ViewFacade implements IView {
     /**
      * Instantiates a new view facade.
      */
+
+   private GameFrame frame;
+   private GraphicBuilder graph;
+   private EventPerformer performer;
+
     public ViewFacade() {
         super();
+        frame = new GameFrame();
+        graph = new GraphicBuilder();
+        performer = new EventPerformer();
     }
 
     /*
