@@ -11,14 +11,11 @@ public class Tile {
     private int ref;
 
     public Tile(int x, int y) {
-
         position = new Position(x, y);
-
     }
 
+    //TODO revoir cette fonction
     public int getRefByPos(int x, int y) {
-
-
         return Integer.parseInt(null);
     }
 
@@ -31,9 +28,7 @@ public class Tile {
     }
 
     public void setPosition(int x, int y) {
-
         position.setPosX(x);
         position.setPosY(y);
     }
-
 }
