@@ -13,11 +13,15 @@ import model.dao.ExampleDAO;
  */
 public class ModelFacade implements IModel {
 
+    private Map map;
+
     /**
      * Instantiates a new model facade.
      */
     public ModelFacade() {
         super();
+        map = new Map(tile, mapDAO);
+
     }
 
     /*
