@@ -9,8 +9,6 @@ public class Rock extends Tile implements Movable{
 
     @Override
     public void moveU(Position position) {
-        int y = position.getPosY();
-        setPosition(position.getPosX(), y--);
     }
 
     @Override
