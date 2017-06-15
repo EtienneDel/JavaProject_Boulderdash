@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.dao.ExampleDAO;
+import model.dao.MapDAO;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -13,11 +14,17 @@ import model.dao.ExampleDAO;
  */
 public class ModelFacade implements IModel {
 
+    private Map map;
+    private Tile tile;
+    private MapDAO mapDAO;
+
     /**
      * Instantiates a new model facade.
      */
     public ModelFacade() {
         super();
+        map = new Map(tile, mapDAO);
+
     }
 
     /*
