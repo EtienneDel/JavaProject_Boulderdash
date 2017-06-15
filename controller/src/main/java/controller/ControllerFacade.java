@@ -1,8 +1,9 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.List;
 
+import java.util.List;
+import model.dao.MapDAO;
 import model.Example;
 import model.IModel;
 import view.IView;
@@ -14,7 +15,7 @@ import view.IView;
  * @version 1.0
  */
 public class ControllerFacade implements IController {
-
+	private MapDAO toto = new MapDAO();
     /** The view. */
     private final IView  view;
 
@@ -43,7 +44,7 @@ public class ControllerFacade implements IController {
      */
     public void start() throws SQLException {
         this.getView().displayMessage(this.getModel().getExampleById(1).toString());
-
+        
         this.getView().displayMessage(this.getModel().getExampleByName("Example 2").toString());
 
         final List<Example> examples = this.getModel().getAllExamples();
@@ -54,6 +55,7 @@ public class ControllerFacade implements IController {
             message.append('\n');
         }
         this.getView().displayMessage(message.toString());
+        toto.readMap("map1");
     }
 
     /**
