@@ -2,7 +2,8 @@ package model;
 
 public class Wall extends Tile{
 
-    public Wall(){
+    public Wall(int x, int y){
+        super(x,y);
 
     }
 }
