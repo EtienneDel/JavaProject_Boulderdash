@@ -6,4 +6,9 @@ public class Exit extends Tile{
         super(x,y);
 
     }
+
+    public void endLevel(){
+
+
+    }
 }
