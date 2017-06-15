@@ -4,6 +4,7 @@ public class Rock extends Tile implements Movable{
 
     public Rock(int x,int y){
         super(x,y);
+        setRef(5);
 
     }
 
@@ -15,5 +16,7 @@ public class Rock extends Tile implements Movable{
         setPosition(position.getPosX(), y++);
 
     }
+
+
 
 }
