@@ -2,7 +2,8 @@ package model;
 
 public class Empty extends Tile{
 
-    public Empty(){
+    public Empty(int x,int y){
+        super(x,y);
 
     }
 }
