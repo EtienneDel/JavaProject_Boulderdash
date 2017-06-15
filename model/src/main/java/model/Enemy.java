@@ -7,9 +7,9 @@ public class Enemy extends Entitie implements Movable{
 
     }
 
-    @Override
-    public void move() {
 
+    @Override
+    public void moveD(Position position) {
 
     }
 }

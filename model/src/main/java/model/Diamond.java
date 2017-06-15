@@ -7,17 +7,17 @@ public class Diamond extends Tile implements Breakable, Movable{
 
     }
 
-    @Override
-    public void move() {
-
-
-
-    }
+    
 
     @Override
     public void isBreak() {
 
         setRef(2);
+
+    }
+
+    @Override
+    public void moveD(Position position) {
 
     }
 }
