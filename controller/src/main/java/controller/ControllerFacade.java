@@ -63,7 +63,11 @@ public class ControllerFacade implements IController {
             message.append('\n');
         }
         this.getView().displayMessage(message.toString());
-        toto.readMap("map1");
+        String str_map;
+        char tab_map[][];
+        str_map = toto.readMap("map1");
+        toto.readSize("map1");
+        tab_map =toto.putMapInTable(str_map);
     }
 
     /**
