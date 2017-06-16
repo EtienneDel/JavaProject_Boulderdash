@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -52,6 +53,11 @@ public class ModelFacade implements IModel {
     @Override
     public List<Example> getAllExamples() throws SQLException {
         return ExampleDAO.getAllExamples();
+    }
+
+    @Override
+    public Image getImg() {
+        return null;
     }
 
 }
