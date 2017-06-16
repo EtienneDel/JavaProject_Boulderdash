@@ -42,7 +42,4 @@ public interface IModel {
      *             the SQL exception
      */
     List<Example> getAllExamples() throws SQLException;
-
-    public Graphics getImg();
-
 }

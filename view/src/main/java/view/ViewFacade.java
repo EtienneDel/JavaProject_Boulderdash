@@ -1,5 +1,6 @@
 package view;
 
+import controller.IController;
 import model.IModel;
 
 import javax.swing.JOptionPane;
@@ -20,9 +21,9 @@ public class ViewFacade implements IView {
    private GraphicBuilder graph;
    private EventPerformer performer;
 
-    public ViewFacade(IModel spritesheet) {
+    public ViewFacade(IController controller) {
         super();
-        frame = new GameFrame(spritesheet);
+        frame = new GameFrame(controller);
         graph = new GraphicBuilder();
         performer = new EventPerformer();
     }

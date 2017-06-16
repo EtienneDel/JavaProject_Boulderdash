@@ -54,10 +54,4 @@ public class ModelFacade implements IModel {
     public List<Example> getAllExamples() throws SQLException {
         return ExampleDAO.getAllExamples();
     }
-
-    @Override
-    public Graphics getImg() {
-        return null;
-    }
-
 }

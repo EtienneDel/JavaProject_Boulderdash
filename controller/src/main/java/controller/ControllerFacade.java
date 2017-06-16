@@ -1,8 +1,12 @@
 package controller;
 
+import java.awt.*;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import java.util.List;
+
+import model.SpriteSheet;
 import model.dao.MapDAO;
 import model.Example;
 import model.IModel;
@@ -21,6 +25,8 @@ public class ControllerFacade implements IController {
 
     /** The model. */
     private final IModel model;
+    private SpriteSheet spriteSheet;
+    private Image img;
 
     /**
      * Instantiates a new controller facade.
@@ -30,10 +36,12 @@ public class ControllerFacade implements IController {
      * @param model
      *            the model
      */
-    public ControllerFacade(final IView view, final IModel model) {
+    public ControllerFacade(final IView view, final IModel model) throws IOException {
         super();
         this.view = view;
         this.model = model;
+        spriteSheet = new SpriteSheet();
+        img = spriteSheet.getImg();
     }
 
     /**
@@ -74,5 +82,9 @@ public class ControllerFacade implements IController {
      */
     public IModel getModel() {
         return this.model;
+    }
+
+    public Image getImg() {
+        return img;
     }
 }

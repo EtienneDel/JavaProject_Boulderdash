@@ -1,8 +1,10 @@
 package main;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import controller.ControllerFacade;
+import controller.IController;
 import model.ModelFacade;
 import model.SpriteSheet;
 import view.ViewFacade;
@@ -22,8 +24,9 @@ public abstract class Main {
      *            the arguments
      */
     public static void main(final String[] args) throws IOException {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(new SpriteSheet()), new ModelFacade());
-        
+        ControllerFacade controller = null;
+        controller = new ControllerFacade(new ViewFacade(controller), new ModelFacade());
+
         try {
             controller.start();
         } catch (final SQLException exception) {

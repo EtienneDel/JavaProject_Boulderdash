@@ -1,5 +1,6 @@
 package view;
 
+import controller.IController;
 import model.IModel;
 
 import javax.swing.*;
@@ -14,12 +15,13 @@ public class GameFrame extends JFrame {
 private GamePanel panel;
 
 
-    public GameFrame(IModel spritesheet){
+    public GameFrame(IController controller){
         super();
-        panel = new GamePanel(spritesheet);
+        panel = new GamePanel(controller);
 
-        setSize(1600,800);
+        setSize(1000,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(panel);
         setContentPane(panel);
 
         this.setLocationRelativeTo(null);

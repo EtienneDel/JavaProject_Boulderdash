@@ -26,6 +26,10 @@ public class SpriteSheet extends JLabel implements IModel {
 
     }
 
+    public Image getImg(){
+        return img;
+    }
+
 
 
     @Override
@@ -41,12 +45,5 @@ public class SpriteSheet extends JLabel implements IModel {
     @Override
     public List<Example> getAllExamples() throws SQLException {
         return null;
-    }
-
-    @Override
-    public Graphics getImg() {
-        Graphics g = img.getGraphics();
-        g.drawImage(img, 0,0,null);
-        return g;
     }
 }
