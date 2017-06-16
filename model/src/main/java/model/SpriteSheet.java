@@ -23,7 +23,6 @@ public class SpriteSheet extends JLabel implements IModel {
                 sprite[(i * col) + j] = img.getSubimage(j * width, i * height, width, height);
             }
         }
-
     }
 
 
