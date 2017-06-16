@@ -43,6 +43,6 @@ public interface IModel {
      */
     List<Example> getAllExamples() throws SQLException;
 
-    public Image getImg();
+    public Graphics getImg();
 
 }

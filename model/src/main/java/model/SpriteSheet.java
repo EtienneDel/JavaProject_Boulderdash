@@ -13,7 +13,7 @@ import java.util.List;
 public class SpriteSheet extends JLabel implements IModel {
 
     final int width = 16, height = 16, row = 24, col = 18;
-    BufferedImage img = ImageIO.read(new File("C:\\Users\\Etienne\\Desktop\\JavaProject\\JavaProject_Boulderdash\\SpriteSheet.png"));
+    BufferedImage img = ImageIO.read(new File(".\\SpriteSheet.png"));
     BufferedImage[] sprite = new BufferedImage[row * col];
 
     public SpriteSheet() throws IOException {
@@ -23,7 +23,9 @@ public class SpriteSheet extends JLabel implements IModel {
                 sprite[(i * col) + j] = img.getSubimage(j * width, i * height, width, height);
             }
         }
+
     }
+
 
 
     @Override
@@ -42,7 +44,9 @@ public class SpriteSheet extends JLabel implements IModel {
     }
 
     @Override
-    public Image getImg() {
-        return img;
+    public Graphics getImg() {
+        Graphics g = img.getGraphics();
+        g.drawImage(img, 0,0,null);
+        return g;
     }
 }

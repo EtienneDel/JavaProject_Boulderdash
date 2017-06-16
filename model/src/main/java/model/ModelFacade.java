@@ -56,7 +56,7 @@ public class ModelFacade implements IModel {
     }
 
     @Override
-    public Image getImg() {
+    public Graphics getImg() {
         return null;
     }
 
