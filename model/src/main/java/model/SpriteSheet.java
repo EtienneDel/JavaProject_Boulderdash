@@ -1,24 +1,29 @@
 package model;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SpriteSheet extends JLabel implements IModel{
+public class SpriteSheet extends JLabel implements IModel {
 
     final int width = 16, height = 16, row = 24, col = 18;
+    BufferedImage img = ImageIO.read(new File("C:\\Users\\Etienne\\Desktop\\JavaProject\\JavaProject_Boulderdash\\SpriteSheet.png"));
+    BufferedImage[] sprite = new BufferedImage[row * col];
 
-    public SpriteSheet() {
-        ImageIcon img = new ImageIcon("C:\\Users\\Etienne\\Desktop\\JavaProject\\JavaProject_Boulderdash\\SpriteSheet.png");
-        ImageIcon[] sprite = new ImageIcon[row*col];
+    public SpriteSheet() throws IOException {
 
-        for (int i = 0; i<row;i++){
-            for(int j = 0; j<col;j++){
-
-
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                sprite[(i * col) + j] = img.getSubimage(j * width, i * height, width, height);
             }
         }
+
     }
 
 
@@ -38,8 +43,7 @@ public class SpriteSheet extends JLabel implements IModel{
     }
 
     @Override
-    public void getImg() {
-
-
+    public Image getImg() {
+        return img;
     }
 }
