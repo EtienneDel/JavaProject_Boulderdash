@@ -1,5 +1,10 @@
 package model.dao;
-
+/**
+ * <h1>the MapDAO class</h1>
+ *
+ * @author Yanis Mercier
+ * @version 1.0
+ */
 import java.sql.*;
 
 public class MapDAO extends AbstractDAO{
@@ -8,16 +13,22 @@ public class MapDAO extends AbstractDAO{
 	private  String sql_map,sqlWidth,sqlHeigth;
 	int map_Width,map_Heigth;
 
-	BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //recupere l'instance du connecteur a  la bdd
+	BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //recupere l'instance du connecteur aï¿½ la bdd
 	ResultSet rs = null;
 	Statement st = null;
 	Connection conn = null;
-	
+
+    /**
+     * set la map
+     * @param title_map
+     *
+     */
 	private  void setmap(String title_map){
     sql_map   = "CALL recupere_map('"+title_map+"')";
     sqlWidth = "CALL recup_width('"+title_map+"')";
     sqlHeigth = "CALL recup_heigth('"+title_map+"')";
     }
+
 	
     
     public MapDAO(){
