@@ -8,19 +8,21 @@ package model;
  */
 public class Example {
 
-    /** The id. */
+    /**
+     * The id.
+     */
     private final int id;
 
-    /** The name. */
-    private String    name;
+    /**
+     * The name.
+     */
+    private String name;
 
     /**
      * Instantiates a new example.
      *
-     * @param id
-     *            the id
-     * @param name
-     *            the name
+     * @param id   the id
+     * @param name the name
      */
     public Example(final int id, final String name) {
         super();
@@ -49,8 +51,7 @@ public class Example {
     /**
      * Sets the name.
      *
-     * @param name
-     *            the new name
+     * @param name the new name
      */
     public void setName(final String name) {
         this.name = name;

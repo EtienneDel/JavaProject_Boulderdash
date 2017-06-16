@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class SpriteSheet extends JLabel implements IModel {
 
     }
 
-    public Image getImg(){
+    public BufferedImage getImg(){
         return img;
     }
 

@@ -1,26 +1,26 @@
 package view;
 
-import controller.IController;
-import model.IModel;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by ASUS on 15/06/2017.
  */
 public class GamePanel extends JPanel {
 
-    private IController controller;
+    private BufferedImage image;
 
+    public GamePanel() {
+        image= new BufferedImage(1, 1, 1);
+    }
 
-    public GamePanel(IController controller) {
-        this.controller = controller;
+    public void setImage(BufferedImage image){
+        this.image = image;
+        repaint();
     }
 
     public void paintComponent(Graphics g){
-        g.drawImage(controller.getImg(), 0,0, null);
+        g.drawImage(image, 0,0, null);
     }
 }

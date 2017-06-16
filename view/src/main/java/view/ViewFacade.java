@@ -4,6 +4,8 @@ import controller.IController;
 import model.IModel;
 
 import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -21,9 +23,9 @@ public class ViewFacade implements IView {
    private GraphicBuilder graph;
    private EventPerformer performer;
 
-    public ViewFacade(IController controller) {
+    public ViewFacade() {
         super();
-        frame = new GameFrame(controller);
+        frame = new GameFrame();
         graph = new GraphicBuilder();
         performer = new EventPerformer();
     }
@@ -37,4 +39,8 @@ public class ViewFacade implements IView {
         JOptionPane.showMessageDialog(null, message);
     }
 
+    @Override
+    public void drawImage(BufferedImage image) {
+        frame.getGamePanel().setImage(image);
+    }
 }

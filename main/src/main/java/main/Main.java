@@ -24,8 +24,7 @@ public abstract class Main {
      *            the arguments
      */
     public static void main(final String[] args) throws IOException {
-        ControllerFacade controller = null;
-        controller = new ControllerFacade(new ViewFacade(controller), new ModelFacade());
+        ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
         try {
             controller.start();
@@ -33,5 +32,4 @@ public abstract class Main {
             exception.printStackTrace();
         }
     }
-
 }

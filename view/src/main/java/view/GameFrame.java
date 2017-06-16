@@ -15,9 +15,9 @@ public class GameFrame extends JFrame {
 private GamePanel panel;
 
 
-    public GameFrame(IController controller){
+    public GameFrame(){
         super();
-        panel = new GamePanel(controller);
+        panel = new GamePanel();
 
         setSize(1000,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,6 +26,10 @@ private GamePanel panel;
 
         this.setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public GamePanel getGamePanel(){
+        return panel;
     }
 
 }
