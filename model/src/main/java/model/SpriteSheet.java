@@ -28,12 +28,6 @@ public class SpriteSheet extends JLabel implements IModel {
      */
     public SpriteSheet() throws IOException {
 
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                sprite[(i * col) + j] = img.getSubimage(j * width, i * height, width, height);
-            }
-        }
-
     }
 
     /**
@@ -44,14 +38,12 @@ public class SpriteSheet extends JLabel implements IModel {
         return img;
     }
 
+    public BufferedImage crop(int x, int y, int height, int width){
+        return img.getSubimage(x,y,width,height);
+    }
 
-    /**
-     * get an example by his ID
-     * @param id
-     *            the id
-     * @return
-     * @throws SQLException
-     */
+
+
     @Override
     public Example getExampleById(int id) throws SQLException {
         return null;

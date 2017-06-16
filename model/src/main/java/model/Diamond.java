@@ -6,6 +6,9 @@ package model;
  * @version 1.0
  */
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 public class Diamond extends Tile implements Breakable, Movable {
 
     /**
@@ -13,12 +16,22 @@ public class Diamond extends Tile implements Breakable, Movable {
      * @param x
      * @param y
      */
-    public Diamond(int x, int y) {
+    private SpriteSheet spriteSheet;
+    private static BufferedImage diamond;
+
+    public Diamond(int x, int y) throws IOException {
         super(x, y);
+        spriteSheet = new SpriteSheet();
+        diamond = spriteSheet.crop(WIDTH*4,0,WIDTH,HEIGHT);
         setRef(4);
         setWalkable(true);
 
     }
+
+    public static BufferedImage getDiamond() {
+        return diamond;
+    }
+
 
     /**
      * if the diamond is taken

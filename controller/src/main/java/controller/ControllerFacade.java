@@ -1,5 +1,7 @@
 package controller;
 
+import model.BWall;
+import model.Diamond;
 import model.IModel;
 import model.SpriteSheet;
 import model.dao.MapDAO;
@@ -26,10 +28,9 @@ public class ControllerFacade implements IController {
      */
     private final IModel model;
     private MapDAO toto = new MapDAO();
-    private SpriteSheet spriteSheet;
-    private BufferedImage img;
-
-
+    private BufferedImage img, img2;
+    private BWall bWall;
+    private Diamond diamond;
     /**
      * Instantiates a new controller facade.
      *
@@ -40,8 +41,8 @@ public class ControllerFacade implements IController {
         super();
         this.view = view;
         this.model = model;
-        spriteSheet = new SpriteSheet();
-        img = spriteSheet.getImg();
+        bWall = new BWall(0,0);
+        diamond = new Diamond(0,0);
     }
 
     /**
@@ -50,7 +51,8 @@ public class ControllerFacade implements IController {
      * @throws SQLException the SQL exception
      */
     public void start() throws SQLException {
-        view.drawImage(img);
+        view.drawImage(bWall.getbWall());
+        view.drawImage(diamond.getDiamond());
 
         //this.getView().displayMessage(this.getModel().getExampleById(1).toString());
 

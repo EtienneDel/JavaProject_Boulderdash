@@ -6,16 +6,30 @@ package model;
  * @version 1.0
  */
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 public class BWall extends Tile implements Breakable {
     /**
      * constructor
      * @param x
      * @param y
      */
-    public BWall(int x, int y) {
-        super(x, y);
+
+    private SpriteSheet spriteSheet;
+    private static BufferedImage bWall;
+
+    public BWall(int x, int y) throws IOException {
+        super(16,16);
+
+        spriteSheet = new SpriteSheet();
+        bWall = spriteSheet.crop(WIDTH*8,0,WIDTH,HEIGHT);
         setRef(3);
 
+    }
+
+    public static BufferedImage getbWall() {
+        return bWall;
     }
 
     /**
