@@ -5,7 +5,7 @@ public class Position {
     private int posX;
     private int posY;
 
-    public Position(int x, int y){
+    public Position(int x, int y) {
 
         this.posX = x;
         this.posY = y;
@@ -16,12 +16,12 @@ public class Position {
         return posX;
     }
 
-    public int getPosY() {
-        return posY;
-    }
-
     public void setPosX(int posX) {
         this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
     }
 
     public void setPosY(int posY) {

@@ -10,7 +10,7 @@ public class Map {
     private MapDAO mapDAO;
     private ArrayList<Tile> tiles;
 
-    public Map(Tile tile, MapDAO mapDAO){
+    public Map(Tile tile, MapDAO mapDAO) {
         this.tile = tile;
         this.mapDAO = mapDAO;
 
