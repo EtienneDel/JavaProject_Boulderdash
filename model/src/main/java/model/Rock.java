@@ -1,9 +1,9 @@
 package model;
 
-public class Rock extends Tile implements Movable{
+public class Rock extends Tile implements Movable {
 
-    public Rock(int x,int y){
-        super(x,y);
+    public Rock(int x, int y) {
+        super(x, y);
         setRef(5);
     }
 

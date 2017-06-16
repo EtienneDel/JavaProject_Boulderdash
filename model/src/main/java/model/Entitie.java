@@ -1,11 +1,11 @@
 package model;
 
-public class Entitie extends Tile{
+public class Entitie extends Tile {
 
     protected Boolean isAlive;
 
-    public Entitie(int x, int y){
-        super(x,y);
+    public Entitie(int x, int y) {
+        super(x, y);
     }
 
 }

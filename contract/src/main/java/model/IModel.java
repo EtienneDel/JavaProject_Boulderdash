@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,4 +42,7 @@ public interface IModel {
      *             the SQL exception
      */
     List<Example> getAllExamples() throws SQLException;
+
+    public Graphics getImg();
+
 }
