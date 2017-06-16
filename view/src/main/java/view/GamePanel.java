@@ -1,5 +1,7 @@
 package view;
 
+import model.IModel;
+
 import javax.swing.*;
 
 /**
@@ -7,7 +9,13 @@ import javax.swing.*;
  */
 public class GamePanel extends JPanel {
 
-    public GamePanel() {
+    private IModel model;
+
+    public GamePanel(IModel model) {
+        this.model = model;
+        model.getImg();
+
+
 
     }
 }
