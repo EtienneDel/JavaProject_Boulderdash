@@ -29,8 +29,8 @@ public class Tile {
     }
 
     //TODO revoir cette fonction
-    public int getRefByPos(int x, int y) {
-        return Integer.parseInt(null);
+    public Tile gettileByPos(int x, int y) {
+        return null;
     }
 
     /**
@@ -65,5 +65,13 @@ public class Tile {
      */
     public void setWalkable(boolean walkable) {
         isWalkable = walkable;
+    }
+
+    public boolean getWalkable(){
+        return this.isWalkable;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }
