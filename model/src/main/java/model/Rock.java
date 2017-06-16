@@ -32,7 +32,7 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveD(Position position) {
         int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
+        setPosition(position.getPosX(), y+1);
 
     }
 
@@ -43,7 +43,7 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveL(Position position) {
         int x = position.getPosX();
-        setPosition(x--, position.getPosY());
+        setPosition(x-1, position.getPosY());
     }
 
     /**
@@ -53,6 +53,6 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveR(Position position) {
         int x = position.getPosX();
-        setPosition(x++, position.getPosY());
+        setPosition(x+1, position.getPosY());
     }
 }

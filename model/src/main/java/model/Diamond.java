@@ -56,7 +56,7 @@ public class Diamond extends Tile implements Breakable, Movable {
     @Override
     public void moveD(Position position) {
         int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
+        setPosition(position.getPosX(), y+1);
     }
 
     /**
