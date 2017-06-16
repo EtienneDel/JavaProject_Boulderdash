@@ -29,6 +29,7 @@ public class ControllerFacade implements IController {
     private SpriteSheet spriteSheet;
     private BufferedImage img;
 
+
     /**
      * Instantiates a new controller facade.
      *
@@ -68,8 +69,16 @@ public class ControllerFacade implements IController {
         String str_map;
         char tab_map[][];
         str_map = toto.readMap("map1");
-        toto.readSize("map1");
+        
+        int map_Width =toto.readSize("map1","width");
+        int map_Heigth =toto.readSize("map1","heigth");
         tab_map = toto.putMapInTable(str_map);
+        for(int y = 0 ; y<map_Heigth;y++){
+			for(int x = 0; x<map_Width;x++){
+        		System.out.print(tab_map[x][y]);
+        	}
+			System.out.println("");
+        }
     }
 
     /**

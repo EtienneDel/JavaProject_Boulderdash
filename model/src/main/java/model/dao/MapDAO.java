@@ -7,6 +7,8 @@ package model.dao;
  */
 import java.sql.*;
 
+import javax.swing.Spring;
+
 public class MapDAO extends AbstractDAO{
 
 	
@@ -52,7 +54,7 @@ public class MapDAO extends AbstractDAO{
         rs = st.executeQuery(sql_map); //execute la requete
         if(rs.next()) { //recupere le premier resultat
             map = rs.getString("level"); //recupere le contenu de la colonne level
-            System.out.println(map);
+            //System.out.println(map);
             rs.close();
         }
         else
@@ -61,7 +63,7 @@ public class MapDAO extends AbstractDAO{
         return map;
     }
     
-    public  void readSize(String title) throws SQLException{
+    public  int readSize(String title,String dim) throws SQLException{
         conn = boulderDashBDD.getConnection(); //recup la connexion a la bdd
         st = conn.createStatement(); //initialise le statement
         
@@ -72,7 +74,11 @@ public class MapDAO extends AbstractDAO{
         rs = st.executeQuery(sqlWidth); //execute la requete
         if(rs.next()) { //recupere le premier resultat
             map_Width = rs.getInt("width"); //recupere le contenu de la colonne width
-            System.out.println("x = "+map_Width);
+            //System.out.println("x = "+map_Width);
+            if(dim.equals("width")){
+            	return map_Width;
+            }
+            
             rs.close();
         }
         else{
@@ -84,12 +90,18 @@ public class MapDAO extends AbstractDAO{
         rs = st.executeQuery(sqlHeigth); //execute la requete
         if(rs.next()) { //recupere le premier resultat
             map_Heigth = rs.getInt("heigth"); //recupere le contenu de la colonne heigth
-            System.out.println("y = "+map_Heigth);
+            //System.out.println("y = "+map_Heigth);
+            if(dim.equals("heigth")){
+            	return map_Heigth;
+            }
+            
             rs.close();
         }
         else{
         map_Heigth = 0; //renvois 0 si erreur de lecture
         }
+		return 0;
+		
         
     }
 
