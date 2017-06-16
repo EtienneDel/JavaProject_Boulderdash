@@ -5,6 +5,7 @@ public class Enemy extends Entitie implements Movable {
     public Enemy(int x, int y) {
         super(x, y);
         setRef(7);
+        setWalkable(false);
 
     }
 

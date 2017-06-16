@@ -6,6 +6,7 @@ public class Empty extends Tile {
 
         super(x, y);
         setRef(2);
+        setWalkable(true);
 
     }
 }

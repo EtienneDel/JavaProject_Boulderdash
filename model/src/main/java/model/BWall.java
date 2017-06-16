@@ -12,6 +12,7 @@ public class BWall extends Tile implements Breakable {
     public void isBreak() {
 
         setRef(2);
+        setWalkable(false);
 
     }
 }

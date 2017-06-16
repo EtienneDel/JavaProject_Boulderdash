@@ -9,9 +9,13 @@ public class Tile {
     private Position position;
     private ImageIcon img;
     private int ref;
+    private boolean isWalkable = true;
 
     public Tile(int x, int y) {
         position = new Position(x, y);
+        setRef(2);
+        setWalkable(true);
+
     }
 
     //TODO revoir cette fonction
@@ -30,5 +34,9 @@ public class Tile {
     public void setPosition(int x, int y) {
         position.setPosX(x);
         position.setPosY(y);
+    }
+
+    public void setWalkable(boolean walkable) {
+        isWalkable = walkable;
     }
 }

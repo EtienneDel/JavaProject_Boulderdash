@@ -5,6 +5,7 @@ public class Diamond extends Tile implements Breakable, Movable {
     public Diamond(int x, int y) {
         super(x, y);
         setRef(4);
+        setWalkable(true);
 
     }
 
