@@ -20,6 +20,7 @@ private GamePanel panel;
         panel = new GamePanel();
 
         setSize(1000,600);
+        setTitle("MOULDER DASH ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(panel);
         setContentPane(panel);
