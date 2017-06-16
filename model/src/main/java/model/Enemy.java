@@ -1,7 +1,17 @@
 package model;
-
-public class Enemy extends Entitie implements Movable {
-
+/**
+ * <h1>the Enemy class</h1>
+ *
+ * @author Etienne Delnott / Paul Brouet
+ * @version 1.0
+ */
+public class Enemy extends Entitie {
+    /**
+     * constructor
+     *
+     * @param x
+     * @param y
+     */
     public Enemy(int x, int y) {
         super(x, y);
         setRef(7);
@@ -9,27 +19,4 @@ public class Enemy extends Entitie implements Movable {
 
     }
 
-    @Override
-    public void moveU(Position position) {
-        int y = position.getPosY();
-        setPosition(position.getPosX(), y--);
-    }
-
-    @Override
-    public void moveD(Position position) {
-        int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
-    }
-
-    @Override
-    public void moveL(Position position) {
-        int x = position.getPosX();
-        setPosition(x--, position.getPosY());
-    }
-
-    @Override
-    public void moveR(Position position) {
-        int x = position.getPosX();
-        setPosition(x++, position.getPosY());
-    }
 }
