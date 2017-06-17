@@ -11,7 +11,7 @@ public class Tile {
 
     protected static int WIDTH = 16;
     protected static int HEIGHT = 16;
-    private Position position;
+    protected Position position;
     private ImageIcon img;
     private int ref;
     private boolean isWalkable = true;
@@ -29,7 +29,7 @@ public class Tile {
     }
 
     //TODO revoir cette fonction
-    public Tile gettileByPos(int x, int y) {
+    public Tile getTileByPos(int x, int y) {
         return null;
     }
 
