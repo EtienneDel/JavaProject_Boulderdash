@@ -10,17 +10,21 @@ import java.awt.image.BufferedImage;
 public class GamePanel extends JPanel {
 
     private BufferedImage image;
+    private int x;
+    private int y;
 
     public GamePanel() {
         image= new BufferedImage(1, 1, 1);
     }
 
-    public void setImage(BufferedImage image){
+    public void setImage(BufferedImage image, int x, int y){
         this.image = image;
+        this.x = x;
+        this.y = y;
         repaint();
     }
 
     public void paintComponent(Graphics g){
-        g.drawImage(image, 5,5, null);
+        g.drawImage(image, x, y, null);
     }
 }

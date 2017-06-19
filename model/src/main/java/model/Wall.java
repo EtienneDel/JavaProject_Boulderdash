@@ -12,8 +12,7 @@ public class Wall extends Tile {
      * @param y
      */
     public Wall(int x, int y) {
-        super(x, y);
-        setRef(1);
+
         setWalkable(false);
 
     }

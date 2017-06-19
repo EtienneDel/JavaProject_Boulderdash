@@ -11,25 +11,12 @@ import java.io.IOException;
 
 public class Diamond extends Tile implements Breakable, Movable {
 
-    /**
-     * constructor
-     * @param x
-     * @param y
-     */
-    private SpriteSheet spriteSheet;
-    private static BufferedImage diamond;
+    public final static int REF = 4;
 
-    public Diamond(int x, int y) throws IOException {
-        super(x, y);
-        spriteSheet = new SpriteSheet();
-        diamond = spriteSheet.crop(WIDTH*4,0,WIDTH,HEIGHT);
-        setRef(4);
+    public Diamond() throws IOException {
+
         setWalkable(true);
 
-    }
-
-    public static BufferedImage getDiamond() {
-        return diamond;
     }
 
 
@@ -38,7 +25,6 @@ public class Diamond extends Tile implements Breakable, Movable {
      */
     @Override
     public void isBreak() {
-        setRef(2);
     }
 
     /**

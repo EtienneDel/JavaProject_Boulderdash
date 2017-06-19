@@ -1,9 +1,6 @@
 package controller;
 
-import model.BWall;
-import model.Diamond;
-import model.IModel;
-import model.SpriteSheet;
+import model.*;
 import model.dao.MapDAO;
 import view.IView;
 
@@ -28,9 +25,8 @@ public class ControllerFacade implements IController {
      */
     private final IModel model;
     private MapDAO toto = new MapDAO();
-    private BufferedImage img, img2;
-    private BWall bWall;
-    private Diamond diamond;
+    private SpriteSheet sprite;
+
     /**
      * Instantiates a new controller facade.
      *
@@ -41,8 +37,7 @@ public class ControllerFacade implements IController {
         super();
         this.view = view;
         this.model = model;
-        bWall = new BWall(0,0);
-        diamond = new Diamond(0,0);
+        sprite = new SpriteSheet();
     }
 
     /**
@@ -50,24 +45,8 @@ public class ControllerFacade implements IController {
      *
      * @throws SQLException the SQL exception
      */
-    public void start() throws SQLException {
-        view.drawImage(bWall.getbWall());
-        view.drawImage(diamond.getDiamond());
+    public void start() throws SQLException, IOException {
 
-        //this.getView().displayMessage(this.getModel().getExampleById(1).toString());
-
-        //this.getView().displayMessage(this.getModel().getExampleByName("Example 2").toString());
-
-        /*final List<Example> examples = this.getModel().getAllExamples();
-        final StringBuilder message = new StringBuilder();
-         //a.append(" bar);
-
-        for (final Example example : examples) {
-            message.append(example);
-            message.append('\n');
-        }*/
-
-        //this.getView().displayMessage(message.toString());
         String str_map;
         char tab_map[][];
         str_map = toto.readMap("map1");
@@ -75,12 +54,47 @@ public class ControllerFacade implements IController {
         int map_Width =toto.readSize("map1","width");
         int map_Heigth =toto.readSize("map1","heigth");
         tab_map = toto.putMapInTable(str_map);
-        for(int y = 0 ; y<map_Heigth;y++){
+
+        Tile tiles[][] = new Tile[map_Width][map_Heigth];
+
+        for(int y = 0 ; y<map_Heigth;y++){//TODO Déplacer dans model
 			for(int x = 0; x<map_Width;x++){
+                int block = (int)tab_map[x][y] - 49;
+
+                //System.out.println(block==Dirt.REF);
+
+			    switch(block){
+                    case Dirt.REF:
+                        tiles[x][y] = new Dirt();
+                        view.drawImage(tiles[x][y].getImageFromTileset(sprite.getImg()), x*16, y*16);
+                        break;
+                    case '1':
+
+                        break;
+                    case '2':
+
+                        break;
+                    case BWall.REF:
+                        tiles[x][y] = new BWall();
+                        view.drawImage(tiles[x][y].getImageFromTileset(sprite.getImg()), x*16, y*16);
+                        break;
+                    case '4':
+                        //diamond = new Diamond(0,0);
+                        break;
+                    case '5':
+
+                        break;
+                    case '6':
+
+                        break;
+
+                }
+
         		System.out.print(tab_map[x][y]);
         	}
 			System.out.println("");
         }
+
     }
 
     /**

@@ -6,14 +6,15 @@ package model;
  * @version 1.0
  */
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public class Tile {
 
-    protected static int WIDTH = 16;
-    protected static int HEIGHT = 16;
+    public static int WIDTH = 16;
+    public static int HEIGHT = 16;
     private Position position;
     private ImageIcon img;
-    private int ref;
+    public static int REF;
     private boolean isWalkable = true;
 
     /**
@@ -21,9 +22,7 @@ public class Tile {
      * @param x
      * @param y
      */
-    public Tile(int x, int y) {
-        position = new Position(x, y);
-        setRef(2);
+    public Tile() {
         setWalkable(true);
 
     }
@@ -31,22 +30,6 @@ public class Tile {
     //TODO revoir cette fonction
     public int getRefByPos(int x, int y) {
         return Integer.parseInt(null);
-    }
-
-    /**
-     * get the id/reference of the tile
-     * @return
-     */
-    public int getRef() {
-        return ref;
-    }
-
-    /**
-     * set the id of the tile
-     * @param ref
-     */
-    public void setRef(int ref) {
-        this.ref = ref;
     }
 
     /**
@@ -65,5 +48,12 @@ public class Tile {
      */
     public void setWalkable(boolean walkable) {
         isWalkable = walkable;
+    }
+
+    public BufferedImage getImageFromTileset(BufferedImage tileset) {
+        int x = REF%18*16;
+        int y = REF/18*16;
+
+        return tileset.getSubimage(x, y, 16, 16);
     }
 }

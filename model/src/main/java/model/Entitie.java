@@ -5,7 +5,6 @@ public class Entitie extends Tile implements Movable{
     protected Boolean isAlive;
 
     public Entitie(int x, int y) {
-        super(x, y);
     }
 
     /**

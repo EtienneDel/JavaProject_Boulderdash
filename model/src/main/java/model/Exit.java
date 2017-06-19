@@ -12,8 +12,7 @@ public class Exit extends Tile {
      * @param y
      */
     public Exit(int x, int y) {
-        super(x, y);
-        setRef(6);
+
         setWalkable(true);
 
     }

@@ -14,7 +14,6 @@ public class Enemy extends Entitie {
      */
     public Enemy(int x, int y) {
         super(x, y);
-        setRef(7);
         setWalkable(false);
 
     }
