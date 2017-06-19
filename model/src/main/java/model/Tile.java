@@ -32,6 +32,13 @@ public class Tile {
         this.mapDAO = mapDAO;
 
     }
+    public Tile(int x, int y) {
+        position = new Position(x, y);
+        setRef(2);
+        setWalkable(true);
+
+
+    }
 
     //TODO revoir cette fonction
     public char getCharByPos(int x, int y) {
