@@ -31,4 +31,18 @@ public class MapDAOtest {
 
         assertEquals(expected ,test.readSize("map1", "width"));
     }
+    @Test
+    public void putMapInTable(){
+
+        final char expected = '1';
+
+        int map_Heigth = 2, map_Width  = 3;
+        char est[][] ;
+        test.setMap_Heigth(map_Heigth);
+        test.setMap_Width(map_Width);
+        test.putMapInTable("100110");
+        est = test.getTablemap();
+        assertEquals(expected, est[0][1]);
+
+    }
 }

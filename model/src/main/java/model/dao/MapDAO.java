@@ -127,6 +127,14 @@ public class MapDAO extends AbstractDAO {
         return map_Heigth;
     }
 
+    public void setMap_Heigth(int map_Heigth) {
+        this.map_Heigth = map_Heigth;
+    }
+
+    public void setMap_Width(int map_Width) {
+        this.map_Width = map_Width;
+    }
+
     public int getMap_Width() {
         return map_Width;
     }
