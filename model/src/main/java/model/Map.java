@@ -3,6 +3,7 @@ package model;
 import model.dao.MapDAO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -81,9 +82,6 @@ public class Map {
 
 
     }
-
-    public static Map getMap(MapDAO mapDAO) throws IOException {
-        if (instance == null) {
     public ArrayList<Tile> getList(int ref) {
         ArrayList<Tile> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
@@ -93,6 +91,9 @@ public class Map {
         });
         return list;
     }
+
+    public static Map getMap(MapDAO mapDAO) throws IOException {
+        if (instance == null) {
 
             instance = new Map(mapDAO);
         }
