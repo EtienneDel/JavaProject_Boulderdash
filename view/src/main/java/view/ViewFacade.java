@@ -28,6 +28,7 @@ public class ViewFacade implements IView {
         frame = new GameFrame();
         graph = new GraphicBuilder();
         performer = new EventPerformer();
+
     }
 
     /*

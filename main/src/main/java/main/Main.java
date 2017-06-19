@@ -26,8 +26,10 @@ public abstract class Main {
     public static void main(final String[] args) throws IOException {
         ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
+
         try {
             controller.start();
+
         } catch (final SQLException exception) {
             exception.printStackTrace();
         }

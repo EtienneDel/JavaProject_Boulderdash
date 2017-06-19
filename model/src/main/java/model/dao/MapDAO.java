@@ -1,4 +1,3 @@
-
 package model.dao;
 /**
  * <h1>the MapDAO class</h1>
@@ -105,7 +104,7 @@ public class MapDAO extends AbstractDAO {
     }
 
 
-    public  char[][] putMapInTable(String map) {
+    public char[][] putMapInTable(String map) {
         tablemap = new char[map_Width][map_Heigth];
         for (int y = 0; y < map_Heigth; y++) {
             for (int x = 0; x < map_Width; x++) {

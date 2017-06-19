@@ -1,10 +1,9 @@
 package model;
 
-        import model.dao.MapDAO;
+import model.dao.MapDAO;
 
-        import java.io.IOException;
-        import java.util.ArrayList;
-        import java.util.HashMap;
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * <h1>the Map class</h1>
@@ -15,19 +14,17 @@ package model;
 public class Map {
 
 
+    private static Map instance = null;
     private MapDAO mapDAO;
     private HashMap<Tile, Integer> tiles;
     private char tablemap[][];
 
-
-    private static Map instance = null;
-
     /**
      * constructor
-
+     *
      * @param mapDAO
      */
-    private Map( MapDAO mapDAO) throws IOException {
+    private Map(MapDAO mapDAO) throws IOException {
 
         this.mapDAO = mapDAO;
         this.tablemap = mapDAO.getTablemap();
@@ -37,8 +34,8 @@ public class Map {
         Tile tile;
 
 
-        for(int i =0;i<x; i++){
-            for( e=0 ; e<y; e++) {
+        for (int i = 0; i < x; i++) {
+            for (e = 0; e < y; e++) {
 
                 switch (tablemap[i][e]) {
 
@@ -85,24 +82,19 @@ public class Map {
 
     }
 
+    public static Map getMap(MapDAO mapDAO) throws IOException {
+        if (instance == null) {
 
+            instance = new Map(mapDAO);
+        }
+        return instance;
+    }
 
     public char getCharByPos(int x, int y) {
 
         char[][] tablemap = mapDAO.getTablemap();
 
 
-
-        return  tablemap[x][y];
+        return tablemap[x][y];
     }
-
-
-
-    public static Map getMap(MapDAO mapDAO) throws IOException {
-        if (instance == null)
-        {
-
-            instance = new Map(mapDAO);
-        }
-        return instance;}
 }
