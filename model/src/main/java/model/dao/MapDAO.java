@@ -122,4 +122,12 @@ public class MapDAO extends AbstractDAO {
     public char[][] getTablemap() {
         return tablemap;
     }
+
+    public int getMap_Heigth() {
+        return map_Heigth;
+    }
+
+    public int getMap_Width() {
+        return map_Width;
+    }
 }

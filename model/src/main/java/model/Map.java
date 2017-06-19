@@ -2,7 +2,10 @@ package model;
 
 import model.dao.MapDAO;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * <h1>the Map class</h1>
  *
@@ -11,18 +14,70 @@ import java.util.ArrayList;
  */
 public class Map {
 
-    private Tile tile;
+
     private MapDAO mapDAO;
-    private ArrayList<Tile> tiles;
+    private HashMap<Tile, Integer> tiles;
+    private char tablemap[][];
 
     /**
      * constructor
-     * @param tile
+
      * @param mapDAO
      */
-    public Map(Tile tile, MapDAO mapDAO) {
-        this.tile = tile;
+    public Map( MapDAO mapDAO) throws IOException {
+
         this.mapDAO = mapDAO;
+        this.tablemap = mapDAO.getTablemap();
+        int x = mapDAO.getMap_Heigth();
+        int y = mapDAO.getMap_Width();
+        int e ;
+        Tile tile;
+
+
+        for(int i =0;i<x; i++){
+            for( e=0 ; e<y; e++) {
+
+                switch (tablemap[x][y]) {
+
+                    case 0:
+                        tile = new Dirt();
+                        break;
+                    case 1:
+                        tile = new Wall();
+                        break;
+                    case 2:
+                        tile = new Empty();
+                        break;
+                    case 3:
+                        tile = new BWall();
+                        break;
+                    case 4:
+                        tile = new Diamond();
+                        break;
+                    case 5:
+                        tile = new Rock();
+                        break;
+                    case 6:
+                        tile = new Exit();
+                        break;
+                    case 7:
+                        tile = new Enemy();
+                        break;
+                    case 8:
+                        tile = new Character();
+                        break;
+                    default:
+                        tile = new Empty();
+                        break;
+
+
+                }
+
+                tiles.put(tile, (int) tablemap[x][y]);
+
+            }
+            e = 0;
+        }
 
 
     }
