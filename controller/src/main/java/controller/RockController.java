@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import model.Position;
@@ -6,9 +7,11 @@ import model.Tile;
 
 import java.util.ArrayList;
 
+*/
 /**
  * Created by Julien on 16/06/2017.
- */
+ *//*
+
 public class RockController {
 
     private ArrayList<Rock> rockList;
@@ -28,6 +31,8 @@ public class RockController {
         refresh(rock.getTileByPos(position.getPosX(), position.getPosY()));
     }
 
+*/
+/*
     public void refresh(Rock rock){
         Position position = rock.getPosition();
 
@@ -61,6 +66,8 @@ public class RockController {
         if(bottomTile.getRef() == '2')
             setTimeout(() -> refresh(rock), 500);
     }
+*//*
+
 
     private void explode(boolean diamondShower, Position position) {
         
@@ -78,3 +85,4 @@ public class RockController {
         }).start();
     }
 }
+*/

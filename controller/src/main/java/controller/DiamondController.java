@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import model.Diamond;
@@ -7,9 +8,11 @@ import model.Tile;
 import java.io.IOException;
 import java.util.ArrayList;
 
+*/
 /**
  * Created by Julien on 17/06/2017.
- */
+ *//*
+
 public class DiamondController {
     private ArrayList<Diamond> diamondList;
 
@@ -78,3 +81,4 @@ public class DiamondController {
         }).start();
     }
 }
+*/
