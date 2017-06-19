@@ -6,14 +6,23 @@ package model;
  * @version 1.0
  */
 public class Wall extends Tile {
+
+    public final static int REF = 1;
     /**
      * Constructor
      * @param x
      * @param y
      */
     public Wall(int x, int y) {
-        super(x, y);
-        setRef(1);
+
+        super(x,y);
+        setWalkable(false);
+
+    }
+    public Wall() {
+        super();
+
+
         setWalkable(false);
 
     }

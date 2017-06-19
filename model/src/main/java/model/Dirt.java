@@ -6,14 +6,20 @@ package model;
  * @version 1.0
  */
 public class Dirt extends Tile implements Breakable {
+
+    public final static int REF = 0;
     /**
      * constructor
      * @param x
      * @param y
      */
-    public Dirt(int x, int y) {
-        super(x, y);
-        setRef(0);
+    public Dirt(int x , int y) {
+        super(x,y);
+        setWalkable(true);
+
+    }
+    public Dirt() {
+
         setWalkable(true);
 
     }
@@ -23,7 +29,5 @@ public class Dirt extends Tile implements Breakable {
      */
     @Override
     public void isBreak() {
-
-        setRef(2);
     }
 }

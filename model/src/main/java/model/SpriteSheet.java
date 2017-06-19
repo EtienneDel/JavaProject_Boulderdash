@@ -20,7 +20,7 @@ public class SpriteSheet extends JLabel implements IModel {
 
     final int width = 16, height = 16, row = 24, col = 18;
     BufferedImage img = ImageIO.read(new File(".\\SpriteSheet.png"));
-    BufferedImage[] sprite = new BufferedImage[row * col];
+    //BufferedImage[] sprite = new BufferedImage[row * col];
 
     /**
      * constructor

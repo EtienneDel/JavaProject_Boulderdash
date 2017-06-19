@@ -1,11 +1,20 @@
 package model;
 
-public class Entitie extends Tile implements Movable{
+public abstract class Entitie extends Tile implements Movable{
 
     protected Boolean isAlive;
 
     public Entitie(int x, int y) {
-        super(x, y);
+
+        super(x,y);
+
+
+    }
+    public Entitie() {
+
+        super();
+
+
     }
 
     /**

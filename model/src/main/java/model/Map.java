@@ -26,4 +26,13 @@ public class Map {
 
 
     }
+    public char getCharByPos(int x, int y) {
+
+        char[][] tablemap = mapDAO.getTablemap();
+
+
+
+        return  tablemap[x][y];
+    }
+
 }

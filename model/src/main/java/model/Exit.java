@@ -6,14 +6,21 @@ package model;
  * @version 1.0
  */
 public class Exit extends Tile {
+
+    public final static int REF = 6;
     /**
      * constructor
      * @param x
      * @param y
      */
     public Exit(int x, int y) {
-        super(x, y);
-        setRef(6);
+
+        super(x,y);
+        setWalkable(true);
+
+    }
+    public Exit() {
+        super();
         setWalkable(true);
 
     }

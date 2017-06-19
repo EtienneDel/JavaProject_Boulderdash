@@ -6,6 +6,8 @@ package model;
  * @version 1.0
  */
 public class Rock extends Tile implements Movable {
+
+    public final static int REF = 5;
     /**
      * Constructor
      * @param x
@@ -13,14 +15,14 @@ public class Rock extends Tile implements Movable {
      */
     public Rock(int x, int y) {
         super(x, y);
-        setRef(5);
+        setWalkable(false);
+    }
+    public Rock() {
+        super();
         setWalkable(false);
     }
 
-    //TODO revoir cette fonction
-    public Rock getTileByPos(int x, int y) {
-        return null;
-    }
+
 
     /**
      * move up

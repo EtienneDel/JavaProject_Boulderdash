@@ -6,6 +6,8 @@ package model;
  * @version 1.0
  */
 public class Enemy extends Entitie {
+
+    public final static int REF = 7;
     /**
      * constructor
      *
@@ -14,7 +16,11 @@ public class Enemy extends Entitie {
      */
     public Enemy(int x, int y) {
         super(x, y);
-        setRef(7);
+        setWalkable(false);
+
+    }
+    public Enemy() {
+        super();
         setWalkable(false);
 
     }

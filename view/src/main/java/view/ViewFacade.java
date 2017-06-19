@@ -40,7 +40,7 @@ public class ViewFacade implements IView {
     }
 
     @Override
-    public void drawImage(BufferedImage image) {
-        frame.getGamePanel().setImage(image);
+    public void drawImage(BufferedImage image, int x, int y) {
+        frame.getGamePanel().setImage(image, x, y);
     }
 }

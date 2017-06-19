@@ -6,6 +6,8 @@ package model;
  * @version 1.0
  */
 public class Empty extends Tile {
+
+    public final static int REF = 2;
     /**
      * constructor
      * @param x
@@ -13,8 +15,13 @@ public class Empty extends Tile {
      */
     public Empty(int x, int y) {
 
-        super(x, y);
-        setRef(2);
+        super(x,y);
+        setWalkable(true);
+
+    }
+    public Empty() {
+
+
         setWalkable(true);
 
     }

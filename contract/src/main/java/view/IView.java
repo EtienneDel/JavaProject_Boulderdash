@@ -19,5 +19,5 @@ public interface IView {
      */
     void displayMessage(String message);
 
-    void drawImage(BufferedImage image);
+    void drawImage(BufferedImage image, int x, int y);
 }

@@ -7,6 +7,8 @@ package model;
  */
 
 public class Character extends Entitie  {
+
+    public final static int REF = 8;
     /**
      * constructor
      * @param x
@@ -14,7 +16,12 @@ public class Character extends Entitie  {
      */
     public Character(int x, int y) {
         super(x, y);
-        setRef(8);
+        setWalkable(false);
+
+
+    }
+    public Character() {
+        super();
         setWalkable(false);
 
 

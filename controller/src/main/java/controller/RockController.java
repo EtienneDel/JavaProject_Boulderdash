@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Julien on 16/06/2017.
  */
-public class RockController{
+public class RockController {
 
     private ArrayList<Rock> rockList;
 
@@ -34,8 +34,8 @@ public class RockController{
         Tile bottomTile = rock.getTileByPos(position.getPosX(), position.getPosY()-1);
         Tile leftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY());
         Tile rightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY());
-        Tile bottomLeftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY());
-        Tile bottomRightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY());
+        Tile bottomLeftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY()-1);
+        Tile bottomRightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY()-1);
 
         int ref = bottomTile.getRef();
         if (ref == '7')//monstre

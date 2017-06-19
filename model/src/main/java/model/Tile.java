@@ -5,48 +5,56 @@ package model;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
+import model.dao.MapDAO;
+
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public class Tile {
 
-    protected static int WIDTH = 16;
-    protected static int HEIGHT = 16;
     protected Position position;
+    public static int WIDTH = 16;
+    public static int HEIGHT = 16;
     private ImageIcon img;
-    private int ref;
+    public static int REF;
     private boolean isWalkable = true;
+    private MapDAO mapDAO;
 
     /**
      * Constructor
      * @param x
      * @param y
      */
+    public Tile(int x, int y, MapDAO mapDAO) {
+        position = new Position(x, y);
+        setRef(2);
+        setWalkable(true);
+        this.mapDAO = mapDAO;
+
+    }
     public Tile(int x, int y) {
         position = new Position(x, y);
         setRef(2);
         setWalkable(true);
 
+
+    }
+    public Tile() {
+
+        setRef(2);
+        setWalkable(true);
+
+
     }
 
-    //TODO revoir cette fonction
-    public Tile getTileByPos(int x, int y) {
-        return null;
-    }
 
-    /**
-     * get the id/reference of the tile
-     * @return
-     */
-    public int getRef() {
-        return ref;
-    }
+    public char getCharByPos(int x, int y) {
 
-    /**
-     * set the id of the tile
-     * @param ref
-     */
-    public void setRef(int ref) {
-        this.ref = ref;
+    char[][] tablemap = mapDAO.getTablemap();
+
+
+
+        return  tablemap[x][y];
     }
 
     /**
@@ -60,6 +68,22 @@ public class Tile {
     }
 
     /**
+     * get the id/reference of the tile
+     * @return
+     */
+    public int getRef() {
+        return REF;
+    }
+
+    /**
+     * set the id of the tile
+     * @param ref
+     */
+    public void setRef(int ref) {
+        this.REF = ref;
+    }
+
+     /**
      * set if we can walk on the tile or not
      * @param walkable
      */
@@ -73,5 +97,12 @@ public class Tile {
 
     public Position getPosition() {
         return position;
+    }
+
+    public BufferedImage getImageFromTileset(BufferedImage tileset) {
+        int x = REF%18*16;
+        int y = REF/18*16;
+
+        return tileset.getSubimage(x, y, 16, 16);
     }
 }
