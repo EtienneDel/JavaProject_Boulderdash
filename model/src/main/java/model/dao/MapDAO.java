@@ -110,13 +110,9 @@ public class MapDAO extends AbstractDAO {
             for (int x = 0; x < map_Width; x++) {
                 char c = map.charAt((y * map_Width) + x);
                 tablemap[x][y] = c;
-
             }
-
         }
         return tablemap;
-
-
     }
 
     public char[][] getTablemap() {
@@ -131,12 +127,12 @@ public class MapDAO extends AbstractDAO {
         this.map_Heigth = map_Heigth;
     }
 
-    public void setMap_Width(int map_Width) {
-        this.map_Width = map_Width;
-    }
-
     public int getMap_Width() {
         return map_Width;
+    }
+
+    public void setMap_Width(int map_Width) {
+        this.map_Width = map_Width;
     }
 }
 

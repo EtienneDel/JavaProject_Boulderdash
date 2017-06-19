@@ -45,4 +45,11 @@ public class MapDAOtest {
         assertEquals(expected, est[0][1]);
 
     }
+    @Test
+    public void readMap() throws SQLException {
+        final String expected = "11111111111225454621102222220110006600011111111111";
+        String actual = "";
+        actual = test.readMap("maptest");
+        assertEquals(expected, actual);
+    }
 }
