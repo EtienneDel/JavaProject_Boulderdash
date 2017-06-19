@@ -38,12 +38,6 @@ public class SpriteSheet extends JLabel implements IModel {
         return img;
     }
 
-    public BufferedImage crop(int x, int y, int height, int width){
-        return img.getSubimage(x,y,width,height);
-    }
-
-
-
     @Override
     public Example getExampleById(int id) throws SQLException {
         return null;
