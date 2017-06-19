@@ -27,7 +27,7 @@ public class ControllerFacade implements IController {
      * The model.
      */
     private final IModel model;
-    private MapDAO toto = new MapDAO();
+    private MapDAO niveau = new MapDAO();
     private BufferedImage img, img2;
     private BWall bWall;
     private Diamond diamond;
@@ -70,11 +70,11 @@ public class ControllerFacade implements IController {
         //this.getView().displayMessage(message.toString());
         String str_map;
         char tab_map[][];
-        str_map = toto.readMap("map1");
+        str_map = niveau.readMap("map1");
         
-        int map_Width =toto.readSize("map1","width");
-        int map_Heigth =toto.readSize("map1","heigth");
-        tab_map = toto.putMapInTable(str_map);
+        int map_Width =niveau.readSize("map1","width");
+        int map_Heigth =niveau.readSize("map1","heigth");
+        tab_map = niveau.putMapInTable(str_map);
         for(int y = 0 ; y<map_Heigth;y++){
 			for(int x = 0; x<map_Width;x++){
         		System.out.print(tab_map[x][y]);
