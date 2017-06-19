@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class ModelFacade implements IModel {
     /**
      * Instantiates a new model facade.
      */
-    public ModelFacade() {
+    public ModelFacade() throws IOException {
         super();
-        map = new Map(tile, mapDAO);
+        map = Map.getMap(this.mapDAO);
 
     }
 
