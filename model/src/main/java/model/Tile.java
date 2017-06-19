@@ -97,9 +97,9 @@ public class Tile {
         return position;
     }
 
-    public BufferedImage getImageFromTileset(BufferedImage tileset) {
-        int x = REF%18*16;
-        int y = REF/18*16;
+    public BufferedImage getImageFromTileset(BufferedImage tileset,int i,int j) {
+        int x = i*16;
+        int y = j*16;
 
         return tileset.getSubimage(x, y, 16, 16);
     }
