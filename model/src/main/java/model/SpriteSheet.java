@@ -8,11 +8,9 @@ package model;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.sql.SQLException;
 import java.util.List;
 
