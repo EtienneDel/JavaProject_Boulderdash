@@ -39,6 +39,13 @@ public class Tile {
 
 
     }
+    public Tile() {
+
+        setRef(2);
+        setWalkable(true);
+
+
+    }
 
     //TODO revoir cette fonction
     public char getCharByPos(int x, int y) {
@@ -65,7 +72,7 @@ public class Tile {
      * @return
      */
     public int getRef() {
-        return ref;
+        return REF;
     }
 
     /**
@@ -73,7 +80,7 @@ public class Tile {
      * @param ref
      */
     public void setRef(int ref) {
-        this.ref = ref;
+        this.REF = ref;
     }
 
      /**
@@ -93,8 +100,8 @@ public class Tile {
     }
 
     public BufferedImage getImageFromTileset(BufferedImage tileset) {
-        int x = ref%18*16;
-        int y = ref/18*16;
+        int x = REF%18*16;
+        int y = REF/18*16;
 
         return tileset.getSubimage(x, y, 16, 16);
     }
