@@ -6,7 +6,6 @@ package model;
  * @version 1.0
  */
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Diamond extends Tile implements Breakable, Movable {
@@ -20,10 +19,6 @@ public class Diamond extends Tile implements Breakable, Movable {
     }
 
 
-    //TODO edit this function
-    public Diamond getTileByPos(int x, int y) {
-        return null;
-    }
 
 
     /**
