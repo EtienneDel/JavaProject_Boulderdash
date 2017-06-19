@@ -6,6 +6,8 @@ package model;
  * @version 1.0
  */
 public class Enemy extends Entitie {
+
+    public static int REF = 7;
     /**
      * constructor
      *

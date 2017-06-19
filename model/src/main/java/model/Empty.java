@@ -6,6 +6,8 @@ package model;
  * @version 1.0
  */
 public class Empty extends Tile {
+
+    public static int REF = 2;
     /**
      * constructor
      * @param x

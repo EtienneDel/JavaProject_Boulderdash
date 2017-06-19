@@ -16,7 +16,7 @@ public class Tile {
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
     private ImageIcon img;
-    public static int ref;
+    public static int REF;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
 
