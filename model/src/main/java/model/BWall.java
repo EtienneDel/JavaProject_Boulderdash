@@ -15,6 +15,11 @@ public class BWall extends Tile implements Breakable {
     public BWall() throws IOException {
         super();
 
+
+    }
+    public BWall(int x, int y) throws IOException {
+        super(x,y);
+
     }
 
     /**

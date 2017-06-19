@@ -15,6 +15,13 @@ public class Empty extends Tile {
      */
     public Empty(int x, int y) {
 
+        super(x,y);
+        setWalkable(true);
+
+    }
+    public Empty() {
+
+
         setWalkable(true);
 
     }

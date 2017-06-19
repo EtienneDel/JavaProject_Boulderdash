@@ -15,6 +15,14 @@ public class Wall extends Tile {
      */
     public Wall(int x, int y) {
 
+        super(x,y);
+        setWalkable(false);
+
+    }
+    public Wall() {
+        super();
+
+
         setWalkable(false);
 
     }
