@@ -33,6 +33,12 @@ public class Diamond extends Tile implements Breakable, Movable {
     }
 
 
+    //TODO edit this function
+    public Diamond getTileByPos(int x, int y) {
+        return null;
+    }
+
+
     /**
      * if the diamond is taken
      */

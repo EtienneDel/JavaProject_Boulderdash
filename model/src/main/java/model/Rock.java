@@ -17,6 +17,11 @@ public class Rock extends Tile implements Movable {
         setWalkable(false);
     }
 
+    //TODO revoir cette fonction
+    public Rock getTileByPos(int x, int y) {
+        return null;
+    }
+
     /**
      * move up
      * @param position
