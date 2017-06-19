@@ -7,7 +7,7 @@ package model;
  */
 public class Rock extends Tile implements Movable {
 
-    public static int REF = 5;
+    public final static int REF = 5;
     /**
      * Constructor
      * @param x
