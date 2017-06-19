@@ -13,7 +13,13 @@ public class Dirt extends Tile implements Breakable {
      * @param x
      * @param y
      */
+    public Dirt(int x , int y) {
+        super(x,y);
+        setWalkable(true);
+
+    }
     public Dirt() {
+
         setWalkable(true);
 
     }

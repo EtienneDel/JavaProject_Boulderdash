@@ -17,6 +17,10 @@ public class Rock extends Tile implements Movable {
         super(x, y);
         setWalkable(false);
     }
+    public Rock() {
+        super();
+        setWalkable(false);
+    }
 
 
 
