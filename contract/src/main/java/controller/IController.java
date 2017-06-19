@@ -10,6 +10,4 @@ import java.awt.*;
  */
 public interface IController {
 
-    Image getImg();
-
 }
