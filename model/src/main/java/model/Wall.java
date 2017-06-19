@@ -7,7 +7,7 @@ package model;
  */
 public class Wall extends Tile {
 
-    public static int REF = 1;
+    public final static int REF = 1;
     /**
      * Constructor
      * @param x

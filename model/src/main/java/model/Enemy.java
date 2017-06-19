@@ -7,7 +7,7 @@ package model;
  */
 public class Enemy extends Entitie {
 
-    public static int REF = 7;
+    public final static int REF = 7;
     /**
      * constructor
      *
