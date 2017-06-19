@@ -6,6 +6,7 @@ import model.IModel;
 import javax.swing.JOptionPane;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -23,7 +24,7 @@ public class ViewFacade implements IView {
    private GraphicBuilder graph;
    private EventPerformer performer;
 
-    public ViewFacade() {
+    public ViewFacade() throws SQLException {
         super();
         frame = new GameFrame();
         graph = new GraphicBuilder();

@@ -22,8 +22,9 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
+     * @throws SQLException 
      */
-    public static void main(final String[] args) throws IOException, InterruptedException {
+    public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
         ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
 
