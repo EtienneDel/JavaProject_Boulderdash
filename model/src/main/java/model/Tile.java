@@ -47,7 +47,7 @@ public class Tile {
 
     }
 
-    //TODO revoir cette fonction
+
     public char getCharByPos(int x, int y) {
 
     char[][] tablemap = mapDAO.getTablemap();

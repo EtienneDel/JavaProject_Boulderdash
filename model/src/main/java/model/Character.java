@@ -20,4 +20,10 @@ public class Character extends Entitie  {
 
 
     }
+    public Character() {
+        super();
+        setWalkable(false);
+
+
+    }
 }

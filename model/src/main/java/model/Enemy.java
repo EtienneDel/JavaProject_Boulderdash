@@ -19,5 +19,10 @@ public class Enemy extends Entitie {
         setWalkable(false);
 
     }
+    public Enemy() {
+        super();
+        setWalkable(false);
+
+    }
 
 }
