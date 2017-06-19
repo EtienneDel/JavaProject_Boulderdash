@@ -23,7 +23,7 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException, InterruptedException {
         ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
 
