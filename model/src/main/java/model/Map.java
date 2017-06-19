@@ -70,8 +70,6 @@ public class Map {
                     default:
                         tile = new Empty(i, e);
                         break;
-
-
                 }
 
                 tiles.put(tile, (int) tablemap[i][e]);
@@ -81,14 +79,55 @@ public class Map {
         }
     }
 
-    public ArrayList<Tile> getList(int ref) {
-        ArrayList<Tile> list = new ArrayList<>();
+    public ArrayList<Rock> getListRock() {
+        ArrayList<Rock> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
-            if(v == ref) {
-                list.add(k);
+            if(v == 5) {
+                list.add((Rock) k);
             }
         });
         return list;
+    }
+
+    public ArrayList<Diamond> getListDiamond() {
+        ArrayList<Diamond> list = new ArrayList<>();
+        tiles.forEach((k, v) -> {
+            if(v == 5) {
+                list.add((Diamond) k);
+            }
+        });
+        return list;
+    }
+
+    public ArrayList<Enemy> getListEnemy() {
+        ArrayList<Enemy> list = new ArrayList<>();
+        tiles.forEach((k, v) -> {
+            if(v == 5) {
+                list.add((Enemy) k);
+            }
+        });
+        return list;
+    }
+
+    public Tile getTileByPos(Position position) {
+        final Tile[] toReturn = new Tile[1];
+        tiles.forEach((Tile k, Integer v) -> {
+            if(k.getPosition().equals(position)) {
+                toReturn[0] = k;
+            }
+        });
+
+        return toReturn[0];
+    }
+
+    public Rock getRockByPos(Position position) {
+
+        return (Rock) getTileByPos(position);
+    }
+
+    public Diamond getDiamondByPos(Position position) {
+
+        return (Diamond) getTileByPos(position);
     }
 
     public static Map getMap(MapDAO mapDAO) throws IOException {
@@ -103,6 +142,6 @@ public class Map {
 
         char[][] tablemap = mapDAO.getTablemap();
 
-        return  tablemap[x][y];
+        return tablemap[x][y];
     }
 }
