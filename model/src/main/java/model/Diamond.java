@@ -23,11 +23,6 @@ public class Diamond extends Tile implements Breakable, Movable {
 
     }
 
-    public Diamond(){
-        super();
-        setWalkable(true);
-    }
-
 
 
 
