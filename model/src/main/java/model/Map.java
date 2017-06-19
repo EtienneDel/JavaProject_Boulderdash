@@ -90,4 +90,7 @@ public class Map {
         return  tablemap[x][y];
     }
 
+
+    //TODO edit this 
+    public static Map getMap() { return null; }
 }

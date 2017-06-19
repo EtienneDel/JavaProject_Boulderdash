@@ -8,6 +8,8 @@ package model;
 public class Enemy extends Entitie {
 
     public final static int REF = 7;
+    public int lastDirection;
+
     /**
      * constructor
      *
