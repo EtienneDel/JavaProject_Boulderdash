@@ -8,7 +8,7 @@ package model;
 
 public class Character extends Entitie  {
 
-    public static int REF = 8;
+    public final static int REF = 8;
     /**
      * constructor
      * @param x

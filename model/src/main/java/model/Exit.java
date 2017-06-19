@@ -7,7 +7,7 @@ package model;
  */
 public class Exit extends Tile {
 
-    public static int REF = 6;
+    public final static int REF = 6;
     /**
      * constructor
      * @param x
