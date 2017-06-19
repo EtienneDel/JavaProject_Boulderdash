@@ -1,68 +1,65 @@
-/*
 package controller;
 
 import model.Diamond;
+import model.Map;
 import model.Position;
-import model.Tile;
+import model.dao.MapDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-*/
+
 /**
  * Created by Julien on 17/06/2017.
- *//*
+ */
 
 public class DiamondController {
+    private MapDAO mapDAO = new MapDAO();
+    private Map map = Map.getMap(mapDAO);
     private ArrayList<Diamond> diamondList;
 
-    public DiamondController(ArrayList<Diamond> diamondList) {
+    public DiamondController(ArrayList<Diamond> diamondList) throws IOException {
         this.diamondList = diamondList;
     }
 
     public void refresh() {
         for(Diamond diamond: diamondList) {
-            refresh(diamond);
+            refresh(diamond.getPosition());
         }
     }
 
-    public void refresh(Position position) throws IOException {
-        Diamond diamond = new Diamond(0,0);
-        refresh(diamond.getTileByPos(position.getPosX(), position.getPosY()));
-    }
+    public void refresh(Position position) {
+        Diamond diamond = map.getDiamondByPos(position);
 
-    public void refresh(Diamond diamond){
-        Position position = diamond.getPosition();
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+        char leftTile = map.getCharByPos(position.getPosX()-1, position.getPosY());
+        char rightTile = map.getCharByPos(position.getPosX()+1, position.getPosY());
+        char bottomLeftTile = map.getCharByPos(position.getPosX()-1, position.getPosY()-1);
+        char bottomRightTile = map.getCharByPos(position.getPosX()+1, position.getPosY()-1);
 
-        Tile bottomTile = diamond.getTileByPos(position.getPosX(), position.getPosY()-1);
-        Tile leftTile = diamond.getTileByPos(position.getPosX()-1, position.getPosY());
-        Tile rightTile = diamond.getTileByPos(position.getPosX()+1, position.getPosY());
-        Tile bottomLeftTile = diamond.getTileByPos(position.getPosX()-1, position.getPosY()-1);
-        Tile bottomRightTile = diamond.getTileByPos(position.getPosX()+1, position.getPosY()-1);
-
-        int ref = bottomTile.getRef();
-        if (ref == '7')//monstre
+        if (bottomTile == '7')//monstre
             explode(true, position);
-        else if (ref == '0')//bloc cassable
+        else if (bottomTile == '0')//bloc cassable
             explode(false, position);
-        else if (ref == '2')//vide
+        else if (bottomTile == '2')//vide
             diamond.moveD(position);
         else {
-            ref = bottomLeftTile.getRef();
-            if (leftTile.getRef() == '2' && (ref == '0' || ref == '2' || ref == '7'))//vide
+            if (leftTile == '2' && (bottomLeftTile == '0' || bottomLeftTile == '2' || bottomLeftTile == '7'))//vide
                 diamond.moveL(position);
             else {
-                ref = bottomRightTile.getRef();
-                if (rightTile.getRef() == '2' && (ref == '0' || ref == '2' || ref == '7'))//vide
+                if (rightTile == '2' && (bottomRightTile == '0' || bottomRightTile == '2' || bottomRightTile == '7'))//vide
                     diamond.moveR(position);
             }
         }
 
         position = diamond.getPosition();
-        bottomTile = diamond.getTileByPos(position.getPosX(), position.getPosY()-1);
-
-        if(bottomTile.getRef() == '2')
-            setTimeout(() -> refresh(diamond), 500);
+        bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+        //permet de ré update le caillou si y'a du vide dessous
+        //todo supprimer ?
+        if(bottomTile == '2') {
+            Position finalPosition = position;
+            setTimeout(() -> refresh(finalPosition), 500);
+        }
     }
 
     private void explode(boolean diamondShower, Position position) {
@@ -81,4 +78,4 @@ public class DiamondController {
         }).start();
     }
 }
-*/
+
