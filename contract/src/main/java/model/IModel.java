@@ -42,4 +42,14 @@ public interface IModel {
      *             the SQL exception
      */
     List<Example> getAllExamples() throws SQLException;
+
+
+
+    public int getMap_width();
+
+    public int getMap_height();
+
+    public char[][] getTab_map();
+
+    public void setTab_map(char[][] tab_map);
 }

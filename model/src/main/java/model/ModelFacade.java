@@ -17,16 +17,23 @@ import model.dao.MapDAO;
 public class ModelFacade implements IModel {
 
     private Map map;
-    private Tile tile;
     private MapDAO mapDAO = new MapDAO();
+    private int map_width, map_height;
+    private char tab_map[][];
 
     /**
      * Instantiates a new model facade.
      */
-    public ModelFacade() throws IOException {
-        super();
-        map = Map.getMap(this.mapDAO);
+    public ModelFacade(String nomMap) throws IOException, SQLException {
 
+        map = Map.getMap(this.mapDAO);
+        String str_map;
+
+
+        str_map = mapDAO.readMap(nomMap);
+        map_width = mapDAO.readSize(nomMap,"width");
+        map_height = mapDAO.readSize(nomMap,"heigth");
+        tab_map = mapDAO.putMapInTable(str_map);
     }
 
     /*
@@ -54,5 +61,21 @@ public class ModelFacade implements IModel {
     @Override
     public List<Example> getAllExamples() throws SQLException {
         return ExampleDAO.getAllExamples();
+    }
+
+    public int getMap_width() {
+        return map_width;
+    }
+
+    public int getMap_height() {
+        return map_height;
+    }
+
+    public char[][] getTab_map() {
+        return tab_map;
+    }
+
+    public void setTab_map(char[][] tab_map) {
+        this.tab_map = tab_map;
     }
 }
