@@ -13,18 +13,9 @@ public class ModelFacadeTest {
 
     @After
     public void tearDown() throws Exception {
+        
     }
 
-    @Test
-    public void getExampleById() throws Exception {
-    }
 
-    @Test
-    public void getExampleByName() throws Exception {
-    }
-
-    @Test
-    public void getAllExamples() throws Exception {
-    }
 
 }

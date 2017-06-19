@@ -16,12 +16,19 @@ public class Rock extends Tile implements Movable {
         setWalkable(false);
     }
 
+    //TODO revoir cette fonction
+    public Rock getTileByPos(int x, int y) {
+        return null;
+    }
+
     /**
      * move up
      * @param position
      */
     @Override
     public void moveU(Position position) {
+        int y = position.getPosY();
+        setPosition(position.getPosX(), y+1);
     }
 
     /**
@@ -31,7 +38,7 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveD(Position position) {
         int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
+        setPosition(position.getPosX(), y-1);
 
     }
 
@@ -42,7 +49,7 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveL(Position position) {
         int x = position.getPosX();
-        setPosition(x--, position.getPosY());
+        setPosition(x-1, position.getPosY());
     }
 
     /**
@@ -52,6 +59,6 @@ public class Rock extends Tile implements Movable {
     @Override
     public void moveR(Position position) {
         int x = position.getPosX();
-        setPosition(x++, position.getPosY());
+        setPosition(x+1, position.getPosY());
     }
 }

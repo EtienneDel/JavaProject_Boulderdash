@@ -20,6 +20,12 @@ public class Diamond extends Tile implements Breakable, Movable {
     }
 
 
+    //TODO edit this function
+    public Diamond getTileByPos(int x, int y) {
+        return null;
+    }
+
+
     /**
      * if the diamond is taken
      */
@@ -42,7 +48,7 @@ public class Diamond extends Tile implements Breakable, Movable {
     @Override
     public void moveD(Position position) {
         int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
+        setPosition(position.getPosX(), y+1);
     }
 
     /**

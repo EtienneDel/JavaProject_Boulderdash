@@ -10,9 +10,9 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
 
+    protected Position position;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
-    private Position position;
     private ImageIcon img;
     public static int REF;
     private boolean isWalkable = true;
@@ -28,8 +28,8 @@ public class Tile {
     }
 
     //TODO revoir cette fonction
-    public int getRefByPos(int x, int y) {
-        return Integer.parseInt(null);
+    public Tile getTileByPos(int x, int y) {
+        return null;
     }
 
     /**
@@ -48,6 +48,14 @@ public class Tile {
      */
     public void setWalkable(boolean walkable) {
         isWalkable = walkable;
+    }
+
+    public boolean getWalkable(){
+        return this.isWalkable;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     public BufferedImage getImageFromTileset(BufferedImage tileset) {
