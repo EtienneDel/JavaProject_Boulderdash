@@ -12,8 +12,8 @@ import javax.swing.Spring;
 public class MapDAO extends AbstractDAO{
 
 	
-	private  String sql_map,sqlWidth,sqlHeigth;
-	int map_Width,map_Heigth;
+	private  String sql_map,sqlWidth,sqlHeigth,sqlDiamonds;
+	int map_Width,map_Heigth,nbDiamonds;
 
 	BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //recupere l'instance du connecteur a� la bdd
 	ResultSet rs = null;
@@ -29,6 +29,7 @@ public class MapDAO extends AbstractDAO{
     sql_map   = "CALL recupere_map('"+title_map+"')";
     sqlWidth = "CALL recup_width('"+title_map+"')";
     sqlHeigth = "CALL recup_heigth('"+title_map+"')";
+    sqlDiamonds = "CALL recup_diamonds('"+title_map+"')";
     }
 
 	
@@ -103,6 +104,18 @@ public class MapDAO extends AbstractDAO{
 		return 0;
 		
         
+    }
+    public int getDiamonds(String title) throws SQLException{
+    	 conn = boulderDashBDD.getConnection(); //recup la connexion a la bdd
+         st = conn.createStatement(); //initialise le statement
+         setmap(title);
+         rs = st.executeQuery(sqlDiamonds);
+         if(rs.next()){
+             nbDiamonds = rs.getInt("nb_diamonds");
+         }    
+         rs.close();
+		return nbDiamonds;
+    	
     }
 
     
