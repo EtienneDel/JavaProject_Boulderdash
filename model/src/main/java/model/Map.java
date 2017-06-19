@@ -79,9 +79,8 @@ public class Map {
             }
             e = 0;
         }
-
-
     }
+
     public ArrayList<Tile> getList(int ref) {
         ArrayList<Tile> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
