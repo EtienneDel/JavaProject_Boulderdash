@@ -14,7 +14,7 @@ public class Tile {
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
     private ImageIcon img;
-    public static int REF;
+    public static int ref;
     private boolean isWalkable = true;
 
     /**
@@ -22,7 +22,9 @@ public class Tile {
      * @param x
      * @param y
      */
-    public Tile() {
+    public Tile(int x, int y) {
+        position = new Position(x, y);
+        setRef(2);
         setWalkable(true);
 
     }
@@ -43,6 +45,22 @@ public class Tile {
     }
 
     /**
+     * get the id/reference of the tile
+     * @return
+     */
+    public int getRef() {
+        return ref;
+    }
+
+    /**
+     * set the id of the tile
+     * @param ref
+     */
+    public void setRef(int ref) {
+        this.ref = ref;
+    }
+
+     /**
      * set if we can walk on the tile or not
      * @param walkable
      */
@@ -59,8 +77,8 @@ public class Tile {
     }
 
     public BufferedImage getImageFromTileset(BufferedImage tileset) {
-        int x = REF%18*16;
-        int y = REF/18*16;
+        int x = ref%18*16;
+        int y = ref/18*16;
 
         return tileset.getSubimage(x, y, 16, 16);
     }

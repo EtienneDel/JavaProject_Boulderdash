@@ -13,8 +13,8 @@ public class Diamond extends Tile implements Breakable, Movable {
 
     public final static int REF = 4;
 
-    public Diamond() throws IOException {
-
+    public Diamond(int x, int y) throws IOException {
+        super(x, y);
         setWalkable(true);
 
     }

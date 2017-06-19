@@ -12,7 +12,7 @@ public class Rock extends Tile implements Movable {
      * @param y
      */
     public Rock(int x, int y) {
-
+        super(x, y);
         setWalkable(false);
     }
 
