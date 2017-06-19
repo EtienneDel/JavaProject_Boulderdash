@@ -5,6 +5,8 @@ package model;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
+import model.dao.MapDAO;
+
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
@@ -16,22 +18,29 @@ public class Tile {
     private ImageIcon img;
     public static int ref;
     private boolean isWalkable = true;
+    private MapDAO mapDAO;
 
     /**
      * Constructor
      * @param x
      * @param y
      */
-    public Tile(int x, int y) {
+    public Tile(int x, int y, MapDAO mapDAO) {
         position = new Position(x, y);
         setRef(2);
         setWalkable(true);
+        this.mapDAO = mapDAO;
 
     }
 
     //TODO revoir cette fonction
-    public Tile getTileByPos(int x, int y) {
-        return null;
+    public char getCharByPos(int x, int y) {
+
+    char[][] tablemap = mapDAO.getTablemap();
+
+
+
+        return  tablemap[x][y];
     }
 
     /**
