@@ -30,50 +30,50 @@ public class Map {
         this.tablemap = mapDAO.getTablemap();
         int x = mapDAO.getMap_Heigth();
         int y = mapDAO.getMap_Width();
-        int e ;
+        int e;
         Tile tile;
 
 
         for(int i =0;i<x; i++){
             for( e=0 ; e<y; e++) {
 
-                switch (tablemap[x][y]) {
+                switch (tablemap[i][e]) {
 
                     case 0:
-                        tile = new Dirt();
+                        tile = new Dirt(i, e);
                         break;
                     case 1:
-                        tile = new Wall();
+                        tile = new Wall(i, e);
                         break;
                     case 2:
-                        tile = new Empty();
+                        tile = new Empty(i, e);
                         break;
                     case 3:
-                        tile = new BWall();
+                        tile = new BWall(i, e);
                         break;
                     case 4:
-                        tile = new Diamond();
+                        tile = new Diamond(i, e);
                         break;
                     case 5:
-                        tile = new Rock();
+                        tile = new Rock(i, e);
                         break;
                     case 6:
-                        tile = new Exit();
+                        tile = new Exit(i, e);
                         break;
                     case 7:
-                        tile = new Enemy();
+                        tile = new Enemy(i, e);
                         break;
                     case 8:
-                        tile = new Character();
+                        tile = new Character(i, e);
                         break;
                     default:
-                        tile = new Empty();
+                        tile = new Empty(i, e);
                         break;
 
 
                 }
 
-                tiles.put(tile, (int) tablemap[x][y]);
+                tiles.put(tile, (int) tablemap[i][e]);
 
             }
             e = 0;
@@ -81,6 +81,9 @@ public class Map {
 
 
     }
+
+
+
     public char getCharByPos(int x, int y) {
 
         char[][] tablemap = mapDAO.getTablemap();
