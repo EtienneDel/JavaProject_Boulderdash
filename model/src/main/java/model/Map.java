@@ -1,10 +1,10 @@
 package model;
 
-import model.dao.MapDAO;
+        import model.dao.MapDAO;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+        import java.io.IOException;
+        import java.util.ArrayList;
+        import java.util.HashMap;
 
 /**
  * <h1>the Map class</h1>
@@ -19,12 +19,15 @@ public class Map {
     private HashMap<Tile, Integer> tiles;
     private char tablemap[][];
 
+
+    private static Map instance = null;
+
     /**
      * constructor
 
      * @param mapDAO
      */
-    public Map( MapDAO mapDAO) throws IOException {
+    private Map( MapDAO mapDAO) throws IOException {
 
         this.mapDAO = mapDAO;
         this.tablemap = mapDAO.getTablemap();
@@ -94,6 +97,12 @@ public class Map {
     }
 
 
-    //TODO edit this 
-    public static Map getMap() { return null; }
+
+    public static Map getMap(MapDAO mapDAO) throws IOException {
+        if (instance == null)
+        {
+
+            instance = new Map(mapDAO);
+        }
+        return instance;}
 }
