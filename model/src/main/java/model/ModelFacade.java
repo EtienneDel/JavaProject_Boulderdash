@@ -18,7 +18,7 @@ public class ModelFacade implements IModel {
 
     private Map map;
     private Tile tile;
-    private MapDAO mapDAO;
+    private MapDAO mapDAO = new MapDAO();
 
     /**
      * Instantiates a new model facade.
