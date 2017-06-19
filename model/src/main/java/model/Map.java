@@ -82,6 +82,15 @@ public class Map {
 
     }
 
+    public ArrayList<Tile> getList(int ref) {
+        ArrayList<Tile> list = new ArrayList<>();
+        tiles.forEach((k, v) -> {
+            if(v == ref) {
+                list.add(k);
+            }
+        });
+        return list;
+    }
     public static Map getMap(MapDAO mapDAO) throws IOException {
         if (instance == null) {
 
@@ -94,7 +103,6 @@ public class Map {
 
         char[][] tablemap = mapDAO.getTablemap();
 
-
-        return tablemap[x][y];
+        return  tablemap[x][y];
     }
 }

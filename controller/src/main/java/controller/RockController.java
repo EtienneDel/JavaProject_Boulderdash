@@ -1,20 +1,20 @@
-/*
 package controller;
 
+import model.Map;
 import model.Position;
 import model.Rock;
 import model.Tile;
 
 import java.util.ArrayList;
 
-*/
 /**
  * Created by Julien on 16/06/2017.
- *//*
+ */
 
 public class RockController {
 
     private ArrayList<Rock> rockList;
+    private Map map = Map.getMap();
 
     public RockController(ArrayList<Rock> rockList) {
         this.rockList = rockList;
@@ -22,32 +22,23 @@ public class RockController {
 
     public void refresh() {
         for(Rock rock: rockList) {
-            refresh(rock);
+            refresh(rock.getPosition());
         }
     }
 
     public void refresh(Position position) {
-        Rock rock = new Rock(0,0);
-        refresh(rock.getTileByPos(position.getPosX(), position.getPosY()));
-    }
 
-*/
-/*
-    public void refresh(Rock rock){
-        Position position = rock.getPosition();
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+        char leftTile = map.getCharByPos(position.getPosX()-1, position.getPosY());
+        char rightTile = map.getCharByPos(position.getPosX()+1, position.getPosY());
+        char bottomLeftTile = map.getCharByPos(position.getPosX()-1, position.getPosY()-1);
+        char bottomRightTile = map.getCharByPos(position.getPosX()+1, position.getPosY()-1);
 
-        Tile bottomTile = rock.getTileByPos(position.getPosX(), position.getPosY()-1);
-        Tile leftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY());
-        Tile rightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY());
-        Tile bottomLeftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY()-1);
-        Tile bottomRightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY()-1);
-
-        int ref = bottomTile.getRef();
-        if (ref == '7')//monstre
+        if (bottomTile == '7')//monstre
             explode(true, position);
-        else if (ref == '0')//bloc cassable
+        else if (bottomTile == '0')//bloc cassable
             explode(false, position);
-        else if (ref == '2')//vide
+        else if (bottomTile == '2')//vide
             rock.moveD(position);
         else {
             ref = bottomLeftTile.getRef();
@@ -61,13 +52,15 @@ public class RockController {
         }
 
         position = rock.getPosition();
-        bottomTile = rock.getTileByPos(position.getPosX(), position.getPosY()-1);
+        bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
 
         if(bottomTile.getRef() == '2')
             setTimeout(() -> refresh(rock), 500);
     }
-*//*
 
+    public void refresh(char tileRef){
+        
+    }
 
     private void explode(boolean diamondShower, Position position) {
         
@@ -85,4 +78,4 @@ public class RockController {
         }).start();
     }
 }
-*/
+

@@ -1,4 +1,3 @@
-/*
 package controller;
 
 import model.Diamond;
@@ -8,10 +7,10 @@ import model.Tile;
 import java.io.IOException;
 import java.util.ArrayList;
 
-*/
+
 /**
  * Created by Julien on 17/06/2017.
- *//*
+ */
 
 public class DiamondController {
     private ArrayList<Diamond> diamondList;
@@ -28,17 +27,17 @@ public class DiamondController {
 
     public void refresh(Position position) throws IOException {
         Diamond diamond = new Diamond(0,0);
-        refresh(diamond.getTileByPos(position.getPosX(), position.getPosY()));
+        refresh(diamond.getCharByPos(position.getPosX(), position.getPosY()));
     }
 
     public void refresh(Diamond diamond){
         Position position = diamond.getPosition();
 
-        Tile bottomTile = diamond.getTileByPos(position.getPosX(), position.getPosY()-1);
-        Tile leftTile = diamond.getTileByPos(position.getPosX()-1, position.getPosY());
-        Tile rightTile = diamond.getTileByPos(position.getPosX()+1, position.getPosY());
-        Tile bottomLeftTile = diamond.getTileByPos(position.getPosX()-1, position.getPosY()-1);
-        Tile bottomRightTile = diamond.getTileByPos(position.getPosX()+1, position.getPosY()-1);
+        Tile bottomTile = diamond.getCharByPos(position.getPosX(), position.getPosY()-1);
+        Tile leftTile = diamond.getCharByPos(position.getPosX()-1, position.getPosY());
+        Tile rightTile = diamond.getCharByPos(position.getPosX()+1, position.getPosY());
+        Tile bottomLeftTile = diamond.getCharByPos(position.getPosX()-1, position.getPosY()-1);
+        Tile bottomRightTile = diamond.getCharByPos(position.getPosX()+1, position.getPosY()-1);
 
         int ref = bottomTile.getRef();
         if (ref == '7')//monstre
@@ -59,7 +58,7 @@ public class DiamondController {
         }
 
         position = diamond.getPosition();
-        bottomTile = diamond.getTileByPos(position.getPosX(), position.getPosY()-1);
+        bottomTile = diamond.getCharByPos(position.getPosX(), position.getPosY()-1);
 
         if(bottomTile.getRef() == '2')
             setTimeout(() -> refresh(diamond), 500);
@@ -81,4 +80,4 @@ public class DiamondController {
         }).start();
     }
 }
-*/
+
