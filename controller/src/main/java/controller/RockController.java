@@ -1,76 +1,69 @@
-/*
 package controller;
 
+import model.Map;
 import model.Position;
 import model.Rock;
-import model.Tile;
+import model.dao.MapDAO;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-*/
 /**
  * Created by Julien on 16/06/2017.
- *//*
+ */
 
 public class RockController {
 
+    private MapDAO mapDAO = new MapDAO();
+    private Map map = Map.getMap(mapDAO);
     private ArrayList<Rock> rockList;
 
-    public RockController(ArrayList<Rock> rockList) {
-        this.rockList = rockList;
+    public RockController() throws IOException {
+        this.rockList = map.getListRock();
     }
 
     public void refresh() {
         for(Rock rock: rockList) {
-            refresh(rock);
+            refresh(rock.getPosition());
         }
     }
 
     public void refresh(Position position) {
-        Rock rock = new Rock(0,0);
-        refresh(rock.getTileByPos(position.getPosX(), position.getPosY()));
-    }
+        Rock rock = map.getRockByPos(position);
 
-*/
-/*
-    public void refresh(Rock rock){
-        Position position = rock.getPosition();
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+        char leftTile = map.getCharByPos(position.getPosX()-1, position.getPosY());
+        char rightTile = map.getCharByPos(position.getPosX()+1, position.getPosY());
+        char bottomLeftTile = map.getCharByPos(position.getPosX()-1, position.getPosY()-1);
+        char bottomRightTile = map.getCharByPos(position.getPosX()+1, position.getPosY()-1);
 
-        Tile bottomTile = rock.getTileByPos(position.getPosX(), position.getPosY()-1);
-        Tile leftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY());
-        Tile rightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY());
-        Tile bottomLeftTile = rock.getTileByPos(position.getPosX()-1, position.getPosY()-1);
-        Tile bottomRightTile = rock.getTileByPos(position.getPosX()+1, position.getPosY()-1);
-
-        int ref = bottomTile.getRef();
-        if (ref == '7')//monstre
+        if (bottomTile == '7')//monstre
             explode(true, position);
-        else if (ref == '0')//bloc cassable
+        else if (bottomTile == '0')//bloc cassable
             explode(false, position);
-        else if (ref == '2')//vide
+        else if (bottomTile == '2')//vide
             rock.moveD(position);
         else {
-            ref = bottomLeftTile.getRef();
-            if (leftTile.getRef() == '2' && (ref == '0' || ref == '2' || ref == '7'))//vide
+            if (leftTile == '2' && (bottomLeftTile == '0' || bottomLeftTile == '2' || bottomLeftTile == '7'))//vide
                 rock.moveL(position);
             else {
-                ref = bottomRightTile.getRef();
-                if (rightTile.getRef() == '2' && (ref == '0' || ref == '2' || ref == '7'))//vide
+                if (rightTile == '2' && (bottomRightTile == '0' || bottomRightTile == '2' || bottomRightTile == '7'))//vide
                     rock.moveR(position);
             }
         }
 
         position = rock.getPosition();
-        bottomTile = rock.getTileByPos(position.getPosX(), position.getPosY()-1);
-
-        if(bottomTile.getRef() == '2')
-            setTimeout(() -> refresh(rock), 500);
+        bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+        //permet de ré update le caillou si y'a du vide dessous
+        //todo supprimer ?
+        if(bottomTile == '2') {
+            Position finalPosition = position;
+            setTimeout(() -> refresh(finalPosition), 500);
+        }
     }
-*//*
-
 
     private void explode(boolean diamondShower, Position position) {
-        
+
     }
 
     public void setTimeout(Runnable runnable, int delay){
@@ -85,4 +78,4 @@ public class RockController {
         }).start();
     }
 }
-*/
+
