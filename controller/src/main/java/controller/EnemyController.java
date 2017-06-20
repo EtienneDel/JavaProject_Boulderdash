@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * Created by Julien on 17/06/2017.
  */
 public class EnemyController {
-    private MapDAO mapDAO = new MapDAO();
-    private Map map = Map.getMap(mapDAO);
+    private MapDAO mapDAO = MapDAO.getMapDAO();
+    private Map map = Map.getMap();
     private ArrayList<Enemy> enemyList;
 
     public EnemyController(ArrayList<Enemy> enemyList) throws IOException {

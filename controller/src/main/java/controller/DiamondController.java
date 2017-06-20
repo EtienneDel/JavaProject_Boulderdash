@@ -14,12 +14,12 @@ import java.util.ArrayList;
  */
 
 public class DiamondController {
-    private MapDAO mapDAO = new MapDAO();
-    private Map map = Map.getMap(mapDAO);
+    private MapDAO mapDAO = MapDAO.getMapDAO();
+    private Map map = Map.getMap();
     private ArrayList<Diamond> diamondList;
 
-    public DiamondController(ArrayList<Diamond> diamondList) throws IOException {
-        this.diamondList = diamondList;
+    public DiamondController() throws IOException {
+        this.diamondList = map.getListDiamond();
     }
 
     public void refresh() {

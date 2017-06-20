@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class RockController {
 
-    private MapDAO mapDAO = new MapDAO();
-    private Map map = Map.getMap(mapDAO);
+    private MapDAO mapDAO = MapDAO.getMapDAO();
+    private Map map = Map.getMap();
     private ArrayList<Rock> rockList;
 
     public RockController() throws IOException {
