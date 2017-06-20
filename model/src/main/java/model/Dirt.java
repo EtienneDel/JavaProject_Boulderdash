@@ -7,7 +7,11 @@ package model;
  */
 public class Dirt extends Tile implements Breakable {
 
-    public final static int REF = 0;
+    public Dirt(int id){
+    	super(Assets.dirt,id);
+    	setWalkable(true);
+    }
+    
     /**
      * constructor
      * @param x
@@ -23,6 +27,7 @@ public class Dirt extends Tile implements Breakable {
         setWalkable(true);
 
     }
+    
 
     /**
      * when the character dig the dirt

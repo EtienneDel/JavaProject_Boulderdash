@@ -9,11 +9,18 @@ import java.io.IOException;
 public class Assets {
 
     private SpriteSheet sprite;
-    public BufferedImage wall, dirt, bwall, empty, diamond, rock, exit;
+    public static BufferedImage wall, dirt, bwall, empty, diamond, rock, exit;
+    private Tile tile[];
 
 
     public Assets() throws IOException {
-        this.sprite = new SpriteSheet();
+    	crop();
+        //tile = new Tile(img, id);
+
+    }
+    
+    public void crop() throws IOException{
+    	this.sprite = new SpriteSheet();
         Tile tile = new Tile();
 
         wall = tile.getImageFromTileset(sprite.getImg(),0,0);
@@ -23,6 +30,5 @@ public class Assets {
         diamond = tile.getImageFromTileset(sprite.getImg(),4,0);
         rock = tile.getImageFromTileset(sprite.getImg(),3,0);
         exit = tile.getImageFromTileset(sprite.getImg(),6,0);
-
     }
 }
