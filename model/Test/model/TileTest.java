@@ -41,13 +41,9 @@ public class TileTest {
 
     }
 
-    @Test
-    public void setRef(){
-        final int expected  = 1;
-        tile.setRef(1);
-        assertEquals(expected, tile.getRef());
 
-    }
+
+
     @Test
     public void setWalkable(){
         final boolean expected = true;

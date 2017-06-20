@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static model.Empty.REF;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -37,6 +38,6 @@ public class DiamondTest {
     public void isBreak(){
         final int expected = 2;
         test.isBreak();
-        assertEquals(expected, test.getRef());
+        assertEquals(expected, REF);
     }
 }
