@@ -119,6 +119,10 @@ public class MapDAO extends AbstractDAO {
         return tablemap;
     }
 
+    public void setTablemap(char[][] tablemap) {
+        this.tablemap = tablemap;
+    }
+
     public int getMap_Heigth() {
         return map_Heigth;
     }
