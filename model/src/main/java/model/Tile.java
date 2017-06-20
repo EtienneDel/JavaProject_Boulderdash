@@ -9,6 +9,8 @@ import model.dao.MapDAO;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Tile {
 
@@ -19,6 +21,7 @@ public class Tile {
     public static int REF;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
+    private char tablemap[][];
 
     /**
      * Constructor
@@ -48,12 +51,7 @@ public class Tile {
     }
 
 
-    public char getCharByPos(int x, int y) {
 
-        char[][] tablemap = mapDAO.getTablemap();
-
-        return  tablemap[x][y];
-    }
 
     /**
      * set the position of the tile
@@ -102,5 +100,13 @@ public class Tile {
         int y = j*16;
 
         return tileset.getSubimage(x, y, 16, 16);
+    }
+
+    public void setMapDAO(MapDAO mapDAO) {
+        this.mapDAO = mapDAO;
+    }
+
+    public void setTablemap(char[][] tablemap) {
+        this.tablemap = tablemap;
     }
 }
