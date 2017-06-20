@@ -8,7 +8,7 @@ package model;
 
 import java.io.IOException;
 
-public class BWall extends Tile implements Breakable {
+public class BWall extends Tile implements Breakable, Tilable {
 
     /**
      * attributes

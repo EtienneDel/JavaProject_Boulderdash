@@ -15,10 +15,11 @@ public class Build implements IController {
     private final IView view;
     private final IModel model;
 
+
     public Build(final IView view, final IModel model) throws IOException {
         this.view = view;
         this.model = model;
-        Assets assets = new Assets();
+        Assetable asset = model.getAssets();
         BufferedImage tmp = new BufferedImage(10000,10000, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = tmp.createGraphics();
         
@@ -30,32 +31,32 @@ public class Build implements IController {
 
                 switch (block) {
 
-                case Dirt.REF:
-                	g.drawImage(assets.dirt, (x+a)*16, y*16, null);
+                case 0:
+                	g.drawImage(asset.getDirt(), (x+a)*16, y*16, null);
                     break;
 
-                case Wall.REF:
-                	g.drawImage(assets.wall, (x+a)*16, y*16, null);
+                case 1:
+                	g.drawImage(asset.getWall(), (x+a)*16, y*16, null);
                     break;
 
-                case Empty.REF:
-                	g.drawImage(assets.empty, (x+a)*16, y*16, null);
+                case 2:
+                	g.drawImage(asset.getEmpty(), (x+a)*16, y*16, null);
                     break;
 
-                case BWall.REF:
-                	g.drawImage(assets.bwall, (x+a)*16, y*16, null);
+                case 3:
+                	g.drawImage(asset.getBwall(), (x+a)*16, y*16, null);
                     break;
 
-                case Diamond.REF:
-                	g.drawImage(assets.diamond, (x+a)*16, y*16, null);
+                case 4:
+                	g.drawImage(asset.getDiamonds(), (x+a)*16, y*16, null);
                     break;
 
-                case Rock.REF:
-                	g.drawImage(assets.rock, (x+a)*16, y*16, null);
+                case 5:
+                	g.drawImage(asset.getRock(), (x+a)*16, y*16, null);
                     break;
 
-                case Exit.REF:
-                	g.drawImage(assets.exit, (x+a)*16, y*16, null);
+                case 6:
+                	g.drawImage(asset.getExit(), (x+a)*16, y*16, null);
                     break;
                 }
             }

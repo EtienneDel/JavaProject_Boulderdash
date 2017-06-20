@@ -6,7 +6,7 @@ package model;
  * @version 1.0
  */
 
-public class Character extends Entitie  {
+public class Character extends Entitie implements Tilable {
     /**
      * attribute
      */
