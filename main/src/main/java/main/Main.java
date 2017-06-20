@@ -28,11 +28,7 @@ public abstract class Main {
         ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade("map2"));
 
 
-        try {
-            controller.start();
+        controller.start();
 
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
     }
 }

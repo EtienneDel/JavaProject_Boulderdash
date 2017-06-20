@@ -143,9 +143,16 @@ public class Map {
         return instance;
     }
 
-    public char getCharByPos(int x, int y) throws IOException, SQLException {
+    public char getCharByPos(int x, int y)  {
 
-        final IModel test = new ModelFacade("map1");
+        IModel test = null;
+        try {
+            test = new ModelFacade("map1");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         tablemap = test.getTab_map();
         char c = tablemap[x][y];
 
