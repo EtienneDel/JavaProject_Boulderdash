@@ -3,6 +3,7 @@ package model;
 import model.dao.MapDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,13 +30,17 @@ public class Map {
 
         this.mapDAO = mapDAO;
         this.tablemap = mapDAO.getTablemap();
+        createTileTable();
+
+    }
+    public void createTileTable() throws IOException {
         int x = mapDAO.getMap_Heigth();
         int y = mapDAO.getMap_Width();
-        int e;
+        int e,  i;
         Tile tile;
 
 
-        for (int i = 0; i < x; i++) {
+        for ( i = 0; i < x; i++) {
             for (e = 0; e < y; e++) {
 
                 switch (tablemap[i][e]) {
@@ -138,10 +143,12 @@ public class Map {
         return instance;
     }
 
-    public char getCharByPos(int x, int y) {
+    public char getCharByPos(int x, int y) throws IOException, SQLException {
 
-        char[][] tablemap = mapDAO.getTablemap();
+        final IModel test = new ModelFacade("map1");
+        tablemap = test.getTab_map();
+        char c = tablemap[x][y];
 
-        return tablemap[x][y];
+        return  c;
     }
 }
