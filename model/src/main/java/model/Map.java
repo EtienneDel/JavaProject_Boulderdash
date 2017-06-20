@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * <h1>the Map class</h1>
- *
- * @author Etienne Delnott / Paul Brouet
- * @version 1.0
- */
+        * <h1>the Map class</h1>
+        *
+        * @author Etienne Delnott / Paul Brouet
+        * @version 1.0
+        */
 public class Map {
 
 
@@ -28,7 +28,7 @@ public class Map {
     private Map() throws IOException {
 
         this.mapDAO = MapDAO.getMapDAO();
-        while(mapDAO == null);
+
         this.tablemap = mapDAO.getTablemap();
         createTileTable();
 
@@ -146,15 +146,37 @@ public class Map {
 
         IModel test = null;
         try {
-            test = new ModelFacade("map1");
+            test = new ModelFacade("maptest");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        tablemap = test.getTab_map();
+
         char c = tablemap[x][y];
 
         return  c;
+    }
+    public void setCharBypos(int x, int y, char chare){
+
+
+        IModel test = null;
+        try {
+            test = new ModelFacade("maptest");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(tablemap[x][y]);
+        tablemap[x][y]= chare;
+        System.out.println(tablemap[x][y]);
+
+
+    }
+
+    public HashMap<Tile, Integer> getTiles() {
+        return tiles;
     }
 }

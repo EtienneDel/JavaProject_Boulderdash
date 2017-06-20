@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,11 +19,13 @@ public class Maptest {
 
     private Map test;
     private MapDAO test2;
+    private HashMap<Tile,Integer> tiless;
     @Before
     public void setUp() throws Exception {
 
-        this.test2 = MapDAO.getMapDAO();
+        this.test2 = MapDAO.setMapDAO("maptest");
         this.test = Map.getMap();
+        this.tiless = new HashMap<Tile,Integer>();
 
     }
 
@@ -31,22 +34,39 @@ public class Maptest {
 
     }
     @Test
-    public void createTileTable(){
-        final int expected = 0;
+    public void createTileTable() throws IOException {
+        final boolean expected = true;
+        final boolean actual;
 
-        createTileTable();
+        test.createTileTable();
+        tiless = test.getTiles();
+        tiless.forEach((k,v) -> System.out.println(k + " " + v));
+
+        actual = tiless.containsValue(49);
+
+        assertEquals(expected,actual);
 
 
 
     }
     @Test
     public void getCharByPos() throws IOException, SQLException {
-        final int expected = '0';
+        final int expected = '1';
         int x = 0, y = 0;
 
 
         char actual = test.getCharByPos(x,y);
 
         assertEquals(expected, actual);
+    }
+    @Test
+    public void setCharByPos(){
+        char expected = '5';
+        char actual;
+
+        test.setCharBypos(0,2,expected);
+        actual = test.getCharByPos(0,2);
+        assertEquals(expected,actual);
+
     }
 }
