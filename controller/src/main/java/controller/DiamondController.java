@@ -51,7 +51,7 @@ public class DiamondController {
                     diamond.moveR(position);
             }
         }
-/*
+
         position = diamond.getPosition();
         bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
         //permet de ré update le caillou si y'a du vide dessous
@@ -59,7 +59,7 @@ public class DiamondController {
         if(bottomTile == '2') {
             Position finalPosition = position;
             setTimeout(() -> refresh(finalPosition), 500);
-        }*/
+        }
     }
 
     private void explode(boolean diamondShower, Position position) {
