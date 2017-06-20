@@ -41,8 +41,8 @@ public class Map {
         System.out.println(x);
         System.out.println(y);
 
-        for ( i = 0; i < x; i++) {
-            for (e = 0; e < y; e++) {
+        for ( i = 0; i < y; i++) {
+            for (e = 0; e < x; e++) {
                 System.out.println(i + " " + e);
                 switch (tablemap[i][e]) {
 
