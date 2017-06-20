@@ -8,11 +8,14 @@ package model;
  */
 public class Position {
 
+    /**
+     * attributes
+     */
     private int posX;
     private int posY;
 
     /**
-     * constructor
+     * constructor with parameter position
      *
      * @param x
      * @param y

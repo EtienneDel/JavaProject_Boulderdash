@@ -13,10 +13,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class SpriteSheet extends JLabel{
+
+    /**
+     * attribute
+     */
     BufferedImage img = ImageIO.read(new File(".\\SpriteSheet.png"));
 
     /**
-     * constructor
+     * constructor without parameter
      * @throws IOException
      */
     public SpriteSheet() throws IOException {

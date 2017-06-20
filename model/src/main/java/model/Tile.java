@@ -13,6 +13,9 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
 
+    /**
+     * attributes
+     */
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
     public static int REF;
@@ -23,7 +26,7 @@ public class Tile {
     private char tablemap[][];
 
     /**
-     * Constructor
+     * Constructor with parameter position and MapDAO
      *
      * @param x
      * @param y
@@ -36,6 +39,11 @@ public class Tile {
 
     }
 
+    /**
+     * constructor with parameter only the position
+     * @param x
+     * @param y
+     */
     public Tile(int x, int y) {
         position = new Position(x, y);
         setRef(2);
@@ -44,6 +52,9 @@ public class Tile {
 
     }
 
+    /**
+     * constructor without parameter
+     */
     public Tile() {
 
         setRef(2);
@@ -60,6 +71,19 @@ public class Tile {
         return tablemap[x][y];
     }
 
+    /**
+     * get the image associate to this tile
+     * @param tileset
+     * @param i
+     * @param j
+     * @return
+     */
+    public BufferedImage getImageFromTileset(BufferedImage tileset, int i, int j) {
+        int x = i * 16;
+        int y = j * 16;
+
+        return tileset.getSubimage(x, y, 16, 16);
+    }
 
     /**
      * set the position of the tile
@@ -103,16 +127,15 @@ public class Tile {
         isWalkable = walkable;
     }
 
+    /**
+     * getter and setter
+     * @return
+     */
     public Position getPosition() {
         return position;
     }
 
-    public BufferedImage getImageFromTileset(BufferedImage tileset, int i, int j) {
-        int x = i * 16;
-        int y = j * 16;
 
-        return tileset.getSubimage(x, y, 16, 16);
-    }
 
     public void setMapDAO(MapDAO mapDAO) {
         this.mapDAO = mapDAO;

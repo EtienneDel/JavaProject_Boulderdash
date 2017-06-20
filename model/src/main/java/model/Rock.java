@@ -7,9 +7,12 @@ package model;
  */
 public class Rock extends Tile implements Movable {
 
+    /**
+     * attribute
+     */
     public final static int REF = 5;
     /**
-     * Constructor
+     * Constructor with parameter position of the tile
      * @param x
      * @param y
      */
@@ -17,6 +20,10 @@ public class Rock extends Tile implements Movable {
         super(x, y);
         setWalkable(false);
     }
+
+    /**
+     * constuctor without parameter
+     */
     public Rock() {
         super();
         setWalkable(false);

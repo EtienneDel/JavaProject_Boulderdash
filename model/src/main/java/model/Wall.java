@@ -9,7 +9,7 @@ public class Wall extends Tile {
 
     public final static int REF = 1;
     /**
-     * Constructor
+     * Constructor with parameter position
      * @param x
      * @param y
      */
@@ -19,6 +19,10 @@ public class Wall extends Tile {
         setWalkable(false);
 
     }
+
+    /**
+     * constructor without parameter 
+     */
     public Wall() {
         super();
 
