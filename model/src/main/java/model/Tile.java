@@ -13,18 +13,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Tile {
-	
-	
-	public static Tile[] tiles = new Tile[256];
-	public static Tile dirt = new Dirt(0);
-	
-	
 
     protected Position position;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
-    private BufferedImage img;
-    protected int id;
+    private ImageIcon img;
     public static int REF;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
@@ -37,39 +30,39 @@ public class Tile {
      */
     public Tile(int x, int y, MapDAO mapDAO) {
         position = new Position(x, y);
-        //setRef(2);
+        setRef(2);
         setWalkable(true);
         this.mapDAO = mapDAO;
 
     }
     public Tile(int x, int y) {
-        position = new Position(x, y);	
-        //setRef(2);
+        position = new Position(x, y);
+        setRef(2);
         setWalkable(true);
 
 
     }
     public Tile() {
 
-    }
-    
-    public Tile(BufferedImage img, int id){
-    	this.img = img;
-    	this.id = id;
-    	tiles[id] = this;
-    }
-
-    public int getId(){
-    	return id;
-    }
+        setRef(2);
+        setWalkable(true);
 
 
-    public void tick(){
-    	
+
+    
+    
+    
+
     }
-    
-    
-    
+
+
+    public char getCharByPos(int x, int y) {
+
+        char[][] tablemap = mapDAO.getTablemap();
+
+        return  tablemap[x][y];
+    }
+
 
     /**
      * set the position of the tile
@@ -81,7 +74,21 @@ public class Tile {
         position.setPosY(y);
     }
 
+    /**
+     * get the id/reference of the tile
+     * @return
+     */
+    public int getRef() {
+        return REF;
+    }
 
+    /**
+     * set the id of the tile
+     * @param ref
+     */
+    public void setRef(int ref) {
+        this.REF = ref;
+    }
 
      /**
      * set if we can walk on the tile or not
