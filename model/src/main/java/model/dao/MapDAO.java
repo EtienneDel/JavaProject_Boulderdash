@@ -6,9 +6,6 @@ package model.dao;
  * @version 1.0
  */
 
-import model.Map;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,14 +14,14 @@ import java.sql.Statement;
 public class MapDAO extends AbstractDAO {
 
 
+    private static MapDAO instance = null;
     int map_Width, map_Heigth;
-    BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //recupere l'instance du connecteur a� la bdd
+    BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //get the instance of the connector to the database
     ResultSet rs = null;
     Statement st = null;
     Connection conn = null;
     private String sql_map, sqlWidth, sqlHeigth;
     private char tablemap[][];
-    private static MapDAO instance = null;
     private int map_width, map_height;
     private char tab_map[][];
 
@@ -36,88 +33,30 @@ public class MapDAO extends AbstractDAO {
 
 
         str_map = readMap(nomMap);
-        map_width = readSize(nomMap,"width");
-        map_height = readSize(nomMap,"heigth");
+        map_width = readSize(nomMap, "width");
+        map_height = readSize(nomMap, "heigth");
         tab_map = putMapInTable(str_map);
     }
 
     /**
-     * set la map
+     * get the singleton
      *
-     * @param title_map
+     * @return
      */
-    private void setmap(String title_map) {
-        sql_map = "CALL recupere_map('" + title_map + "')";
-        sqlWidth = "CALL recup_width('" + title_map + "')";
-        sqlHeigth = "CALL recup_heigth('" + title_map + "')";
+    public static MapDAO getMapDAO() {
+        if (instance == null) {
+
+            return null;
+        }
+        return instance;
     }
 
     /**
-     * Recupere la map
+     * Set the singleton
      *
-     * @param title
-     * @return map
-     * @throws SQLException
+     * @param nomMap
+     * @return
      */
-    public String readMap(String title) throws SQLException {
-        conn = boulderDashBDD.getConnection(); //recup la connexion a la bdd
-        st = conn.createStatement(); //initialise le statement
-
-        setmap(title);
-
-        String map = "";
-
-        rs = st.executeQuery(sql_map); //execute la requete
-        if (rs.next()) { //recupere le premier resultat
-            map = rs.getString("level"); //recupere le contenu de la colonne level
-            //System.out.println(map);
-            rs.close();
-        } else
-            map = "fail"; //renvois "fail" si y'a pas de map
-
-        return map;
-    }
-
-    public int readSize(String title, String dim) throws SQLException {
-        conn = boulderDashBDD.getConnection(); //recup la connexion a la bdd
-        st = conn.createStatement(); //initialise le statement
-
-        setmap(title);
-
-
-        map_Width = 0;
-        rs = st.executeQuery(sqlWidth); //execute la requete
-        if (rs.next()) { //recupere le premier resultat
-            map_Width = rs.getInt("width"); //recupere le contenu de la colonne width
-            //System.out.println("x = "+map_Width);
-            if (dim.equals("width")) {
-                return map_Width;
-            }
-
-            rs.close();
-        } else {
-            map_Width = 0; //renvois 0 si erreur de lecture
-        }
-
-
-        map_Heigth = 0;
-        rs = st.executeQuery(sqlHeigth); //execute la requete
-        if (rs.next()) { //recupere le premier resultat
-            map_Heigth = rs.getInt("heigth"); //recupere le contenu de la colonne heigth
-            //System.out.println("y = "+map_Heigth);
-            if (dim.equals("heigth")) {
-                return map_Heigth;
-            }
-
-            rs.close();
-        } else {
-            map_Heigth = 0; //renvois 0 si erreur de lecture
-        }
-        return 0;
-
-
-    }
-
     public static MapDAO setMapDAO(String nomMap) {
         if (instance == null) {
 
@@ -130,15 +69,94 @@ public class MapDAO extends AbstractDAO {
         return instance;
     }
 
-    public static MapDAO getMapDAO() {
-        if (instance == null) {
-
-            return null;
-        }
-        return instance;
+    /**
+     * set the map
+     *
+     * @param title_map
+     */
+    private void setmap(String title_map) {
+        sql_map = "CALL recupere_map('" + title_map + "')";
+        sqlWidth = "CALL recup_width('" + title_map + "')";
+        sqlHeigth = "CALL recup_heigth('" + title_map + "')";
     }
 
+    /**
+     * read the string map in the database
+     *
+     * @param title
+     * @return map
+     * @throws SQLException
+     */
+    public String readMap(String title) throws SQLException {
+        conn = boulderDashBDD.getConnection(); //get the connection to the database
+        st = conn.createStatement(); //initialisation of the statement
 
+        setmap(title);
+
+        String map = "";
+
+        rs = st.executeQuery(sql_map); //execute the request
+        if (rs.next()) { //get the first result
+            map = rs.getString("level"); //get the content of column level
+            rs.close();
+        } else
+            map = "fail"; //send fail if there is no map
+
+        return map;
+    }
+
+    /**
+     * read the size in the database
+     *
+     * @param title
+     * @param dim
+     * @return
+     * @throws SQLException
+     */
+    public int readSize(String title, String dim) throws SQLException {
+        conn = boulderDashBDD.getConnection(); //get the instance of the connector to the database
+        st = conn.createStatement(); //initialisation of the statement
+
+        setmap(title);
+
+
+        map_Width = 0;
+        rs = st.executeQuery(sqlWidth); //execute the request
+        if (rs.next()) { //get the first result
+            map_Width = rs.getInt("width"); //get the content of column width
+           if (dim.equals("width")) {
+                return map_Width;
+            }
+
+            rs.close();
+        } else {
+            map_Width = 0; //send back 0 if there is an error of reading
+        }
+
+
+        map_Heigth = 0;
+        rs = st.executeQuery(sqlHeigth); //execute the request
+        if (rs.next()) { //get the first result
+            map_Heigth = rs.getInt("heigth"); //get the content of column heigth
+            if (dim.equals("heigth")) {
+                return map_Heigth;
+            }
+
+            rs.close();
+        } else {
+            map_Heigth = 0; //send back 0 if there is an error of reading
+        }
+        return 0;
+
+
+    }
+
+    /**
+     * transform the string map into a table
+     *
+     * @param map
+     * @return
+     */
     public char[][] putMapInTable(String map) {
         tablemap = new char[map_Width][map_Heigth];
         for (int y = 0; y < map_Heigth; y++) {
@@ -150,6 +168,9 @@ public class MapDAO extends AbstractDAO {
         return tablemap;
     }
 
+    /**
+     * getter and seter of the differents attributes
+     */
     public char[][] getTablemap() {
         return tablemap;
     }
