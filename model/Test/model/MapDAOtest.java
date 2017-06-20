@@ -17,7 +17,7 @@ public class MapDAOtest {
     @Before
     public void setUp() throws Exception {
 
-        this.test = new MapDAO();
+        this.test = MapDAO.setMapDAO("map1");
     }
 
     @After

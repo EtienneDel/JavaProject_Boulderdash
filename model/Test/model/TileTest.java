@@ -25,7 +25,7 @@ public class TileTest {
 
     @Before
     public void setUp() throws Exception {
-        mapDAO = new MapDAO();
+        mapDAO = MapDAO.getMapDAO();
         tile = new Tile(1,1, mapDAO);
 
 

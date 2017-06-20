@@ -21,8 +21,8 @@ public class Maptest {
     @Before
     public void setUp() throws Exception {
 
-        this.test2 = new MapDAO();
-        this.test = Map.getMap(test2);
+        this.test2 = MapDAO.getMapDAO();
+        this.test = Map.getMap();
 
     }
 

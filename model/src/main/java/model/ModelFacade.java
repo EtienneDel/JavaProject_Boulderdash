@@ -17,7 +17,7 @@ import model.dao.MapDAO;
 public class ModelFacade implements IModel {
 
     private Map map;
-    private MapDAO mapDAO = new MapDAO();
+    private MapDAO mapDAO = null;
     private int map_width, map_height;
     private char tab_map[][];
 
@@ -26,9 +26,10 @@ public class ModelFacade implements IModel {
      */
     public ModelFacade(String nomMap) throws IOException, SQLException {
 
-        map = Map.getMap(this.mapDAO);
+        mapDAO = MapDAO.setMapDAO(nomMap);
+        while(mapDAO == null);
+        map = Map.getMap();
         String str_map;
-
 
         str_map = mapDAO.readMap(nomMap);
         map_width = mapDAO.readSize(nomMap,"width");
