@@ -6,6 +6,9 @@ package model.dao;
  * @version 1.0
  */
 
+import model.Map;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,9 +24,21 @@ public class MapDAO extends AbstractDAO {
     Connection conn = null;
     private String sql_map, sqlWidth, sqlHeigth;
     private char tablemap[][];
+    private static MapDAO instance = null;
+    private int map_width, map_height;
+    private char tab_map[][];
 
-    public MapDAO() {
+
+    private MapDAO(String nomMap) throws SQLException {
         super();
+
+        String str_map;
+
+
+        str_map = readMap(nomMap);
+        map_width = readSize(nomMap,"width");
+        map_height = readSize(nomMap,"heigth");
+        tab_map = putMapInTable(str_map);
     }
 
     /**
@@ -103,6 +118,26 @@ public class MapDAO extends AbstractDAO {
 
     }
 
+    public static MapDAO setMapDAO(String nomMap) {
+        if (instance == null) {
+
+            try {
+                instance = new MapDAO(nomMap);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return instance;
+    }
+
+    public static MapDAO getMapDAO() {
+        if (instance == null) {
+
+            return null;
+        }
+        return instance;
+    }
+
 
     public char[][] putMapInTable(String map) {
         tablemap = new char[map_Width][map_Heigth];
@@ -117,6 +152,10 @@ public class MapDAO extends AbstractDAO {
 
     public char[][] getTablemap() {
         return tablemap;
+    }
+
+    public void setTablemap(char[][] tablemap) {
+        this.tablemap = tablemap;
     }
 
     public int getMap_Heigth() {

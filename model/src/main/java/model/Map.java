@@ -3,6 +3,7 @@ package model;
 import model.dao.MapDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,28 +17,33 @@ public class Map {
 
 
     private static Map instance = null;
-    private MapDAO mapDAO;
-    private HashMap<Tile, Integer> tiles;
+    private MapDAO mapDAO = null;
+    private HashMap<Tile, Integer> tiles = new HashMap<>();
     private char tablemap[][];
 
     /**
      * constructor
      *
-     * @param mapDAO
      */
-    private Map(MapDAO mapDAO) throws IOException {
+    private Map() throws IOException {
 
-        this.mapDAO = mapDAO;
+        this.mapDAO = MapDAO.getMapDAO();
+        while(mapDAO == null);
         this.tablemap = mapDAO.getTablemap();
+        createTileTable();
+
+    }
+    public void createTileTable() throws IOException {
         int x = mapDAO.getMap_Heigth();
         int y = mapDAO.getMap_Width();
-        int e;
+        int e,  i;
         Tile tile;
+        System.out.println(x);
+        System.out.println(y);
 
-
-        for (int i = 0; i < x; i++) {
-            for (e = 0; e < y; e++) {
-
+        for ( i = 0; i < y; i++) {
+            for (e = 0; e < x; e++) {
+                System.out.println(i + " " + e);
                 switch (tablemap[i][e]) {
 
                     case 0:
@@ -75,7 +81,6 @@ public class Map {
                 tiles.put(tile, (int) tablemap[i][e]);
 
             }
-            e = 0;
         }
     }
 
@@ -130,18 +135,26 @@ public class Map {
         return (Diamond) getTileByPos(position);
     }
 
-    public static Map getMap(MapDAO mapDAO) throws IOException {
+    public static Map getMap() throws IOException {
         if (instance == null) {
-
-            instance = new Map(mapDAO);
+            instance = new Map();
         }
         return instance;
     }
 
-    public char getCharByPos(int x, int y) {
+    public char getCharByPos(int x, int y)  {
 
-        char[][] tablemap = mapDAO.getTablemap();
+        IModel test = null;
+        try {
+            test = new ModelFacade("map1");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        tablemap = test.getTab_map();
+        char c = tablemap[x][y];
 
-        return tablemap[x][y];
+        return  c;
     }
 }

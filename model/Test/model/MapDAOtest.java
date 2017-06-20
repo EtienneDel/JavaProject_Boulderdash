@@ -17,7 +17,7 @@ public class MapDAOtest {
     @Before
     public void setUp() throws Exception {
 
-        this.test = new MapDAO();
+        this.test = MapDAO.setMapDAO("map1");
     }
 
     @After
@@ -27,7 +27,7 @@ public class MapDAOtest {
     @Test
     public void readsize() throws SQLException {
 
-        final int expected = 42;
+        final int expected = 62;
 
         assertEquals(expected ,test.readSize("map1", "width"));
     }
@@ -52,4 +52,5 @@ public class MapDAOtest {
         actual = test.readMap("maptest");
         assertEquals(expected, actual);
     }
+
 }

@@ -1,8 +1,12 @@
 package model;
 
+import model.dao.MapDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,11 +17,23 @@ import static org.junit.Assert.assertEquals;
 public class TileTest {
 
     private Tile tile;
+    private MapDAO mapDAO;
+
+
+
     int test = 1;
 
     @Before
     public void setUp() throws Exception {
-        tile = new Tile(1,1);
+        mapDAO = MapDAO.getMapDAO();
+        tile = new Tile(1,1, mapDAO);
+
+
+
+
+
+
+
     }
 
     @After
@@ -38,5 +54,6 @@ public class TileTest {
         tile.setWalkable(true);
         assertEquals(expected, tile.getWalkable());
     }
+
 
 }
