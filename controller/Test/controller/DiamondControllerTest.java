@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import model.Diamond;
 import model.Position;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by ASUS on 20/06/2017.
- */
+ *//*
 public class DiamondControllerTest {
     Tile tile;
     Tile tile2;
@@ -33,3 +33,4 @@ public class DiamondControllerTest {
     }
 
 }
+*/

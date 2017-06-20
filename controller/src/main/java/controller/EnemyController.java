@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import model.Enemy;
 import model.Map;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Julien on 17/06/2017.
  */
+/*
 public class EnemyController {
     private MapDAO mapDAO = MapDAO.getMapDAO();
     private Map map = Map.getMap();
@@ -74,3 +75,4 @@ public class EnemyController {
         }).start();
     }
 }
+*/

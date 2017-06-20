@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import model.Map;
 import model.Position;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Julien on 16/06/2017.
  */
-
+/*
 public class RockController {
 
     private MapDAO mapDAO = MapDAO.getMapDAO();
@@ -78,4 +78,4 @@ public class RockController {
         }).start();
     }
 }
-
+*/

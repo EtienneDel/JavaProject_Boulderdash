@@ -9,7 +9,7 @@ import java.io.IOException;
  * @author Etienne Delnott / Julien Zolli
  * @version 1.0
  */
-public class Assets {
+public class Assets implements Assetable {
     /**
      * Attributes
      */
@@ -20,7 +20,7 @@ public class Assets {
      * constructor without parameter
      * @throws IOException
      */
-    public Assets() throws IOException {
+    public Assets() throws IOException  {
         this.sprite = new SpriteSheet();//instantiate a new spriteSheet
         Tile tile = new Tile(); //instantiate a new tile
 
@@ -32,5 +32,39 @@ public class Assets {
         rock = tile.getImageFromTileset(sprite.getImg(),3,0);
         exit = tile.getImageFromTileset(sprite.getImg(),6,0);
 
+    }
+    @Override
+    public BufferedImage getDirt() {
+        return dirt;
+    }
+
+    @Override
+    public BufferedImage getWall() {
+        return wall;
+    }
+
+    @Override
+    public BufferedImage getBwall() {
+        return bwall;
+    }
+
+    @Override
+    public BufferedImage getEmpty() {
+        return empty;
+    }
+
+    @Override
+    public BufferedImage getDiamonds() {
+        return diamond;
+    }
+
+    @Override
+    public BufferedImage getRock() {
+        return rock;
+    }
+
+    @Override
+    public BufferedImage getExit() {
+        return exit;
     }
 }

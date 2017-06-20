@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -83,4 +84,17 @@ public class ModelFacade implements IModel {
     public void setTab_map(char[][] tab_map) {
         this.tab_map = tab_map;
     }
+
+    @Override
+    public Assetable getAssets() {
+
+        Assets assets = null;
+        try {
+            assets = new Assets();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return assets;
+    }
+
 }
