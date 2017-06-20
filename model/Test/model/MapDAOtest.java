@@ -27,7 +27,7 @@ public class MapDAOtest {
     @Test
     public void readsize() throws SQLException {
 
-        final int expected = 62;
+        final int expected = 42;
 
         assertEquals(expected ,test.readSize("map1", "width"));
     }
@@ -52,5 +52,4 @@ public class MapDAOtest {
         actual = test.readMap("maptest");
         assertEquals(expected, actual);
     }
-
 }
