@@ -13,7 +13,9 @@ import java.sql.Statement;
 
 public class MapDAO extends AbstractDAO {
 
-
+    /**
+     * attributes
+     */
     private static MapDAO instance = null;
     int map_Width, map_Heigth;
     BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //get the instance of the connector to the database
@@ -25,7 +27,11 @@ public class MapDAO extends AbstractDAO {
     private int map_width, map_height;
     private char tab_map[][];
 
-
+    /**
+     * constructors with parameter name of the map to search
+     * @param nomMap
+     * @throws SQLException
+     */
     private MapDAO(String nomMap) throws SQLException {
         super();
 

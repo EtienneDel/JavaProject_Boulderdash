@@ -2,14 +2,26 @@ package model;
 
 public abstract class Entitie extends Tile implements Movable{
 
+    /**
+     * attribute
+     */
     protected Boolean isAlive;
 
+    /**
+     * contructor with parameter position of the tile
+     * @param x
+     * @param y
+     */
     public Entitie(int x, int y) {
 
         super(x,y);
 
 
     }
+
+    /**
+     * constructor without parameter
+     */
     public Entitie() {
 
         super();

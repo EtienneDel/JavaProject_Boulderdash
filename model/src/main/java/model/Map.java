@@ -8,21 +8,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
-        * <h1>the Map class</h1>
-        *
-        * @author Etienne Delnott / Paul Brouet
-        * @version 1.0
-        */
+* <h1>the Map class</h1>
+*
+* @author Etienne Delnott / Paul Brouet
+* @version 1.0
+*/
 public class Map {
 
-
+    /**
+     * attributes
+     */
     private static Map instance = null;
     private MapDAO mapDAO = null;
     private HashMap<Tile, Integer> tiles = new HashMap<>();
     private char tablemap[][];
 
     /**
-     * constructor
+     * constructor without any parameter
      *
      */
     private Map() throws IOException {
@@ -33,6 +35,11 @@ public class Map {
         createTileTable();
 
     }
+
+    /**
+     * instantiate the Hashmap and fill it
+     * @throws IOException
+     */
     public void createTileTable() throws IOException {
         int x = mapDAO.getMap_Heigth();
         int y = mapDAO.getMap_Width();
@@ -84,6 +91,10 @@ public class Map {
         }
     }
 
+    /**
+     * get the list of rocks
+     * @return
+     */
     public ArrayList<Rock> getListRock() {
         ArrayList<Rock> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
@@ -94,6 +105,10 @@ public class Map {
         return list;
     }
 
+    /**
+     * get the list of all diamonds
+     * @return
+     */
     public ArrayList<Diamond> getListDiamond() {
         ArrayList<Diamond> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
@@ -104,6 +119,10 @@ public class Map {
         return list;
     }
 
+    /**
+     * get the list of all enemies
+     * @return
+     */
     public ArrayList<Enemy> getListEnemy() {
         ArrayList<Enemy> list = new ArrayList<>();
         tiles.forEach((k, v) -> {
@@ -114,6 +133,11 @@ public class Map {
         return list;
     }
 
+    /**
+     * get a tile by his position
+     * @param position
+     * @return
+     */
     public Tile getTileByPos(Position position) {
         final Tile[] toReturn = new Tile[1];
         tiles.forEach((Tile k, Integer v) -> {
@@ -125,16 +149,31 @@ public class Map {
         return toReturn[0];
     }
 
+    /**
+     * get a rock by his position
+     * @param position
+     * @return
+     */
     public Rock getRockByPos(Position position) {
 
         return (Rock) getTileByPos(position);
     }
 
+    /**
+     * get a diamond by his position
+     * @param position
+     * @return
+     */
     public Diamond getDiamondByPos(Position position) {
 
         return (Diamond) getTileByPos(position);
     }
 
+    /**
+     * get the instance of the map
+     * @return
+     * @throws IOException
+     */
     public static Map getMap() throws IOException {
         if (instance == null) {
             instance = new Map();
@@ -142,6 +181,12 @@ public class Map {
         return instance;
     }
 
+    /**
+     * get a char at the specified position
+     * @param x
+     * @param y
+     * @return
+     */
     public char getCharByPos(int x, int y)  {
 
         IModel test = null;
@@ -157,6 +202,13 @@ public class Map {
 
         return  c;
     }
+
+    /**
+     * set a specified char of the table at the position specified
+     * @param x
+     * @param y
+     * @param chare
+     */
     public void setCharBypos(int x, int y, char chare){
 
 
@@ -176,6 +228,10 @@ public class Map {
 
     }
 
+    /**
+     * getter of the hashmap
+     * @return
+     */
     public HashMap<Tile, Integer> getTiles() {
         return tiles;
     }

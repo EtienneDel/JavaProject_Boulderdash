@@ -7,9 +7,12 @@ package model;
  */
 public class Dirt extends Tile implements Breakable {
 
+    /**
+     * attribute
+     */
     public final static int REF = 0;
     /**
-     * constructor
+     * constructor with parameter position of the tile
      * @param x
      * @param y
      */
@@ -18,6 +21,10 @@ public class Dirt extends Tile implements Breakable {
         setWalkable(true);
 
     }
+
+    /**
+     * constructor without parameters
+     */
     public Dirt() {
 
         setWalkable(true);

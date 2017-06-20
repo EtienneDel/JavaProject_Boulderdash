@@ -64,6 +64,10 @@ public class ModelFacade implements IModel {
         return ExampleDAO.getAllExamples();
     }
 
+    /**
+     * differents getter and setter
+     * @return
+     */
     public int getMap_width() {
         return map_width;
     }

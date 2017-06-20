@@ -9,14 +9,27 @@ package model;
 import java.io.IOException;
 
 public class Diamond extends Tile implements Breakable, Movable {
-
+    /**
+     * attribute
+     */
     public final static int REF = 4;
 
+    /**
+     * constructor with parameter position of the tile
+     * @param x
+     * @param y
+     * @throws IOException
+     */
     public Diamond(int x, int y) throws IOException {
         super(x, y);
         setWalkable(true);
 
     }
+
+    /**
+     * constructor without parameter
+     * @throws IOException
+     */
     public Diamond() throws IOException {
         super();
         setWalkable(true);

@@ -5,26 +5,26 @@ package model;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
+
 import model.dao.MapDAO;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class Tile {
 
-    protected Position position;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
-    private ImageIcon img;
     public static int REF;
+    protected Position position;
+    private ImageIcon img;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
     private char tablemap[][];
 
     /**
      * Constructor
+     *
      * @param x
      * @param y
      */
@@ -35,6 +35,7 @@ public class Tile {
         this.mapDAO = mapDAO;
 
     }
+
     public Tile(int x, int y) {
         position = new Position(x, y);
         setRef(2);
@@ -42,16 +43,12 @@ public class Tile {
 
 
     }
+
     public Tile() {
 
         setRef(2);
         setWalkable(true);
 
-
-
-    
-    
-    
 
     }
 
@@ -60,12 +57,13 @@ public class Tile {
 
         char[][] tablemap = mapDAO.getTablemap();
 
-        return  tablemap[x][y];
+        return tablemap[x][y];
     }
 
 
     /**
      * set the position of the tile
+     *
      * @param x
      * @param y
      */
@@ -76,6 +74,7 @@ public class Tile {
 
     /**
      * get the id/reference of the tile
+     *
      * @return
      */
     public int getRef() {
@@ -84,31 +83,33 @@ public class Tile {
 
     /**
      * set the id of the tile
+     *
      * @param ref
      */
     public void setRef(int ref) {
         this.REF = ref;
     }
 
-     /**
+    public boolean getWalkable() {
+        return this.isWalkable;
+    }
+
+    /**
      * set if we can walk on the tile or not
+     *
      * @param walkable
      */
     public void setWalkable(boolean walkable) {
         isWalkable = walkable;
     }
 
-    public boolean getWalkable(){
-        return this.isWalkable;
-    }
-
     public Position getPosition() {
         return position;
     }
 
-    public BufferedImage getImageFromTileset(BufferedImage tileset,int i,int j) {
-        int x = i*16;
-        int y = j*16;
+    public BufferedImage getImageFromTileset(BufferedImage tileset, int i, int j) {
+        int x = i * 16;
+        int y = j * 16;
 
         return tileset.getSubimage(x, y, 16, 16);
     }

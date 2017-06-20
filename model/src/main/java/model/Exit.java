@@ -7,9 +7,12 @@ package model;
  */
 public class Exit extends Tile {
 
+    /**
+     * attribute
+     */
     public final static int REF = 6;
     /**
-     * constructor
+     * constructor with parameter position of the tile
      * @param x
      * @param y
      */
@@ -19,6 +22,10 @@ public class Exit extends Tile {
         setWalkable(true);
 
     }
+
+    /**
+     * constructor without parameter
+     */
     public Exit() {
         super();
         setWalkable(true);
@@ -28,8 +35,10 @@ public class Exit extends Tile {
     /**
      * you win !
      */
-    public void endLevel() {
+    public String endLevel() {
 
+        String thisistheend ="THE END"; // BREAK EVERYTHING  //TODO ?
+    return thisistheend;
 
     }
 }

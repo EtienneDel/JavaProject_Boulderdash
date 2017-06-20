@@ -1,16 +1,18 @@
 package model;
 /**
- * <h1>ths Character class</h1>
+ * <h1>the Character class</h1>
  *
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
 
 public class Character extends Entitie  {
-
+    /**
+     * attribute
+     */
     public final static int REF = 8;
     /**
-     * constructor
+     * constructor with parameter position of the tile
      * @param x
      * @param y
      */
@@ -20,6 +22,10 @@ public class Character extends Entitie  {
 
 
     }
+
+    /**
+     * constructor without parameter
+     */
     public Character() {
         super();
         setWalkable(false);

@@ -7,11 +7,14 @@ package model;
  */
 public class Enemy extends Entitie {
 
+    /**
+     * attributes
+     */
     public final static int REF = 7;
     public int lastDirection;
 
     /**
-     * constructor
+     * constructor with parameter position of the tile
      *
      * @param x
      * @param y
@@ -21,6 +24,10 @@ public class Enemy extends Entitie {
         setWalkable(false);
 
     }
+
+    /**
+     * constructor without parameter
+     */
     public Enemy() {
         super();
         setWalkable(false);

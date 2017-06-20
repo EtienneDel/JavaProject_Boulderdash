@@ -7,9 +7,12 @@ package model;
  */
 public class Empty extends Tile {
 
+    /**
+     * attribute
+     */
     public final static int REF = 2;
     /**
-     * constructor
+     * constructor with parameter position of the tile
      * @param x
      * @param y
      */
@@ -19,6 +22,10 @@ public class Empty extends Tile {
         setWalkable(true);
 
     }
+
+    /**
+     * constructor without parameter
+     */
     public Empty() {
 
 
