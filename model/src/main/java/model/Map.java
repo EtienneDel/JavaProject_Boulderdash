@@ -17,18 +17,18 @@ public class Map {
 
 
     private static Map instance = null;
-    private MapDAO mapDAO;
-    private HashMap<Tile, Integer> tiles;
+    private MapDAO mapDAO = null;
+    private HashMap<Tile, Integer> tiles = new HashMap<>();
     private char tablemap[][];
 
     /**
      * constructor
      *
-     * @param mapDAO
      */
-    private Map(MapDAO mapDAO) throws IOException {
+    private Map() throws IOException {
 
-        this.mapDAO = mapDAO;
+        this.mapDAO = MapDAO.getMapDAO();
+        while(mapDAO == null);
         this.tablemap = mapDAO.getTablemap();
         createTileTable();
 
@@ -38,11 +38,12 @@ public class Map {
         int y = mapDAO.getMap_Width();
         int e,  i;
         Tile tile;
-
+        System.out.println(x);
+        System.out.println(y);
 
         for ( i = 0; i < x; i++) {
             for (e = 0; e < y; e++) {
-
+                System.out.println(i + " " + e);
                 switch (tablemap[i][e]) {
 
                     case 0:
@@ -80,7 +81,6 @@ public class Map {
                 tiles.put(tile, (int) tablemap[i][e]);
 
             }
-            e = 0;
         }
     }
 
@@ -135,10 +135,9 @@ public class Map {
         return (Diamond) getTileByPos(position);
     }
 
-    public static Map getMap(MapDAO mapDAO) throws IOException {
+    public static Map getMap() throws IOException {
         if (instance == null) {
-
-            instance = new Map(mapDAO);
+            instance = new Map();
         }
         return instance;
     }
