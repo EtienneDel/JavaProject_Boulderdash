@@ -1,37 +1,27 @@
-package controller;/*package controller;
+package controller;
 
-import model.Diamond;
-import model.Map;
-import model.Position;
-import model.dao.MapDAO;
+import model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 
 /**
  * Created by Julien on 17/06/2017.
  */
-/*
+
 public class DiamondController {
-    private MapDAO mapDAO = MapDAO.getMapDAO();
-    private Map map = Map.getMap();
-    private ArrayList<Diamond> diamondList;
+    private IMap map;
+    private IModel model;
 
-    public DiamondController() throws IOException {
-        this.diamondList = map.getListDiamond();
+    public DiamondController(IModel model) throws IOException {
+        this.map = model.getTheMap();
+        this.model = model;
     }
 
-    public void refresh() {
-        for(Diamond diamond: diamondList) {
-            refresh(diamond.getPosition());
-        }
-    }
-
-    public void refresh(Position position) {
-        Diamond diamond = map.getDiamondByPos(position);
-
-        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()-1);
+    public void refresh(IPosition position) throws IOException {
+        IDiamond diamond = model.getDiamond();// = map.getRockByPos(position);
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
         char leftTile = map.getCharByPos(position.getPosX()-1, position.getPosY());
         char rightTile = map.getCharByPos(position.getPosX()+1, position.getPosY());
         char bottomLeftTile = map.getCharByPos(position.getPosX()-1, position.getPosY()-1);
@@ -42,7 +32,7 @@ public class DiamondController {
         else if (bottomTile == '0')//bloc cassable
             explode(false, position);
         else if (bottomTile == '2')//vide
-            diamond.moveD(position);
+            moveDown(diamond, position);
         else {
             if (leftTile == '2' && (bottomLeftTile == '0' || bottomLeftTile == '2' || bottomLeftTile == '7'))//vide
                 diamond.moveL(position);
@@ -57,12 +47,23 @@ public class DiamondController {
         //permet de ré update le caillou si y'a du vide dessous
         //todo supprimer ?
         if(bottomTile == '2') {
-            Position finalPosition = position;
-            setTimeout(() -> refresh(finalPosition), 500);
+            IPosition finalPosition = position;
+            setTimeout(() -> {
+                try {
+                    refresh(finalPosition);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }, 500);
         }
     }
 
-    private void explode(boolean diamondShower, Position position) {
+    private void moveDown(IDiamond diamond, IPosition position) {
+        diamond.setPosition(position);
+        diamond.moveD(position);
+    }
+
+    private void explode(boolean diamondShower, IPosition position) {
 
     }
 
@@ -78,4 +79,4 @@ public class DiamondController {
         }).start();
     }
 }
-*/
+
