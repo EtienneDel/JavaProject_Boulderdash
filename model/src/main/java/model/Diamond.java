@@ -56,7 +56,6 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x, y-1,'4');
-        setPosition(position.getPosX(), y-1);
     }
 
     /**
@@ -69,7 +68,6 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x, y+1,'4');
-        setPosition(position.getPosX(), y+1);
     }
 
     /**
@@ -82,7 +80,6 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x-1, y,'4');
-        setPosition(x-1, y);
     }
 
     /**
@@ -95,7 +92,6 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x+1, y,'4');
-        setPosition(x+1, y);
     }
 
 

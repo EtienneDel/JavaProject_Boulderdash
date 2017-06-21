@@ -46,7 +46,6 @@ public class Rock extends Tile implements Movable, IRock {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x, y-1,'5');
-        setPosition(position.getPosX(), y-1);
     }
 
     /**
@@ -59,7 +58,6 @@ public class Rock extends Tile implements Movable, IRock {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x, y+1,'5');
-        setPosition(position.getPosX(), y+1);
     }
 
     /**
@@ -72,7 +70,6 @@ public class Rock extends Tile implements Movable, IRock {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x-1, y,'5');
-        setPosition(x-1, y);
     }
 
     /**
@@ -85,7 +82,6 @@ public class Rock extends Tile implements Movable, IRock {
         int y = position.getPosY();
         map.setCharByPos(x, y,'2');
         map.setCharByPos(x+1, y,'5');
-        setPosition(x+1, y);
     }
 
 
