@@ -11,8 +11,8 @@ import java.io.IOException;
  */
 
 public class DiamondController {
-    private IMap map;
-    private IModel model;
+    protected IMap map;
+    protected IModel model;
 
     public DiamondController(IModel model) throws IOException {
         this.map = model.getTheMap();
@@ -20,10 +20,10 @@ public class DiamondController {
     }
 
     public void refresh(IPosition position) throws IOException {
-        if(!(position.getPosX() > 0 && position.getPosY() > 0 && map.getCharByPos(position.getPosX(), position.getPosY()) == '4'))
+        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
             return;
 
-        IDiamond diamond = model.getDiamond();// = map.getRockByPos(position);
+        Movable movable = (Movable) model.getDiamond();
         char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
 
         if (bottomTile == '7')//monstre
@@ -31,24 +31,24 @@ public class DiamondController {
         else if (bottomTile == '0')//bloc cassable
             explode(false, position);
         else if (bottomTile == '2')//vide
-            moveDown(diamond, position);
+            moveDown(movable, position);
 
 }
 
-    private void moveDown(IDiamond diamond, IPosition position) throws IOException {
-        diamond.moveD(position);
+    protected void moveDown(Movable movable, IPosition position) throws IOException {
+        movable.moveD(position);
 
         refreshAround(position);
     }
 
-    private void refreshAround(IPosition position) throws IOException {
+    protected void refreshAround(IPosition position) throws IOException {
         refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
         refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
         refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
         refresh(model.getPosition(position.getPosX(), position.getPosY()+1));
     }
 
-    private void explode(boolean diamondShower, IPosition position) {
+    protected void explode(boolean diamondShower, IPosition position) {
 
     }
 }
