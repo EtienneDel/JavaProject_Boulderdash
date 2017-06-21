@@ -63,7 +63,7 @@ public class Maptest {
         char expected = '5';
         char actual;
 
-        test.setCharBypos(0,2,expected);
+        test.setCharByPos(0,2,expected);
         actual = test.getCharByPos(0,2);
         assertEquals(expected,actual);
 
