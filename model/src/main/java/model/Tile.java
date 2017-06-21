@@ -64,12 +64,6 @@ public class Tile implements Tilable {
     }
 
 
-    public char getCharByPos(int x, int y) {
-
-        char[][] tablemap = mapDAO.getTablemap();
-
-        return tablemap[x][y];
-    }
 
     /**
      * get the image associate to this tile
