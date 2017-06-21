@@ -14,7 +14,7 @@ public class Assets implements Assetable {
      * Attributes
      */
     private SpriteSheet sprite;
-    public BufferedImage wall, dirt, bwall, empty, diamond, rock, exit;
+    public BufferedImage wall, dirt, bwall, empty, diamond, rock, exit, character;
 
     /**
      * constructor without parameter
@@ -31,6 +31,7 @@ public class Assets implements Assetable {
         diamond = tile.getImageFromTileset(sprite.getImg(),4,0);
         rock = tile.getImageFromTileset(sprite.getImg(),3,0);
         exit = tile.getImageFromTileset(sprite.getImg(),6,0);
+        character = tile.getImageFromTileset(sprite.getImg(),12,0);
 
     }
     @Override
@@ -66,5 +67,10 @@ public class Assets implements Assetable {
     @Override
     public BufferedImage getExit() {
         return exit;
+    }
+
+    @Override
+    public BufferedImage getCharacter() {
+        return character;
     }
 }

@@ -63,6 +63,10 @@ public class Build {
                     case 6:
                         g.drawImage(asset.getExit(), x * 16, y * 16, null);
                         break;
+
+                    case 8 :
+                        g.drawImage(asset.getCharacter(),x*16,y*16,null);
+                        break;
                 }
             }
         }

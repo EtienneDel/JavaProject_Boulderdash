@@ -14,4 +14,5 @@ public interface Assetable {
     BufferedImage getDiamonds();
     BufferedImage getRock();
     BufferedImage getExit();
+    BufferedImage getCharacter();
 }
