@@ -6,5 +6,7 @@ package model;
 public interface Tilable {
 
     int getRef();
+    IPosition getPosition();
+    void setPosition(IPosition position);
 
 }

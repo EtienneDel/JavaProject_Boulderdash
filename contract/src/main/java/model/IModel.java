@@ -1,5 +1,8 @@
 package model;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -53,4 +56,12 @@ public interface IModel {
     public void setTab_map(char[][] tab_map);
 
     Assetable getAssets();
+
+    IMap getTheMap() throws IOException;
+
+    IPosition getPosition(int x, int y);
+
+    IRock getRock() throws IOException;
+
+    IDiamond getDiamond() throws IOException;
 }
