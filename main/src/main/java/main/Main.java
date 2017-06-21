@@ -25,8 +25,9 @@ public abstract class Main {
      * @throws SQLException 
      */
     public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
-        ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade("maptest"));
-
+        ControllerFacade controller = new ControllerFacade(new ModelFacade("map1"));
+        ViewFacade view = new ViewFacade(controller);
+        controller.setView(view);
 
         controller.start();
 
