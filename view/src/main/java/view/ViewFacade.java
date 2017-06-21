@@ -17,14 +17,11 @@ public class ViewFacade implements IView {
     /**
      * Instantiates a new view facade.
      */
-
    private GameFrame frame;
-   private GraphicBuilder graph;
 
     public ViewFacade(OrderPerformerable orderPerformer) throws SQLException {
         super();
         frame = new GameFrame(new EventPerformer(orderPerformer));
-        graph = new GraphicBuilder();
     }
 
     /*
