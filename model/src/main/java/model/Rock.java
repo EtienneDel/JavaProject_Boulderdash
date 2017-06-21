@@ -1,22 +1,27 @@
 package model;
+
+import model.dao.MapDAO;
+
+import java.io.IOException;
+
 /**
  * <h1>the Rock class</h1>
  *
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
-public class Rock extends Tile implements Movable {
-
+public class Rock extends Tile implements Movable, IRock {
     /**
      * attribute
      */
     public final static int REF = 5;
+    private Map map = Map.getMap();
     /**
      * Constructor with parameter position of the tile
      * @param x
      * @param y
      */
-    public Rock(int x, int y) {
+    public Rock(int x, int y) throws IOException {
         super(x, y);
         setWalkable(false);
     }
@@ -24,7 +29,7 @@ public class Rock extends Tile implements Movable {
     /**
      * constuctor without parameter
      */
-    public Rock() {
+    public Rock() throws IOException {
         super();
         setWalkable(false);
     }
@@ -36,9 +41,12 @@ public class Rock extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveU(Position position) {
+    public void moveU(IPosition position) {
+        int x = position.getPosX();
         int y = position.getPosY();
-        setPosition(position.getPosX(), y+1);
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y-1,'5');
+        setPosition(position.getPosX(), y-1);
     }
 
     /**
@@ -46,10 +54,12 @@ public class Rock extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveD(Position position) {
+    public void moveD(IPosition position) {
+        int x = position.getPosX();
         int y = position.getPosY();
-        setPosition(position.getPosX(), y-1);
-
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y+1,'5');
+        setPosition(position.getPosX(), y+1);
     }
 
     /**
@@ -57,9 +67,12 @@ public class Rock extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveL(Position position) {
+    public void moveL(IPosition position) {
         int x = position.getPosX();
-        setPosition(x-1, position.getPosY());
+        int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x-1, y,'5');
+        setPosition(x-1, y);
     }
 
     /**
@@ -67,8 +80,17 @@ public class Rock extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveR(Position position) {
+    public void moveR(IPosition position) {
         int x = position.getPosX();
-        setPosition(x+1, position.getPosY());
+        int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x+1, y,'5');
+        setPosition(x+1, y);
+    }
+
+
+    @Override
+    public IRock getRock() throws IOException {
+        return new Rock();
     }
 }

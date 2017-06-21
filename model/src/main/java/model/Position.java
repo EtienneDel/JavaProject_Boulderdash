@@ -6,7 +6,7 @@ package model;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
-public class Position {
+public class Position implements IPosition {
 
     /**
      * attributes
@@ -27,11 +27,17 @@ public class Position {
 
     }
 
+    public Position(Position position) {
+        this.posX = position.getPosX();
+        this.posY = position.getPosY();
+    }
+
     /**
      * getter PosX
      *
      * @return
      */
+    @Override
     public int getPosX() {
         return posX;
     }
@@ -50,6 +56,7 @@ public class Position {
      *
      * @return
      */
+    @Override
     public int getPosY() {
         return posY;
     }
@@ -62,4 +69,16 @@ public class Position {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+
+    @Override
+    public void setPosition(int x, int y) {
+        this.posX = x;
+        this.posY = y;
+    }
+
+    @Override
+    public IPosition getPosition(int x, int y) {
+        return new Position(x, y);
+    }
+
 }

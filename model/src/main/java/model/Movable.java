@@ -8,8 +8,8 @@ package model;
  */
 public interface Movable {
 
-    public void moveU(Position position);
-    public void moveD(Position position);
-    public void moveL(Position position);
-    public void moveR(Position position);
+    public void moveU(IPosition position);
+    public void moveD(IPosition position);
+    public void moveL(IPosition position);
+    public void moveR(IPosition position);
 }

@@ -13,7 +13,7 @@ import java.util.List;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ModelFacade implements IModel {
+public class ModelFacade implements IModel, IMap {
 
     private Map map;
     private MapDAO mapDAO = null;
@@ -26,13 +26,12 @@ public class ModelFacade implements IModel {
     public ModelFacade(String nomMap) throws IOException, SQLException {
 
         mapDAO = MapDAO.setMapDAO(nomMap);
-        while(mapDAO == null);
         map = Map.getMap();
         String str_map;
 
         str_map = mapDAO.readMap(nomMap);
-        map_width = mapDAO.readSize(nomMap,"width");
-        map_height = mapDAO.readSize(nomMap,"heigth");
+        map_width = mapDAO.getMap_Width();
+        map_height = mapDAO.getMap_Heigth();
         tab_map = mapDAO.putMapInTable(str_map);
     }
 
@@ -76,6 +75,7 @@ public class ModelFacade implements IModel {
     }
 
     public char[][] getTab_map() {
+        tab_map = map.getTablemap();
         return tab_map;
     }
 
@@ -95,4 +95,39 @@ public class ModelFacade implements IModel {
         return assets;
     }
 
+    @Override
+    public IMap getTheMap() throws IOException {
+        return Map.getMap();
+    }
+
+    @Override
+    public IRock getRock() throws IOException {
+        return new Rock();
+    }
+
+    @Override
+    public IDiamond getDiamond() throws IOException {
+        return new Diamond();
+    }
+
+
+    @Override
+    public IPosition getPosition(int x, int y) {
+        return new Position(x, y);
+    }
+
+    @Override
+    public char getCharByPos(int x, int y) {
+        return 0;
+    }
+
+    @Override
+    public void setCharByPos(int x, int y, char chare) {
+
+    }
+
+    @Override
+    public Tilable getTileByPos(IPosition position) {
+        return null;
+    }
 }

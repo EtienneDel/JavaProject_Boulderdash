@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Entitie extends Tile implements Movable {
+public abstract class Entitie extends Tile implements Movable, IEntities{
 
     /**
      * attribute
@@ -34,7 +34,7 @@ public abstract class Entitie extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveU(Position position) {
+    public void moveU(IPosition position) {
         int y = position.getPosY();
         setPosition(position.getPosX(), y--);
     }
@@ -44,7 +44,7 @@ public abstract class Entitie extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveD(Position position) {
+    public void moveD(IPosition position) {
         int y = position.getPosY();
         setPosition(position.getPosX(), y++);
     }
@@ -54,7 +54,7 @@ public abstract class Entitie extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveL(Position position) {
+    public void moveL(IPosition position) {
         int x = position.getPosX();
         setPosition(x--, position.getPosY());
     }
@@ -64,7 +64,7 @@ public abstract class Entitie extends Tile implements Movable {
      * @param position
      */
     @Override
-    public void moveR(Position position) {
+    public void moveR(IPosition position) {
         int x = position.getPosX();
         setPosition(x++, position.getPosY());
     }

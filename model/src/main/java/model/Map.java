@@ -13,7 +13,7 @@ import java.util.HashMap;
 * @author Etienne Delnott / Paul Brouet
 * @version 1.0
 */
-public class Map {
+public class Map implements IMap {
 
     /**
      * attributes
@@ -41,13 +41,13 @@ public class Map {
      * @throws IOException
      */
     public void createTileTable() throws IOException {
-        int x = mapDAO.getMap_Heigth();
-        int y = mapDAO.getMap_Width();
+        int y = mapDAO.getMap_Heigth();
+        int x = mapDAO.getMap_Width();
         int e,  i;
         Tile tile;
 
-        for ( i = 0; i < y; i++) {
-            for (e = 0; e < x; e++) {
+        for ( i = 0; i < x; i++) {
+            for (e = 0; e < y; e++) {
                 switch (tablemap[i][e]) {
 
                     case 0:
@@ -137,8 +137,8 @@ public class Map {
      */
     public Tile getTileByPos(Position position) {
         final Tile[] toReturn = new Tile[1];
-        tiles.forEach((Tile k, Integer v) -> {
-            if(k.getPosition().equals(position)) {
+        tiles.forEach((k, v) -> {
+            if(k.getPosition().getPosY() == position.getPosY() && k.getPosition().getPosX() == position.getPosX()) {
                 toReturn[0] = k;
             }
         });
@@ -166,6 +166,10 @@ public class Map {
         return (Diamond) getTileByPos(position);
     }
 
+    public char[][] getTablemap() {
+        return tablemap;
+    }
+
     /**
      * get the instance of the map
      * @return
@@ -176,6 +180,10 @@ public class Map {
             instance = new Map();
         }
         return instance;
+    }
+
+    public IMap getTheMap() throws IOException {
+        return null;
     }
 
     /**
@@ -200,21 +208,26 @@ public class Map {
         return  c;
     }
 
+
+    @Override
+    public Tilable getTileByPos(IPosition position) {
+        return null;
+    }
+
     /**
      * set a specified char of the table at the position specified
      * @param x
      * @param y
      * @param chare
      */
-    public void setCharBypos(int x, int y, char chare){
+    @Override
+    public void setCharByPos(int x, int y, char chare){
 
 
         IModel test = null;
         try {
             test = new ModelFacade("maptest");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
         tablemap[x][y]= chare;

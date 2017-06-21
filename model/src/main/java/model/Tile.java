@@ -11,7 +11,7 @@ import model.dao.MapDAO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public class Tile implements Tilable {
 
     /**
      * attributes
@@ -96,6 +96,10 @@ public class Tile {
         position.setPosY(y);
     }
 
+    public void setPosition(Position position) {
+        this.position = new Position(position);
+    }
+
     /**
      * get the id/reference of the tile
      *
@@ -103,6 +107,11 @@ public class Tile {
      */
     public int getRef() {
         return REF;
+    }
+
+    @Override
+    public void setPosition(IPosition position) {
+        this.position = (Position) position;
     }
 
     /**
@@ -131,7 +140,7 @@ public class Tile {
      * getter and setter
      * @return
      */
-    public Position getPosition() {
+    public IPosition getPosition() {
         return position;
     }
 

@@ -8,12 +8,12 @@ package model;
 
 import java.io.IOException;
 
-public class Diamond extends Tile implements Breakable, Movable {
+public class Diamond extends Tile implements Breakable, Movable, IDiamond {
     /**
      * attribute
      */
     public final static int REF = 4;
-
+    private Map map = Map.getMap();
     /**
      * constructor with parameter position of the tile
      * @param x
@@ -51,16 +51,24 @@ public class Diamond extends Tile implements Breakable, Movable {
      * @param position
      */
     @Override
-    public void moveU(Position position) {
+    public void moveU(IPosition position) {
+        int x = position.getPosX();
+        int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y-1,'4');
+        setPosition(position.getPosX(), y-1);
     }
 
     /**
-     * move down
+     * move Down
      * @param position
      */
     @Override
-    public void moveD(Position position) {
+    public void moveD(IPosition position) {
+        int x = position.getPosX();
         int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y+1,'4');
         setPosition(position.getPosX(), y+1);
     }
 
@@ -69,7 +77,12 @@ public class Diamond extends Tile implements Breakable, Movable {
      * @param position
      */
     @Override
-    public void moveL(Position position) {
+    public void moveL(IPosition position) {
+        int x = position.getPosX();
+        int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x-1, y,'4');
+        setPosition(x-1, y);
     }
 
     /**
@@ -77,6 +90,17 @@ public class Diamond extends Tile implements Breakable, Movable {
      * @param position
      */
     @Override
-    public void moveR(Position position) {
+    public void moveR(IPosition position) {
+        int x = position.getPosX();
+        int y = position.getPosY();
+        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x+1, y,'4');
+        setPosition(x+1, y);
+    }
+
+
+    @Override
+    public IDiamond getDiamond() throws IOException {
+        return new Diamond();
     }
 }
