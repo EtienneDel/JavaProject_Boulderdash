@@ -1,26 +1,25 @@
 package view;
 
-import controller.Order;
-import controller.UserOrder;
-import controller.UserOrderable;
+import controller.*;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by ASUS on 15/06/2017.
  */
-public class EventPerformer implements KeyListener {
+public class EventPerformer implements EventPerformerable, IView {
 
-    public EventPerformer() {
+    private OrderPerformerable orderPerformer;
+    private UserOrderable userOrder;
 
+    public EventPerformer(final OrderPerformerable orderPerformer) {
+        this.orderPerformer = orderPerformer;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        UserOrderable userOrder;
+    public UserOrderable keyTyped(final int keyCode) {
 
-        switch (e.getKeyCode()) {
+        switch (keyCode) {
 
             case KeyEvent.VK_UP:
                 userOrder = new UserOrder(Order.UP);
@@ -37,17 +36,28 @@ public class EventPerformer implements KeyListener {
             case KeyEvent.VK_ESCAPE:
                 userOrder = new UserOrder(Order.ESCAPE);
                 break;
+            default:
+                userOrder = null;
         }
+        return userOrder;
 
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void eventPerform(final KeyEvent keyCode) {
+        final UserOrderable userOrder = this.keyTyped(keyCode.getKeyCode());
+        if (userOrder != null) {
+            this.orderPerformer.orderPerformer(userOrder);
+        }
+    }
+
+    @Override
+    public void displayMessage(String message) {
 
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void drawImage(BufferedImage image, int x, int y) {
 
     }
 }

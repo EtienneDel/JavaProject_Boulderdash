@@ -13,18 +13,24 @@ public class GamePanel extends JPanel {
     private int x;
     private int y;
 
+
     public GamePanel() {
-        image= new BufferedImage(1, 1, 1);
+        image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
     }
 
     public void setImage(BufferedImage image, int x, int y){
+
         this.image = image;
         this.x = x;
         this.y = y;
+
         repaint();
     }
 
     public void paintComponent(Graphics g){
+        Graphics paper = this.getGraphics();
+        paper.clearRect(0,0,1000,1000);
         g.drawImage(image, x, y, null);
+
     }
 }

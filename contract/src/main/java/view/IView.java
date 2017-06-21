@@ -1,5 +1,7 @@
 package view;
 
+import controller.UserOrderable;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;

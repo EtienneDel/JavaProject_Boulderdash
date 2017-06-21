@@ -1,6 +1,6 @@
 package view;
 
-import controller.IController;
+import controller.*;
 import model.IModel;
 
 import javax.swing.JOptionPane;
@@ -22,14 +22,11 @@ public class ViewFacade implements IView {
 
    private GameFrame frame;
    private GraphicBuilder graph;
-   private EventPerformer performer;
 
-    public ViewFacade() throws SQLException {
+    public ViewFacade(OrderPerformerable orderPerformer) throws SQLException {
         super();
-        frame = new GameFrame();
+        frame = new GameFrame(new EventPerformer(orderPerformer));
         graph = new GraphicBuilder();
-        performer = new EventPerformer();
-
     }
 
     /*
