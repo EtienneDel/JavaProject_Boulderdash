@@ -193,19 +193,7 @@ public class Map implements IMap {
      * @return
      */
     public char getCharByPos(int x, int y)  {
-
-        IModel test = null;
-        try {
-            test = new ModelFacade("maptest");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        char c = tablemap[x][y];
-
-        return  c;
+        return tablemap[x][y];
     }
 
 
@@ -222,14 +210,6 @@ public class Map implements IMap {
      */
     @Override
     public void setCharByPos(int x, int y, char chare){
-
-
-        IModel test = null;
-        try {
-            test = new ModelFacade("maptest");
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
         tablemap[x][y]= chare;
     }
 
