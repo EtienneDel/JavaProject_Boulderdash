@@ -1,5 +1,9 @@
 package controller;
 
+import model.IMap;
+
+import java.awt.*;
+
 /**
  * <h1>The Interface IController.</h1>
  * 
@@ -7,5 +11,5 @@ package controller;
  * @version 1.0
  */
 public interface IController {
-
+    IMap getTheMap();
 }
