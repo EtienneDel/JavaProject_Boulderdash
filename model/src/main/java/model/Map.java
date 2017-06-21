@@ -45,12 +45,9 @@ public class Map {
         int y = mapDAO.getMap_Width();
         int e,  i;
         Tile tile;
-        System.out.println(x);
-        System.out.println(y);
 
         for ( i = 0; i < y; i++) {
             for (e = 0; e < x; e++) {
-                System.out.println(i + " " + e);
                 switch (tablemap[i][e]) {
 
                     case 0:
@@ -220,12 +217,7 @@ public class Map {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        System.out.println(tablemap[x][y]);
         tablemap[x][y]= chare;
-        System.out.println(tablemap[x][y]);
-
-
     }
 
     /**

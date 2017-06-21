@@ -9,7 +9,6 @@ public class UserOrder implements UserOrderable {
 
     public UserOrder(final Order order) {
         this.order = order;
-
     }
 
     public Order getOrder() {

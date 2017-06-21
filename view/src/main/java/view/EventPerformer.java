@@ -33,14 +33,10 @@ public class EventPerformer implements EventPerformerable, IView {
             case KeyEvent.VK_RIGHT:
                 userOrder = new UserOrder(Order.RIGHT);
                 break;
-            case KeyEvent.VK_ESCAPE:
-                userOrder = new UserOrder(Order.ESCAPE);
-                break;
             default:
                 userOrder = null;
         }
         return userOrder;
-
     }
 
     @Override

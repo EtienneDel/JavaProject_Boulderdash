@@ -26,7 +26,6 @@ private EventPerformerable eventPerformer;
         setBackground(Color.black);
         setTitle("MOULDER DASH ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setUndecorated(true);
         this.setContentPane(panel);
 
         this.setLocationRelativeTo(null);

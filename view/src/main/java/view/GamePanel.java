@@ -28,8 +28,6 @@ public class GamePanel extends JPanel {
     }
 
     public void paintComponent(Graphics g){
-        Graphics paper = this.getGraphics();
-        paper.clearRect(0,0,1000,1000);
         g.drawImage(image, x, y, null);
 
     }

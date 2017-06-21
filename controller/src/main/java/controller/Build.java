@@ -17,7 +17,7 @@ public class Build {
     private final IView view;
     private final IModel model;
     private BufferedImage map;
-    private int xM = 0, yM = 0;
+    private int xM = 236, yM = 259;
 
 
     public Build(final IView view, final IModel model) throws IOException {

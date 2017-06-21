@@ -7,6 +7,5 @@ public enum Order {
     UP,
     DOWN,
     LEFT,
-    RIGHT,
-    ESCAPE
+    RIGHT
 }
