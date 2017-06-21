@@ -16,6 +16,8 @@ public class RockController extends DiamondController{
 
     public void refresh(IPosition position) throws IOException {
         super.refresh(position);
+        if(map.getCharByPos(position.getPosX(), position.getPosY()) != '5')
+            return;
 
         Movable movable = (Movable) model.getRock();
 
