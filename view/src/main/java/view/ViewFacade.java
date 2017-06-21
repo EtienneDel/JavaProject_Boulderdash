@@ -1,10 +1,6 @@
 package view;
 
-import controller.*;
-import model.IModel;
-
-import javax.swing.JOptionPane;
-import java.awt.*;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 

@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -1,13 +1,11 @@
 package main;
 
-import java.awt.*;
+import controller.ControllerFacade;
+import model.ModelFacade;
+import view.ViewFacade;
+
 import java.io.IOException;
 import java.sql.SQLException;
-import controller.ControllerFacade;
-import controller.IController;
-import model.ModelFacade;
-import model.SpriteSheet;
-import view.ViewFacade;
 
 /**
  * <h1>The Class Main.</h1>

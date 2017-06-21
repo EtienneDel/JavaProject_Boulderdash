@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Entitie extends Tile implements Movable{
+public abstract class Entitie extends Tile implements Movable {
 
     /**
      * attribute

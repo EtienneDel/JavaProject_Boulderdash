@@ -1,13 +1,11 @@
 package model;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import model.dao.ExampleDAO;
+import model.dao.MapDAO;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
-import model.dao.ExampleDAO;
-import model.dao.MapDAO;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>

@@ -1,6 +1,8 @@
 package view;
 
-import controller.*;
+import controller.Order;
+import controller.UserOrder;
+import controller.UserOrderable;
 
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;

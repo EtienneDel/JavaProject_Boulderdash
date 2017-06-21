@@ -1,4 +1,4 @@
-/*package controller;
+package controller;/*package controller;
 
 import model.Enemy;
 import model.Map;

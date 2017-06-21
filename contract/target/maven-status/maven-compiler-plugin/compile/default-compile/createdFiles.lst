@@ -1,6 +1,0 @@
-model\Assetable.class
-view\IView.class
-model\Example.class
-model\IModel.class
-controller\IController.class
-model\Tilable.class

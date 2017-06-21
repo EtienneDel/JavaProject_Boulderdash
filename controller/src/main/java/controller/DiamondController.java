@@ -1,4 +1,4 @@
-/*package controller;
+package controller;/*package controller;
 
 import model.Diamond;
 import model.Map;
