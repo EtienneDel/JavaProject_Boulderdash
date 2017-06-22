@@ -42,11 +42,6 @@ public class DiamondController {
     protected void refreshAround(IPosition position) throws IOException {
         //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
 
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
         refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
         refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
