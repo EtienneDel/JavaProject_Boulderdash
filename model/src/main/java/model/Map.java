@@ -32,7 +32,7 @@ public class Map implements IMap {
         this.mapDAO = MapDAO.getMapDAO();
 
         this.tablemap = mapDAO.getTablemap();
-        createTileTable();
+        //createTileTable();
 
     }
 
@@ -48,7 +48,7 @@ public class Map implements IMap {
 
         for ( i = 0; i < x; i++) {
             for (e = 0; e < y; e++) {
-                switch (tablemap[i][e]) {
+                /*switch (tablemap[i][e]) {
 
                     case 0:
                         tile = new Dirt(i, e);
@@ -83,7 +83,7 @@ public class Map implements IMap {
                 }
 
                 tiles.put(tile, (int) tablemap[i][e]);
-
+*/
             }
         }
     }

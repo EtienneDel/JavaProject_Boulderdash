@@ -110,6 +110,16 @@ public class ModelFacade implements IModel, IMap {
         return new Diamond();
     }
 
+    @Override
+    public ICharacter setTheCharacterA(int x, int y) throws IOException {
+        return Character.setTheCharacter(x,y);
+    }
+
+    @Override
+    public ICharacter getTheCharacterA() throws IOException {
+        return Character.getTheCharacter();
+    }
+
 
     @Override
     public IPosition getPosition(int x, int y) {

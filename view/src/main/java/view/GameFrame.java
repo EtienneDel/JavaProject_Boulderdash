@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -43,7 +44,11 @@ private EventPerformerable eventPerformer;
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        this.eventPerformer.eventPerform(keyEvent);
+        try {
+            this.eventPerformer.eventPerform(keyEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

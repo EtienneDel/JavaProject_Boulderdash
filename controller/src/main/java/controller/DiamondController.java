@@ -20,7 +20,8 @@ public class DiamondController {
     }
 
     public void refresh(IPosition position) throws IOException {
-        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
+
+        if(!(position.getPosX() > 0 && position.getPosY() > 0 && map.getCharByPos(position.getPosX(), position.getPosY()) == '4'))
             return;
 
         Movable movable = (Movable) model.getDiamond();
