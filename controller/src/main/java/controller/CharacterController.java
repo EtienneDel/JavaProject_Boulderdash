@@ -41,25 +41,61 @@ private DiamondController diamondController;
     }
 
     protected void moveUp(Movable movable, IPosition position) throws IOException {
-        movable.moveU(position);
+        switch(map.getCharByPos(position.getPosX(), position.getPosY()-1)){
+            case '1':
+                break;
+            case '3':
+                break;
+            case '5':
+                break;
+            default:
+                movable.moveU(position);
+        }
         build.calculateMap();
         refreshAround(position);
     }
 
     protected void moveDown(Movable movable, IPosition position) throws IOException {
-        movable.moveD(position);
+        switch(map.getCharByPos(position.getPosX(), position.getPosY()+1)){
+            case '1':
+                break;
+            case '3':
+                break;
+            case '5':
+                break;
+            default:
+                movable.moveD(position);
+        }
         build.calculateMap();
         refreshAround(position);
     }
 
     protected void moveLeft(Movable movable, IPosition position) throws IOException {
-        movable.moveL(position);
+        switch(map.getCharByPos(position.getPosX()-1, position.getPosY())){
+            case '1':
+                break;
+            case '3':
+                break;
+            case '5':
+                break;
+            default:
+                movable.moveL(position);
+        }
         build.calculateMap();
         refreshAround(position);
     }
 
     protected void moveRight(Movable movable, IPosition position) throws IOException {
-        movable.moveR(position);
+        switch(map.getCharByPos(position.getPosX()+1, position.getPosY())){
+            case '1':
+                break;
+            case '3':
+                break;
+            case '5':
+                break;
+            default:
+                movable.moveR(position);
+        }
         build.calculateMap();
         refreshAround(position);
     }
