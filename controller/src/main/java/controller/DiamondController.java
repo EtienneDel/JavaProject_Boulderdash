@@ -13,10 +13,12 @@ import java.io.IOException;
 public class DiamondController {
     protected IMap map;
     protected IModel model;
+    protected Build build;
 
-    public DiamondController(IModel model) throws IOException {
+    public DiamondController(IModel model, Build build) throws IOException {//todo remove build -- debug
         this.map = model.getTheMap();
         this.model = model;
+        this.build = build;
     }
 
     public void refresh(IPosition position) throws IOException {
@@ -29,7 +31,7 @@ public class DiamondController {
 
         if (bottomTile == '7')//monstre
             explode(true, position);
-        else if (bottomTile == '0')//bloc cassable
+        else if (bottomTile == '3')//bloc cassable
             explode(false, position);
         else if (bottomTile == '2')//vide
             moveDown(movable, position);
@@ -38,14 +40,15 @@ public class DiamondController {
 
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         movable.moveD(position);
-
+        build.calculateMap();
         refreshAround(position);
     }
 
     protected void refreshAround(IPosition position) throws IOException {
         //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
+
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -56,7 +59,15 @@ public class DiamondController {
     }
 
     protected void explode(boolean diamondShower, IPosition position) {
-
+        position.setPosition(position.getPosX(), position.getPosY()+1);
+        if(diamondShower)
+            for(int i=-1; i<2;i++)
+                for(int j=-1; j<2;j++)
+                    map.setCharByPos(position.getPosX()+i,position.getPosY()+j, '4' );
+        else
+            for(int i=-1; i<2;i++)
+                for(int j=-1; j<2;j++)
+                    map.setCharByPos(position.getPosX()+i,position.getPosY()+j, '2' );
     }
 }
 

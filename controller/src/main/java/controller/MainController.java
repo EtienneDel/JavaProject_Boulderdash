@@ -10,7 +10,7 @@ import java.util.Observer;
 /**
  * Created by Julien on 21/06/2017.
  */
-public class MainController {
+public class MainController implements Observer{
     private CharacterController characterController;
     private RockController rockController;
     private DiamondController diamondController;
@@ -27,17 +27,18 @@ public class MainController {
         IPosition positionChar = model.getPosition(1,1);
         IMap map = model.getTheMap();
         characterController = new CharacterController(model);
-        rockController = new RockController(model);
-        diamondController = new DiamondController(model);
+        rockController = new RockController(model, build);
+        diamondController = new DiamondController(model, build);
         model.setTheCharacterA(1,1);
 
         position.setPosition(7,4);
-
-
-        characterController.refresh(positionChar);
         diamondController.refresh(position);
-        //position.setPosition(3,7);
-        //rockController.refresh(position);
+
+        //characterController.refresh(positionChar);
+        position.setPosition(5,4);
+        rockController.refresh(position);
+        position.setPosition(3,7);
+        rockController.refresh(position);
     }
 
     @Override
