@@ -42,6 +42,5 @@ public class MainController implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         build.calculateMap();
-        System.out.println("update");
     }
 }

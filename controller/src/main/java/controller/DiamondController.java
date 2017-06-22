@@ -36,7 +36,6 @@ public class DiamondController {
 
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         movable.moveD(position);
-        //build.calculateMap();
         refreshAround(position);
     }
 
