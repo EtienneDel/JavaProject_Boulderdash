@@ -1,6 +1,7 @@
 package view;
 
 import controller.OrderPerformerable;
+import model.IModel;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -19,9 +20,9 @@ public class ViewFacade implements IView {
      */
    private GameFrame frame;
 
-    public ViewFacade(OrderPerformerable orderPerformer) throws SQLException {
+    public ViewFacade(OrderPerformerable orderPerformer, IModel model) throws SQLException {
         super();
-        frame = new GameFrame(new EventPerformer(orderPerformer));
+        frame = new GameFrame(new EventPerformer(orderPerformer), model);
     }
 
     /*
@@ -36,5 +37,11 @@ public class ViewFacade implements IView {
     @Override
     public void drawImage(BufferedImage image, int x, int y) {
         frame.getGamePanel().setImage(image, x, y);
+        frame.getGamePanel().propertiespoints();
+        int a = 2;
+		if (a==2){
+        frame.getGamePanel().removepoints();
+        a = 0;
+        }
     }
 }

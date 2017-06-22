@@ -23,8 +23,10 @@ public abstract class Main {
      * @throws SQLException 
      */
     public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
-        ControllerFacade controller = new ControllerFacade(new ModelFacade("testrock"));
-        ViewFacade view = new ViewFacade(controller);
+
+    	ModelFacade model = new ModelFacade("map1");
+    	ControllerFacade controller = new ControllerFacade(model);
+        ViewFacade view = new ViewFacade(controller,model);
         controller.setView(view);
 
         controller.start();

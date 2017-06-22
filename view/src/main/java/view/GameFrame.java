@@ -1,6 +1,7 @@
 package view;
 
 import controller.EventPerformerable;
+import model.IModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,18 +19,18 @@ public class GameFrame extends JFrame implements KeyListener {
 private GamePanel panel;
 private EventPerformerable eventPerformer;
 
-    public GameFrame(final EventPerformerable eventPerformer) throws SQLException {
+    public GameFrame(final EventPerformerable eventPerformer, IModel model) throws SQLException {
         super();
         this.eventPerformer = eventPerformer;
         this.addKeyListener(this);
-        panel = new GamePanel();
+        panel = new GamePanel(model);
         setSize(500,550);
         setBackground(Color.black);
         setTitle("MOULDER DASH ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel);
-
-        this.setLocationRelativeTo(null);
+        
+        this.setLocation(100, 100);
         setVisible(true);
     }
 
