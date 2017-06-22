@@ -26,8 +26,8 @@ public class MainController implements Observer{
         IPosition position = model.getPosition(3,1);
         IPosition positionChar = model.getPosition(1,1);
         IMap map = model.getTheMap();
-        rockController = new RockController(model, build);
-        diamondController = new DiamondController(model, build);
+        rockController = new RockController(model);
+        diamondController = new DiamondController(model);
 
         position.setPosition(7,4);
         diamondController.refresh(position);
