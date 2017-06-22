@@ -20,12 +20,12 @@ public class DiamondController {
     }
 
     public void refresh(IPosition position) throws IOException {
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
 
-        if(!(position.getPosX() > 0 && position.getPosY() > 0 && map.getCharByPos(position.getPosX(), position.getPosY()) == '4'))
+        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
             return;
 
         Movable movable = (Movable) model.getDiamond();
-        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
 
         if (bottomTile == '7')//monstre
             explode(true, position);
@@ -43,6 +43,12 @@ public class DiamondController {
     }
 
     protected void refreshAround(IPosition position) throws IOException {
+        //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
         refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
         refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
