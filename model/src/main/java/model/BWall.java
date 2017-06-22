@@ -45,4 +45,9 @@ public class BWall extends Tile implements Breakable, Tilable {
         setWalkable(false);
 
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

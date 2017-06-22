@@ -108,6 +108,11 @@ public class Tile implements Tilable {
         this.position = (Position) position;
     }
 
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
+
     /**
      * set the id of the tile
      *

@@ -99,4 +99,9 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
     public IDiamond getDiamond() throws IOException {
         return new Diamond();
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

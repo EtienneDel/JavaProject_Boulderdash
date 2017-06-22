@@ -32,4 +32,9 @@ public class Character extends Entitie implements Tilable {
 
 
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

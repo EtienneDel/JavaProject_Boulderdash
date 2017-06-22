@@ -34,4 +34,8 @@ public class Enemy extends Entitie {
 
     }
 
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

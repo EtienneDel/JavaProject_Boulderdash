@@ -89,4 +89,9 @@ public class Rock extends Tile implements Movable, IRock {
     public IRock getRock() throws IOException {
         return new Rock();
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

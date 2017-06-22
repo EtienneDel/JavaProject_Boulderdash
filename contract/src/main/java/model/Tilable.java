@@ -7,5 +7,6 @@ public interface Tilable {
 
     int getRef();
     void setPosition(IPosition position);
+    Boolean getwlakable();
 
 }
