@@ -104,4 +104,9 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public void setPosition(IPosition position) {
         this.position = position;
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }

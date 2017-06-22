@@ -37,4 +37,9 @@ public class Dirt extends Tile implements Breakable {
     @Override
     public void isBreak() {
     }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
+    }
 }
