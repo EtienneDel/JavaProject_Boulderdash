@@ -12,12 +12,11 @@ protected IMap map;
 protected IModel model;
 protected Build build;
 private IPosition position;
-private ICharacter character;
 
-    public CharacterController(IModel model, Build build) throws IOException {
+    public CharacterController(IModel model) throws IOException {
         this.map = model.getTheMap();
         this.model = model;
-        this.build = build;
+
     }
 
     public void refresh(IPosition position) throws IOException {
@@ -25,7 +24,6 @@ private ICharacter character;
 
         if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
             return;
-
 
     }
 
