@@ -34,7 +34,6 @@ public class Map extends java.util.Observable implements IMap {
         this.mapDAO = MapDAO.getMapDAO();
 
         this.tablemap = mapDAO.getTablemap();
-        //createTileTable();
 
     }
 
@@ -136,6 +135,7 @@ public class Map extends java.util.Observable implements IMap {
     @Override
     public void setCharByPos(int x, int y, char chare){
         tablemap[x][y]= chare;
+        setChanged();
         notifyObservers();
     }
 

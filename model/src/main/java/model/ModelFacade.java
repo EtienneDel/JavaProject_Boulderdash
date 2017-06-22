@@ -6,6 +6,7 @@ import model.dao.MapDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Observer;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -98,6 +99,11 @@ public class ModelFacade implements IModel, IMap {
     @Override
     public IMap getTheMap() throws IOException {
         return Map.getMap();
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        map.addObserver(o);
     }
 
     @Override

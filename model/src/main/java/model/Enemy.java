@@ -5,7 +5,7 @@ package model;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
-public class Enemy extends Entitie {
+public class Enemy extends Entitie implements IEnemies {
 
     /**
      * attributes
@@ -31,11 +31,34 @@ public class Enemy extends Entitie {
     public Enemy() {
         super();
         setWalkable(false);
+    }
 
+    public void moveDown(IPosition position) {
+        moveD(position);
+        setLastDirection(3);
+    }
+
+    public void moveRight(IPosition position) {
+        moveR(position);
+        setLastDirection(2);
+    }
+
+    public void moveUp(IPosition position) {
+        moveU(position);
+        setLastDirection(1);
+    }
+
+    public void moveLeft(IPosition position) {
+        moveL(position);
+        setLastDirection(0);
+    }
+
+    public void setLastDirection(int direction) {
+        this.lastDirection = direction;
     }
 
     @Override
-    public Boolean getwlakable() {
-        return getWalkable();
+    public int getLastDirection() {
+        return lastDirection;
     }
 }
