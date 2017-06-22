@@ -57,4 +57,9 @@ public class EventPerformer implements EventPerformerable, IView {
     public void drawImage(BufferedImage image, int x, int y) {
 
     }
+
+    @Override
+    public void initScore() {
+
+    }
 }
