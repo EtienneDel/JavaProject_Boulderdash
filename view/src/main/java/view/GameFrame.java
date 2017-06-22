@@ -24,7 +24,7 @@ private EventPerformerable eventPerformer;
         this.eventPerformer = eventPerformer;
         this.addKeyListener(this);
         panel = new GamePanel(model);
-        setSize(500,550);
+        setSize(500,600);
         setBackground(Color.black);
         setTitle("MOULDER DASH ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

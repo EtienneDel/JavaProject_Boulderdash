@@ -38,18 +38,20 @@ public class GamePanel extends JPanel {
         g.setColor(Color.black);
         g.fillRect(0,0,1000,1000);
         g.drawImage(image, x, y, null);
+        g.setColor(Color.white);
+        g.fillRect(0,460, 500, 200);
 
     }
+
     public void removepoints(){
     	this.remove(points);
     }
     public void propertiespoints(){
-    	score+=1;
+    	
     	
     	points = new JLabel();
-    	this.points.setBackground(Color.WHITE);
-		this.points.setBounds(300, 220, 500, 500);
-		this.points.setText("score : "+score +"/"+nbdiamonds);
+		this.points.setBounds(300, 260, 500, 500);
+		this.points.setText("score : "+score +"/"+nbdiamonds+" diamonds");
 		this.add(points);
     }
     public void setScore(int score){
