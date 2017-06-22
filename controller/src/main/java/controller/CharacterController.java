@@ -49,6 +49,9 @@ private int colli = 0;
             case '3':
                 colli = 1;
                 break;
+            case '4':
+                colli = 3;
+                break;
             case '5':
                 colli = 1;
                 break;
@@ -66,6 +69,9 @@ private int colli = 0;
                 break;
             case '3':
                 colli = 1;
+                break;
+            case '4':
+                colli = 3;
                 break;
             case '5':
                 colli = 1;
@@ -85,8 +91,16 @@ private int colli = 0;
             case '3':
                 colli = 1;
                 break;
+            case '4':
+                colli = 3;
+                break;
             case '5':
-                colli = 1;
+                if(map.getCharByPos(position.getPosX()-2, position.getPosY())=='2'){
+                    colli = 2;
+                }
+                else {
+                    colli = 1;
+                }
                 break;
             default:
                 movable.moveL(position);
@@ -102,6 +116,9 @@ private int colli = 0;
                 break;
             case '3':
                 colli = 1;
+                break;
+            case '4':
+                colli = 3;
                 break;
             case '5':
                 colli = 1;
@@ -143,9 +160,5 @@ private int colli = 0;
 
     public int getColli() {
         return colli;
-    }
-
-    public void setColli(int colli) {
-        this.colli = colli;
     }
 }

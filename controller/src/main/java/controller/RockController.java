@@ -42,14 +42,14 @@ public class RockController extends DiamondController{
         refreshAround(position);
     }
 
-    private void moveLeft(Movable movable, IPosition position) throws IOException {
+    public void moveLeft(Movable movable, IPosition position) throws IOException {
         movable.moveL(position);
         movable.moveD(model.getPosition(position.getPosX()-1, position.getPosY()));
 
         refreshAround(position);
     }
 
-    private void moveRight(Movable movable, IPosition position) throws IOException {
+    public void moveRight(Movable movable, IPosition position) throws IOException {
         movable.moveR(position);
         movable.moveD(model.getPosition(position.getPosX()+1, position.getPosY()));
 
