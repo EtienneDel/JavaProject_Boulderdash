@@ -1,9 +1,6 @@
 package controller;
 
-import model.ICharacter;
-import model.IMap;
-import model.IModel;
-import model.IPosition;
+import model.*;
 
 import java.io.IOException;
 
@@ -11,41 +8,57 @@ import java.io.IOException;
  * Created by Etienne on 21/06/2017.
  */
 public class CharacterController implements OrderPerformerable{
+protected IMap map;
+protected IModel model;
+protected Build build;
+private IPosition position;
+private ICharacter character;
 
-    private IMap map;
-    private IModel model;
-    private char order;
-    private ICharacter character;
-
-    public CharacterController(IModel model) throws IOException {
-        this.model = model;
+    public CharacterController(IModel model, Build build) throws IOException {
         this.map = model.getTheMap();
-        this.character = model.getTheCharacterA();
+        this.model = model;
+        this.build = build;
     }
 
+    public void refresh(IPosition position) throws IOException {
+        this.position = position;
+
+        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
+            return;
 
 
-    private void moveUp(ICharacter character, IPosition position) throws IOException {
-        character.moveU(position);
+    }
+
+    protected void moveUp(Movable movable, IPosition position) throws IOException {
+        movable.moveU(position);
+        build.calculateMap();
         refreshAround(position);
     }
 
-    private void moveLeft(ICharacter character, IPosition position) throws IOException {
-        character.moveL(position);
+    protected void moveDown(Movable movable, IPosition position) throws IOException {
+        movable.moveD(position);
+        build.calculateMap();
         refreshAround(position);
     }
 
-    private void moveRight(ICharacter character, IPosition position) throws IOException {
-        character.moveR(position);
+    protected void moveLeft(Movable movable, IPosition position) throws IOException {
+        movable.moveL(position);
+        build.calculateMap();
         refreshAround(position);
     }
 
-    private void moveDown(ICharacter character, IPosition position) throws IOException {
-        character.moveD(position);
+    protected void moveRight(Movable movable, IPosition position) throws IOException {
+        movable.moveR(position);
+        build.calculateMap();
         refreshAround(position);
     }
 
-    private void refreshAround(IPosition position) throws IOException {
+    protected void refreshAround(IPosition position) throws IOException {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
         refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
         refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
@@ -54,48 +67,20 @@ public class CharacterController implements OrderPerformerable{
 
     @Override
     public void orderPerformer(UserOrderable userOrder) throws IOException {
-        switch (userOrder.getOrder()){
+        Movable movable = (Movable) model.getTheCharacterA();
+
+        switch(userOrder.getOrder()){
             case UP:
-                order = 'u';
+                moveUp(movable,position);
                 break;
             case DOWN:
-                order = 'd';
+                moveDown(movable,position);
                 break;
             case LEFT:
-                order = 'l';
+                moveLeft(movable,position);
                 break;
             case RIGHT:
-                order = 'r';
-                break;
-        }
-        refresh(character.getPosition());
-        System.out.println(userOrder.getOrder());
-        System.out.println(order);
-    }
-
-    public void refresh(IPosition position) throws IOException {
-
-        System.out.println(position.getPosX()+" "+position.getPosY());
-        System.out.println(map.getCharByPos(position.getPosX(), position.getPosY())!='8');
-        if(map.getCharByPos(position.getPosX(), position.getPosY())!='8')
-            return;
-        System.out.println("ok");
-
-
-        ICharacter character = model.getTheCharacterA();
-
-        switch (order){
-            case 'u':
-                moveUp(character,position);
-                break;
-            case 'd':
-                moveDown(character,position);
-                break;
-            case 'l':
-                moveLeft(character,position);
-                break;
-            case 'r':
-                moveRight(character,position);
+                moveRight(movable,position);
                 break;
         }
     }
