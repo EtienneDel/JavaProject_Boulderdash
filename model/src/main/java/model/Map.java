@@ -1,5 +1,7 @@
 package model;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import model.dao.MapDAO;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ import java.util.HashMap;
 * @author Etienne Delnott / Paul Brouet
 * @version 1.0
 */
-public class Map implements IMap {
+public class Map extends java.util.Observable implements IMap {
 
     /**
      * attributes
@@ -88,83 +90,6 @@ public class Map implements IMap {
         }
     }
 
-    /**
-     * get the list of rocks
-     * @return
-     */
-    public ArrayList<Rock> getListRock() {
-        ArrayList<Rock> list = new ArrayList<>();
-        tiles.forEach((k, v) -> {
-            if(v == 5) {
-                list.add((Rock) k);
-            }
-        });
-        return list;
-    }
-
-    /**
-     * get the list of all diamonds
-     * @return
-     */
-    public ArrayList<Diamond> getListDiamond() {
-        ArrayList<Diamond> list = new ArrayList<>();
-        tiles.forEach((k, v) -> {
-            if(v == 5) {
-                list.add((Diamond) k);
-            }
-        });
-        return list;
-    }
-
-    /**
-     * get the list of all enemies
-     * @return
-     */
-    public ArrayList<Enemy> getListEnemy() {
-        ArrayList<Enemy> list = new ArrayList<>();
-        tiles.forEach((k, v) -> {
-            if(v == 5) {
-                list.add((Enemy) k);
-            }
-        });
-        return list;
-    }
-
-    /**
-     * get a tile by his position
-     * @param position
-     * @return
-     */
-    public Tile getTileByPos(Position position) {
-        final Tile[] toReturn = new Tile[1];
-        tiles.forEach((k, v) -> {
-            if(k.getPosition().getPosY() == position.getPosY() && k.getPosition().getPosX() == position.getPosX()) {
-                toReturn[0] = k;
-            }
-        });
-
-        return toReturn[0];
-    }
-
-    /**
-     * get a rock by his position
-     * @param position
-     * @return
-     */
-    public Rock getRockByPos(Position position) {
-
-        return (Rock) getTileByPos(position);
-    }
-
-    /**
-     * get a diamond by his position
-     * @param position
-     * @return
-     */
-    public Diamond getDiamondByPos(Position position) {
-
-        return (Diamond) getTileByPos(position);
-    }
 
     public char[][] getTablemap() {
         return tablemap;
@@ -211,6 +136,7 @@ public class Map implements IMap {
     @Override
     public void setCharByPos(int x, int y, char chare){
         tablemap[x][y]= chare;
+        notifyObservers();
     }
 
     /**
@@ -220,4 +146,5 @@ public class Map implements IMap {
     public HashMap<Tile, Integer> getTiles() {
         return tiles;
     }
+
 }
