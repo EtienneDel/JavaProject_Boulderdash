@@ -62,6 +62,8 @@ public interface IModel {
     IRock getRock() throws IOException;
 
     IDiamond getDiamond() throws IOException;
+    
+    int getDiamonds();
 
     ICharacter setTheCharacterA(int x, int y) throws IOException;
 

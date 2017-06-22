@@ -140,4 +140,10 @@ public class ModelFacade implements IModel, IMap {
     public Tilable getTileByPos(IPosition position) {
         return null;
     }
+
+	@Override
+	public int getDiamonds() {
+		// TODO Auto-generated method stub
+		return mapDAO.getdiamonds();
+	}
 }

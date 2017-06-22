@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+
 public class MapDAO extends AbstractDAO {
 
     /**
@@ -22,7 +24,8 @@ public class MapDAO extends AbstractDAO {
     ResultSet rs = null;
     Statement st = null;
     Connection conn = null;
-    private String sql_map, sqlWidth, sqlHeigth;
+    private String sql_map, sqlWidth, sqlHeigth,sqldiamonds;
+    private int amntdiamonds;
     private char tablemap[][];
     private int map_width, map_height;
     private char tab_map[][];
@@ -42,6 +45,7 @@ public class MapDAO extends AbstractDAO {
         map_width = readSize(nomMap, "width");
         map_height = readSize(nomMap, "heigth");
         tab_map = putMapInTable(str_map);
+        amntdiamonds = getDiamondssss(nomMap);
     }
 
     /**
@@ -84,6 +88,7 @@ public class MapDAO extends AbstractDAO {
         sql_map = "CALL recupere_map('" + title_map + "')";
         sqlWidth = "CALL recup_width('" + title_map + "')";
         sqlHeigth = "CALL recup_heigth('" + title_map + "')";
+        sqldiamonds =  "CALL recup_diamonds('" + title_map + "')";
     }
 
     /**
@@ -156,7 +161,53 @@ public class MapDAO extends AbstractDAO {
 
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * get the amount of diamonds in DB
+     * 
+     * 
+     * @param title
+     * @return amntdiamonds 
+     * @throws SQLException
+     */
+    public int getDiamondssss(String title) throws SQLException{
+    	conn = boulderDashBDD.getConnection(); //get the connection to the database
+        st = conn.createStatement(); //Initialization of the statement
+        amntdiamonds = 0;
+        setmap(title);
 
+        rs = st.executeQuery(sqldiamonds); //execute the request
+        if (rs.next()) { //get the first result
+            amntdiamonds = rs.getInt("nb_diamonds"); //get the content of column level
+            rs.close();
+        }
+       return amntdiamonds;
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * transform the string map into a table
      *
@@ -200,5 +251,12 @@ public class MapDAO extends AbstractDAO {
     public void setMap_Width(int map_Width) {
         this.map_Width = map_Width;
     }
+
+	
+	public int getdiamonds(){
+		// TODO Auto-generated method stub
+		int chare = amntdiamonds;
+		return chare ;
+	}
 }
 
