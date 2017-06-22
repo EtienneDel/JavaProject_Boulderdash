@@ -14,6 +14,7 @@ protected Build build;
 private IPosition position;
 private RockController rockController;
 private DiamondController diamondController;
+private int colli = 0;
 
     public CharacterController(IModel model, Build build) throws IOException {
         this.map = model.getTheMap();
@@ -43,10 +44,13 @@ private DiamondController diamondController;
     protected void moveUp(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX(), position.getPosY()-1)){
             case '1':
+                colli = 1;
                 break;
             case '3':
+                colli = 1;
                 break;
             case '5':
+                colli = 1;
                 break;
             default:
                 movable.moveU(position);
@@ -58,10 +62,13 @@ private DiamondController diamondController;
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX(), position.getPosY()+1)){
             case '1':
+                colli = 1;
                 break;
             case '3':
+                colli = 1;
                 break;
             case '5':
+                colli = 1;
                 break;
             default:
                 movable.moveD(position);
@@ -73,10 +80,13 @@ private DiamondController diamondController;
     protected void moveLeft(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX()-1, position.getPosY())){
             case '1':
+                colli = 1;
                 break;
             case '3':
+                colli = 1;
                 break;
             case '5':
+                colli = 1;
                 break;
             default:
                 movable.moveL(position);
@@ -88,10 +98,13 @@ private DiamondController diamondController;
     protected void moveRight(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX()+1, position.getPosY())){
             case '1':
+                colli = 1;
                 break;
             case '3':
+                colli = 1;
                 break;
             case '5':
+                colli = 1;
                 break;
             default:
                 movable.moveR(position);
@@ -126,5 +139,13 @@ private DiamondController diamondController;
                 moveRight(movable,position);
                 break;
         }
+    }
+
+    public int getColli() {
+        return colli;
+    }
+
+    public void setColli(int colli) {
+        this.colli = colli;
     }
 }

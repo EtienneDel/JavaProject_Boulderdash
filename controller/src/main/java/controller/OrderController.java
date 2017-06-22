@@ -18,6 +18,7 @@ public class OrderController extends java.util.Observable {
     public OrderController(Build build) {
         this.build = build;
     }
+    private int collision;
 
     public void performOrder(UserOrderable userOrder, IModel model) throws IOException {
         int x = build.getPosX();
@@ -27,26 +28,42 @@ public class OrderController extends java.util.Observable {
         Movable movable = (Movable) model.getDiamond();
         position = model.getPosition(i,j);
 
+
         switch (userOrder.getOrder()) {
             case UP:
-                y += 16;
                 character.moveUp(movable,position);
-                j--;
+                collision = character.getColli();
+                if(collision != 1){
+                    j--;
+                    y+=16;
+                }
                 break;
             case DOWN:
-                y -= 16;
+
                 character.moveDown(movable,position);
-                j++;
+                collision = character.getColli();
+                if(collision != 1) {
+                    j++;
+                    y -= 16;
+                }
                 break;
             case LEFT:
-                x += 16;
+
                 character.moveLeft(movable,position);
-                i--;
+                collision = character.getColli();
+                if(collision != 1) {
+                    i--;
+                    x += 16;
+                }
                 break;
             case RIGHT:
-                x -= 16;
+
                 character.moveRight(movable,position);
-                i++;
+                collision = character.getColli();
+                if(collision != 1) {
+                    i++;
+                    x -= 16;
+                }
                 break;
         }
         character.refreshAround(position);
