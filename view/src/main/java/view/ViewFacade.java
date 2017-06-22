@@ -39,9 +39,7 @@ public class ViewFacade implements IView {
         frame.getGamePanel().setImage(image, x, y);
         frame.getGamePanel().propertiespoints();
         int a = 1;
-		if (a==2){
-        frame.getGamePanel().removepoints();
-        a = 0;
-        }
+		if (a==2)
+            frame.getGamePanel().removepoints();
     }
 }
