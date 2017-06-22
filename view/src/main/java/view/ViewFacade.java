@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class ViewFacade implements IView {
 
+	int a = 0;
     /**
      * Instantiates a new view facade.
      */
@@ -37,9 +38,11 @@ public class ViewFacade implements IView {
     @Override
     public void drawImage(BufferedImage image, int x, int y) {
         frame.getGamePanel().setImage(image, x, y);
+        frame.getGamePanel().removepoints();
         frame.getGamePanel().propertiespoints();
-        int a = 1;
-		if (a==2)
-            frame.getGamePanel().removepoints();
+    }
+    @Override
+    public void initScore(){
+    	frame.getGamePanel().propertiespoints();
     }
 }
