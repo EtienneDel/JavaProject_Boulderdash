@@ -74,4 +74,10 @@ public class Assets implements Assetable {
     public BufferedImage getCharacter() {
         return character;
     }
+
+    @Override
+    public BufferedImage getEnemy() {
+        return enemy;
+    }
+
 }

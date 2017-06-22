@@ -15,4 +15,5 @@ public interface Assetable {
     BufferedImage getRock();
     BufferedImage getExit();
     BufferedImage getCharacter();
+    BufferedImage getEnemy();
 }
