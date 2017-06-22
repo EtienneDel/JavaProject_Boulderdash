@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public class RockController extends DiamondController{
 
-    public RockController(IModel model, Build build) throws IOException {
-        super(model, build);
+    public RockController(IModel model) throws IOException {
+        super(model);
     }
 
     public void refresh(IPosition position) throws IOException {
@@ -37,23 +37,20 @@ public class RockController extends DiamondController{
     @Override
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         movable.moveD(position);
-        build.calculateMap();
         refreshAround(position);
     }
 
     private void moveLeft(Movable movable, IPosition position) throws IOException {
         movable.moveL(position);
-        build.calculateMap();
         movable.moveD(model.getPosition(position.getPosX()-1, position.getPosY()));
-        build.calculateMap();
+
         refreshAround(position);
     }
 
     private void moveRight(Movable movable, IPosition position) throws IOException {
         movable.moveR(position);
-        build.calculateMap();
         movable.moveD(model.getPosition(position.getPosX()+1, position.getPosY()));
-        build.calculateMap();
+
         refreshAround(position);
     }
 

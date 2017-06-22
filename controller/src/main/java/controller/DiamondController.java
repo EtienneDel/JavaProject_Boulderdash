@@ -13,12 +13,10 @@ import java.io.IOException;
 public class DiamondController {
     protected IMap map;
     protected IModel model;
-    protected Build build;
 
-    public DiamondController(IModel model, Build build) throws IOException {//todo remove build -- debug
+    public DiamondController(IModel model) throws IOException {//todo remove build -- debug
         this.map = model.getTheMap();
         this.model = model;
-        this.build = build;
     }
 
     public void refresh(IPosition position) throws IOException {
@@ -31,8 +29,6 @@ public class DiamondController {
 
         if (bottomTile == '7')//monstre
             explode(true, position);
-        else if (bottomTile == '3')//bloc cassable
-            explode(false, position);
         else if (bottomTile == '2')//vide
             moveDown(movable, position);
 
@@ -40,7 +36,7 @@ public class DiamondController {
 
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         movable.moveD(position);
-        build.calculateMap();
+        //build.calculateMap();
         refreshAround(position);
     }
 

@@ -1,9 +1,9 @@
-package controller;/*package controller;
+package controller;
 
-import model.Enemy;
-import model.Map;
-import model.Position;
-import model.dao.MapDAO;
+import model.IEnemies;
+import model.IMap;
+import model.IModel;
+import model.IPosition;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,68 +11,55 @@ import java.util.ArrayList;
 /**
  * Created by Julien on 17/06/2017.
  */
-/*
-public class EnemyController {
-    private MapDAO mapDAO = MapDAO.getMapDAO();
-    private Map map = Map.getMap();
-    private ArrayList<Enemy> enemyList;
 
-    public EnemyController(ArrayList<Enemy> enemyList) throws IOException {
-        this.enemyList = enemyList;
+public class EnemyController {
+    private IModel model;
+    private IMap map;
+    private ArrayList<IEnemies> enemyList;
+
+    public EnemyController(IModel model, ArrayList<IEnemies> enemyList) throws IOException {
+        this.model = model;
+        this.map = model.getTheMap();
     }
 
     public void refresh() {
         int i = 0;
-        for(Enemy enemy: enemyList) {
-
-            if(isInFirstLoop(enemy.lastDirection))
-            {
-                if(canMoveLeft(enemy.getPosition()))
-                    enemy.moveL(enemy.getPosition());
-                else if(canMoveUp(enemy.getPosition()))
-                    enemy.moveU(enemy.getPosition());
-                else
-                    i++;
+        for(IEnemies enemy: enemyList) {
+            while(i != 0) {
+                if (isInFirstLoop(enemy.getLastDirection())) {
+                    if (canMoveLeft(enemy.getPosition()))
+                        enemy.moveLeft(enemy.getPosition());
+                    else if (canMoveUp(enemy.getPosition()))
+                        enemy.moveUp(enemy.getPosition());
+                    else
+                        i++;
+                } else {
+                    if (canMoveRight(enemy.getPosition()))
+                        enemy.moveRight(enemy.getPosition());
+                    else if (canMoveDown(enemy.getPosition()))
+                        enemy.moveDown(enemy.getPosition());
+                    else
+                        i++;
+                }
             }
-
         }
-
-        setTimeout(this::refresh, 500);
     }
 
-
-    private void explode(boolean diamondShower, Position position) {
-
-    }
-
-    private boolean canMoveUp(Position position) {
-        return map.getCharByPos(position.getPosX(), position.getPosY()+1) == '2';
-    }
-
-    private boolean canMoveDown(Position position) {
+    private boolean canMoveUp(IPosition position) {
         return map.getCharByPos(position.getPosX(), position.getPosY()-1) == '2';
     }
-    private boolean canMoveRight(Position position) {
+
+    private boolean canMoveDown(IPosition position) {
+        return map.getCharByPos(position.getPosX(), position.getPosY()+1) == '2';
+    }
+    private boolean canMoveRight(IPosition position) {
         return map.getCharByPos(position.getPosX()+1, position.getPosY()) == '2';
     }
-    private boolean canMoveLeft(Position position) {
+    private boolean canMoveLeft(IPosition position) {
         return map.getCharByPos(position.getPosX()-1, position.getPosY()) == '2';
     }
 
     private boolean isInFirstLoop(int lastDirection) {
         return lastDirection == 0 || lastDirection == 1;
     }
-
-    public void setTimeout(Runnable runnable, int delay){
-        new Thread(() -> {
-            try {
-                Thread.sleep(delay);
-                runnable.run();
-            }
-            catch (Exception e){
-                System.err.println(e);
-            }
-        }).start();
-    }
 }
-*/

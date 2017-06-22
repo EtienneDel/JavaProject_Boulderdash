@@ -27,8 +27,8 @@ public class MainController implements Observer{
         IPosition positionChar = model.getPosition(1,1);
         IMap map = model.getTheMap();
         characterController = new CharacterController(model);
-        rockController = new RockController(model, build);
-        diamondController = new DiamondController(model, build);
+        rockController = new RockController(model);
+        diamondController = new DiamondController(model);
         model.setTheCharacterA(1,1);
 
         position.setPosition(7,4);
@@ -44,5 +44,6 @@ public class MainController implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         build.calculateMap();
+        System.out.println("update");
     }
 }
