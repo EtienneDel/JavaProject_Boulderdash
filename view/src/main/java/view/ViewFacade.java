@@ -45,4 +45,14 @@ public class ViewFacade implements IView {
     public void initScore(){
     	frame.getGamePanel().propertiespoints();
     }
+
+    @Override
+    public void setScore(int score) {
+
+    }
+
+    @Override
+    public int getScore() {
+        return 0;
+    }
 }

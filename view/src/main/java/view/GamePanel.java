@@ -10,13 +10,13 @@ import java.awt.image.BufferedImage;
 /**
  * Created by ASUS on 15/06/2017.
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements IView {
 
     private BufferedImage image;
     private int x;
     private int y;
     private JLabel points;
-    private int score,nbdiamonds;
+    private int score = 0,nbdiamonds;
 
 
     public GamePanel(IModel model) {
@@ -54,7 +54,26 @@ public class GamePanel extends JPanel {
 		this.points.setText("score : "+score +"/"+nbdiamonds+" diamonds");
 		this.add(points);
     }
+
+    public int getScore(){
+        return score;
+    }
     public void setScore(int score){
     	this.score = score;
+    }
+
+    @Override
+    public void displayMessage(String message) {
+
+    }
+
+    @Override
+    public void drawImage(BufferedImage image, int x, int y) {
+
+    }
+
+    @Override
+    public void initScore() {
+
     }
 }
