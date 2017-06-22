@@ -11,9 +11,10 @@ import static org.junit.Assert.*;
  */
 public class BuildTest {
 
-    private 
+    private Build build;
     @Before
     public void setUp() throws Exception {
+        build = new Build();
     }
 
     @After
@@ -25,14 +26,26 @@ public class BuildTest {
     @Test
     public void setPos() throws Exception {
 
+        final int expected = 2;
+        build.setPos(2,2);
+        assertEquals(expected, build.getPosX());
+
     }
 
     @Test
     public void getPosX() throws Exception {
+
+        final int expected = 2;
+        build.setPos(2,2);
+        assertEquals(expected, build.getPosX());
     }
 
     @Test
     public void getPosY() throws Exception {
+
+        final int expected = 2;
+        build.setPos(2,2);
+        assertEquals(expected, build.getPosY());
     }
 
 }
