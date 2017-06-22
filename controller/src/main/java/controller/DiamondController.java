@@ -43,7 +43,7 @@ public class DiamondController {
         //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

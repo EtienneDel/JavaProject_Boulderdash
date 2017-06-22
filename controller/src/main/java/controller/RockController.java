@@ -28,7 +28,9 @@ public class RockController extends DiamondController{
 
         Movable movable = (Movable) model.getRock();
 
-        if (leftTile == '2' && (bottomLeftTile == '3' || bottomLeftTile == '2' || bottomLeftTile == '7') && bottomTile == '5')
+        if (bottomTile == '3')//bloc cassable
+            explode(false, position);
+        else if (leftTile == '2' && (bottomLeftTile == '3' || bottomLeftTile == '2' || bottomLeftTile == '7') && bottomTile == '5')
             moveLeft(movable, position);
         else if (rightTile == '2' && (bottomRightTile == '3' || bottomRightTile == '2' || bottomRightTile == '7') && bottomTile == '5')
             moveRight(movable, position);
