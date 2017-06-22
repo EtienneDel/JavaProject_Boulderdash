@@ -37,7 +37,7 @@ public class Maptest {
         final boolean expected = true;
         final boolean actual;
 
-        test.createTileTable();
+        //test.createTileTable();
         tiless = test.getTiles();
         tiless.forEach((k,v) -> System.out.println(k + " " + v));
 

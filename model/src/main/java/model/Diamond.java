@@ -36,9 +36,6 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
 
     }
 
-
-
-
     /**
      * if the diamond is taken
      */

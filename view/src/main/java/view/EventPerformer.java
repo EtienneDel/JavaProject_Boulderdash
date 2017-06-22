@@ -4,6 +4,7 @@ import controller.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Created by ASUS on 15/06/2017.
@@ -40,7 +41,7 @@ public class EventPerformer implements EventPerformerable, IView {
     }
 
     @Override
-    public void eventPerform(final KeyEvent keyCode) {
+    public void eventPerform(final KeyEvent keyCode) throws IOException {
         final UserOrderable userOrder = this.keyTyped(keyCode.getKeyCode());
         if (userOrder != null) {
             this.orderPerformer.orderPerformer(userOrder);
