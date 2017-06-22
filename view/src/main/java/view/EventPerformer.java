@@ -62,4 +62,14 @@ public class EventPerformer implements EventPerformerable, IView {
     public void initScore() {
 
     }
+
+    @Override
+    public void setScore(int score) {
+
+    }
+
+    @Override
+    public int getScore() {
+        return 0;
+    }
 }

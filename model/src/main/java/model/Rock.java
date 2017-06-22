@@ -69,7 +69,9 @@ public class Rock extends Tile implements Movable, IRock {
         int x = position.getPosX();
         int y = position.getPosY();
         map.setCharByPos(x-1, y, map.getCharByPos(x, y));
-        map.setCharByPos(x, y,'2');
+        if(map.getCharByPos(x+1,y)!='8'){
+            map.setCharByPos(x, y,'2');
+        }
     }
 
     /**
