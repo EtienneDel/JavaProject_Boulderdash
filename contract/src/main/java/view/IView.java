@@ -13,16 +13,15 @@ public interface IView {
     /**
      * Display message.
      *
-     * @param message
-     *            the message
+     * @param message the message
      */
     void displayMessage(String message);
 
     void drawImage(BufferedImage image, int x, int y);
-    
+
     void initScore();
 
-    void setScore(int score);
-
     int getScore();
+
+    void setScore(int score);
 }

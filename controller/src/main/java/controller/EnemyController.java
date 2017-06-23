@@ -32,27 +32,27 @@ public class EnemyController {
     /**
      * Clock wise.
      *
-     * @param enemy the enemyi
+     * @param enemy the enemy
      */
     public void clockWise(IEnemies enemy) {
         int i = 0;
         do {
             if (isInFirstLoop(enemy.getLastDirection())) {
-                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i>0))
+                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0))
                     enemy.moveLeft(enemy.getPosition());
                 else if (canMoveUp(enemy.getPosition()))
                     enemy.moveUp(enemy.getPosition());
                 else
                     i++;
             } else {
-                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i>0))
+                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0))
                     enemy.moveRight(enemy.getPosition());
                 else if (canMoveDown(enemy.getPosition()))
                     enemy.moveDown(enemy.getPosition());
                 else
                     i++;
             }
-        } while(i != 0);
+        } while (i != 0);
     }
 
     /**
@@ -61,57 +61,40 @@ public class EnemyController {
      * @param enemy the enemy
      */
     public void antiClockWise(IEnemies enemy) {
-            int i = 0;
-            do {
-                if (isInFirstLoop(enemy.getLastDirection())) {
-                    if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i>0))
-                    {
-                        enemy.moveRight(enemy.getPosition());
-                        i = 0;
-                    }
-
-                    else if (canMoveUp(enemy.getPosition()))
-                    {
-                        enemy.moveUp(enemy.getPosition());
-                        i = 0;
-                    }
-                    else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i>0))
-                    {
-                        enemy.moveLeft(enemy.getPosition());
-                        i = 0;
-                    }
-                    else if (canMoveDown(enemy.getPosition()))
-                    {
-                        enemy.moveDown(enemy.getPosition());
-                        i = 0;
-                    }
-                    else
-                        i++;
-                } else {
-                    if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i>0))
-                    {
-                        enemy.moveLeft(enemy.getPosition());
-                        i = 0;
-                    }
-                    else if (canMoveDown(enemy.getPosition()))
-                    {
-                        enemy.moveDown(enemy.getPosition());
-                        i = 0;
-                    }
-                    else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i>0))
-                    {
-                        enemy.moveRight(enemy.getPosition());
-                        i = 0;
-                    }
-                    else if (canMoveUp(enemy.getPosition()))
-                    {
-                        enemy.moveUp(enemy.getPosition());
-                        i = 0;
-                    }
-                    else
-                        i++;
-                }
-            } while(i != 0);
+        int i = 0;
+        do {
+            if (isInFirstLoop(enemy.getLastDirection())) {
+                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                    enemy.moveRight(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveUp(enemy.getPosition())) {
+                    enemy.moveUp(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                    enemy.moveLeft(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveDown(enemy.getPosition())) {
+                    enemy.moveDown(enemy.getPosition());
+                    i = 0;
+                } else
+                    i++;
+            } else {
+                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                    enemy.moveLeft(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveDown(enemy.getPosition())) {
+                    enemy.moveDown(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                    enemy.moveRight(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveUp(enemy.getPosition())) {
+                    enemy.moveUp(enemy.getPosition());
+                    i = 0;
+                } else
+                    i++;
+            }
+        } while (i != 0);
     }
 
     /**
@@ -120,13 +103,12 @@ public class EnemyController {
      * @param enemy the enemy
      */
     public void vertical(IEnemies enemy) {
-        if(enemy.getLastDirection() == 1) {
+        if (enemy.getLastDirection() == 1) {
             if (canMoveUp(enemy.getPosition()))
                 enemy.moveUp(enemy.getPosition());
             else if (canMoveDown(enemy.getPosition()))
                 enemy.moveDown(enemy.getPosition());
-        }
-        else {
+        } else {
             if (canMoveDown(enemy.getPosition()))
                 enemy.moveDown(enemy.getPosition());
             else if (canMoveUp(enemy.getPosition()))
@@ -140,13 +122,12 @@ public class EnemyController {
      * @param enemy the enemy
      */
     public void horizontal(IEnemies enemy) {
-        if(enemy.getLastDirection() == 0) {
+        if (enemy.getLastDirection() == 0) {
             if (canMoveLeft(enemy.getPosition()))
                 enemy.moveLeft(enemy.getPosition());
             else if (canMoveRight(enemy.getPosition()))
                 enemy.moveRight(enemy.getPosition());
-        }
-        else {
+        } else {
             if (canMoveRight(enemy.getPosition()))
                 enemy.moveRight(enemy.getPosition());
             else if (canMoveLeft(enemy.getPosition()))
@@ -158,8 +139,8 @@ public class EnemyController {
      * Refresh.
      */
     public void refresh() {
-        for(IEnemies enemy: enemyList) {
-            switch(enemy.getAlgo()) {
+        for (IEnemies enemy : enemyList) {
+            switch (enemy.getAlgo()) {
                 case 0:
                     clockWise(enemy);
                     break;
@@ -177,16 +158,19 @@ public class EnemyController {
     }
 
     private boolean canMoveUp(IPosition position) {
-        return map.getCharByPos(position.getPosX(), position.getPosY()-1) == '2';
+        return map.getCharByPos(position.getPosX(), position.getPosY() - 1) == '2';
     }
+
     private boolean canMoveDown(IPosition position) {
-        return map.getCharByPos(position.getPosX(), position.getPosY()+1) == '2';
+        return map.getCharByPos(position.getPosX(), position.getPosY() + 1) == '2';
     }
+
     private boolean canMoveRight(IPosition position) {
-        return map.getCharByPos(position.getPosX()+1, position.getPosY()) == '2';
+        return map.getCharByPos(position.getPosX() + 1, position.getPosY()) == '2';
     }
+
     private boolean canMoveLeft(IPosition position) {
-        return map.getCharByPos(position.getPosX()-1, position.getPosY()) == '2';
+        return map.getCharByPos(position.getPosX() - 1, position.getPosY()) == '2';
     }
 
     private boolean isInFirstLoop(int lastDirection) {

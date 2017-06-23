@@ -3,7 +3,7 @@ package model;
 /**
  * The Interface IEntities allows to get the movements of the character and enemies in the controller.
  */
-public interface IEntities extends Tilable{
+public interface IEntities extends Tilable {
     /**
      * Move d.
      *

@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * The Interface ICharacter allows to get the movements of the character in the controller.
  */
-public interface ICharacter extends Tilable{
+public interface ICharacter extends Tilable {
     /**
      * Move d.
      *

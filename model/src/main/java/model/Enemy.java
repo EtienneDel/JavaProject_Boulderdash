@@ -1,7 +1,6 @@
 package model;
 
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * <h1>the Enemy class</h1>
@@ -31,7 +30,7 @@ public class Enemy extends Entitie implements IEnemies {
     public Enemy(int x, int y) throws IOException {
         super(x, y);
         setWalkable(false);
-        this.algo = (int)(Math.random() * 3);
+        this.algo = (int) (Math.random() * 3);
         this.algo = 1;
     }
 
@@ -50,29 +49,34 @@ public class Enemy extends Entitie implements IEnemies {
     public void moveDown(IPosition position) {
         moveD(position);
         setLastDirection(3);
-        setPosition(position.getPosX(), position.getPosY()+1);
+        setPosition(position.getPosX(), position.getPosY() + 1);
     }
 
     public void moveRight(IPosition position) {
         moveR(position);
         setLastDirection(2);
-        setPosition(position.getPosX()+1, position.getPosY());
+        setPosition(position.getPosX() + 1, position.getPosY());
     }
 
     public void moveUp(IPosition position) {
         moveU(position);
         setLastDirection(1);
-        setPosition(position.getPosX(), position.getPosY()-1);
+        setPosition(position.getPosX(), position.getPosY() - 1);
     }
 
     public void moveLeft(IPosition position) {
         moveL(position);
         setLastDirection(0);
-        setPosition(position.getPosX()-1, position.getPosY());
+        setPosition(position.getPosX() - 1, position.getPosY());
     }
 
     public int getAlgo() {
         return algo;
+    }
+
+    @Override
+    public int getLastDirection() {
+        return lastDirection;
     }
 
     /**
@@ -82,10 +86,5 @@ public class Enemy extends Entitie implements IEnemies {
      */
     public void setLastDirection(int direction) {
         this.lastDirection = direction;
-    }
-
-    @Override
-    public int getLastDirection() {
-        return lastDirection;
     }
 }

@@ -10,22 +10,34 @@ import java.sql.*;
  */
 final class BoulderDashBDDConnector {
 
-    /** The instance. */
+    /**
+     * The instance.
+     */
     private static BoulderDashBDDConnector instance;
 
-    /** The login. */
-    private static String user     = "projetjava";
+    /**
+     * The login.
+     */
+    private static String user = "projetjava";
 
-    /** The password. */
+    /**
+     * The password.
+     */
     private static String password = "iRBJPxKE9Nj0lt9J";
 
-    /** The url. */
+    /**
+     * The url.
+     */
     private static String url = "jdbc:mysql://itega.ovh/projetjava?useSSL=false&serverTimezone=UTC";
 
-    /** The connection. */
+    /**
+     * The connection.
+     */
     private Connection connection;
 
-    /** The statement. */
+    /**
+     * The statement.
+     */
     private Statement statement;
 
     /**
@@ -50,8 +62,7 @@ final class BoulderDashBDDConnector {
     /**
      * Sets the instance.
      *
-     * @param instance
-     *            the new instance
+     * @param instance the new instance
      */
     private static void setInstance(final BoulderDashBDDConnector instance) {
         BoulderDashBDDConnector.instance = instance;
@@ -155,10 +166,5 @@ final class BoulderDashBDDConnector {
         this.statement = statement;
     }
 
-    
-    
-    
-    
-    
-    
+
 }

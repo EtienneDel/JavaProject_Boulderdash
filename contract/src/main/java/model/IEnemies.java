@@ -3,7 +3,7 @@ package model;
 /**
  * The Interface IEnemies allows to get the movements of the enemies in the controller.
  */
-public interface IEnemies extends Movable{
+public interface IEnemies extends Movable {
     /**
      * Gets last direction.
      *

@@ -1,6 +1,9 @@
 package controller;
 
-import model.*;
+import model.IMap;
+import model.IModel;
+import model.IPosition;
+import model.Movable;
 
 import java.io.IOException;
 
@@ -36,9 +39,9 @@ public class DiamondController {
      * @throws IOException the io exception
      */
     public void refresh(IPosition position) throws IOException {
-        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY() + 1);
 
-        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
+        if (!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
             return;
 
         Movable movable = (Movable) model.getDiamond();
@@ -48,7 +51,7 @@ public class DiamondController {
         else if (bottomTile == '2')//vide
             moveDown(movable, position);
 
-}
+    }
 
     /**
      * Move down.
@@ -71,10 +74,10 @@ public class DiamondController {
     protected void refreshAround(IPosition position) throws IOException {
         //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
 
-        refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
-        refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX(), position.getPosY()+1));
+        refresh(model.getPosition(position.getPosX(), position.getPosY() - 1));
+        refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
+        refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
+        refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
     }
 
     /**
@@ -84,15 +87,15 @@ public class DiamondController {
      * @param position      the position
      */
     protected void explode(boolean diamondShower, IPosition position) {
-        position.setPosition(position.getPosX(), position.getPosY()+1);
-        if(diamondShower)
-            for(int i=-1; i<2;i++)
-                for(int j=-1; j<2;j++)
-                    map.setCharByPos(position.getPosX()+i,position.getPosY()+j, '4' );
+        position.setPosition(position.getPosX(), position.getPosY() + 1);
+        if (diamondShower)
+            for (int i = -1; i < 2; i++)
+                for (int j = -1; j < 2; j++)
+                    map.setCharByPos(position.getPosX() + i, position.getPosY() + j, '4');
         else
-            for(int i=-1; i<2;i++)
-                for(int j=-1; j<2;j++)
-                    map.setCharByPos(position.getPosX()+i,position.getPosY()+j, '2' );
+            for (int i = -1; i < 2; i++)
+                for (int j = -1; j < 2; j++)
+                    map.setCharByPos(position.getPosX() + i, position.getPosY() + j, '2');
     }
 }
 

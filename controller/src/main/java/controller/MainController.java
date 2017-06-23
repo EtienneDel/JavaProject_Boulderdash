@@ -1,7 +1,8 @@
 package controller;
 
-import model.*;
-import view.IView;
+import model.IMap;
+import model.IModel;
+import model.IPosition;
 
 import java.io.IOException;
 import java.util.Observable;
@@ -10,7 +11,7 @@ import java.util.Observer;
 /**
  * The Class MainController centralize the movements of the diamonds and rocks.
  */
-public class MainController implements Observer{
+public class MainController implements Observer {
     private CharacterController characterController;
     private RockController rockController;
     private DiamondController diamondController;
@@ -35,27 +36,26 @@ public class MainController implements Observer{
      * @throws IOException the io exception
      */
     public void test() throws IOException {
-        IPosition position = model.getPosition(3,1);
-        IPosition positionChar = model.getPosition(1,1);
+        IPosition position = model.getPosition(3, 1);
+        IPosition positionChar = model.getPosition(1, 1);
         IMap map = model.getTheMap();
         rockController = new RockController(model);
         diamondController = new DiamondController(model);
         enemyController = new EnemyController(model, model.createEnemyList());
 
-        position.setPosition(7,4);
+        position.setPosition(7, 4);
         diamondController.refresh(position);
 
         //characterController.refresh(positionChar);
-        position.setPosition(5,4);
+        position.setPosition(5, 4);
         rockController.refresh(position);
-        position.setPosition(3,7);
+        position.setPosition(3, 7);
         rockController.refresh(position);
-        if(model.createEnemyList() != null)
-            while(true)
-            {
+        if (model.createEnemyList() != null)
+            while (true) {
                 enemyController.refresh();
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

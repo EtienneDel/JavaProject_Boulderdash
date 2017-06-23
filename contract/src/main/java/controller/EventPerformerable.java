@@ -8,5 +8,5 @@ import java.io.IOException;
  */
 public interface EventPerformerable {
 
-    public void eventPerform(final KeyEvent keyCode) throws IOException;
+    void eventPerform(final KeyEvent keyCode) throws IOException;
 }

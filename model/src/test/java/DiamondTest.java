@@ -42,8 +42,9 @@ public class DiamondTest {
         assertEquals(expected,test.getPosition().getPosY());
 
     }
+
     @Test
-    public void isBreak(){
+    public void isBreak() {
         final int expected = 2;
         test.isBreak();
         assertEquals(expected, REF);

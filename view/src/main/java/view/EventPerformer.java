@@ -75,12 +75,12 @@ public class EventPerformer implements EventPerformerable, IView {
     }
 
     @Override
-    public void setScore(int score) {
-
+    public int getScore() {
+        return 0;
     }
 
     @Override
-    public int getScore() {
-        return 0;
+    public void setScore(int score) {
+
     }
 }

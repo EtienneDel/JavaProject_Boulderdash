@@ -16,8 +16,8 @@ import java.sql.SQLException;
 public class GameFrame extends JFrame implements KeyListener {
 
 
-private GamePanel panel;
-private EventPerformerable eventPerformer;
+    private GamePanel panel;
+    private EventPerformerable eventPerformer;
 
     /**
      * Instantiates a new Game frame.
@@ -31,12 +31,12 @@ private EventPerformerable eventPerformer;
         this.eventPerformer = eventPerformer;
         this.addKeyListener(this);
         panel = new GamePanel(model);
-        setSize(500,600);
+        setSize(500, 600);
         setBackground(Color.black);
         setTitle("MOULDER DASH ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel);
-        
+
         this.setLocation(100, 100);
         setVisible(true);
     }
@@ -46,7 +46,7 @@ private EventPerformerable eventPerformer;
      *
      * @return the game panel
      */
-    public GamePanel getGamePanel(){
+    public GamePanel getGamePanel() {
         return panel;
     }
 

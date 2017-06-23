@@ -8,9 +8,8 @@ public class ModelFacadeTest {
 
     @After
     public void tearDown() throws Exception {
-        
-    }
 
+    }
 
 
 }

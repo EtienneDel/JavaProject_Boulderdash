@@ -1,13 +1,15 @@
 package controller;
 
-import model.*;
+import model.IModel;
+import model.IPosition;
+import model.Movable;
 
 import java.io.IOException;
 
 /**
  * The Class RockController provides movement for the rocks.
  */
-public class RockController extends DiamondController{
+public class RockController extends DiamondController {
 
     /**
      * Instantiates a new Rock controller.
@@ -22,13 +24,13 @@ public class RockController extends DiamondController{
     public void refresh(IPosition position) throws IOException {
         super.refresh(position);
 
-        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
-        char leftTile = map.getCharByPos(position.getPosX()-1, position.getPosY());
-        char rightTile = map.getCharByPos(position.getPosX()+1, position.getPosY());
-        char bottomLeftTile = map.getCharByPos(position.getPosX()-1, position.getPosY()+1);
-        char bottomRightTile = map.getCharByPos(position.getPosX()+1, position.getPosY()+1);
+        char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY() + 1);
+        char leftTile = map.getCharByPos(position.getPosX() - 1, position.getPosY());
+        char rightTile = map.getCharByPos(position.getPosX() + 1, position.getPosY());
+        char bottomLeftTile = map.getCharByPos(position.getPosX() - 1, position.getPosY() + 1);
+        char bottomRightTile = map.getCharByPos(position.getPosX() + 1, position.getPosY() + 1);
 
-        if(map.getCharByPos(position.getPosX(), position.getPosY()) != '5')
+        if (map.getCharByPos(position.getPosX(), position.getPosY()) != '5')
             return;
 
         Movable movable = (Movable) model.getRock();
@@ -56,7 +58,7 @@ public class RockController extends DiamondController{
      */
     public void moveLeft(Movable movable, IPosition position) throws IOException {
         movable.moveL(position);
-        movable.moveD(model.getPosition(position.getPosX()-1, position.getPosY()));
+        movable.moveD(model.getPosition(position.getPosX() - 1, position.getPosY()));
 
         refreshAround(position);
     }
@@ -70,7 +72,7 @@ public class RockController extends DiamondController{
      */
     public void moveRight(Movable movable, IPosition position) throws IOException {
         movable.moveR(position);
-        movable.moveD(model.getPosition(position.getPosX()+1, position.getPosY()));
+        movable.moveD(model.getPosition(position.getPosX() + 1, position.getPosY()));
 
         refreshAround(position);
     }

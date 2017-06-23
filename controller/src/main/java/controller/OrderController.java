@@ -16,7 +16,7 @@ public class OrderController extends java.util.Observable {
     private IModel model;
     private IView view;
     private IPosition position;
-    private int i=1,j=1;
+    private int i = 1, j = 1;
     private int collision;
     private RockController rockController;
 
@@ -45,45 +45,45 @@ public class OrderController extends java.util.Observable {
         this.model = model;
         character = new CharacterController(model, build);
         Movable movable = (Movable) model.getDiamond();
-        position = model.getPosition(i,j);
+        position = model.getPosition(i, j);
         rockController = new RockController(model);
 
 
         switch (userOrder.getOrder()) {
             case UP:
-                character.moveUp(movable,position);
+                character.moveUp(movable, position);
                 collision = character.getColli();
-                if(collision == 3){
-                view.setScore(view.getScore()+1);
-                System.out.println(view.getScore());
-                j--;
-                y+=16;
-                }
-                if(collision != 1){
+                if (collision == 3) {
+                    view.setScore(view.getScore() + 1);
+                    System.out.println(view.getScore());
                     j--;
-                    y+=16;
+                    y += 16;
+                }
+                if (collision != 1) {
+                    j--;
+                    y += 16;
                 }
 
                 break;
             case DOWN:
 
-                character.moveDown(movable,position);
+                character.moveDown(movable, position);
                 collision = character.getColli();
-                if(collision != 1) {
+                if (collision != 1) {
                     j++;
                     y -= 16;
                 }
                 break;
             case LEFT:
 
-                character.moveLeft(movable,position);
+                character.moveLeft(movable, position);
                 collision = character.getColli();
                 /*if(collision ==2){
                     rockController.moveLeft(movable, position);
                     i--;
                     x += 16;
                 }*/
-                if(collision != 1 && collision !=2) {
+                if (collision != 1 && collision != 2) {
                     i--;
                     x += 16;
                 }
@@ -91,9 +91,9 @@ public class OrderController extends java.util.Observable {
                 break;
             case RIGHT:
 
-                character.moveRight(movable,position);
+                character.moveRight(movable, position);
                 collision = character.getColli();
-                if(collision != 1) {
+                if (collision != 1) {
                     i++;
                     x -= 16;
                 }

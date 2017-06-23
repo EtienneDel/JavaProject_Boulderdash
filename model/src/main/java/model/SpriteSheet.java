@@ -11,13 +11,11 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 /**
  * The type Sprite sheet.
  */
-public class SpriteSheet extends JLabel{
+public class SpriteSheet extends JLabel {
 
     /**
      * attribute
@@ -38,7 +36,7 @@ public class SpriteSheet extends JLabel{
      *
      * @return buffered image
      */
-    public BufferedImage getImg(){
+    public BufferedImage getImg() {
         return img;
     }
 

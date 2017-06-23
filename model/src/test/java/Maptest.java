@@ -44,18 +44,19 @@ public class Maptest {
         int x = 0, y = 0;
 
 
-        char actual = test.getCharByPos(x,y);
+        char actual = test.getCharByPos(x, y);
 
         assertEquals(expected, actual);
     }
+
     @Test
-    public void setCharByPos(){
+    public void setCharByPos() {
         char expected = '5';
         char actual;
 
-        test.setCharByPos(0,2,expected);
-        actual = test.getCharByPos(0,2);
-        assertEquals(expected,actual);
+        test.setCharByPos(0, 2, expected);
+        actual = test.getCharByPos(0, 2);
+        assertEquals(expected, actual);
 
     }
 }

@@ -12,22 +12,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class TileTest {
 
+    int test = 1;
     private Tile tile;
     private MapDAO mapDAO;
-
-
-
-    int test = 1;
 
     @Before
     public void setUp() throws Exception {
         mapDAO = MapDAO.getMapDAO();
-        tile = new Tile(1,1, mapDAO);
-
-
-
-
-
+        tile = new Tile(1, 1, mapDAO);
 
 
     }
@@ -38,10 +30,8 @@ public class TileTest {
     }
 
 
-
-
     @Test
-    public void setWalkable(){
+    public void setWalkable() {
         final boolean expected = true;
         tile.setWalkable(true);
         assertEquals(expected, tile.getWalkable());

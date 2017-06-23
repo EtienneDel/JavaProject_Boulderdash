@@ -11,10 +11,6 @@ import java.io.IOException;
  */
 public class Assets implements Assetable {
     /**
-     * Attributes
-     */
-    private SpriteSheet sprite;
-    /**
      * The Wall.
      */
     public BufferedImage wall, /**
@@ -42,27 +38,32 @@ public class Assets implements Assetable {
      * The Enemy.
      */
     enemy;
+    /**
+     * Attributes
+     */
+    private SpriteSheet sprite;
 
     /**
      * constructor without parameter
      *
      * @throws IOException the io exception
      */
-    public Assets() throws IOException  {
+    public Assets() throws IOException {
         this.sprite = new SpriteSheet();//instantiate a new spriteSheet
         Tile tile = new Tile(); //instantiate a new tile
 
-        wall = tile.getImageFromTileset(sprite.getImg(),0,0);// cut in the tileset all the tile needed
-        dirt = tile.getImageFromTileset(sprite.getImg(),1,0);
-        bwall = tile.getImageFromTileset(sprite.getImg(),8,0);
-        empty = tile.getImageFromTileset(sprite.getImg(),2,0);
-        diamond = tile.getImageFromTileset(sprite.getImg(),4,0);
-        rock = tile.getImageFromTileset(sprite.getImg(),3,0);
-        exit = tile.getImageFromTileset(sprite.getImg(),6,0);
-        character = tile.getImageFromTileset(sprite.getImg(),12,0);
-        enemy = tile.getImageFromTileset(sprite.getImg(),9,0);
+        wall = tile.getImageFromTileset(sprite.getImg(), 0, 0);// cut in the tileset all the tile needed
+        dirt = tile.getImageFromTileset(sprite.getImg(), 1, 0);
+        bwall = tile.getImageFromTileset(sprite.getImg(), 8, 0);
+        empty = tile.getImageFromTileset(sprite.getImg(), 2, 0);
+        diamond = tile.getImageFromTileset(sprite.getImg(), 4, 0);
+        rock = tile.getImageFromTileset(sprite.getImg(), 3, 0);
+        exit = tile.getImageFromTileset(sprite.getImg(), 6, 0);
+        character = tile.getImageFromTileset(sprite.getImg(), 12, 0);
+        enemy = tile.getImageFromTileset(sprite.getImg(), 9, 0);
 
     }
+
     @Override
     public BufferedImage getDirt() {
         return dirt;

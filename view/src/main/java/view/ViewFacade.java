@@ -22,7 +22,7 @@ public class ViewFacade implements IView {
     /**
      * Instantiates a new view facade.
      */
-   private GameFrame frame;
+    private GameFrame frame;
 
     /**
      * Instantiates a new View facade.
@@ -51,18 +51,19 @@ public class ViewFacade implements IView {
         frame.getGamePanel().removepoints();
         frame.getGamePanel().propertiespoints();
     }
-    @Override
-    public void initScore(){
-    	frame.getGamePanel().propertiespoints();
-    }
 
     @Override
-    public void setScore(int score) {
-
+    public void initScore() {
+        frame.getGamePanel().propertiespoints();
     }
 
     @Override
     public int getScore() {
         return 0;
+    }
+
+    @Override
+    public void setScore(int score) {
+
     }
 }

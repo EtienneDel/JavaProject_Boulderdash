@@ -13,11 +13,13 @@ public class Character extends Entitie implements Tilable, ICharacter {
      * attribute
      */
     public final static int REF = 8;
-    private Map map = Map.getMap();
     private static Character instance;
+    private Map map = Map.getMap();
     private IPosition position;
+
     /**
      * constructor with parameter position of the tile
+     *
      * @param x
      * @param y
      */
@@ -44,8 +46,8 @@ public class Character extends Entitie implements Tilable, ICharacter {
      * @throws IOException the io exception
      */
     public static Character setTheCharacter(int x, int y) throws IOException {
-        if(instance==null){
-            return new Character(x,y);
+        if (instance == null) {
+            return new Character(x, y);
         }
         return instance;
     }
@@ -57,7 +59,7 @@ public class Character extends Entitie implements Tilable, ICharacter {
      * @throws IOException the io exception
      */
     public static Character getTheCharacter() throws IOException {
-        if(instance==null){
+        if (instance == null) {
             return null;
         }
         return instance;
@@ -67,9 +69,9 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public void moveD(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y,'2');
-        map.setCharByPos(x, y+1,'8');
-        position.setPosition(position.getPosX(),position.getPosY()-1);
+        map.setCharByPos(x, y, '2');
+        map.setCharByPos(x, y + 1, '8');
+        position.setPosition(position.getPosX(), position.getPosY() - 1);
         setPosition(position);
     }
 
@@ -77,9 +79,9 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public void moveL(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y,'2');
-        map.setCharByPos(x, y+1,'8');
-        position.setPosition(position.getPosX()-1,position.getPosY());
+        map.setCharByPos(x, y, '2');
+        map.setCharByPos(x, y + 1, '8');
+        position.setPosition(position.getPosX() - 1, position.getPosY());
         setPosition(position);
     }
 
@@ -87,9 +89,9 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public void moveR(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y,'2');
-        map.setCharByPos(x, y+1,'8');
-        position.setPosition(position.getPosX()+1,position.getPosY());
+        map.setCharByPos(x, y, '2');
+        map.setCharByPos(x, y + 1, '8');
+        position.setPosition(position.getPosX() + 1, position.getPosY());
         setPosition(position);
     }
 
@@ -97,9 +99,9 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public void moveU(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y,'2');
-        map.setCharByPos(x, y+1,'8');
-        position.setPosition(position.getPosX(),position.getPosY()+1);
+        map.setCharByPos(x, y, '2');
+        map.setCharByPos(x, y + 1, '8');
+        position.setPosition(position.getPosX(), position.getPosY() + 1);
         setPosition(position);
     }
 

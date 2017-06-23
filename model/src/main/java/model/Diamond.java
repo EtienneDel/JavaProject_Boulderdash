@@ -56,50 +56,54 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
 
     /**
      * move up
+     *
      * @param position
      */
     @Override
     public void moveU(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y-1, map.getCharByPos(x, y));
-        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y - 1, map.getCharByPos(x, y));
+        map.setCharByPos(x, y, '2');
     }
 
     /**
      * move Down
+     *
      * @param position
      */
     @Override
     public void moveD(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x, y+1, map.getCharByPos(x, y));
-        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x, y + 1, map.getCharByPos(x, y));
+        map.setCharByPos(x, y, '2');
     }
 
     /**
      * move left
+     *
      * @param position
      */
     @Override
     public void moveL(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x-1, y, map.getCharByPos(x, y));
-        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x - 1, y, map.getCharByPos(x, y));
+        map.setCharByPos(x, y, '2');
     }
 
     /**
      * move right
+     *
      * @param position
      */
     @Override
     public void moveR(IPosition position) {
         int x = position.getPosX();
         int y = position.getPosY();
-        map.setCharByPos(x+1, y, map.getCharByPos(x, y));
-        map.setCharByPos(x, y,'2');
+        map.setCharByPos(x + 1, y, map.getCharByPos(x, y));
+        map.setCharByPos(x, y, '2');
     }
 
 

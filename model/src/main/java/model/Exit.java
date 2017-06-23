@@ -21,7 +21,7 @@ public class Exit extends Tile {
      */
     public Exit(int x, int y) {
 
-        super(x,y);
+        super(x, y);
         setWalkable(true);
 
     }
@@ -42,8 +42,8 @@ public class Exit extends Tile {
      */
     public String endLevel() {
 
-        String thisistheend ="THE END"; // BREAK EVERYTHING  //TODO ?
-    return thisistheend;
+        String thisistheend = "THE END"; // BREAK EVERYTHING  //TODO ?
+        return thisistheend;
 
     }
 }

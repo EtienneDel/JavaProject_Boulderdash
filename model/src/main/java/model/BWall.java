@@ -38,7 +38,7 @@ public class BWall extends Tile implements Breakable, Tilable {
      * @throws IOException the io exception
      */
     public BWall(int x, int y) throws IOException {
-        super(x,y);
+        super(x, y);
 
     }
 

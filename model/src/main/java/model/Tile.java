@@ -122,23 +122,18 @@ public class Tile implements Tilable {
         return REF;
     }
 
-    @Override
-    public void setPosition(IPosition position) {
-        this.position = (Position) position;
-    }
-
-    @Override
-    public Boolean getwlakable() {
-        return getWalkable();
-    }
-
     /**
      * set the id of the tile
      *
      * @param ref the ref
      */
     public void setRef(int ref) {
-        this.REF = ref;
+        REF = ref;
+    }
+
+    @Override
+    public Boolean getwlakable() {
+        return getWalkable();
     }
 
     /**
@@ -168,6 +163,10 @@ public class Tile implements Tilable {
         return position;
     }
 
+    @Override
+    public void setPosition(IPosition position) {
+        this.position = (Position) position;
+    }
 
     /**
      * Sets map dao.

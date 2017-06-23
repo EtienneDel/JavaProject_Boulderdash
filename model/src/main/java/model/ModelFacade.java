@@ -1,12 +1,10 @@
 package model;
 
-import model.dao.ExampleDAO;
 import model.dao.MapDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Observer;
 
 /**
@@ -41,35 +39,9 @@ public class ModelFacade implements IModel, IMap {
         tab_map = mapDAO.putMapInTable(str_map);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleById(int)
-     */
-    @Override
-    public Example getExampleById(final int id) throws SQLException {
-        return ExampleDAO.getExampleById(id);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleByName(java.lang.String)
-     */
-    @Override
-    public Example getExampleByName(final String name) throws SQLException {
-        return ExampleDAO.getExampleByName(name);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getAllExamples()
-     */
-    @Override
-    public List<Example> getAllExamples() throws SQLException {
-        return ExampleDAO.getAllExamples();
-    }
-
     /**
      * differents getter and setter
+     *
      * @return
      */
     public int getMap_width() {
@@ -123,7 +95,7 @@ public class ModelFacade implements IModel, IMap {
 
     @Override
     public ICharacter setTheCharacterA(int x, int y) throws IOException {
-        return Character.setTheCharacter(x,y);
+        return Character.setTheCharacter(x, y);
     }
 
     @Override
@@ -156,9 +128,9 @@ public class ModelFacade implements IModel, IMap {
         return null;
     }
 
-	@Override
-	public int getDiamonds() {
-		// TODO Auto-generated method stub
-		return mapDAO.getdiamonds();
-	}
+    @Override
+    public int getDiamonds() {
+        // TODO Auto-generated method stub
+        return mapDAO.getdiamonds();
+    }
 }

@@ -1,13 +1,16 @@
 package controller;
 
-import model.*;
+import model.IMap;
+import model.IModel;
+import model.IPosition;
+import model.Movable;
 
 import java.io.IOException;
 
 /**
  * The Class Character controller provides movements for the character.
  */
-public class CharacterController implements OrderPerformerable{
+public class CharacterController implements OrderPerformerable {
     /**
      * The Map.
      */
@@ -20,10 +23,10 @@ public class CharacterController implements OrderPerformerable{
      * The Build.
      */
     protected Build build;
-private IPosition position;
-private RockController rockController;
-private DiamondController diamondController;
-private int colli = 0;
+    private IPosition position;
+    private RockController rockController;
+    private DiamondController diamondController;
+    private int colli = 0;
 
     /**
      * Instantiates a new Character controller.
@@ -50,9 +53,9 @@ private int colli = 0;
     public void refresh(IPosition position) throws IOException {
         this.position = position;
 
-        if(!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
+        if (!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
             return;
-        switch(map.getCharByPos(position.getPosX(), position.getPosY())){
+        switch (map.getCharByPos(position.getPosX(), position.getPosY())) {
             case '4':
                 diamondController.refresh(position);
                 break;
@@ -71,7 +74,7 @@ private int colli = 0;
      * @throws IOException the io exception
      */
     protected void moveUp(Movable movable, IPosition position) throws IOException {
-        switch(map.getCharByPos(position.getPosX(), position.getPosY()-1)){
+        switch (map.getCharByPos(position.getPosX(), position.getPosY() - 1)) {
             case '1':
                 colli = 1;
                 break;
@@ -99,7 +102,7 @@ private int colli = 0;
      * @throws IOException the io exception
      */
     protected void moveDown(Movable movable, IPosition position) throws IOException {
-        switch(map.getCharByPos(position.getPosX(), position.getPosY()+1)){
+        switch (map.getCharByPos(position.getPosX(), position.getPosY() + 1)) {
             case '1':
                 colli = 1;
                 break;
@@ -127,7 +130,7 @@ private int colli = 0;
      * @throws IOException the io exception
      */
     protected void moveLeft(Movable movable, IPosition position) throws IOException {
-        switch(map.getCharByPos(position.getPosX()-1, position.getPosY())){
+        switch (map.getCharByPos(position.getPosX() - 1, position.getPosY())) {
             case '1':
                 colli = 1;
                 break;
@@ -138,10 +141,9 @@ private int colli = 0;
                 colli = 3;
                 break;
             case '5':
-                if(map.getCharByPos(position.getPosX()-2, position.getPosY())=='2'){
+                if (map.getCharByPos(position.getPosX() - 2, position.getPosY()) == '2') {
                     colli = 2;
-                }
-                else {
+                } else {
                     colli = 1;
                 }
                 break;
@@ -160,7 +162,7 @@ private int colli = 0;
      * @throws IOException the io exception
      */
     protected void moveRight(Movable movable, IPosition position) throws IOException {
-        switch(map.getCharByPos(position.getPosX()+1, position.getPosY())){
+        switch (map.getCharByPos(position.getPosX() + 1, position.getPosY())) {
             case '1':
                 colli = 1;
                 break;
@@ -188,28 +190,28 @@ private int colli = 0;
      */
     protected void refreshAround(IPosition position) throws IOException {
 
-        refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
-        refresh(model.getPosition(position.getPosX()-1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX()+1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX(), position.getPosY()+1));
+        refresh(model.getPosition(position.getPosX(), position.getPosY() - 1));
+        refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
+        refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
+        refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
     }
 
     @Override
     public void orderPerformer(UserOrderable userOrder) throws IOException {
         Movable movable = (Movable) model.getTheCharacterA();
 
-        switch(userOrder.getOrder()){
+        switch (userOrder.getOrder()) {
             case UP:
-                moveUp(movable,position);
+                moveUp(movable, position);
                 break;
             case DOWN:
-                moveDown(movable,position);
+                moveDown(movable, position);
                 break;
             case LEFT:
-                moveLeft(movable,position);
+                moveLeft(movable, position);
                 break;
             case RIGHT:
-                moveRight(movable,position);
+                moveRight(movable, position);
                 break;
         }
     }

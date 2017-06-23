@@ -1,13 +1,9 @@
 package model;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import model.dao.MapDAO;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * <h1>the Map class</h1>
@@ -27,7 +23,6 @@ public class Map extends java.util.Observable implements IMap {
 
     /**
      * constructor without any parameter
-     *
      */
     private Map() throws IOException {
 
@@ -35,36 +30,6 @@ public class Map extends java.util.Observable implements IMap {
 
         this.tablemap = mapDAO.getTablemap();
 
-    }
-
-    /**
-     * instantiate the Hashmap and fill it
-     *
-     * @return the array list
-     * @throws IOException the io exception
-     */
-    public ArrayList<IEnemies> createEnemyList() throws IOException {
-        int y = mapDAO.getMap_Heigth();
-        int x = mapDAO.getMap_Width();
-        int e,  i;
-
-        for ( i = 0; i < x; i++) {
-            for (e = 0; e < y; e++) {
-                if(tablemap[i][e] == '7')
-                    enemyList.add(new Enemy(i, e));
-            }
-        }
-        return enemyList;
-    }
-
-
-    /**
-     * Get tablemap char [ ] [ ].
-     *
-     * @return the char [ ] [ ]
-     */
-    public char[][] getTablemap() {
-        return tablemap;
     }
 
     /**
@@ -80,17 +45,47 @@ public class Map extends java.util.Observable implements IMap {
         return instance;
     }
 
+    /**
+     * instantiate the Hashmap and fill it
+     *
+     * @return the array list
+     * @throws IOException the io exception
+     */
+    public ArrayList<IEnemies> createEnemyList() throws IOException {
+        int y = mapDAO.getMap_Heigth();
+        int x = mapDAO.getMap_Width();
+        int e, i;
+
+        for (i = 0; i < x; i++) {
+            for (e = 0; e < y; e++) {
+                if (tablemap[i][e] == '7')
+                    enemyList.add(new Enemy(i, e));
+            }
+        }
+        return enemyList;
+    }
+
+    /**
+     * Get tablemap char [ ] [ ].
+     *
+     * @return the char [ ] [ ]
+     */
+    public char[][] getTablemap() {
+        return tablemap;
+    }
+
     public IMap getTheMap() throws IOException {
         return null;
     }
 
     /**
      * get a char at the specified position
+     *
      * @param x
      * @param y
      * @return
      */
-    public char getCharByPos(int x, int y)  {
+    public char getCharByPos(int x, int y) {
         return tablemap[x][y];
     }
 
@@ -105,13 +100,14 @@ public class Map extends java.util.Observable implements IMap {
 
     /**
      * set a specified char of the table at the position specified
+     *
      * @param x
      * @param y
      * @param chare
      */
     @Override
-    public void setCharByPos(int x, int y, char chare){
-        tablemap[x][y]= chare;
+    public void setCharByPos(int x, int y, char chare) {
+        tablemap[x][y] = chare;
         setChanged();
         notifyObservers();
     }

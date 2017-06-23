@@ -11,5 +11,5 @@ public interface Breakable {
     /**
      * Is break.
      */
-    public void isBreak();
+    void isBreak();
 }

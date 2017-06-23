@@ -44,7 +44,7 @@ public class MapDAO extends AbstractDAO {
      * The Conn.
      */
     Connection conn = null;
-    private String sql_map, sqlWidth, sqlHeigth,sqldiamonds;
+    private String sql_map, sqlWidth, sqlHeigth, sqldiamonds;
     private int amntdiamonds;
     private char tablemap[][];
     private int map_width, map_height;
@@ -52,6 +52,7 @@ public class MapDAO extends AbstractDAO {
 
     /**
      * constructors with parameter name of the map to search
+     *
      * @param nomMap
      * @throws SQLException
      */
@@ -108,7 +109,7 @@ public class MapDAO extends AbstractDAO {
         sql_map = "CALL recupere_map('" + title_map + "')";
         sqlWidth = "CALL recup_width('" + title_map + "')";
         sqlHeigth = "CALL recup_heigth('" + title_map + "')";
-        sqldiamonds =  "CALL recup_diamonds('" + title_map + "')";
+        sqldiamonds = "CALL recup_diamonds('" + title_map + "')";
     }
 
     /**
@@ -155,7 +156,7 @@ public class MapDAO extends AbstractDAO {
         rs = st.executeQuery(sqlWidth); //execute the request
         if (rs.next()) { //get the first result
             map_Width = rs.getInt("width"); //get the content of column width
-           if (dim.equals("width")) {
+            if (dim.equals("width")) {
                 return map_Width;
             }
 
@@ -190,8 +191,8 @@ public class MapDAO extends AbstractDAO {
      * @return amntdiamonds diamondssss
      * @throws SQLException the sql exception
      */
-    public int getDiamondssss(String title) throws SQLException{
-    	conn = boulderDashBDD.getConnection(); //get the connection to the database
+    public int getDiamondssss(String title) throws SQLException {
+        conn = boulderDashBDD.getConnection(); //get the connection to the database
         st = conn.createStatement(); //Initialization of the statement
         amntdiamonds = 0;
         setmap(title);
@@ -201,7 +202,7 @@ public class MapDAO extends AbstractDAO {
             amntdiamonds = rs.getInt("nb_diamonds"); //get the content of column level
             rs.close();
         }
-       return amntdiamonds;
+        return amntdiamonds;
     }
 
 
@@ -282,10 +283,10 @@ public class MapDAO extends AbstractDAO {
      *
      * @return the int
      */
-    public int getdiamonds(){
-		// TODO Auto-generated method stub
-		int chare = amntdiamonds;
-		return chare ;
-	}
+    public int getdiamonds() {
+        // TODO Auto-generated method stub
+        int chare = amntdiamonds;
+        return chare;
+    }
 }
 

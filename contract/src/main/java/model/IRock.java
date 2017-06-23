@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * The Interface IRock allows to get the movements of the rocks in the controller.
  */
-public interface IRock extends Tilable{
+public interface IRock extends Tilable {
     /**
      * Move d.
      *

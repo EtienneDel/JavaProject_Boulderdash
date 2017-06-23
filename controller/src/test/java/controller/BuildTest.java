@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Testing methods of positions
@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class BuildTest {
 
     private Build build;
+
     @Before
     public void setUp() throws Exception {
         build = new Build();
@@ -22,12 +23,11 @@ public class BuildTest {
     }
 
 
-
     @Test
     public void setPos() throws Exception {
 
         final int expected = 2;
-        build.setPos(2,2);
+        build.setPos(2, 2);
         assertEquals(expected, build.getPosX());
 
     }
@@ -36,7 +36,7 @@ public class BuildTest {
     public void getPosX() throws Exception {
 
         final int expected = 2;
-        build.setPos(2,2);
+        build.setPos(2, 2);
         assertEquals(expected, build.getPosX());
     }
 
@@ -44,7 +44,7 @@ public class BuildTest {
     public void getPosY() throws Exception {
 
         final int expected = 2;
-        build.setPos(2,2);
+        build.setPos(2, 2);
         assertEquals(expected, build.getPosY());
     }
 
