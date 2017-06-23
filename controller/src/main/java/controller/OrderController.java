@@ -20,11 +20,24 @@ public class OrderController extends java.util.Observable {
     private int collision;
     private RockController rockController;
 
+    /**
+     * Instantiates a new Order controller.
+     *
+     * @param build the build
+     */
     public OrderController(Build build) {
         this.build = build;
     }
 
 
+    /**
+     * Perform order.
+     *
+     * @param userOrder the user order
+     * @param model     the model
+     * @param view      the view
+     * @throws IOException the io exception
+     */
     public void performOrder(UserOrderable userOrder, IModel model, IView view) throws IOException {
         int x = build.getPosX();
         int y = build.getPosY();
