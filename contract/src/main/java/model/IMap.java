@@ -7,11 +7,45 @@ import java.util.Observer;
  * Created by Julien on 20/06/2017.
  */
 public interface IMap {
+    /**
+     * Gets the map.
+     *
+     * @return the the map
+     * @throws IOException the io exception
+     */
     IMap getTheMap() throws IOException;
+
+    /**
+     * Add observer.
+     *
+     * @param o the o
+     */
     void addObserver(Observer o);
 
+    /**
+     * Gets char by pos.
+     *
+     * @param x the x
+     * @param y the y
+     * @return the char by pos
+     */
     char getCharByPos(int x, int y);
+
+    /**
+     * Sets char by pos.
+     *
+     * @param x     the x
+     * @param y     the y
+     * @param chare the chare
+     */
     void setCharByPos(int x, int y, char chare);
+
+    /**
+     * Gets tile by pos.
+     *
+     * @param position the position
+     * @return the tile by pos
+     */
     Tilable getTileByPos(IPosition position);
 
 }
