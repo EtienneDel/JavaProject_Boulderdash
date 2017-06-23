@@ -17,8 +17,11 @@ public class DiamondTest {
     private Position position;
 
 
-
-
+    /**
+     * Sets up.
+     *
+     * @throws Exception the exception
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -29,11 +32,19 @@ public class DiamondTest {
 
     }
 
+    /**
+     * Tear down.
+     *
+     * @throws Exception the exception
+     */
     @After
     public void tearDown() throws Exception {
 
     }
 
+    /**
+     * Move d.
+     */
     @Test
     public void MoveD(){
         final int expected = 1;
@@ -43,6 +54,9 @@ public class DiamondTest {
 
     }
 
+    /**
+     * Is break.
+     */
     @Test
     public void isBreak() {
         final int expected = 2;
