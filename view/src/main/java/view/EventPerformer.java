@@ -22,6 +22,9 @@ public class EventPerformer implements EventPerformerable, IView {
     public EventPerformer(final OrderPerformerable orderPerformer) {
         this.orderPerformer = orderPerformer;
     }
+    public EventPerformer() {
+
+    }
 
     /**
      * Key typed user orderable.

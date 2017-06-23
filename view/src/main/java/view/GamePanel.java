@@ -28,6 +28,11 @@ public class GamePanel extends JPanel implements IView {
         nbdiamonds = model.getDiamonds();
 
     }
+  public GamePanel() {
+        image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+       nbdiamonds = 8;
+
+   }
 
     /**
      * Set image.
@@ -79,6 +84,12 @@ public class GamePanel extends JPanel implements IView {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+
+
+    public JLabel getPoints() {
+        return points;
     }
 
     @Override
