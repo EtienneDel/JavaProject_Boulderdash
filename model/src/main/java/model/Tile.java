@@ -31,7 +31,7 @@ public class Tile implements Tilable {
     /**
      * The Position.
      */
-    protected Position position;
+    public Position position;
     private ImageIcon img;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
