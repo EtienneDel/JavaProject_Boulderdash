@@ -1,0 +1,4 @@
+@author Julien Zolli
+
+npm install -g gitinspector
+gitinspector.cmd -F html -m -r --grading > git_report.html
