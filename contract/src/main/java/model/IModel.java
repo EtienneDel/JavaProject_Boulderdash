@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <h1>The Interface IModel.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
+ * The Interface IModel regroups the map attributes.
  */
 public interface IModel {
 
@@ -44,15 +41,13 @@ public interface IModel {
      */
     List<Example> getAllExamples() throws SQLException;
 
+    int getMap_width();
 
+    int getMap_height();
 
-    public int getMap_width();
+    char[][] getTab_map();
 
-    public int getMap_height();
-
-    public char[][] getTab_map();
-
-    public void setTab_map(char[][] tab_map);
+    void setTab_map(char[][] tab_map);
 
     Assetable getAssets();
 

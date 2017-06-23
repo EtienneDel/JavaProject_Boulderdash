@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 
 /**
- * Created by Julien on 20/06/2017.
+ * The Interface IRock allows to get the movements of the rocks in the controller.
  */
 public interface IRock extends Tilable{
     /**

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by Julien on 22/06/2017.
+ * The Interface IEnemies allows to get the movements of the enemies in the controller.
  */
 public interface IEnemies extends Movable{
     /**

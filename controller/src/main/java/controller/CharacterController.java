@@ -5,7 +5,7 @@ import model.*;
 import java.io.IOException;
 
 /**
- * Created by Etienne on 21/06/2017.
+ * The Class Character controller provides movements for the character.
  */
 public class CharacterController implements OrderPerformerable{
     /**

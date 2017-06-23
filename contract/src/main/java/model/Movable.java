@@ -1,10 +1,7 @@
 package model;
 
 /**
- * <h1>the Movable interface</h1>
- *
- * @author Paul Brouet
- * @version 1.0
+ * The Interface Movable provides movement for all the tiles to the controller.
  */
 public interface Movable {
 

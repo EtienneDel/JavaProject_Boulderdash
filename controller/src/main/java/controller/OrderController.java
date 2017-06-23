@@ -8,7 +8,7 @@ import view.IView;
 import java.io.IOException;
 
 /**
- * Created by Julien on 22/06/2017.
+ * The Class OrderController provides movements for the view and the character.
  */
 public class OrderController extends java.util.Observable {
     private Build build;

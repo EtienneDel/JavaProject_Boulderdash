@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by Julien on 21/06/2017.
+ * The Interface IPosition provides positions in the map.
  */
 public interface IPosition {
     /**

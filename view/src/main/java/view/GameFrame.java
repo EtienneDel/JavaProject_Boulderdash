@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by ASUS on 15/06/2017.
+ * The Class GameFrame creates a Frame to hold the game.
  */
 public class GameFrame extends JFrame implements KeyListener {
 

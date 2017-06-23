@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by Julien on 17/06/2017.
+ * The Class EnemyController provides movement for the enemies.
  */
 public class EnemyController {
     private IModel model;

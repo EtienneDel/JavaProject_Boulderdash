@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * Created by ASUS on 15/06/2017.
+ * The Class EventPerformer provides an Order to execute linked with the KeyListener.
  */
 public class EventPerformer implements EventPerformerable, IView {
 

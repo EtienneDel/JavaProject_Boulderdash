@@ -5,7 +5,7 @@ import model.*;
 import java.io.IOException;
 
 /**
- * Created by Julien on 16/06/2017.
+ * The Class RockController provides movement for the rocks.
  */
 public class RockController extends DiamondController{
 
