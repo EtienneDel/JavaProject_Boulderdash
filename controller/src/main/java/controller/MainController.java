@@ -8,7 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by Julien on 21/06/2017.
+ * The Class MainController centralize the movements of the diamonds and rocks.
  */
 public class MainController implements Observer{
     private CharacterController characterController;

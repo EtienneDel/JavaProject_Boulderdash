@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 /**
- * Created by Etienne on 21/06/2017.
+ * The Interface EventPerformable using a keyCode.
  */
 public interface EventPerformerable {
 

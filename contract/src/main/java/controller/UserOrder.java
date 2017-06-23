@@ -1,7 +1,7 @@
 package controller;
 
 /**
- * Created by Etienne on 20/06/2017.
+ * The Class UserOrder takes the order from the enumeration and link it with the user order.
  */
 public class UserOrder implements UserOrderable {
 

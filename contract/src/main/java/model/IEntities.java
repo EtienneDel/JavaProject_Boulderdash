@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by Julien on 21/06/2017.
+ * The Interface IEntities allows to get the movements of the character and enemies in the controller.
  */
 public interface IEntities extends Tilable{
     /**

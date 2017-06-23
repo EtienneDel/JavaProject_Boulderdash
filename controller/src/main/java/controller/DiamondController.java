@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 /**
- * Created by Julien on 17/06/2017.
+ * The Class DiamondController provides movement for the diamonds.
  */
 public class DiamondController {
     /**

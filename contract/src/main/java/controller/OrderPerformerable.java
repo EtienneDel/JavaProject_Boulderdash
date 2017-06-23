@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 
 /**
- * Created by Etienne on 21/06/2017.
+ * The Interface OrderPerformable use an user order.
  */
 public interface OrderPerformerable {
 

@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by ASUS on 22/06/2017.
+ * Testing methods of positions
  */
 public class BuildTest {
 

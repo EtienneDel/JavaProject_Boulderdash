@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 
 /**
- * Created by Etienne on 21/06/2017.
+ * The Interface ICharacter allows to get the movements of the character in the controller.
  */
 public interface ICharacter extends Tilable{
     /**

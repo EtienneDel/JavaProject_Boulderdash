@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 
 /**
- * Created by Julien on 21/06/2017.
+ * The Interface IDiamond allows to get the movements of the diamonds in the controller.
  */
 public interface IDiamond extends Tilable {
     /**

@@ -3,7 +3,7 @@ package model;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by ASUS on 20/06/2017.
+ * The Interface Assetable allows to get tiles from the model in the controller.
  */
 public interface Assetable {
 

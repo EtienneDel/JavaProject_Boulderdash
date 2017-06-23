@@ -1,7 +1,7 @@
 package controller;
 
 /**
- * Enumeration des mouvements réalisable
+ * The Enumeration Order provides choices for the view and player movements.
  */
 public enum Order {
     UP,

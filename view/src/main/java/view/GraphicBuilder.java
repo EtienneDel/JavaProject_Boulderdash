@@ -1,7 +1,7 @@
 package view;
 
 /**
- * Created by ASUS on 15/06/2017.
+ * The Class GraphicBuilder provides a Graphics attribute.
  */
 public class GraphicBuilder {
 

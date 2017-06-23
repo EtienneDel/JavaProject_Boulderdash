@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Observer;
 
 /**
- * Created by Julien on 20/06/2017.
+ * The Interface IMap provides methods to change the reference numbers in the map.
  */
 public interface IMap {
     /**

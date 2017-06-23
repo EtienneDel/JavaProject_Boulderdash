@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by ASUS on 20/06/2017.
+ * The Interface Tilable provide a position and a reference for the tiles to the controller
  */
 public interface Tilable {
 

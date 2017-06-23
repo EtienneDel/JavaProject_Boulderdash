@@ -1,7 +1,7 @@
 package controller;
 
 /**
- * Created by Etienne on 20/06/2017.
+ * The Interface UserOrderable take the order from the enumeration.
  */
 public interface UserOrderable {
 

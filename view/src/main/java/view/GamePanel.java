@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by ASUS on 15/06/2017.
+ * The Class GamePanel display all the objects on the GameFrame.
  */
 public class GamePanel extends JPanel implements IView {
 
