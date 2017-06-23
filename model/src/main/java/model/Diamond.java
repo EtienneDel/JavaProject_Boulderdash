@@ -36,6 +36,11 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
      *
      * @throws IOException the io exception
      */
+    public Diamond(int x, int y, int test) throws IOException {
+
+        setWalkable(true);
+
+    }
     public Diamond() throws IOException {
         super();
         setWalkable(true);

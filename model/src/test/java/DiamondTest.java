@@ -1,4 +1,6 @@
 import model.Diamond;
+import model.Position;
+import model.dao.MapDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +14,19 @@ import static org.junit.Assert.assertEquals;
 public class DiamondTest {
 
     private Diamond test;
+    private Position position;
+
+
 
 
     @Before
     public void setUp() throws Exception {
 
-        test = new Diamond(1,1);
+        MapDAO.setMapDAO("map1");
+        test = new Diamond(1,1, 5);
+        position = new Position(1,1);
+        test.setPosition(position);
+
     }
 
     @After
@@ -27,10 +36,10 @@ public class DiamondTest {
 
     @Test
     public void MoveD(){
-        final int expected = 2;
+        final int expected = 1;
         test.moveD(test.getPosition());
 
-        assertEquals(expected, test.getPosition().getPosY());
+        assertEquals(expected,test.getPosition().getPosY());
 
     }
     @Test

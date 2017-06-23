@@ -94,6 +94,9 @@ public class Map extends java.util.Observable implements IMap {
         return tablemap[x][y];
     }
 
+    public void setTablemap(char[][] tablemap) {
+        this.tablemap = tablemap;
+    }
 
     @Override
     public Tilable getTileByPos(IPosition position) {

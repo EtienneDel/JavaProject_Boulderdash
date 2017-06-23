@@ -18,13 +18,18 @@ public class Maptest {
 
     private Map test;
     private MapDAO test2;
+
     private HashMap<Tile,Integer> tiless;
     @Before
     public void setUp() throws Exception {
 
-        this.test2 = MapDAO.setMapDAO("maptest");
-        this.test = Map.getMap();
-        this.tiless = new HashMap<Tile,Integer>();
+        test2 = MapDAO.getMapDAO();
+        test2 = MapDAO.setMapDAO("map1");
+        test2.putMapInTable(test2.readMap("map1"));
+        test = Map.getMap();
+        test.setTablemap(test2.getTablemap());
+
+
 
     }
 
