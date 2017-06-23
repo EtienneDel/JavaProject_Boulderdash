@@ -1,14 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-		<title>Git Report BoulderDash</title>
-		<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<?xml version="1.0" encoding="utf-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+
+		<title>Git Report BoulderDash</title>
+
+		<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 		<script type="application/javascript">
 (function($){$.extend({tablesorter:new
 function(){var parsers=[],widgets=[];this.defaults={cssHeader:"header",cssAsc:"headerSortUp",cssDesc:"headerSortDown",cssChildRow:"expand-child",sortInitialOrder:"asc",sortMultiSortKey:"shiftKey",sortForce:null,sortAppend:null,sortLocaleCompare:true,textExtraction:"simple",parsers:{},widgets:[],widgetZebra:{css:["even","odd"]},headers:{},widthFixed:false,cancelSelection:true,sortList:[],headerList:[],dateFormat:"us",decimal:'/\.|\,/g',onRenderHeader:null,selectorHeaders:'thead th',debug:false};function benchmark(s,d){log(s+","+(new Date().getTime()-d.getTime())+"ms");}this.benchmark=benchmark;function log(s){if(typeof console!="undefined"&&typeof console.debug!="undefined"){console.log(s);}else{alert(s);}}function buildParserCache(table,$headers){if(table.config.debug){var parsersDebug="";}if(table.tBodies.length==0)return;var rows=table.tBodies[0].rows;if(rows[0]){var list=[],cells=rows[0].cells,l=cells.length;for(var i=0;i<l;i++){var p=false;if($.metadata&&($($headers[i]).metadata()&&$($headers[i]).metadata().sorter)){p=getParserById($($headers[i]).metadata().sorter);}else if((table.config.headers[i]&&table.config.headers[i].sorter)){p=getParserById(table.config.headers[i].sorter);}if(!p){p=detectParserForColumn(table,rows,-1,i);}if(table.config.debug){parsersDebug+="column:"+i+" parser:"+p.id+"\n";}list.push(p);}}if(table.config.debug){log(parsersDebug);}return list;};function detectParserForColumn(table,rows,rowIndex,cellIndex){var l=parsers.length,node=false,nodeValue=false,keepLooking=true;while(nodeValue==''&&keepLooking){rowIndex++;if(rows[rowIndex]){node=getNodeFromRowAndCellIndex(rows,rowIndex,cellIndex);nodeValue=trimAndGetNodeText(table.config,node);if(table.config.debug){log('Checking if value was empty on row:'+rowIndex);}}else{keepLooking=false;}}for(var i=1;i<l;i++){if(parsers[i].is(nodeValue,table,node)){return parsers[i];}}return parsers[0];}function getNodeFromRowAndCellIndex(rows,rowIndex,cellIndex){return rows[rowIndex].cells[cellIndex];}function trimAndGetNodeText(config,node){return $.trim(getElementText(config,node));}function getParserById(name){var l=parsers.length;for(var i=0;i<l;i++){if(parsers[i].id.toLowerCase()==name.toLowerCase()){return parsers[i];}}return false;}function buildCache(table){if(table.config.debug){var cacheTime=new Date();}var totalRows=(table.tBodies[0]&&table.tBodies[0].rows.length)||0,totalCells=(table.tBodies[0].rows[0]&&table.tBodies[0].rows[0].cells.length)||0,parsers=table.config.parsers,cache={row:[],normalized:[]};for(var i=0;i<totalRows;++i){var c=$(table.tBodies[0].rows[i]),cols=[];if(c.hasClass(table.config.cssChildRow)){cache.row[cache.row.length-1]=cache.row[cache.row.length-1].add(c);continue;}cache.row.push(c);for(var j=0;j<totalCells;++j){cols.push(parsers[j].format(getElementText(table.config,c[0].cells[j]),table,c[0].cells[j]));}cols.push(cache.normalized.length);cache.normalized.push(cols);cols=null;};if(table.config.debug){benchmark("Building cache for "+totalRows+" rows:",cacheTime);}return cache;};function getElementText(config,node){var text="";if(!node)return"";if(!config.supportsTextContent)config.supportsTextContent=node.textContent||false;if(config.textExtraction=="simple"){if(config.supportsTextContent){text=node.textContent;}else{if(node.childNodes[0]&&node.childNodes[0].hasChildNodes()){text=node.childNodes[0].innerHTML;}else{text=node.innerHTML;}}}else{if(typeof(config.textExtraction)=="function"){text=config.textExtraction(node);}else{text=$(node).text();}}return text;}function appendToTable(table,cache){if(table.config.debug){var appendTime=new Date()}var c=cache,r=c.row,n=c.normalized,totalRows=n.length,checkCell=(n[0].length-1),tableBody=$(table.tBodies[0]),rows=[];for(var i=0;i<totalRows;i++){var pos=n[i][checkCell];rows.push(r[pos]);if(!table.config.appender){var l=r[pos].length;for(var j=0;j<l;j++){tableBody[0].appendChild(r[pos][j]);}}}if(table.config.appender){table.config.appender(table,rows);}rows=null;if(table.config.debug){benchmark("Rebuilt table:",appendTime);}applyWidget(table);setTimeout(function(){$(table).trigger("sortEnd");},0);};function buildHeaders(table){if(table.config.debug){var time=new Date();}var meta=($.metadata)?true:false;var header_index=computeTableHeaderCellIndexes(table);$tableHeaders=$(table.config.selectorHeaders,table).each(function(index){this.column=header_index[this.parentNode.rowIndex+"-"+this.cellIndex];this.order=formatSortingOrder(table.config.sortInitialOrder);this.count=this.order;if(checkHeaderMetadata(this)||checkHeaderOptions(table,index))this.sortDisabled=true;if(checkHeaderOptionsSortingLocked(table,index))this.order=this.lockedOrder=checkHeaderOptionsSortingLocked(table,index);if(!this.sortDisabled){var $th=$(this).addClass(table.config.cssHeader);if(table.config.onRenderHeader)table.config.onRenderHeader.apply($th);}table.config.headerList[index]=this;});if(table.config.debug){benchmark("Built headers:",time);log($tableHeaders);}return $tableHeaders;};function computeTableHeaderCellIndexes(t){var matrix=[];var lookup={};var thead=t.getElementsByTagName('THEAD')[0];var trs=thead.getElementsByTagName('TR');for(var i=0;i<trs.length;i++){var cells=trs[i].cells;for(var j=0;j<cells.length;j++){var c=cells[j];var rowIndex=c.parentNode.rowIndex;var cellId=rowIndex+"-"+c.cellIndex;var rowSpan=c.rowSpan||1;var colSpan=c.colSpan||1
 var firstAvailCol;if(typeof(matrix[rowIndex])=="undefined"){matrix[rowIndex]=[];}for(var k=0;k<matrix[rowIndex].length+1;k++){if(typeof(matrix[rowIndex][k])=="undefined"){firstAvailCol=k;break;}}lookup[cellId]=firstAvailCol;for(var k=rowIndex;k<rowIndex+rowSpan;k++){if(typeof(matrix[k])=="undefined"){matrix[k]=[];}var matrixrow=matrix[k];for(var l=firstAvailCol;l<firstAvailCol+colSpan;l++){matrixrow[l]="x";}}}}return lookup;}function checkCellColSpan(table,rows,row){var arr=[],r=table.tHead.rows,c=r[row].cells;for(var i=0;i<c.length;i++){var cell=c[i];if(cell.colSpan>1){arr=arr.concat(checkCellColSpan(table,headerArr,row++));}else{if(table.tHead.length==1||(cell.rowSpan>1||!r[row+1])){arr.push(cell);}}}return arr;};function checkHeaderMetadata(cell){if(($.metadata)&&($(cell).metadata().sorter===false)){return true;};return false;}function checkHeaderOptions(table,i){if((table.config.headers[i])&&(table.config.headers[i].sorter===false)){return true;};return false;}function checkHeaderOptionsSortingLocked(table,i){if((table.config.headers[i])&&(table.config.headers[i].lockedOrder))return table.config.headers[i].lockedOrder;return false;}function applyWidget(table){var c=table.config.widgets;var l=c.length;for(var i=0;i<l;i++){getWidgetById(c[i]).format(table);}}function getWidgetById(name){var l=widgets.length;for(var i=0;i<l;i++){if(widgets[i].id.toLowerCase()==name.toLowerCase()){return widgets[i];}}};function formatSortingOrder(v){if(typeof(v)!="Number"){return(v.toLowerCase()=="desc")?1:0;}else{return(v==1)?1:0;}}function isValueInArray(v,a){var l=a.length;for(var i=0;i<l;i++){if(a[i][0]==v){return true;}}return false;}function setHeadersCss(table,$headers,list,css){$headers.removeClass(css[0]).removeClass(css[1]);var h=[];$headers.each(function(offset){if(!this.sortDisabled){h[this.column]=$(this);}});var l=list.length;for(var i=0;i<l;i++){h[list[i][0]].addClass(css[list[i][1]]);}}function fixColumnWidth(table,$headers){var c=table.config;if(c.widthFixed){var colgroup=$('<colgroup>');$("tr:first td",table.tBodies[0]).each(function(){colgroup.append($('<col>').css('width',$(this).width()));});$(table).prepend(colgroup);};}function updateHeaderSortCount(table,sortList){var c=table.config,l=sortList.length;for(var i=0;i<l;i++){var s=sortList[i],o=c.headerList[s[0]];o.count=s[1];o.count++;}}function multisort(table,sortList,cache){if(table.config.debug){var sortTime=new Date();}var dynamicExp="var sortWrapper = function(a,b) {",l=sortList.length;for(var i=0;i<l;i++){var c=sortList[i][0];var order=sortList[i][1];var s=(table.config.parsers[c].type=="text")?((order==0)?makeSortFunction("text","asc",c):makeSortFunction("text","desc",c)):((order==0)?makeSortFunction("numeric","asc",c):makeSortFunction("numeric","desc",c));var e="e"+i;dynamicExp+="var "+e+" = "+s;dynamicExp+="if("+e+") { return "+e+"; } ";dynamicExp+="else { ";}var orgOrderCol=cache.normalized[0].length-1;dynamicExp+="return a["+orgOrderCol+"]-b["+orgOrderCol+"];";for(var i=0;i<l;i++){dynamicExp+="}; ";}dynamicExp+="return 0; ";dynamicExp+="}; ";if(table.config.debug){benchmark("Evaling expression:"+dynamicExp,new Date());}eval(dynamicExp);cache.normalized.sort(sortWrapper);if(table.config.debug){benchmark("Sorting on "+sortList.toString()+" and dir "+order+" time:",sortTime);}return cache;};function makeSortFunction(type,direction,index){var a="a["+index+"]",b="b["+index+"]";if(type=='text'&&direction=='asc'){return"("+a+" == "+b+" ? 0 : ("+a+" === null ? Number.POSITIVE_INFINITY : ("+b+" === null ? Number.NEGATIVE_INFINITY : ("+a+" < "+b+") ? -1 : 1 )));";}else if(type=='text'&&direction=='desc'){return"("+a+" == "+b+" ? 0 : ("+a+" === null ? Number.POSITIVE_INFINITY : ("+b+" === null ? Number.NEGATIVE_INFINITY : ("+b+" < "+a+") ? -1 : 1 )));";}else if(type=='numeric'&&direction=='asc'){return"("+a+" === null && "+b+" === null) ? 0 :("+a+" === null ? Number.POSITIVE_INFINITY : ("+b+" === null ? Number.NEGATIVE_INFINITY : "+a+" - "+b+"));";}else if(type=='numeric'&&direction=='desc'){return"("+a+" === null && "+b+" === null) ? 0 :("+a+" === null ? Number.POSITIVE_INFINITY : ("+b+" === null ? Number.NEGATIVE_INFINITY : "+b+" - "+a+"));";}};function makeSortText(i){return"((a["+i+"] < b["+i+"]) ? -1 : ((a["+i+"] > b["+i+"]) ? 1 : 0));";};function makeSortTextDesc(i){return"((b["+i+"] < a["+i+"]) ? -1 : ((b["+i+"] > a["+i+"]) ? 1 : 0));";};function makeSortNumeric(i){return"a["+i+"]-b["+i+"];";};function makeSortNumericDesc(i){return"b["+i+"]-a["+i+"];";};function sortText(a,b){if(table.config.sortLocaleCompare)return a.localeCompare(b);return((a<b)?-1:((a>b)?1:0));};function sortTextDesc(a,b){if(table.config.sortLocaleCompare)return b.localeCompare(a);return((b<a)?-1:((b>a)?1:0));};function sortNumeric(a,b){return a-b;};function sortNumericDesc(a,b){return b-a;};function getCachedSortType(parsers,i){return parsers[i].type;};this.construct=function(settings){return this.each(function(){if(!this.tHead||!this.tBodies)return;var $this,$document,$headers,cache,config,shiftDown=0,sortOrder;this.config={};config=$.extend(this.config,$.tablesorter.defaults,settings);$this=$(this);$.data(this,"tablesorter",config);$headers=buildHeaders(this);this.config.parsers=buildParserCache(this,$headers);cache=buildCache(this);var sortCSS=[config.cssDesc,config.cssAsc];fixColumnWidth(this);$headers.click(function(e){var totalRows=($this[0].tBodies[0]&&$this[0].tBodies[0].rows.length)||0;if(!this.sortDisabled&&totalRows>0){$this.trigger("sortStart");var $cell=$(this);var i=this.column;this.order=this.count++%2;if(this.lockedOrder)this.order=this.lockedOrder;if(!e[config.sortMultiSortKey]){config.sortList=[];if(config.sortForce!=null){var a=config.sortForce;for(var j=0;j<a.length;j++){if(a[j][0]!=i){config.sortList.push(a[j]);}}}config.sortList.push([i,this.order]);}else{if(isValueInArray(i,config.sortList)){for(var j=0;j<config.sortList.length;j++){var s=config.sortList[j],o=config.headerList[s[0]];if(s[0]==i){o.count=s[1];o.count++;s[1]=o.count%2;}}}else{config.sortList.push([i,this.order]);}};setTimeout(function(){setHeadersCss($this[0],$headers,config.sortList,sortCSS);appendToTable($this[0],multisort($this[0],config.sortList,cache));},1);return false;}}).mousedown(function(){if(config.cancelSelection){this.onselectstart=function(){return false};return false;}});$this.bind("update",function(){var me=this;setTimeout(function(){me.config.parsers=buildParserCache(me,$headers);cache=buildCache(me);},1);}).bind("updateCell",function(e,cell){var config=this.config;var pos=[(cell.parentNode.rowIndex-1),cell.cellIndex];cache.normalized[pos[0]][pos[1]]=config.parsers[pos[1]].format(getElementText(config,cell),cell);}).bind("sorton",function(e,list){$(this).trigger("sortStart");config.sortList=list;var sortList=config.sortList;updateHeaderSortCount(this,sortList);setHeadersCss(this,$headers,sortList,sortCSS);appendToTable(this,multisort(this,sortList,cache));}).bind("appendCache",function(){appendToTable(this,cache);}).bind("applyWidgetId",function(e,id){getWidgetById(id).format(this);}).bind("applyWidgets",function(){applyWidget(this);});if($.metadata&&($(this).metadata()&&$(this).metadata().sortlist)){config.sortList=$(this).metadata().sortlist;}if(config.sortList.length>0){$this.trigger("sorton",[config.sortList]);}applyWidget(this);});};this.addParser=function(parser){var l=parsers.length,a=true;for(var i=0;i<l;i++){if(parsers[i].id.toLowerCase()==parser.id.toLowerCase()){a=false;}}if(a){parsers.push(parser);};};this.addWidget=function(widget){widgets.push(widget);};this.formatFloat=function(s){var i=parseFloat(s);return(isNaN(i))?0:i;};this.formatInt=function(s){var i=parseInt(s);return(isNaN(i))?0:i;};this.isDigit=function(s,config){return/^[-+]?\d*$/.test($.trim(s.replace(/[,.']/g,'')));};this.clearTableBody=function(table){if($.browser.msie){function empty(){while(this.firstChild)this.removeChild(this.firstChild);}empty.apply(table.tBodies[0]);}else{table.tBodies[0].innerHTML="";}};}});$.fn.extend({tablesorter:$.tablesorter.construct});var ts=$.tablesorter;ts.addParser({id:"text",is:function(s){return true;},format:function(s){return $.trim(s.toLocaleLowerCase());},type:"text"});ts.addParser({id:"digit",is:function(s,table){var c=table.config;return $.tablesorter.isDigit(s,c);},format:function(s){return $.tablesorter.formatFloat(s);},type:"numeric"});ts.addParser({id:"currency",is:function(s){return/^[$?.]/.test(s);},format:function(s){return $.tablesorter.formatFloat(s.replace(new RegExp(/[$]/g),""));},type:"numeric"});ts.addParser({id:"ipAddress",is:function(s){return/^\d{2,3}[\.]\d{2,3}[\.]\d{2,3}[\.]\d{2,3}$/.test(s);},format:function(s){var a=s.split("."),r="",l=a.length;for(var i=0;i<l;i++){var item=a[i];if(item.length==2){r+="0"+item;}else{r+=item;}}return $.tablesorter.formatFloat(r);},type:"numeric"});ts.addParser({id:"url",is:function(s){return/^(https?|ftp|file):\/\/$/.test(s);},format:function(s){return jQuery.trim(s.replace(new RegExp(/(https?|ftp|file):\/\//),''));},type:"text"});ts.addParser({id:"isoDate",is:function(s){return/^\d{4}[\/-]\d{1,2}[\/-]\d{1,2}$/.test(s);},format:function(s){return $.tablesorter.formatFloat((s!="")?new Date(s.replace(new RegExp(/-/g),"/")).getTime():"0");},type:"numeric"});ts.addParser({id:"percent",is:function(s){return/\%$/.test($.trim(s));},format:function(s){return $.tablesorter.formatFloat(s.replace(new RegExp(/%/g),""));},type:"numeric"});ts.addParser({id:"usLongDate",is:function(s){return s.match(new RegExp(/^[A-Za-z]{3,10}\.? [0-9]{1,2}, ([0-9]{4}|'?[0-9]{2}) (([0-2]?[0-9]:[0-5][0-9])|([0-1]?[0-9]:[0-5][0-9]\s(AM|PM)))$/));},format:function(s){return $.tablesorter.formatFloat(new Date(s).getTime());},type:"numeric"});ts.addParser({id:"shortDate",is:function(s){return/\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}/.test(s);},format:function(s,table){var c=table.config;s=s.replace(/\-/g,"/");if(c.dateFormat=="us"){s=s.replace(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/,"$3/$1/$2");}else if(c.dateFormat=="uk"){s=s.replace(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/,"$3/$2/$1");}else if(c.dateFormat=="dd/mm/yy"||c.dateFormat=="dd-mm-yy"){s=s.replace(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2})/,"$1/$2/$3");}return $.tablesorter.formatFloat(new Date(s).getTime());},type:"numeric"});ts.addParser({id:"time",is:function(s){return/^(([0-2]?[0-9]:[0-5][0-9])|([0-1]?[0-9]:[0-5][0-9]\s(am|pm)))$/.test(s);},format:function(s){return $.tablesorter.formatFloat(new Date("2000/01/01 "+s).getTime());},type:"numeric"});ts.addParser({id:"metadata",is:function(s){return false;},format:function(s,table,cell){var c=table.config,p=(!c.parserMetadataName)?'sortValue':c.parserMetadataName;return $(cell).metadata()[p];},type:"numeric"});ts.addWidget({id:"zebra",format:function(table){if(table.config.debug){var time=new Date();}var $tr,row=-1,odd;$("tr:visible",table.tBodies[0]).each(function(i){$tr=$(this);if(!$tr.hasClass(table.config.cssChildRow))row++;odd=(row%2==0);$tr.removeClass(table.config.widgetZebra.css[odd?0:1]).addClass(table.config.widgetZebra.css[odd?1:0])});if(table.config.debug){$.tablesorter.benchmark("Applying Zebra widget",time);}}});})(jQuery);
-</script>
+</script>
+
 		<script type="application/javascript">/* Javascript plotting library for jQuery, version 0.8.3.
 
 Copyright (c) 2007-2014 IOLA and Ole Laursen.
@@ -3177,7 +3184,8 @@ Licensed under the MIT license.
     }
 
 })(jQuery);
-</script>
+</script>
+
 		<script type="application/javascript">/* Flot plugin for rendering pie charts.
 
 Copyright (c) 2007-2014 IOLA and Ole Laursen.
@@ -3998,7 +4006,8 @@ More detail and specific examples can be found in the included HTML file.
 	});
 
 })(jQuery);
-</script>
+</script>
+
 		<script type="application/javascript">/* Flot plugin for automatically redrawing plots as the placeholder resizes.
 
 Copyright (c) 2007-2014 IOLA and Ole Laursen.
@@ -4058,361 +4067,716 @@ can just fix the size of their placeholders.
         version: '1.0'
     });
 })(jQuery);
-</script>
-		<script type="application/javascript">
-			$(document).ready(function() {
-				var row = 0;
-				var MINOR_AUTHOR_PERCENTAGE = 1.00;
-				var isReversed = false;
-
-				var colorRows = function() {
-					$(this).removeClass("odd");
-
-					if (row++ % 2 == 1) {
-						$(this).addClass("odd");
-					}
-
-					if(this == $(this).parent().find("tr:visible").get(-1)) {
-						row = 0;
-					}
-				}
-
-				// Fix header and set it to the right width.
-				var remainingHeaderWidth = ($("div.logo").width() - 4) - ($("div.logo img").innerWidth() + 48)
-				$("div.logo p").css("width", remainingHeaderWidth);
-
-				var filterResponsibilities = function() {
-					$("table#blame tbody tr td:last-child").filter(function() {
-						return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
-					}).parent().find("td:first-child").each(function() {
-						$("div#responsibilities div h3:contains(\"" + $(this).text() + "\")").parent().hide();
-					});
-				}
-
-				var filterTimeLine = function() {
-					$("div#timeline table.git tbody tr").filter(function() {
-						return $(this).find("td:has(div)").length == 0;
-					}).hide();
-				}
-
-				$("table#changes tbody tr td:last-child").filter(function() {
-					return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
-				}).parent().hide();
-
-				$("table#blame tbody tr td:last-child").filter(function() {
-					return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
-				}).parent().hide();
-
-				$("table.git tbody tr:visible").each(colorRows);
-
-				$("table#changes, table#blame").tablesorter({
-					sortList: [[0,0]],
-					headers: {
-						0: { sorter: "text" }
-					}
-				}).bind("sortEnd", function() {
-					$(this).find("tbody tr:visible").each(colorRows);
-				});
-
-				$("table#changes thead tr th, table#blame thead tr th").click(function() {
-					$(this).parent().find("th strong").remove();
-					var parentIndex = $(this).index();
-
-					if (this.isReversed) {
-						$(this).append("<strong> &and;</strong>");
-					} else {
-						$(this).append("<strong> &or;</strong>");
-					}
-					this.isReversed = !this.isReversed;
-				});
-
-				$("table#changes thead tr th:first-child, table#blame thead tr th:first-child").each(function() {
-					this.isReversed = true;
-					$(this).append("<strong> &or;</strong>");
-				});
-
-				$("table.git tfoot tr td:first-child").filter(function() {
-					this.hiddenCount = $(this).parent().parent().parent().find("tbody tr:hidden").length;
-					return this.hiddenCount > 0;
-				}).each(function() {
-					$(this).addClass("hoverable");
-					this.innerHTML = "Show minor authors (" + this.hiddenCount + ") &or;";
-				}).click(function() {
-					this.clicked = !this.clicked;
-
-					if (this.clicked) {
-						this.innerHTML = "Hide minor authors (" + this.hiddenCount + ") &and;";
-						$(this).parent().parent().parent().find("tbody tr").show().each(colorRows);
-					} else {
-						this.innerHTML = "Show minor authors (" + this.hiddenCount + ") &or;";
-						$(this).parent().parent().parent().find("tbody tr td:last-child").filter(function() {
-							return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
-						}).parent().hide();
-						$("table.git tbody tr:visible").each(colorRows);
-					}
-				});
-
-				filterResponsibilities();
-				var hiddenResponsibilitiesCount = $("div#responsibilities div h3:hidden").length;
-				if (hiddenResponsibilitiesCount > 0) {
-					$("div#responsibilities div h3:visible").each(colorRows);
-					$("div#responsibilities").prepend("<div class=\"button\">Show minor authors (" + hiddenResponsibilitiesCount + ") &or;</div>");
-
-					$("div#responsibilities div.button").click(function() {
-						this.clicked = !this.clicked;
-						if (this.clicked) {
-							this.innerHTML = "Hide minor authors (" + hiddenResponsibilitiesCount + ") &and;";
-							$("div#responsibilities div").show();
-						} else {
-							this.innerHTML = "Show minor authors (" + hiddenResponsibilitiesCount + ") &or;";
-							filterResponsibilities();
-						}
-					});
-				}
-
-
-				filterTimeLine();
-				var hiddenTimelineCount = $("div#timeline table.git tbody tr:hidden").length;
-				if (hiddenTimelineCount > 0) {
-					$("div#timeline table.git tbody tr:visible").each(colorRows);
-					$("div#timeline").prepend("<div class=\"button\">Show rows with minor work (" + hiddenTimelineCount + ") &or;</div>");
-
-					$("div#timeline div.button").click(function() {
-						this.clicked = !this.clicked;
-						if (this.clicked) {
-							this.innerHTML = "Hide rows with minor work (" + hiddenTimelineCount + ") &and;";
-							$("div#timeline table.git tbody tr").show().each(colorRows);
-						} else {
-							this.innerHTML = "Show rows with minor work (" + hiddenTimelineCount + ") &or;";
-							filterTimeLine();
-							$("div#timeline table.git tbody tr:visible").each(colorRows);
-						}
-					});
-				}
-
-				$("#blame_chart, #changes_chart").bind("plothover", function(event, pos, obj) {
-					if (obj) {
-						var selection = "table tbody tr td:contains(\"" + obj.series.label + "\")";
-						var element = $(this).parent().find(selection);
-
-						if (element) {
-							if (this.hoveredElement && this.hoveredElement.html() != element.parent().html()) {
-								this.hoveredElement.removeClass("piehover");
-							}
-
-							element.parent().addClass("piehover");
-							this.hoveredElement = element.parent();
-						}
-					} else if (this.hoveredElement) {
-						this.hoveredElement.removeClass("piehover");
-					}
-				});
-
-				// Make sure the two pie charts use the same colors.
-
-				var author_colors = {};
-				$.each(changes_plot.getData(), function(i, v) {
-					author_colors[v["label"]] = v["color"];
-				});
-
-				$.each(blame_plot.getData(), function(i, v) {
-					if (author_colors[v["label"]] != undefined) {
-						v["color"] = author_colors[v["label"]];
-					}
-				});
-
-				blame_plot.setupGrid();
-				blame_plot.draw();
-
-				// Color in metrics levels.
-
-				$("div#metrics div div").each(function() {
-					var rgb = $(this).css("background-color").match(/\d+/g);
-					rgb[0] = parseInt(rgb[0]);
-					rgb[1] = parseInt(rgb[1]);
-					rgb[2] = parseInt(rgb[2]);
-
-					if ($(this).hasClass("minimal")) {
-						rgb[0] -= 10;
-						rgb[1] += 10;
-						rgb[2] -= 10;
-					} else if ($(this).hasClass("minor")) {
-						rgb[1] += 10;
-					} else if ($(this).hasClass("medium")) {
-						rgb[0] += 10;
-						rgb[1] += 10;
-					} else if ($(this).hasClass("bad")) {
-						rgb[0] += 10;
-						rgb[1] -= 10;
-						rgb[2] -= 10;
-					} else if ($(this).hasClass("severe")) {
-						rgb[0] += 20;
-						rgb[1] -= 20;
-						rgb[2] -= 20;
-					}
-
-					$(this).css("background-color", "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")");
-				});
-			});
-		</script>
-		<style type="text/css">
-			body {
-				background: -webkit-linear-gradient(left, #8f8a9a, #dad2d7, #8f8a9a);
-				background: -moz-linear-gradient(left, #8f8a9a, #dad2d7, #8f8a9a);
-			}
-			html, body {
-				margin: 0;
-				font-family: "Arial";
-			}
-			body > div {
-				margin: 0 auto;
-				width: 58em;
-			}
-			div.box {
-				border: 4px solid #ddd;
-				background-color: #eee;
-				margin: 0.75em;
-				padding: 5px;
-				font-size: small;
-				border-radius: 15px;
-				-moz-border-radius: 15px;
-				box-shadow: 1px 1px 3px #666;
-				-moz-box-shadow: 1px 1px 3px #666;
-			}
-			div.logo p {
-				width: 60em;
-				display:inline-block;
-				vertical-align:middle;
-			}
-			div.logo img {
-				vertical-align:middle;
-				padding: 2px 10px 2px 2px;
-			}
-			body > div {
-				display: block-inline;
-			}
-			body > div > div > div {
-				position: relative;
-				width: 100%;
-				min-height: 140px;
-			}
-			table.git {
-				font-size: small;
-				width: 65%;
-				padding-right: 5px;
-			}
-			table.full {
-				width: 100%;
-			}
-			table.git th, table.git tfoot tr td {
-				padding: 0.3em;
-				background-color: #ddcece;
-				border-radius: 8px 8px 0px 0px;
-				-moz-border-radius: 8px 8px 0px 0px;
-			}
-			table#changes thead tr th, table#blame thead tr th, table.git tfoot tr td {
-				border: 1px solid #eee;
-				text-align: center;
-			}
-			table.git tfoot tr td {
-				border-radius: 0px 0px 8px 8px;
-				-moz-border-radius: 0px 0px 8px 8px;
-				text-align: center;
-			}
-			table.git td, table.git th, table#timeline td, table#timeline th {
-				padding: 0.35em;
-				height: 2em;
-			}
-			table.git td div.insert {
-				background-color: #7a7;
-			}
-			table.git td div.remove {
-				background-color: #c66;
-			}
-			table.git td div.insert, table.git td div.remove {
-				height: 100%;
-				float: left;
-			}
-			table.git tr.odd {
-				background-color: #dbdbdb;
-			}
-			table.git tr.piehover {
-				background-color: #dddece;
-			}
-			div.chart {
-				position: absolute;
-				top: 5px;
-				bottom: 5px;
-				right: 0px;
-				width: 35%;
-				min-height: 100px;
-				max-height: 210px;
-				font-size: x-small;
-			}
-			p.error {
-				color: #700;
-			}
-			table#changes thead tr th:hover, table#blame thead tr th:hover,
-			table#changes tfoot tr td.hoverable:hover, table#blame tfoot tr td.hoverable:hover,
-			div.button:hover, div#responsibilities div.button:hover {
-				background-color: #eddede;
-				border: 1px solid #bbb;
-				cursor: hand;
-			}
-			div#responsibilities div, div#responsibilities div div, div#metrics div, div#metrics div div {
-				min-height: 0px;
-				padding: 0.5em 0.2em;
-				width: auto;
-			}
-			div#metrics div {
-				background-color: #eee;
-			}
-			div#responsibilities div.odd, div#metrics div.odd {
-				background-color: #dbdbdb;
-			}
-			div#responsibilities p {
-				margin-bottom: 0px;
-			}
-			td img, h3 img {
-				border-radius: 3px 3px 3px 3px;
-				-moz-border-radius: 3px 3px 3px 3px;
-				vertical-align: middle;
-				margin-right: 0.4em;
-				opacity: 0.85;
-			}
-			td img {
-				width: 20px;
-				height: 20px;
-			}
-			h3 img {
-				width: 32px;
-				height: 32px;
-			}
-			h3, h4 {
-				border-radius: 8px 8px 8px 8px;
-				-moz-border-radius: 8px 8px 8px 8px;
-				background-color: #ddcece;
-				margin-bottom: 0.2em;
-				margin-top: 0.6em;
-			}
-			h4 {
-				margin-top: 0.2em;
-				padding: 0.5em;
-			}
-			div.button, div#responsibilities div.button {
-				border-radius: 8px 8px 8px 8px;
-				-moz-border-radius: 8px 8px 8px 8px;
-				border: 1px solid #eee;
-				float: right;
-				width: auto;
-				padding: 0.5em;
-				background-color: #ddcece;
-				min-height: 0;
-			}
-		</style>
-	</head>
-	<body><br />
-<h1 align="center">Git Report</h1>
+</script>
+
+		<script type="application/javascript">
+
+			$(document).ready(function() {
+
+				var row = 0;
+
+				var MINOR_AUTHOR_PERCENTAGE = 1.00;
+
+				var isReversed = false;
+
+
+
+				var colorRows = function() {
+
+					$(this).removeClass("odd");
+
+
+
+					if (row++ % 2 == 1) {
+
+						$(this).addClass("odd");
+
+					}
+
+
+
+					if(this == $(this).parent().find("tr:visible").get(-1)) {
+
+						row = 0;
+
+					}
+
+				}
+
+
+
+				// Fix header and set it to the right width.
+
+				var remainingHeaderWidth = ($("div.logo").width() - 4) - ($("div.logo img").innerWidth() + 48)
+
+				$("div.logo p").css("width", remainingHeaderWidth);
+
+
+
+				var filterResponsibilities = function() {
+
+					$("table#blame tbody tr td:last-child").filter(function() {
+
+						return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
+
+					}).parent().find("td:first-child").each(function() {
+
+						$("div#responsibilities div h3:contains(\"" + $(this).text() + "\")").parent().hide();
+
+					});
+
+				}
+
+
+
+				var filterTimeLine = function() {
+
+					$("div#timeline table.git tbody tr").filter(function() {
+
+						return $(this).find("td:has(div)").length == 0;
+
+					}).hide();
+
+				}
+
+
+
+				$("table#changes tbody tr td:last-child").filter(function() {
+
+					return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
+
+				}).parent().hide();
+
+
+
+				$("table#blame tbody tr td:last-child").filter(function() {
+
+					return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
+
+				}).parent().hide();
+
+
+
+				$("table.git tbody tr:visible").each(colorRows);
+
+
+
+				$("table#changes, table#blame").tablesorter({
+
+					sortList: [[0,0]],
+
+					headers: {
+
+						0: { sorter: "text" }
+
+					}
+
+				}).bind("sortEnd", function() {
+
+					$(this).find("tbody tr:visible").each(colorRows);
+
+				});
+
+
+
+				$("table#changes thead tr th, table#blame thead tr th").click(function() {
+
+					$(this).parent().find("th strong").remove();
+
+					var parentIndex = $(this).index();
+
+
+
+					if (this.isReversed) {
+
+						$(this).append("<strong> &and;</strong>");
+
+					} else {
+
+						$(this).append("<strong> &or;</strong>");
+
+					}
+
+					this.isReversed = !this.isReversed;
+
+				});
+
+
+
+				$("table#changes thead tr th:first-child, table#blame thead tr th:first-child").each(function() {
+
+					this.isReversed = true;
+
+					$(this).append("<strong> &or;</strong>");
+
+				});
+
+
+
+				$("table.git tfoot tr td:first-child").filter(function() {
+
+					this.hiddenCount = $(this).parent().parent().parent().find("tbody tr:hidden").length;
+
+					return this.hiddenCount > 0;
+
+				}).each(function() {
+
+					$(this).addClass("hoverable");
+
+					this.innerHTML = "Show minor authors (" + this.hiddenCount + ") &or;";
+
+				}).click(function() {
+
+					this.clicked = !this.clicked;
+
+
+
+					if (this.clicked) {
+
+						this.innerHTML = "Hide minor authors (" + this.hiddenCount + ") &and;";
+
+						$(this).parent().parent().parent().find("tbody tr").show().each(colorRows);
+
+					} else {
+
+						this.innerHTML = "Show minor authors (" + this.hiddenCount + ") &or;";
+
+						$(this).parent().parent().parent().find("tbody tr td:last-child").filter(function() {
+
+							return parseFloat(this.innerHTML) < MINOR_AUTHOR_PERCENTAGE;
+
+						}).parent().hide();
+
+						$("table.git tbody tr:visible").each(colorRows);
+
+					}
+
+				});
+
+
+
+				filterResponsibilities();
+
+				var hiddenResponsibilitiesCount = $("div#responsibilities div h3:hidden").length;
+
+				if (hiddenResponsibilitiesCount > 0) {
+
+					$("div#responsibilities div h3:visible").each(colorRows);
+
+					$("div#responsibilities").prepend("<div class=\"button\">Show minor authors (" + hiddenResponsibilitiesCount + ") &or;</div>");
+
+
+
+					$("div#responsibilities div.button").click(function() {
+
+						this.clicked = !this.clicked;
+
+						if (this.clicked) {
+
+							this.innerHTML = "Hide minor authors (" + hiddenResponsibilitiesCount + ") &and;";
+
+							$("div#responsibilities div").show();
+
+						} else {
+
+							this.innerHTML = "Show minor authors (" + hiddenResponsibilitiesCount + ") &or;";
+
+							filterResponsibilities();
+
+						}
+
+					});
+
+				}
+
+
+
+
+
+				filterTimeLine();
+
+				var hiddenTimelineCount = $("div#timeline table.git tbody tr:hidden").length;
+
+				if (hiddenTimelineCount > 0) {
+
+					$("div#timeline table.git tbody tr:visible").each(colorRows);
+
+					$("div#timeline").prepend("<div class=\"button\">Show rows with minor work (" + hiddenTimelineCount + ") &or;</div>");
+
+
+
+					$("div#timeline div.button").click(function() {
+
+						this.clicked = !this.clicked;
+
+						if (this.clicked) {
+
+							this.innerHTML = "Hide rows with minor work (" + hiddenTimelineCount + ") &and;";
+
+							$("div#timeline table.git tbody tr").show().each(colorRows);
+
+						} else {
+
+							this.innerHTML = "Show rows with minor work (" + hiddenTimelineCount + ") &or;";
+
+							filterTimeLine();
+
+							$("div#timeline table.git tbody tr:visible").each(colorRows);
+
+						}
+
+					});
+
+				}
+
+
+
+				$("#blame_chart, #changes_chart").bind("plothover", function(event, pos, obj) {
+
+					if (obj) {
+
+						var selection = "table tbody tr td:contains(\"" + obj.series.label + "\")";
+
+						var element = $(this).parent().find(selection);
+
+
+
+						if (element) {
+
+							if (this.hoveredElement && this.hoveredElement.html() != element.parent().html()) {
+
+								this.hoveredElement.removeClass("piehover");
+
+							}
+
+
+
+							element.parent().addClass("piehover");
+
+							this.hoveredElement = element.parent();
+
+						}
+
+					} else if (this.hoveredElement) {
+
+						this.hoveredElement.removeClass("piehover");
+
+					}
+
+				});
+
+
+
+				// Make sure the two pie charts use the same colors.
+
+
+
+				var author_colors = {};
+
+				$.each(changes_plot.getData(), function(i, v) {
+
+					author_colors[v["label"]] = v["color"];
+
+				});
+
+
+
+				$.each(blame_plot.getData(), function(i, v) {
+
+					if (author_colors[v["label"]] != undefined) {
+
+						v["color"] = author_colors[v["label"]];
+
+					}
+
+				});
+
+
+
+				blame_plot.setupGrid();
+
+				blame_plot.draw();
+
+
+
+				// Color in metrics levels.
+
+
+
+				$("div#metrics div div").each(function() {
+
+					var rgb = $(this).css("background-color").match(/\d+/g);
+
+					rgb[0] = parseInt(rgb[0]);
+
+					rgb[1] = parseInt(rgb[1]);
+
+					rgb[2] = parseInt(rgb[2]);
+
+
+
+					if ($(this).hasClass("minimal")) {
+
+						rgb[0] -= 10;
+
+						rgb[1] += 10;
+
+						rgb[2] -= 10;
+
+					} else if ($(this).hasClass("minor")) {
+
+						rgb[1] += 10;
+
+					} else if ($(this).hasClass("medium")) {
+
+						rgb[0] += 10;
+
+						rgb[1] += 10;
+
+					} else if ($(this).hasClass("bad")) {
+
+						rgb[0] += 10;
+
+						rgb[1] -= 10;
+
+						rgb[2] -= 10;
+
+					} else if ($(this).hasClass("severe")) {
+
+						rgb[0] += 20;
+
+						rgb[1] -= 20;
+
+						rgb[2] -= 20;
+
+					}
+
+
+
+					$(this).css("background-color", "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")");
+
+				});
+
+			});
+
+		</script>
+
+		<style type="text/css">
+
+			body {
+
+				background: -webkit-linear-gradient(left, #8f8a9a, #dad2d7, #8f8a9a);
+
+				background: -moz-linear-gradient(left, #8f8a9a, #dad2d7, #8f8a9a);
+
+			}
+
+			html, body {
+
+				margin: 0;
+
+				font-family: "Arial";
+
+			}
+
+			body > div {
+
+				margin: 0 auto;
+
+				width: 58em;
+
+			}
+
+			div.box {
+
+				border: 4px solid #ddd;
+
+				background-color: #eee;
+
+				margin: 0.75em;
+
+				padding: 5px;
+
+				font-size: small;
+
+				border-radius: 15px;
+
+				-moz-border-radius: 15px;
+
+				box-shadow: 1px 1px 3px #666;
+
+				-moz-box-shadow: 1px 1px 3px #666;
+
+			}
+
+			div.logo p {
+
+				width: 60em;
+
+				display:inline-block;
+
+				vertical-align:middle;
+
+			}
+
+			div.logo img {
+
+				vertical-align:middle;
+
+				padding: 2px 10px 2px 2px;
+
+			}
+
+			body > div {
+
+				display: block-inline;
+
+			}
+
+			body > div > div > div {
+
+				position: relative;
+
+				width: 100%;
+
+				min-height: 140px;
+
+			}
+
+			table.git {
+
+				font-size: small;
+
+				width: 65%;
+
+				padding-right: 5px;
+
+			}
+
+			table.full {
+
+				width: 100%;
+
+			}
+
+			table.git th, table.git tfoot tr td {
+
+				padding: 0.3em;
+
+				background-color: #ddcece;
+
+				border-radius: 8px 8px 0px 0px;
+
+				-moz-border-radius: 8px 8px 0px 0px;
+
+			}
+
+			table#changes thead tr th, table#blame thead tr th, table.git tfoot tr td {
+
+				border: 1px solid #eee;
+
+				text-align: center;
+
+			}
+
+			table.git tfoot tr td {
+
+				border-radius: 0px 0px 8px 8px;
+
+				-moz-border-radius: 0px 0px 8px 8px;
+
+				text-align: center;
+
+			}
+
+			table.git td, table.git th, table#timeline td, table#timeline th {
+
+				padding: 0.35em;
+
+				height: 2em;
+
+			}
+
+			table.git td div.insert {
+
+				background-color: #7a7;
+
+			}
+
+			table.git td div.remove {
+
+				background-color: #c66;
+
+			}
+
+			table.git td div.insert, table.git td div.remove {
+
+				height: 100%;
+
+				float: left;
+
+			}
+
+			table.git tr.odd {
+
+				background-color: #dbdbdb;
+
+			}
+
+			table.git tr.piehover {
+
+				background-color: #dddece;
+
+			}
+
+			div.chart {
+
+				position: absolute;
+
+				top: 5px;
+
+				bottom: 5px;
+
+				right: 0px;
+
+				width: 35%;
+
+				min-height: 100px;
+
+				max-height: 210px;
+
+				font-size: x-small;
+
+			}
+
+			p.error {
+
+				color: #700;
+
+			}
+
+			table#changes thead tr th:hover, table#blame thead tr th:hover,
+
+			table#changes tfoot tr td.hoverable:hover, table#blame tfoot tr td.hoverable:hover,
+
+			div.button:hover, div#responsibilities div.button:hover {
+
+				background-color: #eddede;
+
+				border: 1px solid #bbb;
+
+				cursor: hand;
+
+			}
+
+			div#responsibilities div, div#responsibilities div div, div#metrics div, div#metrics div div {
+
+				min-height: 0px;
+
+				padding: 0.5em 0.2em;
+
+				width: auto;
+
+			}
+
+			div#metrics div {
+
+				background-color: #eee;
+
+			}
+
+			div#responsibilities div.odd, div#metrics div.odd {
+
+				background-color: #dbdbdb;
+
+			}
+
+			div#responsibilities p {
+
+				margin-bottom: 0px;
+
+			}
+
+			td img, h3 img {
+
+				border-radius: 3px 3px 3px 3px;
+
+				-moz-border-radius: 3px 3px 3px 3px;
+
+				vertical-align: middle;
+
+				margin-right: 0.4em;
+
+				opacity: 0.85;
+
+			}
+
+			td img {
+
+				width: 20px;
+
+				height: 20px;
+
+			}
+
+			h3 img {
+
+				width: 32px;
+
+				height: 32px;
+
+			}
+
+			h3, h4 {
+
+				border-radius: 8px 8px 8px 8px;
+
+				-moz-border-radius: 8px 8px 8px 8px;
+
+				background-color: #ddcece;
+
+				margin-bottom: 0.2em;
+
+				margin-top: 0.6em;
+
+			}
+
+			h4 {
+
+				margin-top: 0.2em;
+
+				padding: 0.5em;
+
+			}
+
+			div.button, div#responsibilities div.button {
+
+				border-radius: 8px 8px 8px 8px;
+
+				-moz-border-radius: 8px 8px 8px 8px;
+
+				border: 1px solid #eee;
+
+				float: right;
+
+				width: auto;
+
+				padding: 0.5em;
+
+				background-color: #ddcece;
+
+				min-height: 0;
+
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+<br />
+<h1 align="center">Git Report</h1>
+
 
 <div><div class="box"><p>The following historical commit information, by author, was found.</p><div><table id="changes" class="git"><thead><tr> <th>Author</th> <th>Commits</th> <th>Insertions</th> <th>Deletions</th> <th>% of changes</th></tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/7dc472571344e624fbfabc8a1ec68d25?default=identicon&size=20"/>EtienneDel</td><td>58</td><td>2334</td><td>758</td><td>27.38</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/784e8603e28e5d7e4dfece05ca4f075c?default=identicon&size=20"/>Itega</td><td>68</td><td>2626</td><td>1588</td><td>37.32</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/464b76dd10b9945069048a460c0895e4?default=identicon&size=20"/>phousphoure</td><td>93</td><td>2105</td><td>1094</td><td>28.33</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/13d3a33e47ca0504f529b72ec44b724f?default=identicon&size=20"/>yanismercier</td><td>17</td><td>458</td><td>329</td><td>6.97</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="changes_chart"></div></div><script type="text/javascript">    changes_plot = $.plot($("#changes_chart"), [{label: "EtienneDel", data: 27.38}, {label: "Itega", data: 37.32}, {label: "phousphoure", data: 28.33}, {label: "yanismercier", data: 6.97}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
 <div><div class="box"><p>Below are the number of rows from each author that have survived and are still intact in the current revision.</p><div><table id="blame" class="git"><thead><tr> <th>Author</th> <th>Rows</th> <th>Stability</th> <th>Age</th> <th>% in comments</th> </tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/7dc472571344e624fbfabc8a1ec68d25?default=identicon&size=20"/>EtienneDel</td><td>1312</td><td>56.2</td><td>0.3</td><td>18.29</td><td style="display: none">29.46</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/784e8603e28e5d7e4dfece05ca4f075c?default=identicon&size=20"/>Itega</td><td>1774</td><td>67.6</td><td>0.1</td><td>51.97</td><td style="display: none">39.83</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/464b76dd10b9945069048a460c0895e4?default=identicon&size=20"/>phousphoure</td><td>1206</td><td>57.3</td><td>0.6</td><td>33.91</td><td style="display: none">27.08</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/13d3a33e47ca0504f529b72ec44b724f?default=identicon&size=20"/>yanismercier</td><td>162</td><td>35.4</td><td>0.5</td><td>8.02</td><td style="display: none">3.64</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="blame_chart"></div></div><script type="text/javascript">    blame_plot = $.plot($("#blame_chart"), [{label: "EtienneDel", data: 29.46}, {label: "Itega", data: 39.83}, {label: "phousphoure", data: 27.08}, {label: "yanismercier", data: 3.64}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
@@ -4420,7 +4784,9 @@ can just fix the size of their placeholders.
 <table class="git full"><thead><tr><th>Author</th><th>2017W24</th><th>2017W25</th></tr></thead><tbody><tr><td><img src="https://www.gravatar.com/avatar/7dc472571344e624fbfabc8a1ec68d25?default=identicon&size=20"/>EtienneDel</td><td><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td><td><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/784e8603e28e5d7e4dfece05ca4f075c?default=identicon&size=20"/>Itega</td><td><div class="insert">&nbsp;</div></td><td><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr><td><img src="https://www.gravatar.com/avatar/464b76dd10b9945069048a460c0895e4?default=identicon&size=20"/>phousphoure</td><td><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td><td><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/13d3a33e47ca0504f529b72ec44b724f?default=identicon&size=20"/>yanismercier</td><td><div class="insert">&nbsp;</div></td><td><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tfoot><tr><td><strong>Modified Rows:</strong></td><td>2665</td><td>8627</td></tr></tfoot></tbody></table>
 </div></div>
 <div><div class="box" id="metrics"><div><h4>The following files have an elevated cyclomatic complexity (in order of severity)</h4><div class="bad">controller/src/main/java/controller/EnemyController.java (111 in cyclomatic complexity)</div></div><div><h4>The following files have an elevated cyclomatic complexity density (in order of severity)</h4><div class="severe">controller/src/main/java/controller/Build.java (6.000 in cyclomatic complexity density)</div><div class="severe odd">controller/src/main/java/controller/ControllerFacade.java (3.000 in cyclomatic complexity density)</div><div class="minimal">controller/src/main/java/controller/EnemyController.java (0.760 in cyclomatic complexity density)</div></div></div></div>
-<div><div class="box" id="responsibilities"><p>The following responsibilities, by author, were found in the current revision of the repository (comments are excluded from the line count, if possible).</p><div><h3><img src="https://www.gravatar.com/avatar/7dc472571344e624fbfabc8a1ec68d25?default=identicon&size=32"/>EtienneDel is mostly responsible for</h3><div>controller/src/main/java/controller/CharacterController.java (154 eloc)</div><div class="odd">model/src/main/java/model/dao/BoulderDashBDDConnector.java (88 eloc)</div><div>view/src/main/java/view/EventPerformer.java (64 eloc)</div><div class="odd">model/src/main/java/model/Character.java (62 eloc)</div><div>controller/src/main/java/controller/OrderController.java (59 eloc)</div><div class="odd">model/src/main/java/model/ModelFacade.java (45 eloc)</div><div>view/src/main/java/view/GamePanel.java (38 eloc)</div><div class="odd">view/src/main/java/view/GameFrame.java (33 eloc)</div><div>target/site/testapidocs/script.js (30 eloc)</div><div class="odd">target/site/apidocs/script.js (30 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/784e8603e28e5d7e4dfece05ca4f075c?default=identicon&size=32"/>Itega is mostly responsible for</h3><div>controller/src/main/java/controller/EnemyController.java (146 eloc)</div><div class="odd">controller/src/main/java/controller/DiamondController.java (55 eloc)</div><div>model/src/main/java/model/ModelFacade.java (53 eloc)</div><div class="odd">controller/src/main/java/controller/RockController.java (53 eloc)</div><div>controller/src/main/java/controller/MainController.java (53 eloc)</div><div class="odd">model/src/main/java/model/Enemy.java (46 eloc)</div><div>model/src/main/java/model/dao/MapDAO.java (39 eloc)</div><div class="odd">model/src/main/java/model/Map.java (38 eloc)</div><div>model/src/main/java/model/Rock.java (32 eloc)</div><div class="odd">model/src/main/java/model/Diamond.java (30 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/464b76dd10b9945069048a460c0895e4?default=identicon&size=32"/>phousphoure is mostly responsible for</h3><div>model/src/test/java/Maptest.java (57 eloc)</div><div class="odd">model/src/main/java/model/dao/MapDAO.java (54 eloc)</div><div>view/src/test/java/view/GamePanelTest.java (49 eloc)</div><div class="odd">model/src/test/java/MapDAOtest.java (46 eloc)</div><div>model/src/main/java/model/Tile.java (46 eloc)</div><div class="odd">model/src/test/java/DiamondTest.java (44 eloc)</div><div>controller/src/test/java/controller/BuildTest.java (40 eloc)</div><div class="odd">model/src/main/java/model/Assets.java (38 eloc)</div><div>view/src/main/java/view/GamePanel.java (32 eloc)</div><div class="odd">model/src/test/java/TileTest.java (32 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/13d3a33e47ca0504f529b72ec44b724f?default=identicon&size=32"/>yanismercier is mostly responsible for</h3><div>model/src/main/java/model/dao/MapDAO.java (77 eloc)</div><div class="odd">view/src/main/java/view/GamePanel.java (23 eloc)</div><div>model/src/main/java/model/Tile.java (14 eloc)</div><div class="odd">view/src/main/java/view/ViewFacade.java (11 eloc)</div><div>view/src/main/java/view/GameFrame.java (6 eloc)</div><div class="odd">model/src/main/java/model/ModelFacade.java (5 eloc)</div><div>main/src/main/java/main/Main.java (4 eloc)</div><div class="odd">model/src/main/java/model/dao/package-info.java (2 eloc)</div><div>contract/src/main/java/view/IView.java (2 eloc)</div><div class="odd">contract/src/main/java/model/IModel.java (2 eloc)</div></div></div></div>
-	</body>
-</html>
+<div><div class="box" id="responsibilities"><p>The following responsibilities, by author, were found in the current revision of the repository (comments are excluded from the line count, if possible).</p><div><h3><img src="https://www.gravatar.com/avatar/7dc472571344e624fbfabc8a1ec68d25?default=identicon&size=32"/>EtienneDel is mostly responsible for</h3><div>controller/src/main/java/controller/CharacterController.java (154 eloc)</div><div class="odd">model/src/main/java/model/dao/BoulderDashBDDConnector.java (88 eloc)</div><div>view/src/main/java/view/EventPerformer.java (64 eloc)</div><div class="odd">model/src/main/java/model/Character.java (62 eloc)</div><div>controller/src/main/java/controller/OrderController.java (59 eloc)</div><div class="odd">model/src/main/java/model/ModelFacade.java (45 eloc)</div><div>view/src/main/java/view/GamePanel.java (38 eloc)</div><div class="odd">view/src/main/java/view/GameFrame.java (33 eloc)</div><div>target/site/testapidocs/script.js (30 eloc)</div><div class="odd">target/site/apidocs/script.js (30 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/784e8603e28e5d7e4dfece05ca4f075c?default=identicon&size=32"/>Itega is mostly responsible for</h3><div>controller/src/main/java/controller/EnemyController.java (146 eloc)</div><div class="odd">controller/src/main/java/controller/DiamondController.java (55 eloc)</div><div>model/src/main/java/model/ModelFacade.java (53 eloc)</div><div class="odd">controller/src/main/java/controller/RockController.java (53 eloc)</div><div>controller/src/main/java/controller/MainController.java (53 eloc)</div><div class="odd">model/src/main/java/model/Enemy.java (46 eloc)</div><div>model/src/main/java/model/dao/MapDAO.java (39 eloc)</div><div class="odd">model/src/main/java/model/Map.java (38 eloc)</div><div>model/src/main/java/model/Rock.java (32 eloc)</div><div class="odd">model/src/main/java/model/Diamond.java (30 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/464b76dd10b9945069048a460c0895e4?default=identicon&size=32"/>phousphoure is mostly responsible for</h3><div>model/src/test/java/model.Maptest.java (57 eloc)</div><div class="odd">model/src/main/java/model/dao/MapDAO.java (54 eloc)</div><div>view/src/test/java/view/GamePanelTest.java (49 eloc)</div><div class="odd">model/src/test/java/model.MapDAOtest.java (46 eloc)</div><div>model/src/main/java/model/Tile.java (46 eloc)</div><div class="odd">model/src/test/java/model.DiamondTest.java (44 eloc)</div><div>controller/src/test/java/controller/BuildTest.java (40 eloc)</div><div class="odd">model/src/main/java/model/Assets.java (38 eloc)</div><div>view/src/main/java/view/GamePanel.java (32 eloc)</div><div class="odd">model/src/test/java/model.TileTest.java (32 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/13d3a33e47ca0504f529b72ec44b724f?default=identicon&size=32"/>yanismercier is mostly responsible for</h3><div>model/src/main/java/model/dao/MapDAO.java (77 eloc)</div><div class="odd">view/src/main/java/view/GamePanel.java (23 eloc)</div><div>model/src/main/java/model/Tile.java (14 eloc)</div><div class="odd">view/src/main/java/view/ViewFacade.java (11 eloc)</div><div>view/src/main/java/view/GameFrame.java (6 eloc)</div><div class="odd">model/src/main/java/model/ModelFacade.java (5 eloc)</div><div>main/src/main/java/main/Main.java (4 eloc)</div><div class="odd">model/src/main/java/model/dao/package-info.java (2 eloc)</div><div>contract/src/main/java/view/IView.java (2 eloc)</div><div class="odd">contract/src/main/java/model/IModel.java (2 eloc)</div></div></div></div>
+	</body>
+
+</html>
+
 

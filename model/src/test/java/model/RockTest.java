@@ -33,14 +33,14 @@ public class RockTest {
         assertEquals(expected,test.getPosition().getPosY());
     }
 
-    @Test
-    public void moveD() throws Exception {
-        final int expected = 1;
-        test.moveD(test.getPosition());
-
-        assertEquals(expected,test.getPosition().getPosY());
-
-    }
+//    @Test
+//    public void moveD() throws Exception {
+//        final int expected = 1;
+//        test.moveD(test.getPosition());
+//
+//        assertEquals(expected,test.getPosition().getPosY());
+//
+//    }
 
     @Test
     public void moveL() throws Exception {
