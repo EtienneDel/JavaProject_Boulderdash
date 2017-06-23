@@ -7,13 +7,12 @@ import org.junit.Test;
 import view.IView;
 
 public class ControllerFacadeTest {
-    ControllerFacade test;
-    IModel model;
+
 
     @Before
     public void setUp() throws Exception {
 
-       // test = new ControllerFacade(model);
+
     }
 
     @After
