@@ -21,6 +21,12 @@ public class RockController extends DiamondController {
         super(model);
     }
 
+    /**
+     * Refresh.
+     *
+     * @param position the position
+     * @throws IOException
+     */
     public void refresh(IPosition position) throws IOException {
         super.refresh(position);
 
