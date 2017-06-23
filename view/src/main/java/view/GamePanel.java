@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 public class GamePanel extends JPanel implements IView {
 
     private BufferedImage image;
-    private int x;
-    private int y;
+    private int xpos;
+    private int ypos;
     private JLabel points;
     private int score = 0, nbdiamonds;
 
@@ -28,19 +28,24 @@ public class GamePanel extends JPanel implements IView {
         nbdiamonds = model.getDiamonds();
 
     }
+  public GamePanel() {
+        image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+       nbdiamonds = 8;
+
+   }
 
     /**
      * Set image.
      *
      * @param image the image
-     * @param x     the x
-     * @param y     the y
+     * @param x     the xpos
+     * @param y     the ypos
      */
     public void setImage(BufferedImage image, int x, int y) {
 
         this.image = image;
-        this.x = x;
-        this.y = y;
+        this.xpos = x;
+        this.ypos = y;
 
         repaint();
     }
@@ -48,7 +53,7 @@ public class GamePanel extends JPanel implements IView {
     public void paintComponent(Graphics g) {
         g.setColor(Color.black);
         g.fillRect(0, 0, 1000, 1000);
-        g.drawImage(image, x, y, null);
+        g.drawImage(image, xpos, ypos, null);
         g.setColor(Color.white);
         g.fillRect(0, 460, 500, 200);
 
@@ -81,6 +86,12 @@ public class GamePanel extends JPanel implements IView {
         this.score = score;
     }
 
+
+
+    public JLabel getPoints() {
+        return points;
+    }
+
     @Override
     public void displayMessage(String message) {
 
@@ -94,5 +105,13 @@ public class GamePanel extends JPanel implements IView {
     @Override
     public void initScore() {
 
+    }
+
+    public int getXpos() {
+        return xpos;
+    }
+
+    public int getYpos() {
+        return ypos;
     }
 }
