@@ -1,18 +1,26 @@
 package model;
 
+import java.io.IOException;
+
+/**
+ * The type Entitie.
+ */
 public abstract class Entitie extends Tile implements Movable, IEntities{
 
     /**
      * attribute
      */
     protected Boolean isAlive;
+    private Map map = Map.getMap();
 
     /**
      * contructor with parameter position of the tile
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
+     * @throws IOException the io exception
      */
-    public Entitie(int x, int y) {
+    public Entitie(int x, int y) throws IOException {
 
         super(x,y);
 
@@ -21,8 +29,10 @@ public abstract class Entitie extends Tile implements Movable, IEntities{
 
     /**
      * constructor without parameter
+     *
+     * @throws IOException the io exception
      */
-    public Entitie() {
+    public Entitie() throws IOException {
 
         super();
 
@@ -35,18 +45,22 @@ public abstract class Entitie extends Tile implements Movable, IEntities{
      */
     @Override
     public void moveU(IPosition position) {
+        int x = position.getPosX();
         int y = position.getPosY();
-        setPosition(position.getPosX(), y--);
+        map.setCharByPos(x, y-1, map.getCharByPos(x, y));
+        map.setCharByPos(x, y,'2');
     }
 
     /**
-     * move down
+     * move Down
      * @param position
      */
     @Override
     public void moveD(IPosition position) {
+        int x = position.getPosX();
         int y = position.getPosY();
-        setPosition(position.getPosX(), y++);
+        map.setCharByPos(x, y+1, map.getCharByPos(x, y));
+        map.setCharByPos(x, y,'2');
     }
 
     /**
@@ -56,7 +70,9 @@ public abstract class Entitie extends Tile implements Movable, IEntities{
     @Override
     public void moveL(IPosition position) {
         int x = position.getPosX();
-        setPosition(x--, position.getPosY());
+        int y = position.getPosY();
+        map.setCharByPos(x-1, y, map.getCharByPos(x, y));
+        map.setCharByPos(x, y,'2');
     }
 
     /**
@@ -66,7 +82,9 @@ public abstract class Entitie extends Tile implements Movable, IEntities{
     @Override
     public void moveR(IPosition position) {
         int x = position.getPosX();
-        setPosition(x++, position.getPosY());
+        int y = position.getPosY();
+        map.setCharByPos(x+1, y, map.getCharByPos(x, y));
+        map.setCharByPos(x, y,'2');
     }
 
 }

@@ -1,4 +1,5 @@
 package model;
+
 /**
  * <h1>the Dirt class</h1>
  *
@@ -11,10 +12,12 @@ public class Dirt extends Tile implements Breakable {
      * attribute
      */
     public final static int REF = 0;
+
     /**
      * constructor with parameter position of the tile
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public Dirt(int x , int y) {
         super(x,y);

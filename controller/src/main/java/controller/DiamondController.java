@@ -5,20 +5,36 @@ import model.*;
 import java.io.IOException;
 
 
-
 /**
  * Created by Julien on 17/06/2017.
  */
-
 public class DiamondController {
+    /**
+     * The Map.
+     */
     protected IMap map;
+    /**
+     * The Model.
+     */
     protected IModel model;
 
+    /**
+     * Instantiates a new Diamond controller.
+     *
+     * @param model the model
+     * @throws IOException the io exception
+     */
     public DiamondController(IModel model) throws IOException {//todo remove build -- debug
         this.map = model.getTheMap();
         this.model = model;
     }
 
+    /**
+     * Refresh.
+     *
+     * @param position the position
+     * @throws IOException the io exception
+     */
     public void refresh(IPosition position) throws IOException {
         char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
 
@@ -34,11 +50,24 @@ public class DiamondController {
 
 }
 
+    /**
+     * Move down.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         movable.moveD(position);
         refreshAround(position);
     }
 
+    /**
+     * Refresh around.
+     *
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void refreshAround(IPosition position) throws IOException {
         //todo refresh toutes les 0.5s si possibilitées de bouger sauf coté qui bouge en premier
 
@@ -48,6 +77,12 @@ public class DiamondController {
         refresh(model.getPosition(position.getPosX(), position.getPosY()+1));
     }
 
+    /**
+     * Explode.
+     *
+     * @param diamondShower the diamond shower
+     * @param position      the position
+     */
     protected void explode(boolean diamondShower, IPosition position) {
         position.setPosition(position.getPosX(), position.getPosY()+1);
         if(diamondShower)

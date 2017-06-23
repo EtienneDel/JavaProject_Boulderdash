@@ -14,10 +14,21 @@ public class EventPerformer implements EventPerformerable, IView {
     private OrderPerformerable orderPerformer;
     private UserOrderable userOrder;
 
+    /**
+     * Instantiates a new Event performer.
+     *
+     * @param orderPerformer the order performer
+     */
     public EventPerformer(final OrderPerformerable orderPerformer) {
         this.orderPerformer = orderPerformer;
     }
 
+    /**
+     * Key typed user orderable.
+     *
+     * @param keyCode the key code
+     * @return the user orderable
+     */
     public UserOrderable keyTyped(final int keyCode) {
 
         switch (keyCode) {
@@ -61,5 +72,15 @@ public class EventPerformer implements EventPerformerable, IView {
     @Override
     public void initScore() {
 
+    }
+
+    @Override
+    public void setScore(int score) {
+
+    }
+
+    @Override
+    public int getScore() {
+        return 0;
     }
 }

@@ -7,9 +7,14 @@ import java.io.IOException;
 /**
  * Created by Julien on 16/06/2017.
  */
-
 public class RockController extends DiamondController{
 
+    /**
+     * Instantiates a new Rock controller.
+     *
+     * @param model the model
+     * @throws IOException the io exception
+     */
     public RockController(IModel model) throws IOException {
         super(model);
     }
@@ -42,14 +47,28 @@ public class RockController extends DiamondController{
         refreshAround(position);
     }
 
-    private void moveLeft(Movable movable, IPosition position) throws IOException {
+    /**
+     * Move left.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
+    public void moveLeft(Movable movable, IPosition position) throws IOException {
         movable.moveL(position);
         movable.moveD(model.getPosition(position.getPosX()-1, position.getPosY()));
 
         refreshAround(position);
     }
 
-    private void moveRight(Movable movable, IPosition position) throws IOException {
+    /**
+     * Move right.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
+    public void moveRight(Movable movable, IPosition position) throws IOException {
         movable.moveR(position);
         movable.moveD(model.getPosition(position.getPosX()+1, position.getPosY()));
 

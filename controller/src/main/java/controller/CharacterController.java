@@ -8,14 +8,30 @@ import java.io.IOException;
  * Created by Etienne on 21/06/2017.
  */
 public class CharacterController implements OrderPerformerable{
-protected IMap map;
-protected IModel model;
-protected Build build;
+    /**
+     * The Map.
+     */
+    protected IMap map;
+    /**
+     * The Model.
+     */
+    protected IModel model;
+    /**
+     * The Build.
+     */
+    protected Build build;
 private IPosition position;
 private RockController rockController;
 private DiamondController diamondController;
 private int colli = 0;
 
+    /**
+     * Instantiates a new Character controller.
+     *
+     * @param model the model
+     * @param build the build
+     * @throws IOException the io exception
+     */
     public CharacterController(IModel model, Build build) throws IOException {
         this.map = model.getTheMap();
         this.model = model;
@@ -25,6 +41,12 @@ private int colli = 0;
 
     }
 
+    /**
+     * Refresh.
+     *
+     * @param position the position
+     * @throws IOException the io exception
+     */
     public void refresh(IPosition position) throws IOException {
         this.position = position;
 
@@ -41,6 +63,13 @@ private int colli = 0;
 
     }
 
+    /**
+     * Move up.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void moveUp(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX(), position.getPosY()-1)){
             case '1':
@@ -48,6 +77,9 @@ private int colli = 0;
                 break;
             case '3':
                 colli = 1;
+                break;
+            case '4':
+                colli = 3;
                 break;
             case '5':
                 colli = 1;
@@ -59,6 +91,13 @@ private int colli = 0;
         refreshAround(position);
     }
 
+    /**
+     * Move down.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void moveDown(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX(), position.getPosY()+1)){
             case '1':
@@ -66,6 +105,9 @@ private int colli = 0;
                 break;
             case '3':
                 colli = 1;
+                break;
+            case '4':
+                colli = 3;
                 break;
             case '5':
                 colli = 1;
@@ -77,6 +119,13 @@ private int colli = 0;
         refreshAround(position);
     }
 
+    /**
+     * Move left.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void moveLeft(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX()-1, position.getPosY())){
             case '1':
@@ -85,8 +134,16 @@ private int colli = 0;
             case '3':
                 colli = 1;
                 break;
+            case '4':
+                colli = 3;
+                break;
             case '5':
-                colli = 1;
+                if(map.getCharByPos(position.getPosX()-2, position.getPosY())=='2'){
+                    colli = 2;
+                }
+                else {
+                    colli = 1;
+                }
                 break;
             default:
                 movable.moveL(position);
@@ -95,6 +152,13 @@ private int colli = 0;
         refreshAround(position);
     }
 
+    /**
+     * Move right.
+     *
+     * @param movable  the movable
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void moveRight(Movable movable, IPosition position) throws IOException {
         switch(map.getCharByPos(position.getPosX()+1, position.getPosY())){
             case '1':
@@ -102,6 +166,9 @@ private int colli = 0;
                 break;
             case '3':
                 colli = 1;
+                break;
+            case '4':
+                colli = 3;
                 break;
             case '5':
                 colli = 1;
@@ -113,6 +180,12 @@ private int colli = 0;
         refreshAround(position);
     }
 
+    /**
+     * Refresh around.
+     *
+     * @param position the position
+     * @throws IOException the io exception
+     */
     protected void refreshAround(IPosition position) throws IOException {
 
         refresh(model.getPosition(position.getPosX(), position.getPosY()-1));
@@ -141,11 +214,12 @@ private int colli = 0;
         }
     }
 
+    /**
+     * Gets colli.
+     *
+     * @return the colli
+     */
     public int getColli() {
         return colli;
-    }
-
-    public void setColli(int colli) {
-        this.colli = colli;
     }
 }

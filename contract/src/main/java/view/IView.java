@@ -21,4 +21,8 @@ public interface IView {
     void drawImage(BufferedImage image, int x, int y);
     
     void initScore();
+
+    void setScore(int score);
+
+    int getScore();
 }

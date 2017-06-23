@@ -17,8 +17,8 @@ public class Position implements IPosition {
     /**
      * constructor with parameter position
      *
-     * @param x
-     * @param y
+     * @param x the x
+     * @param y the y
      */
     public Position(int x, int y) {
 
@@ -27,6 +27,11 @@ public class Position implements IPosition {
 
     }
 
+    /**
+     * Instantiates a new Position.
+     *
+     * @param position the position
+     */
     public Position(Position position) {
         this.posX = position.getPosX();
         this.posY = position.getPosY();
@@ -45,7 +50,7 @@ public class Position implements IPosition {
     /**
      * setter posX
      *
-     * @param posX
+     * @param posX the pos x
      */
     public void setPosX(int posX) {
         this.posX = posX;
@@ -64,7 +69,7 @@ public class Position implements IPosition {
     /**
      * setter posY
      *
-     * @param posY
+     * @param posY the pos y
      */
     public void setPosY(int posY) {
         this.posY = posY;

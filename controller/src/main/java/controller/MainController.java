@@ -16,18 +16,31 @@ public class MainController implements Observer{
     private DiamondController diamondController;
     private IModel model;
     private Build build;
+    private EnemyController enemyController;
 
+    /**
+     * Instantiates a new Main controller.
+     *
+     * @param model the model
+     * @param build the build
+     */
     public MainController(IModel model, Build build) {
         this.model = model;
         this.build = build;
     }
 
+    /**
+     * Test.
+     *
+     * @throws IOException the io exception
+     */
     public void test() throws IOException {
         IPosition position = model.getPosition(3,1);
         IPosition positionChar = model.getPosition(1,1);
         IMap map = model.getTheMap();
         rockController = new RockController(model);
         diamondController = new DiamondController(model);
+        enemyController = new EnemyController(model, model.createEnemyList());
 
         position.setPosition(7,4);
         diamondController.refresh(position);
@@ -37,6 +50,17 @@ public class MainController implements Observer{
         rockController.refresh(position);
         position.setPosition(3,7);
         rockController.refresh(position);
+        if(model.createEnemyList() != null)
+            while(true)
+            {
+                enemyController.refresh();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
     }
 
     @Override

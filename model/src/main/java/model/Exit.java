@@ -1,4 +1,5 @@
 package model;
+
 /**
  * <h1>the Exit class</h1>
  *
@@ -11,10 +12,12 @@ public class Exit extends Tile {
      * attribute
      */
     public final static int REF = 6;
+
     /**
      * constructor with parameter position of the tile
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public Exit(int x, int y) {
 
@@ -34,6 +37,8 @@ public class Exit extends Tile {
 
     /**
      * you win !
+     *
+     * @return the string
      */
     public String endLevel() {
 

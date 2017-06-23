@@ -19,6 +19,13 @@ public class GameFrame extends JFrame implements KeyListener {
 private GamePanel panel;
 private EventPerformerable eventPerformer;
 
+    /**
+     * Instantiates a new Game frame.
+     *
+     * @param eventPerformer the event performer
+     * @param model          the model
+     * @throws SQLException the sql exception
+     */
     public GameFrame(final EventPerformerable eventPerformer, IModel model) throws SQLException {
         super();
         this.eventPerformer = eventPerformer;
@@ -34,6 +41,11 @@ private EventPerformerable eventPerformer;
         setVisible(true);
     }
 
+    /**
+     * Get game panel game panel.
+     *
+     * @return the game panel
+     */
     public GamePanel getGamePanel(){
         return panel;
     }

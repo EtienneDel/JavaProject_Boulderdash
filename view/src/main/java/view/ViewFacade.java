@@ -10,17 +10,27 @@ import java.sql.SQLException;
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Jean -Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
 public class ViewFacade implements IView {
 
-	int a = 0;
+    /**
+     * The A.
+     */
+    int a = 0;
     /**
      * Instantiates a new view facade.
      */
    private GameFrame frame;
 
+    /**
+     * Instantiates a new View facade.
+     *
+     * @param orderPerformer the order performer
+     * @param model          the model
+     * @throws SQLException the sql exception
+     */
     public ViewFacade(OrderPerformerable orderPerformer, IModel model) throws SQLException {
         super();
         frame = new GameFrame(new EventPerformer(orderPerformer), model);
@@ -44,5 +54,15 @@ public class ViewFacade implements IView {
     @Override
     public void initScore(){
     	frame.getGamePanel().propertiespoints();
+    }
+
+    @Override
+    public void setScore(int score) {
+
+    }
+
+    @Override
+    public int getScore() {
+        return 0;
     }
 }

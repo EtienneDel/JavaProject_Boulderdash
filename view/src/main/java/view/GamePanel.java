@@ -10,21 +10,33 @@ import java.awt.image.BufferedImage;
 /**
  * Created by ASUS on 15/06/2017.
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements IView {
 
     private BufferedImage image;
     private int x;
     private int y;
     private JLabel points;
-    private int score,nbdiamonds;
+    private int score = 0,nbdiamonds;
 
 
+    /**
+     * Instantiates a new Game panel.
+     *
+     * @param model the model
+     */
     public GamePanel(IModel model) {
         image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         nbdiamonds =model.getDiamonds();
         
     }
 
+    /**
+     * Set image.
+     *
+     * @param image the image
+     * @param x     the x
+     * @param y     the y
+     */
     public void setImage(BufferedImage image, int x, int y){
 
         this.image = image;
@@ -43,9 +55,16 @@ public class GamePanel extends JPanel {
 
     }
 
+    /**
+     * Removepoints.
+     */
     public void removepoints(){
     	this.remove(points);
     }
+
+    /**
+     * Propertiespoints.
+     */
     public void propertiespoints(){
     	
     	
@@ -54,7 +73,26 @@ public class GamePanel extends JPanel {
 		this.points.setText("score : "+score +"/"+nbdiamonds+" diamonds");
 		this.add(points);
     }
+
+    public int getScore(){
+        return score;
+    }
     public void setScore(int score){
     	this.score = score;
+    }
+
+    @Override
+    public void displayMessage(String message) {
+
+    }
+
+    @Override
+    public void drawImage(BufferedImage image, int x, int y) {
+
+    }
+
+    @Override
+    public void initScore() {
+
     }
 }

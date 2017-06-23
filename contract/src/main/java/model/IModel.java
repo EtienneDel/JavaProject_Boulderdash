@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -68,5 +69,7 @@ public interface IModel {
     ICharacter setTheCharacterA(int x, int y) throws IOException;
 
     ICharacter getTheCharacterA() throws IOException;
+
+    ArrayList<IEnemies> createEnemyList() throws IOException;
 
 }
