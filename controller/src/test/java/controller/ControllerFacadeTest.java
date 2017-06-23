@@ -13,7 +13,7 @@ public class ControllerFacadeTest {
     @Before
     public void setUp() throws Exception {
 
-        test = new ControllerFacade(model);
+       // test = new ControllerFacade(model);
     }
 
     @After
