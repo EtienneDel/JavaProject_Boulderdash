@@ -5,6 +5,9 @@ package view;
  */
 public class GraphicBuilder {
 
+    /**
+     * Instantiates a new Graphic builder.
+     */
     public GraphicBuilder(){
 
     }
