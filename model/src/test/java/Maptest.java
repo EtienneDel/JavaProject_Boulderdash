@@ -20,6 +20,12 @@ public class Maptest {
     private MapDAO test2;
 
     private HashMap<Tile,Integer> tiless;
+
+    /**
+     * Sets up.
+     *
+     * @throws Exception the exception
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -33,11 +39,22 @@ public class Maptest {
 
     }
 
+    /**
+     * Tear down.
+     *
+     * @throws Exception the exception
+     */
     @After
     public void tearDown() throws Exception {
 
     }
 
+    /**
+     * Gets char by pos.
+     *
+     * @throws IOException  the io exception
+     * @throws SQLException the sql exception
+     */
     @Test
     public void getCharByPos() throws IOException, SQLException {
         final int expected = '1';
@@ -49,6 +66,9 @@ public class Maptest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Sets char by pos.
+     */
     @Test
     public void setCharByPos() {
         char expected = '5';

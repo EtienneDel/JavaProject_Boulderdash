@@ -13,17 +13,35 @@ import static org.junit.Assert.assertNotNull;
  * Created by ASUS on 23/06/2017.
  */
 public class GamePanelTest {
+    /**
+     * The Test.
+     */
     GamePanel test;
 
+    /**
+     * Sets up.
+     *
+     * @throws Exception the exception
+     */
     @Before
     public void setUp() throws Exception {
         test = new GamePanel();
     }
 
+    /**
+     * Tear down.
+     *
+     * @throws Exception the exception
+     */
     @After
     public void tearDown() throws Exception {
     }
 
+    /**
+     * Sets image.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setImage() throws Exception {
 
@@ -36,6 +54,11 @@ public class GamePanelTest {
     }
 
 
+    /**
+     * Propertiespoints.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void propertiespoints() throws Exception {
 
@@ -47,12 +70,22 @@ public class GamePanelTest {
     }
 
 
+    /**
+     * Gets score.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void getScore() throws Exception {
         final int expected = 0;
         assertEquals(expected, test.getScore());
     }
 
+    /**
+     * Sets score.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setScore() throws Exception {
         final int expected = 5;

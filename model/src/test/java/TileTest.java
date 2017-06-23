@@ -17,11 +17,19 @@ import static org.junit.Assert.fail;
 public class TileTest {
 
 
+    /**
+     * The Test.
+     */
     int test = 1;
     private Tile tile;
     private MapDAO mapDAO;
     private SpriteSheet sprite;
 
+    /**
+     * Sets up.
+     *
+     * @throws Exception the exception
+     */
     @Before
     public void setUp() throws Exception {
         mapDAO = MapDAO.getMapDAO();
@@ -31,24 +39,43 @@ public class TileTest {
 
     }
 
+    /**
+     * Tear down.
+     *
+     * @throws Exception the exception
+     */
     @After
     public void tearDown() throws Exception {
 
     }
 
 
+    /**
+     * Sets walkable.
+     */
     @Test
     public void setWalkable() {
         final boolean expected = true;
         tile.setWalkable(true);
         assertEquals(expected, tile.getWalkable());
     }
+
+    /**
+     * Gets image from tileset.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void getImageFromTileset() throws Exception {
 
         assertNotNull(tile.getImageFromTileset(sprite.getImg(), 0, 0));
     }
 
+    /**
+     * Sets position.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setPosition() throws Exception {
         final int expected = 2;
@@ -58,6 +85,11 @@ public class TileTest {
         assertEquals(expected2, tile.position.getPosY());
     }
 
+    /**
+     * Sets position 1.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setPosition1() throws Exception {
 
@@ -68,12 +100,22 @@ public class TileTest {
 
     }
 
+    /**
+     * Gets ref.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void getRef() throws Exception {
         final int expected = 2;
         assertEquals(expected,tile.getRef());
     }
 
+    /**
+     * Sets ref.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setRef() throws Exception {
         final int expected = 5;
@@ -81,18 +123,33 @@ public class TileTest {
         assertEquals(expected,tile.getRef());
     }
 
+    /**
+     * Gets .
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void getwlakable() throws Exception {
         final boolean expected = true;
         assertEquals(expected,tile.getwlakable());
     }
 
+    /**
+     * Gets walkable.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void getWalkable() throws Exception {
         final boolean expected = true;
         assertEquals(expected,tile.getWalkable());
     }
 
+    /**
+     * Sets position 2.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void setPosition2() throws Exception {
         final Position position = new Position(1,5);
