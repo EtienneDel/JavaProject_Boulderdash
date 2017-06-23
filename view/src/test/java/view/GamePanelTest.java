@@ -4,16 +4,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by ASUS on 23/06/2017.
  */
 public class GamePanelTest {
     GamePanel test;
+
     @Before
     public void setUp() throws Exception {
         test = new GamePanel();
@@ -26,19 +27,17 @@ public class GamePanelTest {
     @Test
     public void setImage() throws Exception {
 
-        final int expected = 0;
-        final int expected2 = 0;
-        test.setImage(new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB), 2,1);
-        assertEquals(expected,test.getX());
-        assertEquals(expected2,test.getY());
+        final int expected = 2;
+        final int expected2 = 1;
+        test.setImage(new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB), 2, 1);
+        assertEquals(expected, test.getXpos());
+        assertEquals(expected2, test.getYpos());
 
     }
 
 
-
     @Test
     public void propertiespoints() throws Exception {
-
 
 
         test.propertiespoints();
