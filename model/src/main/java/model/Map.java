@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
-* <h1>the Map class</h1>
-*
-* @author Etienne Delnott / Paul Brouet
-* @version 1.0
-*/
+ * <h1>the Map class</h1>
+ *
+ * @author Etienne Delnott / Paul Brouet
+ * @version 1.0
+ */
 public class Map extends java.util.Observable implements IMap {
 
     /**
@@ -22,7 +22,7 @@ public class Map extends java.util.Observable implements IMap {
      */
     private static Map instance = null;
     private MapDAO mapDAO = null;
-    private HashMap<Tile, Integer> tiles = new HashMap<>();
+    private ArrayList<IEnemies> enemyList = new ArrayList<>();
     private char tablemap[][];
 
     /**
@@ -39,65 +39,39 @@ public class Map extends java.util.Observable implements IMap {
 
     /**
      * instantiate the Hashmap and fill it
-     * @throws IOException
+     *
+     * @return the array list
+     * @throws IOException the io exception
      */
-    public void createTileTable() throws IOException {
+    public ArrayList<IEnemies> createEnemyList() throws IOException {
         int y = mapDAO.getMap_Heigth();
         int x = mapDAO.getMap_Width();
         int e,  i;
-        Tile tile;
 
         for ( i = 0; i < x; i++) {
             for (e = 0; e < y; e++) {
-                /*switch (tablemap[i][e]) {
-
-                    case 0:
-                        tile = new Dirt(i, e);
-                        break;
-                    case 1:
-                        tile = new Wall(i, e);
-                        break;
-                    case 2:
-                        tile = new Empty(i, e);
-                        break;
-                    case 3:
-                        tile = new BWall(i, e);
-                        break;
-                    case 4:
-                        tile = new Diamond(i, e);
-                        break;
-                    case 5:
-                        tile = new Rock(i, e);
-                        break;
-                    case 6:
-                        tile = new Exit(i, e);
-                        break;
-                    case 7:
-                        tile = new Enemy(i, e);
-                        break;
-                    case 8:
-                        tile = new Character(i, e);
-                        break;
-                    default:
-                        tile = new Empty(i, e);
-                        break;
-                }
-
-                tiles.put(tile, (int) tablemap[i][e]);
-*/
+                if(tablemap[i][e] == '7')
+                    enemyList.add(new Enemy(i, e));
             }
         }
+        return enemyList;
     }
 
 
+    /**
+     * Get tablemap char [ ] [ ].
+     *
+     * @return the char [ ] [ ]
+     */
     public char[][] getTablemap() {
         return tablemap;
     }
 
     /**
      * get the instance of the map
-     * @return
-     * @throws IOException
+     *
+     * @return map map
+     * @throws IOException the io exception
      */
     public static Map getMap() throws IOException {
         if (instance == null) {
@@ -137,14 +111,6 @@ public class Map extends java.util.Observable implements IMap {
         tablemap[x][y]= chare;
         setChanged();
         notifyObservers();
-    }
-
-    /**
-     * getter of the hashmap
-     * @return
-     */
-    public HashMap<Tile, Integer> getTiles() {
-        return tiles;
     }
 
 }

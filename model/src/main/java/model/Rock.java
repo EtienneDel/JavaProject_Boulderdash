@@ -16,10 +16,13 @@ public class Rock extends Tile implements Movable, IRock {
      */
     public final static int REF = 5;
     private Map map = Map.getMap();
+
     /**
      * Constructor with parameter position of the tile
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
+     * @throws IOException the io exception
      */
     public Rock(int x, int y) throws IOException {
         super(x, y);
@@ -28,6 +31,8 @@ public class Rock extends Tile implements Movable, IRock {
 
     /**
      * constuctor without parameter
+     *
+     * @throws IOException the io exception
      */
     public Rock() throws IOException {
         super();

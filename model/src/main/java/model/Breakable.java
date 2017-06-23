@@ -8,5 +8,8 @@ package model;
  */
 public interface Breakable {
 
+    /**
+     * Is break.
+     */
     public void isBreak();
 }

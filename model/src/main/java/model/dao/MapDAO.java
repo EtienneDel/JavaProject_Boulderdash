@@ -12,17 +12,37 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-
+/**
+ * The type Map dao.
+ */
 public class MapDAO extends AbstractDAO {
 
     /**
      * attributes
      */
     private static MapDAO instance = null;
-    int map_Width, map_Heigth;
+    /**
+     * The Map width.
+     */
+    int map_Width, /**
+     * The Map heigth.
+     */
+    map_Heigth;
+    /**
+     * The Boulder dash bdd.
+     */
     BoulderDashBDDConnector boulderDashBDD = BoulderDashBDDConnector.getInstance(); //get the instance of the connector to the database
+    /**
+     * The Rs.
+     */
     ResultSet rs = null;
+    /**
+     * The St.
+     */
     Statement st = null;
+    /**
+     * The Conn.
+     */
     Connection conn = null;
     private String sql_map, sqlWidth, sqlHeigth,sqldiamonds;
     private int amntdiamonds;
@@ -51,7 +71,7 @@ public class MapDAO extends AbstractDAO {
     /**
      * get the singleton
      *
-     * @return
+     * @return map dao
      */
     public static MapDAO getMapDAO() {
         if (instance == null) {
@@ -64,8 +84,8 @@ public class MapDAO extends AbstractDAO {
     /**
      * Set the singleton
      *
-     * @param nomMap
-     * @return
+     * @param nomMap the nom map
+     * @return map dao
      */
     public static MapDAO setMapDAO(String nomMap) {
         if (instance == null) {
@@ -94,9 +114,9 @@ public class MapDAO extends AbstractDAO {
     /**
      * read the string map in the database
      *
-     * @param title
-     * @return map
-     * @throws SQLException
+     * @param title the title
+     * @return map string
+     * @throws SQLException the sql exception
      */
     public String readMap(String title) throws SQLException {
         conn = boulderDashBDD.getConnection(); //get the connection to the database
@@ -119,10 +139,10 @@ public class MapDAO extends AbstractDAO {
     /**
      * read the size in the database
      *
-     * @param title
-     * @param dim
-     * @return
-     * @throws SQLException
+     * @param title the title
+     * @param dim   the dim
+     * @return int
+     * @throws SQLException the sql exception
      */
     public int readSize(String title, String dim) throws SQLException {
         conn = boulderDashBDD.getConnection(); //get the instance of the connector to the database
@@ -161,27 +181,14 @@ public class MapDAO extends AbstractDAO {
 
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     /**
      * get the amount of diamonds in DB
-     * 
-     * 
-     * @param title
-     * @return amntdiamonds 
-     * @throws SQLException
+     *
+     * @param title the title
+     * @return amntdiamonds diamondssss
+     * @throws SQLException the sql exception
      */
     public int getDiamondssss(String title) throws SQLException{
     	conn = boulderDashBDD.getConnection(); //get the connection to the database
@@ -196,23 +203,13 @@ public class MapDAO extends AbstractDAO {
         }
        return amntdiamonds;
     }
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * transform the string map into a table
      *
-     * @param map
-     * @return
+     * @param map the map
+     * @return char [ ] [ ]
      */
     public char[][] putMapInTable(String map) {
         tablemap = new char[map_Width][map_Heigth];
@@ -227,33 +224,65 @@ public class MapDAO extends AbstractDAO {
 
     /**
      * getter and seter of the differents attributes
+     *
+     * @return the char [ ] [ ]
      */
     public char[][] getTablemap() {
         return tablemap;
     }
 
+    /**
+     * Sets tablemap.
+     *
+     * @param tablemap the tablemap
+     */
     public void setTablemap(char[][] tablemap) {
         this.tablemap = tablemap;
     }
 
+    /**
+     * Gets map heigth.
+     *
+     * @return the map heigth
+     */
     public int getMap_Heigth() {
         return map_Heigth;
     }
 
+    /**
+     * Sets map heigth.
+     *
+     * @param map_Heigth the map heigth
+     */
     public void setMap_Heigth(int map_Heigth) {
         this.map_Heigth = map_Heigth;
     }
 
+    /**
+     * Gets map width.
+     *
+     * @return the map width
+     */
     public int getMap_Width() {
         return map_Width;
     }
 
+    /**
+     * Sets map width.
+     *
+     * @param map_Width the map width
+     */
     public void setMap_Width(int map_Width) {
         this.map_Width = map_Width;
     }
 
-	
-	public int getdiamonds(){
+
+    /**
+     * Getdiamonds int.
+     *
+     * @return the int
+     */
+    public int getdiamonds(){
 		// TODO Auto-generated method stub
 		int chare = amntdiamonds;
 		return chare ;

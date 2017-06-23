@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The type Sprite sheet.
+ */
 public class SpriteSheet extends JLabel{
 
     /**
@@ -23,7 +26,8 @@ public class SpriteSheet extends JLabel{
 
     /**
      * constructor without parameter
-     * @throws IOException
+     *
+     * @throws IOException the io exception
      */
     public SpriteSheet() throws IOException {
 
@@ -31,7 +35,8 @@ public class SpriteSheet extends JLabel{
 
     /**
      * get the image
-     * @return
+     *
+     * @return buffered image
      */
     public BufferedImage getImg(){
         return img;

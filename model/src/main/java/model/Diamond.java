@@ -8,17 +8,22 @@ package model;
 
 import java.io.IOException;
 
+/**
+ * The type Diamond.
+ */
 public class Diamond extends Tile implements Breakable, Movable, IDiamond {
     /**
      * attribute
      */
     public final static int REF = 4;
     private Map map = Map.getMap();
+
     /**
      * constructor with parameter position of the tile
-     * @param x
-     * @param y
-     * @throws IOException
+     *
+     * @param x the x
+     * @param y the y
+     * @throws IOException the io exception
      */
     public Diamond(int x, int y) throws IOException {
         super(x, y);
@@ -28,7 +33,8 @@ public class Diamond extends Tile implements Breakable, Movable, IDiamond {
 
     /**
      * constructor without parameter
-     * @throws IOException
+     *
+     * @throws IOException the io exception
      */
     public Diamond() throws IOException {
         super();

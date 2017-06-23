@@ -32,22 +32,7 @@ public class Maptest {
     public void tearDown() throws Exception {
 
     }
-    @Test
-    public void createTileTable() throws IOException {
-        final boolean expected = true;
-        final boolean actual;
 
-        //test.createTileTable();
-        tiless = test.getTiles();
-        tiless.forEach((k,v) -> System.out.println(k + " " + v));
-
-        actual = tiless.containsValue(49);
-
-        assertEquals(expected,actual);
-
-
-
-    }
     @Test
     public void getCharByPos() throws IOException, SQLException {
         final int expected = '1';

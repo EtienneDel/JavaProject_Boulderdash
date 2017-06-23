@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * <h1>The Class BoulderDashBDDConnector.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Jean -Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
 final class BoulderDashBDDConnector {
@@ -77,8 +77,7 @@ final class BoulderDashBDDConnector {
     /**
      * Execute query.
      *
-     * @param query
-     *            the query
+     * @param query the query
      * @return the result set
      */
     public ResultSet executeQuery(final String query) {
@@ -93,8 +92,7 @@ final class BoulderDashBDDConnector {
     /**
      * Prepare call.
      *
-     * @param query
-     *            the query
+     * @param query the query
      * @return the java.sql. callable statement
      */
     public java.sql.CallableStatement prepareCall(final String query) {
@@ -109,8 +107,7 @@ final class BoulderDashBDDConnector {
     /**
      * Execute update.
      *
-     * @param query
-     *            the query
+     * @param query the query
      * @return the int
      */
     public int executeUpdate(final String query) {
@@ -134,8 +131,7 @@ final class BoulderDashBDDConnector {
     /**
      * Sets the connection.
      *
-     * @param connection
-     *            the new connection
+     * @param connection the new connection
      */
     public void setConnection(final Connection connection) {
         this.connection = connection;
@@ -153,8 +149,7 @@ final class BoulderDashBDDConnector {
     /**
      * Sets the statement.
      *
-     * @param statement
-     *            the new statement
+     * @param statement the new statement
      */
     public void setStatement(final Statement statement) {
         this.statement = statement;

@@ -14,11 +14,39 @@ public class Assets implements Assetable {
      * Attributes
      */
     private SpriteSheet sprite;
-    public BufferedImage wall, dirt, bwall, empty, diamond, rock, exit, character, enemy;
+    /**
+     * The Wall.
+     */
+    public BufferedImage wall, /**
+     * The Dirt.
+     */
+    dirt, /**
+     * The Bwall.
+     */
+    bwall, /**
+     * The Empty.
+     */
+    empty, /**
+     * The Diamond.
+     */
+    diamond, /**
+     * The Rock.
+     */
+    rock, /**
+     * The Exit.
+     */
+    exit, /**
+     * The Character.
+     */
+    character, /**
+     * The Enemy.
+     */
+    enemy;
 
     /**
      * constructor without parameter
-     * @throws IOException
+     *
+     * @throws IOException the io exception
      */
     public Assets() throws IOException  {
         this.sprite = new SpriteSheet();//instantiate a new spriteSheet

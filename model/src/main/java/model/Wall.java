@@ -1,4 +1,5 @@
 package model;
+
 /**
  * <h1>the Wall class</h1>
  *
@@ -7,11 +8,16 @@ package model;
  */
 public class Wall extends Tile {
 
+    /**
+     * The constant REF.
+     */
     public final static int REF = 1;
+
     /**
      * Constructor with parameter position
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public Wall(int x, int y) {
 
@@ -21,7 +27,7 @@ public class Wall extends Tile {
     }
 
     /**
-     * constructor without parameter 
+     * constructor without parameter
      */
     public Wall() {
         super();

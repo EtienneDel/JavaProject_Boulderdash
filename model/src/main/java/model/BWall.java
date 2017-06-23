@@ -8,6 +8,9 @@ package model;
 
 import java.io.IOException;
 
+/**
+ * The type B wall.
+ */
 public class BWall extends Tile implements Breakable, Tilable {
 
     /**
@@ -18,7 +21,8 @@ public class BWall extends Tile implements Breakable, Tilable {
 
     /**
      * constructor without parameter
-     * @throws IOException
+     *
+     * @throws IOException the io exception
      */
     public BWall() throws IOException {
         super();
@@ -28,9 +32,10 @@ public class BWall extends Tile implements Breakable, Tilable {
 
     /**
      * constructor with position of the tile
-     * @param x
-     * @param y
-     * @throws IOException
+     *
+     * @param x the x
+     * @param y the y
+     * @throws IOException the io exception
      */
     public BWall(int x, int y) throws IOException {
         super(x,y);

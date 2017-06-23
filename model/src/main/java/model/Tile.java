@@ -11,14 +11,26 @@ import model.dao.MapDAO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * The type Tile.
+ */
 public class Tile implements Tilable {
 
     /**
      * attributes
      */
     public static int WIDTH = 16;
+    /**
+     * The constant HEIGHT.
+     */
     public static int HEIGHT = 16;
+    /**
+     * The constant REF.
+     */
     public static int REF;
+    /**
+     * The Position.
+     */
     protected Position position;
     private ImageIcon img;
     private boolean isWalkable = true;
@@ -28,8 +40,9 @@ public class Tile implements Tilable {
     /**
      * Constructor with parameter position and MapDAO
      *
-     * @param x
-     * @param y
+     * @param x      the x
+     * @param y      the y
+     * @param mapDAO the map dao
      */
     public Tile(int x, int y, MapDAO mapDAO) {
         position = new Position(x, y);
@@ -41,8 +54,9 @@ public class Tile implements Tilable {
 
     /**
      * constructor with parameter only the position
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public Tile(int x, int y) {
         position = new Position(x, y);
@@ -64,13 +78,13 @@ public class Tile implements Tilable {
     }
 
 
-
     /**
      * get the image associate to this tile
-     * @param tileset
-     * @param i
-     * @param j
-     * @return
+     *
+     * @param tileset the tileset
+     * @param i       the
+     * @param j       the j
+     * @return image from tileset
      */
     public BufferedImage getImageFromTileset(BufferedImage tileset, int i, int j) {
         int x = i * 16;
@@ -82,14 +96,19 @@ public class Tile implements Tilable {
     /**
      * set the position of the tile
      *
-     * @param x
-     * @param y
+     * @param x the x
+     * @param y the y
      */
     public void setPosition(int x, int y) {
         position.setPosX(x);
         position.setPosY(y);
     }
 
+    /**
+     * Sets position.
+     *
+     * @param position the position
+     */
     public void setPosition(Position position) {
         this.position = new Position(position);
     }
@@ -116,12 +135,17 @@ public class Tile implements Tilable {
     /**
      * set the id of the tile
      *
-     * @param ref
+     * @param ref the ref
      */
     public void setRef(int ref) {
         this.REF = ref;
     }
 
+    /**
+     * Gets walkable.
+     *
+     * @return the walkable
+     */
     public boolean getWalkable() {
         return this.isWalkable;
     }
@@ -129,7 +153,7 @@ public class Tile implements Tilable {
     /**
      * set if we can walk on the tile or not
      *
-     * @param walkable
+     * @param walkable the walkable
      */
     public void setWalkable(boolean walkable) {
         isWalkable = walkable;
@@ -137,18 +161,28 @@ public class Tile implements Tilable {
 
     /**
      * getter and setter
-     * @return
+     *
+     * @return position position
      */
     public IPosition getPosition() {
         return position;
     }
 
 
-
+    /**
+     * Sets map dao.
+     *
+     * @param mapDAO the map dao
+     */
     public void setMapDAO(MapDAO mapDAO) {
         this.mapDAO = mapDAO;
     }
 
+    /**
+     * Sets tablemap.
+     *
+     * @param tablemap the tablemap
+     */
     public void setTablemap(char[][] tablemap) {
         this.tablemap = tablemap;
     }

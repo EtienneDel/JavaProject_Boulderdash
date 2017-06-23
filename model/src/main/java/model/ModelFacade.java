@@ -5,13 +5,14 @@ import model.dao.MapDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Jean -Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
 public class ModelFacade implements IModel, IMap {
@@ -23,6 +24,10 @@ public class ModelFacade implements IModel, IMap {
 
     /**
      * Instantiates a new model facade.
+     *
+     * @param nomMap the nom map
+     * @throws IOException  the io exception
+     * @throws SQLException the sql exception
      */
     public ModelFacade(String nomMap) throws IOException, SQLException {
 
@@ -126,6 +131,10 @@ public class ModelFacade implements IModel, IMap {
         return Character.getTheCharacter();
     }
 
+    @Override
+    public ArrayList<IEnemies> createEnemyList() throws IOException {
+        return map.createEnemyList();
+    }
 
     @Override
     public IPosition getPosition(int x, int y) {

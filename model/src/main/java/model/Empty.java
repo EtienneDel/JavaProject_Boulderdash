@@ -1,4 +1,5 @@
 package model;
+
 /**
  * <h1>ths Empty class</h1>
  *
@@ -11,10 +12,12 @@ public class Empty extends Tile {
      * attribute
      */
     public final static int REF = 2;
+
     /**
      * constructor with parameter position of the tile
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public Empty(int x, int y) {
 

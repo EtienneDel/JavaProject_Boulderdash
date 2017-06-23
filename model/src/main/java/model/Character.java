@@ -8,7 +8,6 @@ import java.io.IOException;
  * @author Etienne Delnott / Paul Brouet
  * @version 1.0
  */
-
 public class Character extends Entitie implements Tilable, ICharacter {
     /**
      * attribute
@@ -36,6 +35,14 @@ public class Character extends Entitie implements Tilable, ICharacter {
         setWalkable(false);
     }
 
+    /**
+     * Sets the character.
+     *
+     * @param x the x
+     * @param y the y
+     * @return the the character
+     * @throws IOException the io exception
+     */
     public static Character setTheCharacter(int x, int y) throws IOException {
         if(instance==null){
             return new Character(x,y);
@@ -43,6 +50,12 @@ public class Character extends Entitie implements Tilable, ICharacter {
         return instance;
     }
 
+    /**
+     * Gets the character.
+     *
+     * @return the the character
+     * @throws IOException the io exception
+     */
     public static Character getTheCharacter() throws IOException {
         if(instance==null){
             return null;
