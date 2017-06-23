@@ -13,6 +13,7 @@ public class ViewFacadeTest {
 
     @Test
     public void displayMessage() throws Exception {
+        String
     }
 
 }
