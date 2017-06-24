@@ -4,6 +4,7 @@ import model.IMap;
 import model.IModel;
 import model.IPosition;
 import model.Movable;
+import view.IView;
 
 import java.io.IOException;
 
@@ -22,11 +23,12 @@ public class CharacterController implements OrderPerformerable {
     /**
      * The Build.
      */
+    protected IView view;
     protected Build build;
     private IPosition position;
     private RockController rockController;
     private DiamondController diamondController;
-    private int colli = 0;
+    private int colli = 0, nbDiamond, score;
     private Boolean diamond = false;
 
     /**
@@ -36,12 +38,14 @@ public class CharacterController implements OrderPerformerable {
      * @param build the build
      * @throws IOException the io exception
      */
-    public CharacterController(IModel model, Build build) throws IOException {
+    public CharacterController(IModel model, Build build, IView view) throws IOException {
         this.map = model.getTheMap();
         this.model = model;
         this.build = build;
         rockController = new RockController(model);
         diamondController = new DiamondController(model);
+        nbDiamond = model.getDiamonds();
+        score = view.getScore();
 
     }
 
@@ -64,7 +68,6 @@ public class CharacterController implements OrderPerformerable {
                 rockController.refresh(position);
                 break;
         }
-
     }
 
     /**
@@ -152,6 +155,12 @@ public class CharacterController implements OrderPerformerable {
                     colli = 1;
                 }
                 break;
+            case '6':
+                colli = 1;
+                if(score >= nbDiamond){
+                    colli = 4;
+                    movable.moveL(position);
+                }
             default:
                 movable.moveL(position);
         }

@@ -72,6 +72,13 @@ public class GamePanel extends JPanel implements IView {
         this.add(points);
     }
 
+    public void DisplayOver(){
+        points = new JLabel();
+        this.points.setBounds(250,260,500,500);
+        this.points.setText("GAME OVER");
+        this.add(points);
+    }
+
     @Override
     public int getScore() {
         return score;

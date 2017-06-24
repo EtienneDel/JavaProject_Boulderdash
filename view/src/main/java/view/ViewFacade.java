@@ -24,6 +24,7 @@ public class ViewFacade implements IView {
      * Instantiates a new view facade.
      */
     private GameFrame frame;
+    private GamePanel panel;
 
     /**
      * Instantiates a new View facade.

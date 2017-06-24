@@ -2,6 +2,7 @@ package model;
 
 import model.dao.MapDAO;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,6 +47,11 @@ public class ModelFacade implements IModel, IMap {
      */
     public int getMap_width() {
         return map_width;
+    }
+
+    @Override
+    public BufferedImage getGameOver() {
+        return null;
     }
 
     public int getMap_height() {

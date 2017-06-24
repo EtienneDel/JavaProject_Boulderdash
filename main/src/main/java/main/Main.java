@@ -25,7 +25,7 @@ public abstract class Main {
      */
     public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
 
-        ModelFacade model = new ModelFacade("clock");
+        ModelFacade model = new ModelFacade("map1");
         ControllerFacade controller = new ControllerFacade(model);
         ViewFacade view = new ViewFacade(controller, model);
         controller.setView(view);

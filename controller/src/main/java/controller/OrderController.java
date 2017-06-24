@@ -20,6 +20,7 @@ public class OrderController extends java.util.Observable {
     private int scoreContr;
     private int collision;
     private RockController rockController;
+    private ControllerFacade controllerFacade;
 
     /**
      * Instantiates a new Order controller.
@@ -44,10 +45,11 @@ public class OrderController extends java.util.Observable {
         int y = build.getPosY();
         this.view = view;
         this.model = model;
-        character = new CharacterController(model, build);
+        character = new CharacterController(model, build, view);
         Movable movable = (Movable) model.getDiamond();
         position = model.getPosition(i, j);
         rockController = new RockController(model);
+        controllerFacade = new ControllerFacade(model);
 
 
         switch (userOrder.getOrder()) {
@@ -79,8 +81,6 @@ public class OrderController extends java.util.Observable {
                 }
                 break;
             case LEFT:
-
-
                 character.moveLeft(movable, position);
                 collision = character.getColli();
                 /*if(collision ==2){
@@ -92,11 +92,15 @@ public class OrderController extends java.util.Observable {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
+                if(collision == 4){
+                    i--;
+                    x += 16;
+                    controllerFacade.endGame(view, model);
+                }
                 if (collision != 1 && collision != 2) {
                     i--;
                     x += 16;
                 }
-
                 break;
             case RIGHT:
 
