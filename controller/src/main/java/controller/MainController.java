@@ -39,28 +39,26 @@ public class MainController implements Observer {
         IPosition position = model.getPosition(3, 1);
         IPosition positionChar = model.getPosition(1, 1);
         IMap map = model.getTheMap();
+        Thread thread;
+
         rockController = new RockController(model);
         diamondController = new DiamondController(model);
         enemyController = new EnemyController(model, model.createEnemyList());
-
-        position.setPosition(7, 4);
-        diamondController.refresh(position);
-
-        //characterController.refresh(positionChar);
-        position.setPosition(5, 4);
-        rockController.refresh(position);
-        position.setPosition(3, 7);
-        rockController.refresh(position);
-        if (model.createEnemyList() != null)
-            while (true) {
-                enemyController.refresh();
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        if (model.createEnemyList() != null) {
+            thread = new Thread() {
+                public void run() {
+                    while (true) {
+                        enemyController.refresh();
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
-
+            };
+            thread.start();
+        }
     }
 
     @Override
