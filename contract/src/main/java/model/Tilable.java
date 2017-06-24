@@ -20,6 +20,13 @@ public interface Tilable {
     void setPosition(IPosition position);
 
     /**
+     * Gets position.
+     *
+     * @return the position
+     */
+    IPosition getPosition();
+
+    /**
      * Gets .
      *
      * @return the

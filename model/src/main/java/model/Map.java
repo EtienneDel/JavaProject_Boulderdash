@@ -52,12 +52,14 @@ public class Map extends java.util.Observable implements IMap {
      * @throws IOException the io exception
      */
     public ArrayList<IEnemies> createEnemyList() throws IOException {
+        if(this.enemyList.size() > 0)
+            return enemyList;
         int y = mapDAO.getMap_Heigth();
         int x = mapDAO.getMap_Width();
         int e, i;
 
-        for (i = 0; i < x; i++) {
-            for (e = 0; e < y; e++) {
+        for (i = 0; i < y; i++) {
+            for (e = 0; e < x; e++) {
                 if (tablemap[i][e] == '7')
                     enemyList.add(new Enemy(i, e));
             }

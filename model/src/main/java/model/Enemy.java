@@ -31,7 +31,6 @@ public class Enemy extends Entitie implements IEnemies {
         super(x, y);
         setWalkable(false);
         this.algo = (int) (Math.random() * 3);
-        this.algo = 1;
     }
 
     /**
@@ -42,8 +41,7 @@ public class Enemy extends Entitie implements IEnemies {
     public Enemy() throws IOException {
         super();
         setWalkable(false);
-        //this.algo = (int)(Math.random() * 3);
-        this.algo = 1;
+        this.algo = (int)(Math.random() * 3);
     }
 
     public void moveDown(IPosition position) {

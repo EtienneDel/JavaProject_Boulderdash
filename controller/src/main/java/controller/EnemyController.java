@@ -37,19 +37,35 @@ public class EnemyController {
     public void clockWise(IEnemies enemy) {
         int i = 0;
         do {
-            if (isInFirstLoop(enemy.getLastDirection())) {
-                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0))
+            if (isInFirstLoop(enemy.getLastDirection(), enemy.getAlgo())) {
+                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                    enemy.moveRight(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                    enemy.moveDown(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveLeft(enemy.getPosition());
-                else if (canMoveUp(enemy.getPosition()))
+                    i = 0;
+                } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveUp(enemy.getPosition());
-                else
+                    i = 0;
+                } else
                     i++;
             } else {
-                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0))
+                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                    enemy.moveLeft(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                    enemy.moveUp(enemy.getPosition());
+                    i = 0;
+                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveRight(enemy.getPosition());
-                else if (canMoveDown(enemy.getPosition()))
+                    i = 0;
+                } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveDown(enemy.getPosition());
-                else
+                    i = 0;
+                } else
                     i++;
             }
         } while (i != 0);
@@ -63,17 +79,17 @@ public class EnemyController {
     public void antiClockWise(IEnemies enemy) {
         int i = 0;
         do {
-            if (isInFirstLoop(enemy.getLastDirection())) {
+            if (isInFirstLoop(enemy.getLastDirection(), enemy.getAlgo())) {
                 if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
-                } else if (canMoveUp(enemy.getPosition())) {
+                } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveUp(enemy.getPosition());
                     i = 0;
                 } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
-                } else if (canMoveDown(enemy.getPosition())) {
+                } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveDown(enemy.getPosition());
                     i = 0;
                 } else
@@ -82,13 +98,13 @@ public class EnemyController {
                 if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
-                } else if (canMoveDown(enemy.getPosition())) {
+                } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveDown(enemy.getPosition());
                     i = 0;
                 } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
-                } else if (canMoveUp(enemy.getPosition())) {
+                } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveUp(enemy.getPosition());
                     i = 0;
                 } else
@@ -155,6 +171,7 @@ public class EnemyController {
                     break;
             }
         }
+
     }
 
     private boolean canMoveUp(IPosition position) {
@@ -173,7 +190,11 @@ public class EnemyController {
         return map.getCharByPos(position.getPosX() - 1, position.getPosY()) == '2';
     }
 
-    private boolean isInFirstLoop(int lastDirection) {
-        return lastDirection == 0 || lastDirection == 1;
+    private boolean isInFirstLoop(int lastDirection, int algo) {
+        if(algo == 0)
+            return lastDirection == 0 || lastDirection == 3;
+        if(algo == 1)
+            return lastDirection == 0 || lastDirection == 1;
+        return false;
     }
 }
