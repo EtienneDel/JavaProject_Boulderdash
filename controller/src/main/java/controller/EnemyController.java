@@ -174,20 +174,39 @@ public class EnemyController {
 
     }
 
+    protected void explode(IPosition position) {
+        position.setPosition(position.getPosX(), position.getPosY() + 1);
+        for (int i = -1; i < 2; i++)
+            for (int j = -1; j < 2; j++)
+                map.setCharByPos(position.getPosX() + i, position.getPosY() + j, '2');
+    }
+
     private boolean canMoveUp(IPosition position) {
+        char tile = map.getCharByPos(position.getPosX(), position.getPosY() - 1);
+        if(tile == '8')
+            explode(model.getPosition(position.getPosX(), position.getPosY() - 1));
         return map.getCharByPos(position.getPosX(), position.getPosY() - 1) == '2';
     }
 
     private boolean canMoveDown(IPosition position) {
+        char tile = map.getCharByPos(position.getPosX(), position.getPosY()+1);
+        if(tile == '8')
+            explode(model.getPosition(position.getPosX(), position.getPosY() + 1));
         return map.getCharByPos(position.getPosX(), position.getPosY() + 1) == '2';
     }
 
     private boolean canMoveRight(IPosition position) {
-        return map.getCharByPos(position.getPosX() + 1, position.getPosY()) == '2';
+        char tile = map.getCharByPos(position.getPosX()+1, position.getPosY());
+        if(tile == '8')
+            explode(model.getPosition(position.getPosX()+1, position.getPosY()));
+        return map.getCharByPos(position.getPosX()+1, position.getPosY()) == '2';
     }
 
     private boolean canMoveLeft(IPosition position) {
-        return map.getCharByPos(position.getPosX() - 1, position.getPosY()) == '2';
+        char tile = map.getCharByPos(position.getPosX()-1, position.getPosY());
+        if(tile == '8')
+            explode(model.getPosition(position.getPosX()-1, position.getPosY()));
+        return map.getCharByPos(position.getPosX()-1, position.getPosY()) == '2';
     }
 
     private boolean isInFirstLoop(int lastDirection, int algo) {
