@@ -109,9 +109,11 @@ public class Map extends java.util.Observable implements IMap {
      */
     @Override
     public void setCharByPos(int x, int y, char chare) {
-        tablemap[x][y] = chare;
-        setChanged();
-        notifyObservers();
+        if(getCharByPos(x,y) != '1') {
+            tablemap[x][y] = chare;
+            setChanged();
+            notifyObservers();
+        }
     }
 
 }
