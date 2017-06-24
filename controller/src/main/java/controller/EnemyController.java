@@ -38,13 +38,13 @@ public class EnemyController {
         int i = 0;
         do {
             if (isInFirstLoop(enemy.getLastDirection(), enemy.getAlgo())) {
-                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 1)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
                 } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveDown(enemy.getPosition());
                     i = 0;
-                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 1)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
                 } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
@@ -53,13 +53,13 @@ public class EnemyController {
                 } else
                     i++;
             } else {
-                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 1)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
                 } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveUp(enemy.getPosition());
                     i = 0;
-                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 1)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
                 } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
@@ -80,13 +80,13 @@ public class EnemyController {
         int i = 0;
         do {
             if (isInFirstLoop(enemy.getLastDirection(), enemy.getAlgo())) {
-                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 1)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
                 } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
                     enemy.moveUp(enemy.getPosition());
                     i = 0;
-                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                } else if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 1)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
                 } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
@@ -95,13 +95,13 @@ public class EnemyController {
                 } else
                     i++;
             } else {
-                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
+                if (canMoveLeft(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 1)) {
                     enemy.moveLeft(enemy.getPosition());
                     i = 0;
                 } else if (canMoveDown(enemy.getPosition()) && (enemy.getLastDirection() != 2 || i > 0)) {
                     enemy.moveDown(enemy.getPosition());
                     i = 0;
-                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
+                } else if (canMoveRight(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 1)) {
                     enemy.moveRight(enemy.getPosition());
                     i = 0;
                 } else if (canMoveUp(enemy.getPosition()) && (enemy.getLastDirection() != 0 || i > 0)) {
