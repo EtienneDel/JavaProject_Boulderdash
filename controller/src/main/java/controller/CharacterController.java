@@ -92,6 +92,14 @@ public class CharacterController implements OrderPerformerable {
             case '5':
                 colli = 1;
                 break;
+            case '6':
+                if(score >= nbDiamond){
+                    colli = 4;
+                    movable.moveU(position);
+                }
+                else {
+                    colli = 1;
+                }
             default:
                 movable.moveU(position);
         }
@@ -121,6 +129,14 @@ public class CharacterController implements OrderPerformerable {
             case '5':
                 colli = 1;
                 break;
+            case '6':
+                if(score >= nbDiamond){
+                    colli = 4;
+                    movable.moveD(position);
+                }
+                else {
+                    colli = 1;
+                }
             default:
                 movable.moveD(position);
         }
@@ -156,10 +172,12 @@ public class CharacterController implements OrderPerformerable {
                 }
                 break;
             case '6':
-                colli = 1;
                 if(score >= nbDiamond){
                     colli = 4;
                     movable.moveL(position);
+                }
+                else {
+                    colli = 1;
                 }
             default:
                 movable.moveL(position);
@@ -190,6 +208,14 @@ public class CharacterController implements OrderPerformerable {
             case '5':
                 colli = 1;
                 break;
+            case '6':
+                if(score >= nbDiamond){
+                    colli = 4;
+                    movable.moveR(position);
+                }
+                else {
+                    colli = 1;
+                }
             default:
                 movable.moveR(position);
         }
