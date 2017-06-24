@@ -15,8 +15,7 @@ public class GamePanel extends JPanel implements IView {
     private int xpos;
     private int ypos;
     private JLabel points;
-    private int score = 0, nbdiamonds;
-
+    private int score, nbdiamonds;
 
     /**
      * Instantiates a new Game panel.
@@ -26,13 +25,12 @@ public class GamePanel extends JPanel implements IView {
     public GamePanel(IModel model) {
         image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         nbdiamonds = model.getDiamonds();
-
     }
-  public GamePanel() {
+    public GamePanel() {
         image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
        nbdiamonds = 8;
 
-   }
+    }
 
     /**
      * Set image.
@@ -42,11 +40,9 @@ public class GamePanel extends JPanel implements IView {
      * @param y     the ypos
      */
     public void setImage(BufferedImage image, int x, int y) {
-
         this.image = image;
         this.xpos = x;
         this.ypos = y;
-
         repaint();
     }
 
@@ -56,7 +52,6 @@ public class GamePanel extends JPanel implements IView {
         g.drawImage(image, xpos, ypos, null);
         g.setColor(Color.white);
         g.fillRect(0, 460, 500, 200);
-
     }
 
     /**
@@ -70,23 +65,22 @@ public class GamePanel extends JPanel implements IView {
      * Propertiespoints.
      */
     public void propertiespoints() {
-
-
         points = new JLabel();
         this.points.setBounds(300, 260, 500, 500);
-        this.points.setText("score : " + score + "/" + nbdiamonds + " diamonds");
+        this.points.setText("score : " + getScore() + "/" + nbdiamonds + " diamonds");
+        //System.out.println(score);
         this.add(points);
     }
 
+    @Override
     public int getScore() {
         return score;
     }
 
+    @Override
     public void setScore(int score) {
         this.score = score;
     }
-
-
 
     public JLabel getPoints() {
         return points;

@@ -19,6 +19,7 @@ public class ViewFacade implements IView {
      * The A.
      */
     int a = 0;
+    private int score;
     /**
      * Instantiates a new view facade.
      */
@@ -59,7 +60,8 @@ public class ViewFacade implements IView {
 
     @Override
     public int getScore() {
-        return 0;
+        setScore(score+1);
+        return score;
     }
 
     @Override
