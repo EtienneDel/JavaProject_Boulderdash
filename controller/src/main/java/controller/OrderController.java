@@ -56,11 +56,7 @@ public class OrderController extends java.util.Observable {
                 collision = character.getColli();
                 if(character.getDiamond() == true){
                     this.scoreContr ++;
-                   // System.out.println(scoreContr);
                     view.setScore(scoreContr);
-
-                  //  System.out.println(view.getScore());
-                   // System.out.println(scoreContr);
                 }
                 if (collision != 1) {
                     j--;
@@ -73,6 +69,10 @@ public class OrderController extends java.util.Observable {
 
                 character.moveDown(movable, position);
                 collision = character.getColli();
+                if(character.getDiamond() == true) {
+                    this.scoreContr++;
+                    view.setScore(scoreContr);
+                }
                 if (collision != 1) {
                     j++;
                     y -= 16;
@@ -80,12 +80,17 @@ public class OrderController extends java.util.Observable {
                 break;
             case LEFT:
 
+
                 character.moveLeft(movable, position);
                 collision = character.getColli();
-                if(collision ==2){
+                /*if(collision ==2){
                     rockController.moveLeft(movable, position);
                     i--;
                     x += 16;
+                }*/
+                if(character.getDiamond() == true) {
+                    this.scoreContr++;
+                    view.setScore(scoreContr);
                 }
                 if (collision != 1 && collision != 2) {
                     i--;
@@ -97,6 +102,10 @@ public class OrderController extends java.util.Observable {
 
                 character.moveRight(movable, position);
                 collision = character.getColli();
+                if(character.getDiamond() == true) {
+                    this.scoreContr++;
+                    view.setScore(scoreContr);
+                }
                 if (collision != 1) {
                     i++;
                     x -= 16;
