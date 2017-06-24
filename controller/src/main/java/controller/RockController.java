@@ -43,10 +43,16 @@ public class RockController extends DiamondController {
 
         if (bottomTile == '3')//bloc cassable
             explode(false, position);
-        else if (leftTile == '2' && (bottomLeftTile == '3' || bottomLeftTile == '2' || bottomLeftTile == '7') && bottomTile == '5')
+        else if (leftTile == '2' && (bottomLeftTile == '3' || bottomLeftTile == '2' || bottomLeftTile == '7') && (bottomTile == '5' || bottomTile == '4'))
+        {
             moveLeft(movable, position);
-        else if (rightTile == '2' && (bottomRightTile == '3' || bottomRightTile == '2' || bottomRightTile == '7') && bottomTile == '5')
+            moveDown(movable, model.getPosition(position.getPosX()-1, position.getPosY()));
+        }
+        else if (rightTile == '2' && (bottomRightTile == '3' || bottomRightTile == '2' || bottomRightTile == '7') && (bottomTile == '5' || bottomTile == '4'))
+        {
             moveRight(movable, position);
+            moveDown(movable, model.getPosition(position.getPosX()+1, position.getPosY()));
+        }
     }
 
     @Override
@@ -64,8 +70,6 @@ public class RockController extends DiamondController {
      */
     public void moveLeft(Movable movable, IPosition position) throws IOException {
         movable.moveL(position);
-        movable.moveD(model.getPosition(position.getPosX() - 1, position.getPosY()));
-
         refreshAround(position);
     }
 
@@ -78,8 +82,6 @@ public class RockController extends DiamondController {
      */
     public void moveRight(Movable movable, IPosition position) throws IOException {
         movable.moveR(position);
-        movable.moveD(model.getPosition(position.getPosX() + 1, position.getPosY()));
-
         refreshAround(position);
     }
 

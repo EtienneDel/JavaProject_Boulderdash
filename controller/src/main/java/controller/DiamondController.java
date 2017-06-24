@@ -46,7 +46,7 @@ public class DiamondController {
 
         Movable movable = (Movable) model.getDiamond();
 
-        if (bottomTile == '7')//monstre
+        if (bottomTile == '7' || bottomTile == '8')//monstre
             explode(true, position);
         else if (bottomTile == '2')//vide
             moveDown(movable, position);
