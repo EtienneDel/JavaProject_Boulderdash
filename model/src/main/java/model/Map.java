@@ -58,8 +58,8 @@ public class Map extends java.util.Observable implements IMap {
         int x = mapDAO.getMap_Width();
         int e, i;
 
-        for (i = 0; i < y; i++) {
-            for (e = 0; e < x; e++) {
+        for (i = 0; i < x; i++) {
+            for (e = 0; e < y; e++) {
                 if (tablemap[i][e] == '7')
                     enemyList.add(new Enemy(i, e));
             }
