@@ -56,9 +56,11 @@ public class OrderController extends java.util.Observable {
                 collision = character.getColli();
                 if(character.getDiamond() == true){
                     this.scoreContr ++;
+                   // System.out.println(scoreContr);
                     view.setScore(scoreContr);
-                    System.out.println(view.getScore());
-                    System.out.println(scoreContr);
+
+                  //  System.out.println(view.getScore());
+                   // System.out.println(scoreContr);
                 }
                 if (collision != 1) {
                     j--;
