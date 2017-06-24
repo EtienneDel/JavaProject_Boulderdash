@@ -17,6 +17,7 @@ public class OrderController extends java.util.Observable {
     private IView view;
     private IPosition position;
     private int i = 1, j = 1;
+    private int scoreContr;
     private int collision;
     private RockController rockController;
 
@@ -53,16 +54,17 @@ public class OrderController extends java.util.Observable {
             case UP:
                 character.moveUp(movable, position);
                 collision = character.getColli();
-                if (collision == 3) {
-                    view.setScore(view.getScore() + 1);
+                if(character.getDiamond() == true){
+                    this.scoreContr ++;
+                    view.setScore(scoreContr);
                     System.out.println(view.getScore());
-                    j--;
-                    y += 16;
+                    System.out.println(scoreContr);
                 }
                 if (collision != 1) {
                     j--;
                     y += 16;
                 }
+
 
                 break;
             case DOWN:
@@ -78,11 +80,11 @@ public class OrderController extends java.util.Observable {
 
                 character.moveLeft(movable, position);
                 collision = character.getColli();
-                /*if(collision ==2){
+                if(collision ==2){
                     rockController.moveLeft(movable, position);
                     i--;
                     x += 16;
-                }*/
+                }
                 if (collision != 1 && collision != 2) {
                     i--;
                     x += 16;

@@ -27,6 +27,7 @@ public class CharacterController implements OrderPerformerable {
     private RockController rockController;
     private DiamondController diamondController;
     private int colli = 0;
+    private Boolean diamond = false;
 
     /**
      * Instantiates a new Character controller.
@@ -82,7 +83,8 @@ public class CharacterController implements OrderPerformerable {
                 colli = 1;
                 break;
             case '4':
-                colli = 3;
+                diamond = true;
+                movable.moveU(position);
                 break;
             case '5':
                 colli = 1;
@@ -110,7 +112,8 @@ public class CharacterController implements OrderPerformerable {
                 colli = 1;
                 break;
             case '4':
-                colli = 3;
+                diamond = true;
+                movable.moveD(position);
                 break;
             case '5':
                 colli = 1;
@@ -138,11 +141,13 @@ public class CharacterController implements OrderPerformerable {
                 colli = 1;
                 break;
             case '4':
-                colli = 3;
+                diamond = true;
+                movable.moveL(position);
                 break;
             case '5':
                 if (map.getCharByPos(position.getPosX() - 2, position.getPosY()) == '2') {
                     colli = 2;
+                    movable.moveL(position);
                 } else {
                     colli = 1;
                 }
@@ -170,7 +175,8 @@ public class CharacterController implements OrderPerformerable {
                 colli = 1;
                 break;
             case '4':
-                colli = 3;
+                diamond = true;
+                movable.moveR(position);
                 break;
             case '5':
                 colli = 1;
@@ -223,5 +229,9 @@ public class CharacterController implements OrderPerformerable {
      */
     public int getColli() {
         return colli;
+    }
+
+    public Boolean getDiamond() {
+        return diamond;
     }
 }
