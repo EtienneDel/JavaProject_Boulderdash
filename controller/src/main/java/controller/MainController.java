@@ -3,6 +3,7 @@ package controller;
 import model.IMap;
 import model.IModel;
 import model.IPosition;
+import view.IView;
 
 import java.io.IOException;
 import java.util.Observable;
@@ -17,6 +18,9 @@ public class MainController implements Observer {
     private DiamondController diamondController;
     private IModel model;
     private Build build;
+    private IView view;
+    private IMap map;
+    private ControllerFacade controler;
     private EnemyController enemyController;
 
     /**
@@ -25,9 +29,12 @@ public class MainController implements Observer {
      * @param model the model
      * @param build the build
      */
-    public MainController(IModel model, Build build) {
+    public MainController(IModel model, Build build, ControllerFacade controler, IView view) throws IOException {
         this.model = model;
         this.build = build;
+        this.controler = controler;
+        this.view = view;
+        map = model.getTheMap();
     }
 
     /**
@@ -38,7 +45,6 @@ public class MainController implements Observer {
     public void test() throws IOException {
         IPosition position = model.getPosition(3, 1);
         IPosition positionChar = model.getPosition(1, 1);
-        IMap map = model.getTheMap();
         Thread thread;
 
         rockController = new RockController(model);
@@ -63,6 +69,10 @@ public class MainController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        if(ControllerFacade.isEnded)
+            return;
+        if(!map.isHeroPresent())
+            controler.endGame(view, model);
         build.calculateMap();
     }
 }

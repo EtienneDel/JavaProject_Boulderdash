@@ -41,6 +41,8 @@ public class OrderController extends java.util.Observable {
      * @throws IOException the io exception
      */
     public void performOrder(UserOrderable userOrder, IModel model, IView view) throws IOException {
+        if(ControllerFacade.isEnded)
+            return;
         int x = build.getPosX();
         int y = build.getPosY();
         this.view = view;
