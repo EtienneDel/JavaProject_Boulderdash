@@ -102,6 +102,7 @@ public class Tile implements Tilable {
     public void setPosition(int x, int y) {
         position.setPosX(x);
         position.setPosY(y);
+        System.out.println(position.getPosX() + " " + position.getPosY());
     }
 
     /**
@@ -159,6 +160,7 @@ public class Tile implements Tilable {
      *
      * @return position position
      */
+    @Override
     public IPosition getPosition() {
         return position;
     }

@@ -52,6 +52,8 @@ public class Map extends java.util.Observable implements IMap {
      * @throws IOException the io exception
      */
     public ArrayList<IEnemies> createEnemyList() throws IOException {
+        if(this.enemyList.size() > 0)
+            return enemyList;
         int y = mapDAO.getMap_Heigth();
         int x = mapDAO.getMap_Width();
         int e, i;
