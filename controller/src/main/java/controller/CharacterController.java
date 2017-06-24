@@ -97,7 +97,7 @@ public class CharacterController implements OrderPerformerable {
                     colli = 4;
                     movable.moveU(position);
                 }
-                else {
+                else if(score < nbDiamond){
                     colli = 1;
                 }
             default:
@@ -134,7 +134,7 @@ public class CharacterController implements OrderPerformerable {
                     colli = 4;
                     movable.moveD(position);
                 }
-                else {
+                else if(score < nbDiamond){
                     colli = 1;
                 }
             default:
@@ -176,7 +176,7 @@ public class CharacterController implements OrderPerformerable {
                     colli = 4;
                     movable.moveL(position);
                 }
-                else {
+                else if(score < nbDiamond){
                     colli = 1;
                 }
             default:
@@ -213,7 +213,7 @@ public class CharacterController implements OrderPerformerable {
                     colli = 4;
                     movable.moveR(position);
                 }
-                else {
+                else if(score < nbDiamond){
                     colli = 1;
                 }
             default:
