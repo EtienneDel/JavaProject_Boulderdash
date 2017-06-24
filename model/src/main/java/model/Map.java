@@ -91,6 +91,11 @@ public class Map extends java.util.Observable implements IMap {
         return tablemap[x][y];
     }
 
+    /**
+     * Sets tablemap.
+     *
+     * @param tablemap the tablemap
+     */
     public void setTablemap(char[][] tablemap) {
         this.tablemap = tablemap;
     }
@@ -98,6 +103,22 @@ public class Map extends java.util.Observable implements IMap {
     @Override
     public Tilable getTileByPos(IPosition position) {
         return null;
+    }
+
+    @Override
+    public boolean isHeroPresent() {
+        int y = mapDAO.getMap_Heigth();
+        int x = mapDAO.getMap_Width();
+        int e, i;
+        boolean result = false;
+
+        for (i = 0; i < x; i++) {
+            for (e = 0; e < y; e++) {
+                if (tablemap[i][e] == '8')
+                    result = true;
+            }
+        }
+        return result;
     }
 
     /**

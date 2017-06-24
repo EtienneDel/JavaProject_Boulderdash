@@ -48,4 +48,11 @@ public interface IMap {
      */
     Tilable getTileByPos(IPosition position);
 
+    /**
+     * Is hero present boolean.
+     *
+     * @return the boolean
+     */
+    boolean isHeroPresent();
+
 }

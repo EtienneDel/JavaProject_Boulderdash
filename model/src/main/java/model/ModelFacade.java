@@ -14,7 +14,7 @@ import java.util.Observer;
  * @author Jean -Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ModelFacade implements IModel, IMap {
+public class ModelFacade implements IModel {
 
     private Map map;
     private MapDAO mapDAO = null;
@@ -85,11 +85,6 @@ public class ModelFacade implements IModel, IMap {
     }
 
     @Override
-    public void addObserver(Observer o) {
-        map.addObserver(o);
-    }
-
-    @Override
     public IRock getRock() throws IOException {
         return new Rock();
     }
@@ -117,21 +112,6 @@ public class ModelFacade implements IModel, IMap {
     @Override
     public IPosition getPosition(int x, int y) {
         return new Position(x, y);
-    }
-
-    @Override
-    public char getCharByPos(int x, int y) {
-        return 0;
-    }
-
-    @Override
-    public void setCharByPos(int x, int y, char chare) {
-
-    }
-
-    @Override
-    public Tilable getTileByPos(IPosition position) {
-        return null;
     }
 
     @Override
