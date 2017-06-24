@@ -68,4 +68,11 @@ public class GameFrame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
+    public void setScore(int truc){
+        panel.setScore(truc);
+    }
+    public int getScore(){
+        return panel.getScore();
+    }
 }
