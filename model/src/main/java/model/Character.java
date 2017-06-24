@@ -15,7 +15,6 @@ public class Character extends Entitie implements Tilable, ICharacter {
     public final static int REF = 8;
     private static Character instance;
     private Map map = Map.getMap();
-    private IPosition position;
 
     /**
      * constructor with parameter position of the tile
@@ -71,7 +70,7 @@ public class Character extends Entitie implements Tilable, ICharacter {
         int y = position.getPosY();
         map.setCharByPos(x, y, '2');
         map.setCharByPos(x, y + 1, '8');
-        position.setPosition(position.getPosX(), position.getPosY() - 1);
+        position.setPosition(position.getPosX(), position.getPosY() + 1);
         setPosition(position);
     }
 
@@ -101,7 +100,7 @@ public class Character extends Entitie implements Tilable, ICharacter {
         int y = position.getPosY();
         map.setCharByPos(x, y, '2');
         map.setCharByPos(x, y + 1, '8');
-        position.setPosition(position.getPosX(), position.getPosY() + 1);
+        position.setPosition(position.getPosX(), position.getPosY() - 1);
         setPosition(position);
     }
 

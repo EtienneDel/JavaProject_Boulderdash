@@ -31,7 +31,7 @@ public class Tile implements Tilable {
     /**
      * The Position.
      */
-    public Position position;
+    public IPosition position;
     private ImageIcon img;
     private boolean isWalkable = true;
     private MapDAO mapDAO;
@@ -100,8 +100,7 @@ public class Tile implements Tilable {
      * @param y the y
      */
     public void setPosition(int x, int y) {
-        position.setPosX(x);
-        position.setPosY(y);
+        position.setPosition(x, y);
     }
 
     /**
