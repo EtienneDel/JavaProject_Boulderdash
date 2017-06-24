@@ -20,7 +20,7 @@ public class SpriteSheet extends JLabel {
     /**
      * attribute
      */
-    BufferedImage img = ImageIO.read(new File("D:\\Java\\JavaProject_Boulderdash\\SpriteSheet.png"));
+    BufferedImage img = ImageIO.read(new File(".\\SpriteSheet.png"));
 
     /**
      * constructor without parameter
