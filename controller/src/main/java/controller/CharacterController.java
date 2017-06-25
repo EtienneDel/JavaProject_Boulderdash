@@ -208,7 +208,13 @@ public class CharacterController implements OrderPerformerable {
                 movable.moveR(position);
                 break;
             case '5':
-                colli = 1;
+                if (map.getCharByPos(position.getPosX() + 2, position.getPosY()) == '2') {
+                    colli = 2;
+                    rockController.moveRight(rock, model.getPosition(position.getPosX() + 1, position.getPosY()));
+                    movable.moveR(position);
+                } else {
+                    colli = 1;
+                }
                 break;
             case '6':
                 if(score >= nbDiamond){
