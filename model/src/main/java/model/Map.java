@@ -90,7 +90,7 @@ public class Map extends java.util.Observable implements IMap {
     public char getCharByPos(int x, int y) {
         if(x>-1 && y>-1)
             return tablemap[x][y];
-        return '2';
+        return '1';
     }
 
     /**
