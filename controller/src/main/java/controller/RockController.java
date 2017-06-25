@@ -57,6 +57,8 @@ public class RockController extends DiamondController {
 
     @Override
     protected void moveDown(Movable movable, IPosition position) throws IOException {
+        if(map.getCharByPos(position.getPosX(), position.getPosY()+1) == '5')
+            return;
         movable.moveD(position);
         refreshAround(position);
     }

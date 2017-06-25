@@ -2,7 +2,9 @@ package model;
 
 import model.dao.MapDAO;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class ModelFacade implements IModel {
     private MapDAO mapDAO = null;
     private int map_width, map_height;
     private char tab_map[][];
+    BufferedImage gameOver = ImageIO.read(new File(".\\gameOver.jpg"));
 
     /**
      * Instantiates a new model facade.
@@ -51,7 +54,7 @@ public class ModelFacade implements IModel {
 
     @Override
     public BufferedImage getGameOver() {
-        return null;
+        return gameOver;
     }
 
     public int getMap_height() {

@@ -48,7 +48,8 @@ public class OrderController extends java.util.Observable {
         this.view = view;
         this.model = model;
         character = new CharacterController(model, build, view);
-        Movable movable = (Movable) model.getDiamond();
+        Movable movable = (Movable) model.setTheCharacterA(1,1);
+        Movable rock = (Movable) model.getRock();
         position = model.getPosition(i, j);
         rockController = new RockController(model);
         controllerFacade = new ControllerFacade(model);
@@ -58,7 +59,7 @@ public class OrderController extends java.util.Observable {
             case UP:
                 character.moveUp(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond() == true){
+                if(character.getDiamond()){
                     this.scoreContr ++;
                     view.setScore(scoreContr);
                 }
@@ -78,7 +79,7 @@ public class OrderController extends java.util.Observable {
 
                 character.moveDown(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond() == true) {
+                if(character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
@@ -93,14 +94,15 @@ public class OrderController extends java.util.Observable {
                 }
                 break;
             case LEFT:
-                character.moveLeft(movable, position);
+
                 collision = character.getColli();
-                /*if(collision ==2){
-                    rockController.moveLeft(movable, position);
+                if(collision ==2){
+                    rockController.moveLeft(rock, model.getPosition(position.getPosX()-1, position.getPosY()));
                     i--;
                     x += 16;
-                }*/
-                if(character.getDiamond() == true) {
+                }
+                character.moveLeft(movable, position);
+                if(character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
@@ -116,9 +118,14 @@ public class OrderController extends java.util.Observable {
                 break;
             case RIGHT:
 
-                character.moveRight(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond() == true) {
+                if(collision == 2){
+                    rockController.moveRight(rock, model.getPosition(position.getPosX()+1, position.getPosY()));
+                    i++;
+                    x -= 16;
+                }
+                character.moveRight(movable, position);
+                if(character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
