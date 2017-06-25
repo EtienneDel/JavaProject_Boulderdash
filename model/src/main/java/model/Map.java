@@ -88,7 +88,9 @@ public class Map extends java.util.Observable implements IMap {
      * @return
      */
     public char getCharByPos(int x, int y) {
-        return tablemap[x][y];
+        if(x>-1 && y>-1)
+            return tablemap[x][y];
+        return '2';
     }
 
     /**
