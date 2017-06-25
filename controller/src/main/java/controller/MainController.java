@@ -71,8 +71,10 @@ public class MainController implements Observer {
     public void update(Observable o, Object arg) {
         if(ControllerFacade.isEnded)
             return;
-        if(!map.isHeroPresent())
+        if(!map.isHeroPresent()) {
             controler.endGame(view, model);
+            return;
+        }
         build.calculateMap();
     }
 }
