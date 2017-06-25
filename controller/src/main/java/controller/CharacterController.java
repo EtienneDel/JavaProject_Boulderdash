@@ -62,19 +62,16 @@ public class CharacterController{
      * @throws IOException the io exception
      */
     public void refresh(IPosition position) throws IOException {
-        this.position = position;
-
-        if (!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
+        if (!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '5'))
             return;
-        diamondController.refresh(position);
-//        switch (map.getCharByPos(position.getPosX(), position.getPosY())) {
-//            case '4':
-//                diamondController.refresh(position);
-//                break;
-//            case '5':
-//                rockController.refresh(position);
-//                break;
-//        }
+        switch (map.getCharByPos(position.getPosX(), position.getPosY())) {
+            case '4':
+                diamondController.refresh(position);
+                break;
+            case '5':
+                rockController.refresh(position);
+                break;
+        }
     }
 
     /**
