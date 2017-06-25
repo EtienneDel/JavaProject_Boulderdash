@@ -239,10 +239,23 @@ public class CharacterController implements OrderPerformerable {
      * @throws IOException the io exception
      */
     protected void refreshAround(IPosition position) throws IOException {
-        refresh(model.getPosition(position.getPosX(), position.getPosY() - 1));
-        refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
-        refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
+        Thread thread;
+        thread = new Thread(() -> {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                refresh(model.getPosition(position.getPosX(), position.getPosY() - 1));
+                refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
+                refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
+                refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
     }
 
     @Override
