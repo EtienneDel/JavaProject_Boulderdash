@@ -24,8 +24,11 @@ public abstract class Main {
      * @throws SQLException         the sql exception
      */
     public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
-
-        ModelFacade model = new ModelFacade("testrock");
+        ModelFacade model;
+        if(args[0] != null)
+            model = new ModelFacade(args[0]);
+        else
+            model = new ModelFacade("map1");
         ControllerFacade controller = new ControllerFacade(model);
         ViewFacade view = new ViewFacade(controller, model);
         controller.setView(view);
