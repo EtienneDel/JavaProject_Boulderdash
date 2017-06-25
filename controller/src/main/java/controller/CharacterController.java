@@ -1,9 +1,6 @@
 package controller;
 
-import model.IMap;
-import model.IModel;
-import model.IPosition;
-import model.Movable;
+import model.*;
 import view.IView;
 
 import java.io.IOException;
@@ -24,8 +21,14 @@ public class CharacterController{
      * The Build.
      */
     protected IView view;
+    /**
+     * The Build.
+     */
     protected Build build;
     private IPosition position;
+    private ICharacter character;
+    private Movable movable;
+    private Movable rock;
     private RockController rockController;
     private DiamondController diamondController;
     private int colli = 0, nbDiamond, score;
@@ -36,6 +39,7 @@ public class CharacterController{
      *
      * @param model the model
      * @param build the build
+     * @param view  the view
      * @throws IOException the io exception
      */
     public CharacterController(IModel model, Build build, IView view) throws IOException {
@@ -44,6 +48,9 @@ public class CharacterController{
         this.build = build;
         rockController = new RockController(model);
         diamondController = new DiamondController(model);
+        character = model.setTheCharacterA(1, 1);
+        this.movable = (Movable) character;
+        this.rock = (Movable) model.getRock();
         nbDiamond = model.getDiamonds();
         score = view.getScore();
     }
@@ -59,20 +66,20 @@ public class CharacterController{
 
         if (!(position.getPosX() > 0 && position.getPosY() > 0 && (map.getCharByPos(position.getPosX(), position.getPosY()) == '4') || map.getCharByPos(position.getPosX(), position.getPosY()) == '8'))
             return;
-        switch (map.getCharByPos(position.getPosX(), position.getPosY())) {
-            case '4':
-                diamondController.refresh(position);
-                break;
-            case '5':
-                rockController.refresh(position);
-                break;
-        }
+        diamondController.refresh(position);
+//        switch (map.getCharByPos(position.getPosX(), position.getPosY())) {
+//            case '4':
+//                diamondController.refresh(position);
+//                break;
+//            case '5':
+//                rockController.refresh(position);
+//                break;
+//        }
     }
 
     /**
      * Move up.
      *
-     * @param movable  the movable
      * @param position the position
      * @throws IOException the io exception
      */
@@ -102,14 +109,12 @@ public class CharacterController{
             default:
                 movable.moveU(position);
         }
-        build.calculateMap();
         refreshAround(position);
     }
 
     /**
      * Move down.
      *
-     * @param movable  the movable
      * @param position the position
      * @throws IOException the io exception
      */
@@ -139,14 +144,12 @@ public class CharacterController{
             default:
                 movable.moveD(position);
         }
-        build.calculateMap();
         refreshAround(position);
     }
 
     /**
      * Move left.
      *
-     * @param movable  the movable
      * @param position the position
      * @throws IOException the io exception
      */
@@ -165,6 +168,7 @@ public class CharacterController{
             case '5':
                 if (map.getCharByPos(position.getPosX() - 2, position.getPosY()) == '2') {
                     colli = 2;
+                    rockController.moveLeft(rock, model.getPosition(position.getPosX() - 1, position.getPosY()));
                     movable.moveL(position);
                 } else {
                     colli = 1;
@@ -181,14 +185,12 @@ public class CharacterController{
             default:
                 movable.moveL(position);
         }
-        build.calculateMap();
         refreshAround(position);
     }
 
     /**
      * Move right.
      *
-     * @param movable  the movable
      * @param position the position
      * @throws IOException the io exception
      */
@@ -210,6 +212,7 @@ public class CharacterController{
             case '6':
                 if(score >= nbDiamond){
                     colli = 4;
+                    rockController.moveRight(rock, model.getPosition(position.getPosX() + 1, position.getPosY()));
                     movable.moveR(position);
                 }
                 else if(score < nbDiamond){
@@ -218,7 +221,6 @@ public class CharacterController{
             default:
                 movable.moveR(position);
         }
-        build.calculateMap();
         refreshAround(position);
     }
 
@@ -229,12 +231,12 @@ public class CharacterController{
      * @throws IOException the io exception
      */
     protected void refreshAround(IPosition position) throws IOException {
-
         refresh(model.getPosition(position.getPosX(), position.getPosY() - 1));
         refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
         refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
         refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
     }
+
 
     /**
      * Gets colli.
@@ -245,6 +247,11 @@ public class CharacterController{
         return colli;
     }
 
+    /**
+     * Gets diamond.
+     *
+     * @return the diamond
+     */
     public Boolean getDiamond() {
         return diamond;
     }
