@@ -113,15 +113,14 @@ public class OrderController extends java.util.Observable {
                     i--;
                     x += 16;
                 }
-
                 break;
 
             case RIGHT:
                 collision = character.getColli();
                 if(collision == 2){
-                    rockController.moveRight(rock, model.getPosition(position.getPosX()+1, position.getPosY()));
                     i++;
                     x -= 16;
+                    rockController.moveRight(rock, model.getPosition(position.getPosX()+1, position.getPosY()));
                 }
                 character.moveRight(movable, position);
                 collision = character.getColli();

@@ -29,8 +29,6 @@ public abstract class Main {
         ControllerFacade controller = new ControllerFacade(model);
         ViewFacade view = new ViewFacade(controller, model);
         controller.setView(view);
-
         controller.start();
-
     }
 }
