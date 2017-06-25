@@ -55,7 +55,6 @@ public class OrderController extends java.util.Observable {
         controllerFacade = new ControllerFacade(model);
 
 
-
         switch (userOrder.getOrder()) {
             case UP:
                 character.moveUp(movable, position);
@@ -64,7 +63,7 @@ public class OrderController extends java.util.Observable {
                     this.scoreContr ++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4 && scoreContr == model.getDiamonds()){
+                if(collision == 4){
                     i--;
                     x += 16;
                     controllerFacade.endGame(view, model);
@@ -84,7 +83,7 @@ public class OrderController extends java.util.Observable {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4 && scoreContr == model.getDiamonds()){
+                if(collision == 4){
                     i--;
                     x += 16;
                     controllerFacade.endGame(view, model);
@@ -107,7 +106,7 @@ public class OrderController extends java.util.Observable {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4 && scoreContr == model.getDiamonds()){
+                if(collision == 4){
                     i--;
                     x += 16;
                     controllerFacade.endGame(view, model);
@@ -130,7 +129,7 @@ public class OrderController extends java.util.Observable {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4 && scoreContr == model.getDiamonds()){
+                if(collision == 4){
                     i--;
                     x += 16;
                     controllerFacade.endGame(view, model);
