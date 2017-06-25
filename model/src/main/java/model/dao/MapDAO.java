@@ -284,7 +284,6 @@ public class MapDAO extends AbstractDAO {
      * @return the int
      */
     public int getdiamonds() {
-        // TODO Auto-generated method stub
         int chare = amntdiamonds;
         return chare;
     }

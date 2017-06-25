@@ -28,6 +28,7 @@ public class RockController extends DiamondController {
      * @throws IOException
      */
     public void refresh(IPosition position) throws IOException {
+
         super.refresh(position);
 
         char bottomTile = map.getCharByPos(position.getPosX(), position.getPosY() + 1);

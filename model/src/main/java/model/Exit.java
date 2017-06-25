@@ -42,7 +42,7 @@ public class Exit extends Tile {
      */
     public String endLevel() {
 
-        String thisistheend = "THE END"; // BREAK EVERYTHING  //TODO ?
+        String thisistheend = "THE END"; // BREAK EVERYTHING
         return thisistheend;
 
     }

@@ -119,7 +119,6 @@ public class ModelFacade implements IModel {
 
     @Override
     public int getDiamonds() {
-        // TODO Auto-generated method stub
         return mapDAO.getdiamonds();
     }
 }

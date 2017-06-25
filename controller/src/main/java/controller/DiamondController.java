@@ -27,7 +27,7 @@ public class DiamondController {
      * @param model the model
      * @throws IOException the io exception
      */
-    public DiamondController(IModel model) throws IOException {//todo remove build -- debug
+    public DiamondController(IModel model) throws IOException {
         this.map = model.getTheMap();
         this.model = model;
     }
