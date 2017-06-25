@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * The Class EventPerformer provides an Order to execute linked with the KeyListener.
  */
-public class EventPerformer implements EventPerformerable, IView {
+public class EventPerformer implements EventPerformerable {
 
     private OrderPerformerable orderPerformer;
     private UserOrderable userOrder;
@@ -60,30 +60,5 @@ public class EventPerformer implements EventPerformerable, IView {
         if (userOrder != null) {
             this.orderPerformer.orderPerformer(userOrder);
         }
-    }
-
-    @Override
-    public void displayMessage(String message) {
-
-    }
-
-    @Override
-    public void drawImage(BufferedImage image, int x, int y) {
-
-    }
-
-    @Override
-    public void initScore() {
-
-    }
-
-    @Override
-    public int getScore() {
-        return 0;
-    }
-
-    @Override
-    public void setScore(int score) {
-
     }
 }
