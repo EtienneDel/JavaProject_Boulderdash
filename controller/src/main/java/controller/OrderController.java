@@ -45,10 +45,11 @@ public class OrderController extends java.util.Observable {
             return;
         int x = build.getPosX();
         int y = build.getPosY();
+
         this.view = view;
         this.model = model;
         character = new CharacterController(model, build, view);
-        Movable movable = (Movable) model.setTheCharacterA(1,1);
+        Movable movable = (Movable) model.setTheCharacterA(1, 1);
         Movable rock = (Movable) model.getRock();
         position = model.getPosition(i, j);
         rockController = new RockController(model);
@@ -58,11 +59,11 @@ public class OrderController extends java.util.Observable {
             case UP:
                 character.moveUp(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond()){
-                    this.scoreContr ++;
+                if (character.getDiamond()) {
+                    this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4){
+                if (collision == 4) {
                     j--;
                     y += 16;
                     controllerFacade.endGame(view, model);
@@ -76,11 +77,11 @@ public class OrderController extends java.util.Observable {
             case DOWN:
                 character.moveDown(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond()) {
+                if (character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4){
+                if (collision == 4) {
                     j++;
                     y -= 16;
                     controllerFacade.endGame(view, model);
@@ -92,48 +93,36 @@ public class OrderController extends java.util.Observable {
                 break;
 
             case LEFT:
-                collision = character.getColli();
-                if(collision ==2){
-                    rockController.moveLeft(rock, model.getPosition(position.getPosX()-1, position.getPosY()));
-                    i--;
-                    x += 16;
-                }
                 character.moveLeft(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond()) {
+                if (character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4){
+                if (collision == 4) {
                     i--;
                     x += 16;
                     controllerFacade.endGame(view, model);
                 }
-                if (collision != 1 && collision != 2) {
+                if (collision != 1) {
                     i--;
                     x += 16;
                 }
                 break;
 
             case RIGHT:
-                collision = character.getColli();
-                if(collision == 2){
-                    i++;
-                    x -= 16;
-                    rockController.moveRight(rock, model.getPosition(position.getPosX()+1, position.getPosY()));
-                }
                 character.moveRight(movable, position);
                 collision = character.getColli();
-                if(character.getDiamond()) {
+                if (character.getDiamond()) {
                     this.scoreContr++;
                     view.setScore(scoreContr);
                 }
-                if(collision == 4){
+                if (collision == 4) {
                     i++;
                     x -= 16;
                     controllerFacade.endGame(view, model);
                 }
-                if (collision != 1 && collision !=2) {
+                if (collision != 1) {
                     i++;
                     x -= 16;
                 }

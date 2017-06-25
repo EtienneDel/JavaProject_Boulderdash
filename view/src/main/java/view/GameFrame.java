@@ -33,7 +33,7 @@ public class GameFrame extends JFrame implements KeyListener {
         panel = new GamePanel(model);
         setSize(500, 600);
         setBackground(Color.black);
-        setTitle("MOULDER DASH ");
+        setTitle("Boulder Dash");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel);
 

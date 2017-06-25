@@ -43,8 +43,6 @@ public class MainController implements Observer {
      * @throws IOException the io exception
      */
     public void test() throws IOException {
-        IPosition position = model.getPosition(3, 1);
-        IPosition positionChar = model.getPosition(1, 1);
         Thread thread;
 
         rockController = new RockController(model);
