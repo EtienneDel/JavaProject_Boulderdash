@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * The Class Character controller provides movements for the character.
  */
-public class CharacterController implements OrderPerformerable {
+public class CharacterController{
     /**
      * The Map.
      */
@@ -46,7 +46,6 @@ public class CharacterController implements OrderPerformerable {
         diamondController = new DiamondController(model);
         nbDiamond = model.getDiamonds();
         score = view.getScore();
-
     }
 
     /**
@@ -235,26 +234,6 @@ public class CharacterController implements OrderPerformerable {
         refresh(model.getPosition(position.getPosX() - 1, position.getPosY()));
         refresh(model.getPosition(position.getPosX() + 1, position.getPosY()));
         refresh(model.getPosition(position.getPosX(), position.getPosY() + 1));
-    }
-
-    @Override
-    public void orderPerformer(UserOrderable userOrder) throws IOException {
-        Movable movable = (Movable) model.getTheCharacterA();
-
-        switch (userOrder.getOrder()) {
-            case UP:
-                moveUp(movable, position);
-                break;
-            case DOWN:
-                moveDown(movable, position);
-                break;
-            case LEFT:
-                moveLeft(movable, position);
-                break;
-            case RIGHT:
-                moveRight(movable, position);
-                break;
-        }
     }
 
     /**
