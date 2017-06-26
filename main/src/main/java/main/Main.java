@@ -25,7 +25,7 @@ public abstract class Main {
      */
     public static void main(final String[] args) throws IOException, InterruptedException, SQLException {
         ModelFacade model;
-        if(args[0] != null)
+        if(args.length > 0)
             model = new ModelFacade(args[0]);
         else
             model = new ModelFacade("map1");

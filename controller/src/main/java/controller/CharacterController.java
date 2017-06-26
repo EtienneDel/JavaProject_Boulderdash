@@ -105,6 +105,9 @@ public class CharacterController implements OrderPerformerable {
                     colli = 1;
                 }
                 break;
+            case '7':
+                map.setCharByPos(position.getPosX(), position.getPosY(), '2');
+                break;
             default:
                 movable.moveU(position);
         }
@@ -140,6 +143,9 @@ public class CharacterController implements OrderPerformerable {
                 else if(score < nbDiamond){
                     colli = 1;
                 }
+                break;
+            case '7':
+                map.setCharByPos(position.getPosX(), position.getPosY(), '2');
                 break;
             default:
                 movable.moveD(position);
@@ -182,6 +188,9 @@ public class CharacterController implements OrderPerformerable {
                 else if(score < nbDiamond){
                     colli = 1;
                 }
+                break;
+            case '7':
+                map.setCharByPos(position.getPosX(), position.getPosY(), '2');
                 break;
             default:
                 movable.moveL(position);
@@ -226,6 +235,9 @@ public class CharacterController implements OrderPerformerable {
                     colli = 1;
                 }
                 break;
+            case '7':
+                map.setCharByPos(position.getPosX(), position.getPosY(), '2');
+                break;
             default:
                 movable.moveR(position);
         }
@@ -254,6 +266,7 @@ public class CharacterController implements OrderPerformerable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return;
         });
         thread.start();
     }

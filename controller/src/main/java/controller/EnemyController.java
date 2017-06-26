@@ -170,6 +170,8 @@ public class EnemyController {
                     horizontal(enemy);
                     break;
             }
+            if(map.getCharByPos(enemy.getPosition().getPosX(), enemy.getPosition().getPosY()) != '7')
+                enemyList.remove(enemy);
         }
 
     }
